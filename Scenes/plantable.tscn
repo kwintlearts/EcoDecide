@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ch4vrgpb0bqmk"]
+[gd_scene format=3 uid="uid://ch4vrgpb0bqmk"]
 
 [ext_resource type="Script" uid="uid://db5gogw6awbrl" path="res://Scenes/plantable.gd" id="1_dgjpf"]
 [ext_resource type="Texture2D" uid="uid://bpgbx2byp61ce" path="res://tile_0176.png" id="2_dgjpf"]
@@ -10,6 +10,15 @@ size = Vector2(12, 12)
 subpixel_positioning = 0
 msdf_pixel_range = 14
 msdf_size = 128
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -56,23 +65,29 @@ cache/0/8/0/underline_position = 0.0
 cache/0/8/0/underline_thickness = 0.0
 cache/0/8/0/scale = 1.0
 
-[node name="Plantable" type="Area2D"]
+[node name="Plantable" type="Area2D" unique_id=1556448065]
 script = ExtResource("1_dgjpf")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=311866433]
+modulate = Color(0.8745098, 0.6627451, 0.53333336, 1)
 position = Vector2(0.99999976, -0.99999905)
 scale = Vector2(0.74999994, 0.74999994)
 texture = ExtResource("2_dgjpf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1876043342]
+visible = false
 position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_dgjpf")
 
-[node name="Interact" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Interact" type="Label" parent="." unique_id=263735058]
+visible = false
+z_index = 10
+offset_left = -36.0
+offset_top = -20.0
+offset_right = 8.0
+offset_bottom = -3.0
 theme_override_fonts/font = SubResource("FontFile_t3n6e")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 10
 text = "[P] Plant"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

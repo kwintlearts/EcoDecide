@@ -3,6 +3,7 @@ extends Area2D
 var showInteractionLabel = false
 var sprout_scene = preload("res://Scenes/sprout.tscn")   # Path to your sprout scene
 var has_sprout = false
+@onready var sprite: Sprite2D = $Sprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,7 +19,7 @@ func _process(_delta: float) -> void:
 		
 		# Spawn sprout before removing dirt tile
 		var sprout = sprout_scene.instantiate()
-		sprout.position = global_position  # Place sprout where dirt tile is
+		sprout.global_position = global_position  # Place sprout where dirt tile is
 		get_parent().add_child(sprout)
 		
 		queue_free()
@@ -30,8 +31,11 @@ func _process(_delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player and not has_sprout: showInteractionLabel = true
+	sprite.modulate = Color("fff706dc")
+	
 
 
 func _on_body_exited(body: Node2D) -> void:
 	if body is Player and not has_sprout: showInteractionLabel = false
+	sprite.modulate = Color("dfa988")
 	

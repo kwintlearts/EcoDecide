@@ -1,10 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://de7xqnd45rs2h"]
+[gd_scene format=3 uid="uid://de7xqnd45rs2h"]
 
 [ext_resource type="Script" uid="uid://btdm00bf3t5pg" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://6lcvn2t8ecsr" path="res://tilemap_packed-urban.png" id="2_6t5aa"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ktt4y"]
-radius = 4.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wbnp3"]
 atlas = ExtResource("2_6t5aa")
@@ -133,17 +130,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ktt4y"]
+radius = 9.055386
+
+[node name="Player" type="CharacterBody2D" unique_id=1896034723]
 script = ExtResource("1_cvnsp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(19, -9)
-shape = SubResource("CircleShape2D_ktt4y")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(19, -8)
+[node name="Camera2D" type="Camera2D" parent="." unique_id=789987658]
 zoom = Vector2(4, 4)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=529117627]
 sprite_frames = SubResource("SpriteFrames_iwesx")
 animation = &"walk_down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2113093291]
+shape = SubResource("CircleShape2D_ktt4y")
