@@ -1,9 +1,10 @@
 [gd_scene format=4 uid="uid://cnmh8k7rjemx4"]
 
 [ext_resource type="Texture2D" uid="uid://6lcvn2t8ecsr" path="res://tilemap_packed-urban.png" id="1_72i15"]
-[ext_resource type="PackedScene" uid="uid://d3irx3u7ph81a" path="res://Scenes/npc.tscn" id="2_w4tvd"]
+[ext_resource type="PackedScene" path="res://Scenes/npc.tscn" id="2_w4tvd"]
 [ext_resource type="PackedScene" uid="uid://de7xqnd45rs2h" path="res://Scenes/player.tscn" id="2_x6x63"]
 [ext_resource type="PackedScene" uid="uid://ch4vrgpb0bqmk" path="res://Scenes/plantable.tscn" id="3_w4tvd"]
+[ext_resource type="Script" uid="uid://duqto6tbmq0p2" path="res://Scripts/score.gd" id="3_x6x63"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8sfye"]
 texture = ExtResource("1_72i15")
@@ -720,7 +721,7 @@ texture = ExtResource("1_72i15")
 [sub_resource type="TileSet" id="TileSet_t7h7s"]
 sources/0 = SubResource("TileSetAtlasSource_pcp4y")
 
-[node name="Plant Scenario" type="Node2D" unique_id=531500391]
+[node name="Plant Scenario" type="Node2D" unique_id=531500391 groups=["Player"]]
 
 [node name="TileMap Layers" type="Node" parent="." unique_id=1450139045]
 
@@ -768,6 +769,7 @@ z_index = 1
 position = Vector2(339, 58)
 
 [node name="Score" type="CanvasLayer" parent="." unique_id=62286231]
+script = ExtResource("3_x6x63")
 
 [node name="ScoreLabel" type="Label" parent="Score" unique_id=1244448548]
 offset_left = 7.0
@@ -781,4 +783,4 @@ position = Vector2(120, 109)
 
 [node name="NPC" parent="." unique_id=1324764838 instance=ExtResource("2_w4tvd")]
 z_index = 1
-position = Vector2(355, 205)
+position = Vector2(359, 210)
