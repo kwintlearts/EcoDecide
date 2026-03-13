@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://cnmh8k7rjemx4"]
 
 [ext_resource type="Texture2D" uid="uid://6lcvn2t8ecsr" path="res://tilemap_packed-urban.png" id="1_72i15"]
+[ext_resource type="PackedScene" uid="uid://d3irx3u7ph81a" path="res://Scenes/npc.tscn" id="2_w4tvd"]
 [ext_resource type="PackedScene" uid="uid://de7xqnd45rs2h" path="res://Scenes/player.tscn" id="2_x6x63"]
 [ext_resource type="PackedScene" uid="uid://ch4vrgpb0bqmk" path="res://Scenes/plantable.tscn" id="3_w4tvd"]
-[ext_resource type="Script" uid="uid://duqto6tbmq0p2" path="res://Scenes/canvas_layer.gd" id="4_yqybk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8sfye"]
 texture = ExtResource("1_72i15")
@@ -767,10 +767,9 @@ position = Vector2(233, 58)
 z_index = 1
 position = Vector2(339, 58)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=62286231]
-script = ExtResource("4_yqybk")
+[node name="Score" type="CanvasLayer" parent="." unique_id=62286231]
 
-[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=1244448548]
+[node name="ScoreLabel" type="Label" parent="Score" unique_id=1244448548]
 offset_left = 7.0
 offset_top = 6.0
 offset_right = 47.0
@@ -779,3 +778,7 @@ offset_bottom = 29.0
 [node name="Player" parent="." unique_id=60092826 instance=ExtResource("2_x6x63")]
 z_index = 2
 position = Vector2(120, 109)
+
+[node name="NPC" parent="." unique_id=1324764838 instance=ExtResource("2_w4tvd")]
+z_index = 1
+position = Vector2(355, 205)

@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvh3velhtyd28"]
+[gd_scene format=3 uid="uid://cvh3velhtyd28"]
 
 [ext_resource type="Texture2D" uid="uid://j66b1j5jameq" path="res://tilemap_packed-pico8.png" id="1_0vwjc"]
-[ext_resource type="Script" uid="uid://dplipid3u4rd4" path="res://Scenes/tree.gd" id="1_rsuno"]
+[ext_resource type="Script" uid="uid://dplipid3u4rd4" path="res://Scripts/tree.gd" id="1_rsuno"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rsuno"]
 size = Vector2(10, 15)

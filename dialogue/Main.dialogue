@@ -1,0 +1,9 @@
+~ start
+Nathan: [[Hi|Hello|Howdy]], this is the plant scenario.
+Nathan: Would you like to get started?
+- Yes
+	Nathan: Go on Then.
+- No
+	Nathan: Let me know if you're reaady.
+=> END
+

@@ -1,37 +1,63 @@
 extends CharacterBody2D
-class_name Player
 
-const SPEED = 200.0
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+const SPEED = 300.0
+@onready var actionable_finder: Area2D = $Direction/ActionableFinder
+@onready var animation_tree: AnimationTree = $AnimationTree
 
+var input_vector: Vector2 = Vector2.ZERO
+var current_target: Area2D = null
+
+func _ready() -> void:
+	animation_tree.active = true
+
+func _unhandled_input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		var actionables = actionable_finder.get_overlapping_areas()
+		if actionables.size() > 0:
+			var target = actionables[0]  # The Area2D with actionable.gd
+			
+			# Call interact() on the actionable, it handles the rest
+			if target.has_method("interact"):
+				target.interact()
+				get_viewport().set_input_as_handled()
+		
+	var x_axis: float = Input.get_axis("ui_left", "ui_right")
+	var y_axis: float = Input.get_axis("ui_up", "ui_down")
+	if x_axis:
+		input_vector = x_axis * Vector2.RIGHT
+	elif y_axis:
+		input_vector = y_axis * Vector2.DOWN
+	else:
+		input_vector = Vector2.ZERO
 
 func _physics_process(_delta: float) -> void:
-	var direction_left_right := Input.get_axis("move_left", "move_right")
-	if direction_left_right:
-		velocity.x = direction_left_right * SPEED
+	if input_vector.length() > 0:
+		velocity = input_vector * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	var direction_up_down := Input.get_axis("move_up", "move_down")
-	if direction_up_down:
-		velocity.y = direction_up_down * SPEED
-	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
-
-	# Play animations based on movement
-	if velocity.length() > 0:
-		if abs(velocity.x) > abs(velocity.y):
-			if velocity.x > 0:
-				animated_sprite.play("walk_right")
-			else:
-				animated_sprite.play("walk_left")
-		else:
-			if velocity.y > 0:
-				animated_sprite.play("walk_down")
-			else:
-				animated_sprite.play("walk_up")
-	else:
-		# Idle animations (optional)
-		animated_sprite.play("idle_down")  # You can change based on last direction
-
+		velocity = velocity.move_toward(Vector2.ZERO, SPEED)
+		
 	move_and_slide()
+	
+	if velocity.length() > 0:
+		animation_tree.set("parameters/Idle/blend_position", velocity)
+		animation_tree.set("parameters/Walk/blend_position", velocity)
+		animation_tree.get("parameters/playback").travel("Walk")
+	else:
+		animation_tree.get("parameters/playback").travel("Idle")
+		
+	var actionables = actionable_finder.get_overlapping_areas()
+	if actionables.size() > 0:
+		var target = actionables[0]  # The Area2D with actionable.gd
+		if target != current_target:
+			if current_target and current_target.get_parent().has_method("set_highlight"):
+				current_target.get_parent().set_highlight(false)
+				
+			if target.get_parent().has_method("set_highlight"):
+				target.get_parent().set_highlight(true)
+				
+				current_target = target
+	else:
+		if current_target and current_target.get_parent().has_method("set_highlight"):
+			current_target.get_parent().set_highlight(false)
+		current_target = null
+				
