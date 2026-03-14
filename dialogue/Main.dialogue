@@ -3,7 +3,12 @@ Nathan: [[Hi|Hello|Howdy]], this is the plant scenario.
 Nathan: Would you like to get started?
 - Yes
 	Nathan: Go on Then.
+	set Gamestate.planting = "planting_start"
 - No
 	Nathan: Let me know if you're reaady.
+	
+~ check_plant_state
+if Gamestate.planting == ""
+	Soil: Go to Nathan First.
 => END
 

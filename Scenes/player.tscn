@@ -357,7 +357,7 @@ shape = SubResource("RectangleShape2D_bi64h")
 [node name="Direction" type="Marker2D" parent="." unique_id=1172413975]
 
 [node name="ActionableFinder" type="Area2D" parent="Direction" unique_id=1869925654]
-collision_layer = 0
+collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Direction/ActionableFinder" unique_id=2085082887]

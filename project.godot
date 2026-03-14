@@ -21,8 +21,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Score="*res://Score/score.gd"
 DialogueManager="*uid://c3rodes2l3gxb"
+Gamestate="*uid://b08dm2mpe7b8e"
 
 [dialogue_manager]
 
