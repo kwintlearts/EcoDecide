@@ -10,7 +10,7 @@
 size = Vector2(12, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sq0aa"]
-size = Vector2(14, 14)
+size = Vector2(12, 12)
 
 [node name="Plantable" type="StaticBody2D" unique_id=1646417561]
 script = ExtResource("1_dgjpf")

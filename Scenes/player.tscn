@@ -229,6 +229,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_tx1dd"]
 resource_name = "Walk_Up"
 length = 0.5
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -320,7 +321,7 @@ states/Walk/node = SubResource("AnimationNodeBlendSpace2D_olqyp")
 states/Walk/position = Vector2(479.6, 96)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bi64h"]
-size = Vector2(14, 17)
+size = Vector2(14, 15)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2ijsl"]
 radius = 7.0
@@ -351,7 +352,7 @@ parameters/Walk/blend_position = Vector2(0, 0)
 zoom = Vector2(4, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2113093291]
-position = Vector2(0, -0.5)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_bi64h")
 
 [node name="Direction" type="Marker2D" parent="." unique_id=1172413975]
