@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED = 200.0
 @onready var actionable_finder: Area2D = $Direction/ActionableFinder
 @onready var animation_tree: AnimationTree = $AnimationTree
 
