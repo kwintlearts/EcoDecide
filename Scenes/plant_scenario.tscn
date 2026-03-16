@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c1vj7fxi2rklb" path="res://Scenes/tree_growing.tscn" id="2_yqybk"]
 [ext_resource type="PackedScene" uid="uid://ch4vrgpb0bqmk" path="res://Scenes/plantable.tscn" id="3_w4tvd"]
 [ext_resource type="Script" uid="uid://duqto6tbmq0p2" path="res://Scripts/score.gd" id="3_x6x63"]
+[ext_resource type="PackedScene" uid="uid://d07t7mkybkouj" path="res://Scenes/pest.tscn" id="7_yqybk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8sfye"]
 texture = ExtResource("1_72i15")
@@ -796,3 +797,7 @@ offset_top = 90.0
 offset_right = 313.0
 offset_bottom = 113.0
 text = "tree growing lol"
+
+[node name="pest" parent="." unique_id=1385031108 instance=ExtResource("7_yqybk")]
+z_index = 1
+position = Vector2(170, 80)

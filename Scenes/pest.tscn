@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://d07t7mkybkouj"]
+
+[ext_resource type="Texture2D" uid="uid://b558nyi1kpl62" path="res://pests.png" id="1_f50pn"]
+[ext_resource type="Script" uid="uid://c3khvudlskces" path="res://Scripts/pest.gd" id="1_i6yvm"]
+[ext_resource type="Texture2D" uid="uid://b6l6lgyfkuhk6" path="res://pests (flipped).png" id="3_2npex"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ij6vw"]
+animations = [{
+"frames": [{
+"duration": 1.5,
+"texture": ExtResource("1_f50pn")
+}, {
+"duration": 1.5,
+"texture": ExtResource("3_2npex")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2npex"]
+radius = 4.1231055
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jt2ht"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_318k1"]
+radius = 52.23983
+
+[node name="pest" type="CharacterBody2D" unique_id=1385031108]
+script = ExtResource("1_i6yvm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1093828942]
+position = Vector2(9.536743e-07, -2.0000005)
+scale = Vector2(0.021469908, 0.021469908)
+sprite_frames = SubResource("SpriteFrames_ij6vw")
+animation = &"move"
+frame_progress = 0.548384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1915632108]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_2npex")
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1397209669]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=103000561]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_jt2ht")
+
+[node name="detection_area" type="Area2D" parent="." unique_id=113564708]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area" unique_id=1474475796]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_318k1")
+
+[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_shape_entered" from="detection_area" to="." method="_on_detection_area_body_shape_entered"]

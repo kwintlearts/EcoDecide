@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 200.0
+const SPEED = 100.0
 @onready var actionable_finder: Area2D = $Direction/ActionableFinder
 @onready var animation_tree: AnimationTree = $AnimationTree
 
@@ -40,3 +40,6 @@ func _physics_process(_delta: float) -> void:
 		animation_tree.get("parameters/playback").travel("Walk")
 	else:
 		animation_tree.get("parameters/playback").travel("Idle")
+		
+func player():
+	pass

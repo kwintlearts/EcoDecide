@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dakb7shoxrnpr" path="res://Scripts/tree_growing.gd" id="1_3a3ty"]
 [ext_resource type="Texture2D" uid="uid://6lcvn2t8ecsr" path="res://tilemap_packed-urban.png" id="1_86fco"]
+[ext_resource type="Texture2D" uid="uid://detigih8txrk4" path="res://tilemap_packed-pico8(edited).png" id="2_cyc6l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjry3"]
-size = Vector2(20, 38)
+size = Vector2(14, 30)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6taru"]
-atlas = ExtResource("1_86fco")
-region = Rect2(352, 144, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjry3"]
+atlas = ExtResource("2_cyc6l")
+region = Rect2(352, 128, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jt1dc"]
 atlas = ExtResource("1_86fco")
@@ -21,16 +22,16 @@ region = Rect2(256, 128, 16, 32)
 [sub_resource type="SpriteFrames" id="SpriteFrames_w46q3"]
 animations = [{
 "frames": [{
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_6taru")
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_mjry3")
 }, {
-"duration": 2.0,
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_jt1dc")
 }, {
-"duration": 2.0,
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_5jvgg")
 }],
-"loop": true,
+"loop": false,
 "name": &"growing",
 "speed": 5.0
 }]
@@ -39,11 +40,12 @@ animations = [{
 script = ExtResource("1_3a3ty")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1150957152]
-position = Vector2(0, -9)
+position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_mjry3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=675789050]
 position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_w46q3")
 animation = &"growing"
-frame_progress = 0.8805009
+frame = 2
+frame_progress = 1.0
