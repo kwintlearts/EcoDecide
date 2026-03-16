@@ -4,6 +4,9 @@ if Gamestate.planting == "planting_start"
 	Nathan: You have {{Gamestate.plantable_count}} more tree(s) to plant.
 elif Gamestate.planting == "planting_finished":
 	Nathan: All Trees Planted!
+	Nathan: Come back the next day
+	- Come back the next day
+	-> "res://Scenes/plant_scenario_next_day.tscn"
 	
 else
 	Nathan: [[Hi|Hello|Howdy]], this is the plant scenario.
