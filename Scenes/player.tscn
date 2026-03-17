@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://de7xqnd45rs2h"]
 
 [ext_resource type="Script" uid="uid://btdm00bf3t5pg" path="res://Scripts/player.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://6lcvn2t8ecsr" path="res://tilemap_packed-urban.png" id="2_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://6lcvn2t8ecsr" path="res://Assets/tilemap_packed-urban.png" id="2_6t5aa"]
 
 [sub_resource type="Animation" id="Animation_cvnsp"]
 resource_name = "Idle_Down"
@@ -324,7 +324,7 @@ states/Walk/position = Vector2(479.6, 96)
 size = Vector2(14, 15)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2ijsl"]
-radius = 7.0
+radius = 6.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1896034723]
 script = ExtResource("1_cvnsp")

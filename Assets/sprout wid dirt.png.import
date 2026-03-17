@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j66b1j5jameq"
-path="res://.godot/imported/tilemap_packed-pico8.png-26d55bc2286f87be68ea7ddecd956567.ctex"
+uid="uid://dxuiwdqa6sos8"
+path="res://.godot/imported/sprout wid dirt.png-cc0542785ca4ff4bc950f5c07b950fab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemap_packed-pico8.png"
-dest_files=["res://.godot/imported/tilemap_packed-pico8.png-26d55bc2286f87be68ea7ddecd956567.ctex"]
+source_file="res://Assets/sprout wid dirt.png"
+dest_files=["res://.godot/imported/sprout wid dirt.png-cc0542785ca4ff4bc950f5c07b950fab.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://detigih8txrk4"
-path="res://.godot/imported/tilemap_packed-pico8(edited).png-72952da8ce36298d47069cc4d2359d55.ctex"
+uid="uid://128acnai21s1"
+path="res://.godot/imported/dpad_element_north_highlight.png-58676d71863523310808d844b831e12a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemap_packed-pico8(edited).png"
-dest_files=["res://.godot/imported/tilemap_packed-pico8(edited).png-72952da8ce36298d47069cc4d2359d55.ctex"]
+source_file="res://Assets/controls/dpad_element_north_highlight.png"
+dest_files=["res://.godot/imported/dpad_element_north_highlight.png-58676d71863523310808d844b831e12a.ctex"]
 
 [params]
 

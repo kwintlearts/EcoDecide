@@ -1,13 +1,21 @@
-extends Area2D
+# sprout.gd
+extends Node2D
 
-# Grab a Reference to Sprite 2D
+@export var tree_growing: PackedScene
+@export var days_to_grow: int = 1
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var planted_day: int = 0
 
+func _ready():
+	planted_day = Gamestate.day
+	Gamestate.day_changed.connect(_on_day_changed)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	# Access Sprite's property modulate
-	pass
+func _on_day_changed(new_day: int) -> void:
+	if new_day >= planted_day + days_to_grow:
+		grow_tree()
+
+func grow_tree() -> void:
+	var tree = tree_growing.instantiate()
+	tree.position = position
+	get_parent().add_child(tree)
+	queue_free()

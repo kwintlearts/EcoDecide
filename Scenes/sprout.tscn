@@ -1,14 +1,16 @@
 [gd_scene format=3 uid="uid://b2r1lxi10gpbw"]
 
-[ext_resource type="Texture2D" uid="uid://bpgbx2byp61ce" path="res://tile_0176.png" id="1_414y8"]
+[ext_resource type="Texture2D" uid="uid://bpgbx2byp61ce" path="res://Assets/tile_0176.png" id="1_414y8"]
 [ext_resource type="Script" uid="uid://dcedhrcr7ttdk" path="res://Scripts/sprout.gd" id="1_wppu0"]
-[ext_resource type="Texture2D" uid="uid://clvtlpl62osn4" path="res://sprout with dirt.png" id="3_wppu0"]
+[ext_resource type="PackedScene" uid="uid://c1vj7fxi2rklb" path="res://Scenes/tree_growing.tscn" id="2_dtlf6"]
+[ext_resource type="Texture2D" uid="uid://clvtlpl62osn4" path="res://Assets/sprout with dirt.png" id="3_wppu0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_414y8"]
 size = Vector2(11.875, 12)
 
 [node name="Sprout" type="Area2D" unique_id=2100291043]
 script = ExtResource("1_wppu0")
+tree_growing = ExtResource("2_dtlf6")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=226112986]
 visible = false
@@ -24,7 +26,3 @@ texture = ExtResource("3_wppu0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=266495662]
 position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_414y8")
-
-[node name="Label" type="Label" parent="." unique_id=610050282]
-offset_right = 40.0
-offset_bottom = 23.0
