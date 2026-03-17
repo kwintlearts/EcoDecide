@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://bgmrk1lwo2ylv" path="res://Scripts/world.gd" id="1_vxnx1"]
 [ext_resource type="PackedScene" uid="uid://d3irx3u7ph81a" path="res://Scenes/npc.tscn" id="2_w4tvd"]
 [ext_resource type="PackedScene" uid="uid://de7xqnd45rs2h" path="res://Scenes/player.tscn" id="2_x6x63"]
-[ext_resource type="PackedScene" uid="uid://c1vj7fxi2rklb" path="res://Scenes/tree_growing.tscn" id="2_yqybk"]
 [ext_resource type="PackedScene" uid="uid://ch4vrgpb0bqmk" path="res://Scenes/plantable.tscn" id="3_w4tvd"]
 [ext_resource type="PackedScene" uid="uid://bbakv7tmbfbs7" path="res://Scenes/ui.tscn" id="5_vxnx1"]
 [ext_resource type="PackedScene" uid="uid://d07t7mkybkouj" path="res://Scenes/pest.tscn" id="7_yqybk"]
@@ -724,8 +723,13 @@ texture = ExtResource("1_72i15")
 [sub_resource type="TileSet" id="TileSet_t7h7s"]
 sources/0 = SubResource("TileSetAtlasSource_pcp4y")
 
-[node name="Plant Scenario" type="Node2D" unique_id=531500391 groups=["Player"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqybk"]
+size = Vector2(190, 124)
+
+[node name="Plant Scenario" type="Node2D" unique_id=531500391 node_paths=PackedStringArray("spawn_area") groups=["Player"]]
 script = ExtResource("1_vxnx1")
+spawn_area = NodePath("Pest Spawner")
+pest_scene = ExtResource("7_yqybk")
 
 [node name="TileMap Layers" type="Node" parent="." unique_id=1450139045]
 
@@ -734,7 +738,6 @@ tile_map_data = PackedByteArray("AAAWAA4AAAAMAAIAAAAWAA0AAAACAAIAAAAWAAwAAAACAAE
 tile_set = SubResource("TileSet_pcp4y")
 
 [node name="others" type="TileMapLayer" parent="TileMap Layers" unique_id=1037913934]
-z_index = 1
 tile_map_data = PackedByteArray("AAARAP7/AAAPABAAAAARAP//AAAPABEAAAASAP7/AAAQABAAAAASAP//AAAQABEAAAAWAP7/AAAPABAAAAAWAP//AAAPABEAAAAXAP7/AAAQABAAAAAXAP//AAAQABEAAAATAP//AAASAA4AAAATAAAAAAASAA8AAAAUAP//AAATAA4AAAAUAAAAAAATAA8AAAAKAA8AAAASAA4AAAAKABAAAAASAA8AAAALAA8AAAATAA4AAAALABAAAAATAA8AAAAQABAAAAAPABAAAAAQABEAAAAPABEAAAARABAAAAAQABAAAAARABEAAAAQABEAAAAUABEAAAAVABAAAAAVABEAAAAWABAAAAAEAAcAAAAVAA4AAAAEAAgAAAAVAA8AAAAEAAkAAAAVAA4AAAAEAAoAAAAVAA8AAAAbAAYAAAARAA4AAAAbAAcAAAARAA8AAAAbAAgAAAARABAAAAAbAAkAAAARABEAAAAYAAAAAAASABEAAAAZAAAAAAATABEAAAA=")
 tile_set = SubResource("TileSet_t7h7s")
 
@@ -786,13 +789,16 @@ position = Vector2(359, 210)
 z_index = 1
 position = Vector2(170, 80)
 
-[node name="Area2D" parent="." unique_id=1313540365 instance=ExtResource("2_yqybk")]
-visible = false
-position = Vector2(211, 145)
-
 [node name="Lighting" type="Node" parent="." unique_id=282422571]
 
 [node name="light" type="DirectionalLight2D" parent="Lighting" unique_id=308079710]
 color = Color(0.14644991, 0.14644991, 0.14644991, 1)
 
 [node name="Tint" type="CanvasModulate" parent="Lighting" unique_id=1365161613]
+
+[node name="Pest Spawner" type="Area2D" parent="." unique_id=2027453418]
+z_index = 1
+position = Vector2(238, 128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pest Spawner" unique_id=1294014294]
+shape = SubResource("RectangleShape2D_yqybk")

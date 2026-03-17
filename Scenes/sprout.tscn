@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bpgbx2byp61ce" path="res://Assets/tile_0176.png" id="1_414y8"]
 [ext_resource type="Script" uid="uid://dcedhrcr7ttdk" path="res://Scripts/sprout.gd" id="1_wppu0"]
-[ext_resource type="PackedScene" uid="uid://c1vj7fxi2rklb" path="res://Scenes/tree_growing.tscn" id="2_dtlf6"]
+[ext_resource type="PackedScene" uid="uid://c1vj7fxi2rklb" path="res://Scenes/sapling.tscn" id="2_dtlf6"]
 [ext_resource type="Texture2D" uid="uid://clvtlpl62osn4" path="res://Assets/sprout with dirt.png" id="3_wppu0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_414y8"]

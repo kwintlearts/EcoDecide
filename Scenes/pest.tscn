@@ -25,7 +25,7 @@ radius = 4.1231055
 radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_318k1"]
-radius = 52.23983
+radius = 19.0
 
 [node name="pest" type="CharacterBody2D" unique_id=1385031108]
 script = ExtResource("1_i6yvm")
@@ -53,5 +53,5 @@ shape = SubResource("CircleShape2D_jt2ht")
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_318k1")
 
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
-[connection signal="body_shape_entered" from="detection_area" to="." method="_on_detection_area_body_shape_entered"]
