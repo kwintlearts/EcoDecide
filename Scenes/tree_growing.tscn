@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c1vj7fxi2rklb"]
 
 [ext_resource type="Script" uid="uid://dakb7shoxrnpr" path="res://Scripts/tree_growing.gd" id="1_3a3ty"]
-[ext_resource type="Texture2D" uid="uid://6lcvn2t8ecsr" path="res://tilemap_packed-urban.png" id="1_86fco"]
-[ext_resource type="Texture2D" uid="uid://detigih8txrk4" path="res://tilemap_packed-pico8(edited).png" id="2_cyc6l"]
+[ext_resource type="Texture2D" uid="uid://6lcvn2t8ecsr" path="res://Assets/tilemap_packed-urban.png" id="1_86fco"]
+[ext_resource type="Texture2D" uid="uid://detigih8txrk4" path="res://Assets/tilemap_packed-pico8(edited).png" id="2_cyc6l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjry3"]
 size = Vector2(14, 30)
@@ -37,6 +37,7 @@ animations = [{
 }]
 
 [node name="tree_growing" type="Area2D" unique_id=1313540365]
+z_index = 2
 script = ExtResource("1_3a3ty")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1150957152]
