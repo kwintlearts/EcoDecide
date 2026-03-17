@@ -17,8 +17,8 @@ func _unhandled_input(_event: InputEvent) -> void:
 			actionables[0].action()
 			get_viewport().set_input_as_handled()
 		
-	var x_axis: float = Input.get_axis("ui_left", "ui_right")
-	var y_axis: float = Input.get_axis("ui_up", "ui_down")
+	var x_axis: float = Input.get_axis("move_left", "move_right")
+	var y_axis: float = Input.get_axis("move_up", "move_down")
 	if x_axis:
 		input_vector = x_axis * Vector2.RIGHT
 	elif y_axis:
@@ -26,7 +26,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 	else:
 		input_vector = Vector2.ZERO
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if input_vector.length() > 0:
 		velocity = input_vector * SPEED
 	else:

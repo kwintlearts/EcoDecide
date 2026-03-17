@@ -1,24 +1,50 @@
 ~ start
-
-if Gamestate.planting == "planting_start"
+if Gamestate.planting == "start"
 	Nathan: You have {{Gamestate.plantable_count}} more tree(s) to plant.
-elif Gamestate.planting == "planting_finished":
-	Nathan: All Trees Planted!
-	Nathan: Come back the next day
-	- Come back the next day
-	-> "res://Scenes/plant_scenario_next_day.tscn"
+	
+elif Gamestate.planting == "finished"
+	=> planting_finished_dialogue
+	
+elif Gamestate.day >= 2
+	=> day_two_plus
 	
 else
 	Nathan: [[Hi|Hello|Howdy]], this is the plant scenario.
 	Nathan: Would you like to get started?
 	- Yes
 		Nathan: Go on Then.
-		set Gamestate.planting = "planting_start"
+		set Gamestate.planting = "start"
 		do Gamestate.start_planting()
 	- No
-		Nathan: Let me know if you're reaady.
+		Nathan: Let me know if you're ready.
 => END
-	
+
+~ planting_finished_dialogue
+if Gamestate.day >= 2
+	Nathan: All Trees Planted!
+	Nathan: Excellent! But remember...
+	Nathan: Pests and weeds spread overnight.
+	Nathan: Tomorrow will be harder.
+else
+	Nathan: All Trees Planted!
+	Nathan: Come back the next day
+- Come back the next day
+	Nathan: Rest well. The garden waits.
+	do Gamestate.next_day()
+=> END
+
+~ day_two_plus
+Nathan: Day {{Gamestate.day}}. [[The garden stirs|The crops await|Back to work]].
+Nathan: Watch for pests among the sprouts.
+- Start planting
+	Nathan: Stay vigilant.
+	set Gamestate.planting = "start"
+	do Gamestate.start_planting()
+- Not now
+	Nathan: Don't wait too long. Weeds spread fast.
+=> END
+
+
 ~ check_plant_state
 if Gamestate.planting == ""
 	Soil: Go to Nathan First.
