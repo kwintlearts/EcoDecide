@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://d07t7mkybkouj"]
 
-[ext_resource type="Texture2D" uid="uid://b558nyi1kpl62" path="res://pests.png" id="1_f50pn"]
+[ext_resource type="Texture2D" uid="uid://b558nyi1kpl62" path="res://Assets/pests.png" id="1_f50pn"]
 [ext_resource type="Script" uid="uid://c3khvudlskces" path="res://Scripts/pest.gd" id="1_i6yvm"]
-[ext_resource type="Texture2D" uid="uid://b6l6lgyfkuhk6" path="res://pests (flipped).png" id="3_2npex"]
+[ext_resource type="Texture2D" uid="uid://b6l6lgyfkuhk6" path="res://Assets/pests (flipped).png" id="3_2npex"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ij6vw"]
 animations = [{

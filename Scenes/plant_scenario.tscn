@@ -1,11 +1,12 @@
 [gd_scene format=4 uid="uid://cnmh8k7rjemx4"]
 
-[ext_resource type="Texture2D" uid="uid://6lcvn2t8ecsr" path="res://tilemap_packed-urban.png" id="1_72i15"]
+[ext_resource type="Texture2D" uid="uid://6lcvn2t8ecsr" path="res://Assets/tilemap_packed-urban.png" id="1_72i15"]
+[ext_resource type="Script" uid="uid://bgmrk1lwo2ylv" path="res://Scripts/world.gd" id="1_vxnx1"]
 [ext_resource type="PackedScene" uid="uid://d3irx3u7ph81a" path="res://Scenes/npc.tscn" id="2_w4tvd"]
 [ext_resource type="PackedScene" uid="uid://de7xqnd45rs2h" path="res://Scenes/player.tscn" id="2_x6x63"]
 [ext_resource type="PackedScene" uid="uid://c1vj7fxi2rklb" path="res://Scenes/tree_growing.tscn" id="2_yqybk"]
 [ext_resource type="PackedScene" uid="uid://ch4vrgpb0bqmk" path="res://Scenes/plantable.tscn" id="3_w4tvd"]
-[ext_resource type="Script" uid="uid://duqto6tbmq0p2" path="res://Scripts/score.gd" id="3_x6x63"]
+[ext_resource type="PackedScene" uid="uid://bbakv7tmbfbs7" path="res://Scenes/ui.tscn" id="5_vxnx1"]
 [ext_resource type="PackedScene" uid="uid://d07t7mkybkouj" path="res://Scenes/pest.tscn" id="7_yqybk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8sfye"]
@@ -724,6 +725,7 @@ texture = ExtResource("1_72i15")
 sources/0 = SubResource("TileSetAtlasSource_pcp4y")
 
 [node name="Plant Scenario" type="Node2D" unique_id=531500391 groups=["Player"]]
+script = ExtResource("1_vxnx1")
 
 [node name="TileMap Layers" type="Node" parent="." unique_id=1450139045]
 
@@ -732,12 +734,9 @@ tile_map_data = PackedByteArray("AAAWAA4AAAAMAAIAAAAWAA0AAAACAAIAAAAWAAwAAAACAAE
 tile_set = SubResource("TileSet_pcp4y")
 
 [node name="others" type="TileMapLayer" parent="TileMap Layers" unique_id=1037913934]
-z_index = 2
+z_index = 1
 tile_map_data = PackedByteArray("AAARAP7/AAAPABAAAAARAP//AAAPABEAAAASAP7/AAAQABAAAAASAP//AAAQABEAAAAWAP7/AAAPABAAAAAWAP//AAAPABEAAAAXAP7/AAAQABAAAAAXAP//AAAQABEAAAATAP//AAASAA4AAAATAAAAAAASAA8AAAAUAP//AAATAA4AAAAUAAAAAAATAA8AAAAKAA8AAAASAA4AAAAKABAAAAASAA8AAAALAA8AAAATAA4AAAALABAAAAATAA8AAAAQABAAAAAPABAAAAAQABEAAAAPABEAAAARABAAAAAQABAAAAARABEAAAAQABEAAAAUABEAAAAVABAAAAAVABEAAAAWABAAAAAEAAcAAAAVAA4AAAAEAAgAAAAVAA8AAAAEAAkAAAAVAA4AAAAEAAoAAAAVAA8AAAAbAAYAAAARAA4AAAAbAAcAAAARAA8AAAAbAAgAAAARABAAAAAbAAkAAAARABEAAAAYAAAAAAASABEAAAAZAAAAAAATABEAAAA=")
 tile_set = SubResource("TileSet_t7h7s")
-
-[node name="Area2D" parent="TileMap Layers" unique_id=1313540365 instance=ExtResource("2_yqybk")]
-position = Vector2(211, 145)
 
 [node name="Plantables" type="Node" parent="." unique_id=1348335566]
 
@@ -773,14 +772,7 @@ position = Vector2(233, 58)
 z_index = 1
 position = Vector2(339, 58)
 
-[node name="Score" type="CanvasLayer" parent="." unique_id=62286231]
-script = ExtResource("3_x6x63")
-
-[node name="ScoreLabel" type="Label" parent="Score" unique_id=1244448548]
-offset_left = 7.0
-offset_top = 6.0
-offset_right = 47.0
-offset_bottom = 29.0
+[node name="UI" parent="." unique_id=805644297 instance=ExtResource("5_vxnx1")]
 
 [node name="Player" parent="." unique_id=60092826 instance=ExtResource("2_x6x63")]
 z_index = 2
@@ -790,14 +782,17 @@ position = Vector2(120, 109)
 z_index = 1
 position = Vector2(359, 210)
 
-[node name="Label" type="Label" parent="." unique_id=375140964]
-z_index = 3
-offset_left = 192.0
-offset_top = 90.0
-offset_right = 313.0
-offset_bottom = 113.0
-text = "tree growing lol"
-
 [node name="pest" parent="." unique_id=1385031108 instance=ExtResource("7_yqybk")]
 z_index = 1
 position = Vector2(170, 80)
+
+[node name="Area2D" parent="." unique_id=1313540365 instance=ExtResource("2_yqybk")]
+visible = false
+position = Vector2(211, 145)
+
+[node name="Lighting" type="Node" parent="." unique_id=282422571]
+
+[node name="light" type="DirectionalLight2D" parent="Lighting" unique_id=308079710]
+color = Color(0.14644991, 0.14644991, 0.14644991, 1)
+
+[node name="Tint" type="CanvasModulate" parent="Lighting" unique_id=1365161613]

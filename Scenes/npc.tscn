@@ -1,42 +1,44 @@
 [gd_scene format=3 uid="uid://d3irx3u7ph81a"]
 
-[ext_resource type="Texture2D" uid="uid://j66b1j5jameq" path="res://tilemap_packed-pico8.png" id="1_acqhf"]
-[ext_resource type="PackedScene" uid="uid://dv80dnrujom4v" path="res://Scenes/actionable.tscn" id="2_xxsvc"]
+[ext_resource type="Texture2D" uid="uid://j66b1j5jameq" path="res://Assets/tilemap_packed-pico8.png" id="1_acqhf"]
+[ext_resource type="Script" uid="uid://cmav5guskt3k8" path="res://Scripts/npc.gd" id="1_h1ryf"]
+[ext_resource type="FontFile" uid="uid://dsy5ql31cyxib" path="res://Assets/fonts/PixelOperator8.ttf" id="2_1ig1v"]
+[ext_resource type="PackedScene" uid="uid://dotw2g8irmtcv" path="res://Scenes/actionable.tscn" id="2_xxsvc"]
 [ext_resource type="Resource" uid="uid://gexaoxocw4m1" path="res://dialogue/Main.dialogue" id="3_g6unj"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xxsvc"]
-atlas = ExtResource("1_acqhf")
-region = Rect2(384, 192, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_g6unj"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xxsvc")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acqhf"]
 size = Vector2(12, 14)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g6unj"]
+radius = 8.0
 
-[node name="NPC" type="CharacterBody2D" unique_id=1324764838]
+[node name="NPC" type="StaticBody2D" unique_id=129189529]
+script = ExtResource("1_h1ryf")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=37166404]
-sprite_frames = SubResource("SpriteFrames_g6unj")
-animation = &"idle"
+[node name="Talk_Label" type="Label" parent="." unique_id=1186127960]
+offset_left = -13.0
+offset_top = -17.0
+offset_right = 27.0
+offset_bottom = 6.0
+theme_override_fonts/font = ExtResource("2_1ig1v")
+theme_override_font_sizes/font_size = 8
+text = "Talk"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1241165218]
+texture = ExtResource("1_acqhf")
+region_enabled = true
+region_rect = Rect2(384, 192, 16, 17)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=385053807]
-position = Vector2(0, 2)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_acqhf")
 
 [node name="Actionable" parent="." unique_id=525290031 instance=ExtResource("2_xxsvc")]
 dialogue_resource = ExtResource("3_g6unj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable" unique_id=1249628859]
-position = Vector2(0, 2)
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_g6unj")
+
+[connection signal="area_entered" from="Actionable" to="." method="_on_actionable_area_entered"]
+[connection signal="area_exited" from="Actionable" to="." method="_on_actionable_area_exited"]
