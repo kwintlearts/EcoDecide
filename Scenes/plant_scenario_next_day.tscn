@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://duqto6tbmq0p2" path="res://Scripts/score.gd" id="3_2i1mu"]
 [ext_resource type="PackedScene" uid="uid://de7xqnd45rs2h" path="res://Scenes/player.tscn" id="4_8cxds"]
 [ext_resource type="PackedScene" uid="uid://d3irx3u7ph81a" path="res://Scenes/npc.tscn" id="5_i3rrq"]
-[ext_resource type="PackedScene" uid="uid://c1vj7fxi2rklb" path="res://Scenes/tree_growing.tscn" id="7_2i1mu"]
+[ext_resource type="PackedScene" uid="uid://h03nj4ryh3hl" path="res://trees/Sapling.tscn" id="7_2i1mu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8sfye"]
 texture = ExtResource("1_026fd")
@@ -793,36 +793,36 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "try"
 
-[node name="trees" type="Node" parent="." unique_id=625484681]
+[node name="Sapling" type="Node" parent="." unique_id=662101271]
 
-[node name="tree_growing" parent="trees" unique_id=1313540365 instance=ExtResource("7_2i1mu")]
+[node name="Sapling" parent="Sapling" unique_id=2053153133 instance=ExtResource("7_2i1mu")]
 z_index = 1
-position = Vector2(136, 57)
+position = Vector2(136, 56)
 
-[node name="tree_growing2" parent="trees" unique_id=54015780 instance=ExtResource("7_2i1mu")]
+[node name="Sapling2" parent="Sapling" unique_id=811179592 instance=ExtResource("7_2i1mu")]
 z_index = 1
-position = Vector2(136, 133)
+position = Vector2(234, 58)
 
-[node name="tree_growing3" parent="trees" unique_id=1008417613 instance=ExtResource("7_2i1mu")]
+[node name="Sapling3" parent="Sapling" unique_id=416021200 instance=ExtResource("7_2i1mu")]
 z_index = 1
-position = Vector2(138, 195)
+position = Vector2(339, 59)
 
-[node name="tree_growing4" parent="trees" unique_id=812777496 instance=ExtResource("7_2i1mu")]
+[node name="Sapling4" parent="Sapling" unique_id=1516686180 instance=ExtResource("7_2i1mu")]
 z_index = 1
-position = Vector2(239, 197)
+position = Vector2(136, 131)
 
-[node name="tree_growing5" parent="trees" unique_id=551298731 instance=ExtResource("7_2i1mu")]
+[node name="Sapling5" parent="Sapling" unique_id=1041469074 instance=ExtResource("7_2i1mu")]
 z_index = 1
-position = Vector2(342, 195)
+position = Vector2(138, 194)
 
-[node name="tree_growing6" parent="trees" unique_id=1956369907 instance=ExtResource("7_2i1mu")]
+[node name="Sapling6" parent="Sapling" unique_id=51808069 instance=ExtResource("7_2i1mu")]
 z_index = 1
-position = Vector2(339, 127)
+position = Vector2(239, 196)
 
-[node name="tree_growing7" parent="trees" unique_id=688482020 instance=ExtResource("7_2i1mu")]
+[node name="Sapling7" parent="Sapling" unique_id=779648829 instance=ExtResource("7_2i1mu")]
 z_index = 1
-position = Vector2(339, 58)
+position = Vector2(339, 125)
 
-[node name="tree_growing8" parent="trees" unique_id=1793977964 instance=ExtResource("7_2i1mu")]
+[node name="Sapling8" parent="Sapling" unique_id=1420342506 instance=ExtResource("7_2i1mu")]
 z_index = 1
-position = Vector2(233, 59)
+position = Vector2(343, 192)

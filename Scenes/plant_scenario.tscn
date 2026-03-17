@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://6lcvn2t8ecsr" path="res://tilemap_packed-urban.png" id="1_72i15"]
 [ext_resource type="PackedScene" uid="uid://d3irx3u7ph81a" path="res://Scenes/npc.tscn" id="2_w4tvd"]
 [ext_resource type="PackedScene" uid="uid://de7xqnd45rs2h" path="res://Scenes/player.tscn" id="2_x6x63"]
-[ext_resource type="PackedScene" uid="uid://c1vj7fxi2rklb" path="res://Scenes/tree_growing.tscn" id="2_yqybk"]
 [ext_resource type="PackedScene" uid="uid://ch4vrgpb0bqmk" path="res://Scenes/plantable.tscn" id="3_w4tvd"]
 [ext_resource type="Script" uid="uid://duqto6tbmq0p2" path="res://Scripts/score.gd" id="3_x6x63"]
+[ext_resource type="PackedScene" uid="uid://h03nj4ryh3hl" path="res://trees/Sapling.tscn" id="7_vxnx1"]
 [ext_resource type="PackedScene" uid="uid://d07t7mkybkouj" path="res://Scenes/pest.tscn" id="7_yqybk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8sfye"]
@@ -736,9 +736,6 @@ z_index = 2
 tile_map_data = PackedByteArray("AAARAP7/AAAPABAAAAARAP//AAAPABEAAAASAP7/AAAQABAAAAASAP//AAAQABEAAAAWAP7/AAAPABAAAAAWAP//AAAPABEAAAAXAP7/AAAQABAAAAAXAP//AAAQABEAAAATAP//AAASAA4AAAATAAAAAAASAA8AAAAUAP//AAATAA4AAAAUAAAAAAATAA8AAAAKAA8AAAASAA4AAAAKABAAAAASAA8AAAALAA8AAAATAA4AAAALABAAAAATAA8AAAAQABAAAAAPABAAAAAQABEAAAAPABEAAAARABAAAAAQABAAAAARABEAAAAQABEAAAAUABEAAAAVABAAAAAVABEAAAAWABAAAAAEAAcAAAAVAA4AAAAEAAgAAAAVAA8AAAAEAAkAAAAVAA4AAAAEAAoAAAAVAA8AAAAbAAYAAAARAA4AAAAbAAcAAAARAA8AAAAbAAgAAAARABAAAAAbAAkAAAARABEAAAAYAAAAAAASABEAAAAZAAAAAAATABEAAAA=")
 tile_set = SubResource("TileSet_t7h7s")
 
-[node name="Area2D" parent="TileMap Layers" unique_id=1313540365 instance=ExtResource("2_yqybk")]
-position = Vector2(211, 145)
-
 [node name="Plantables" type="Node" parent="." unique_id=1348335566]
 
 [node name="Plantable" parent="Plantables" unique_id=1132659405 instance=ExtResource("3_w4tvd")]
@@ -784,20 +781,48 @@ offset_bottom = 29.0
 
 [node name="Player" parent="." unique_id=60092826 instance=ExtResource("2_x6x63")]
 z_index = 2
-position = Vector2(120, 109)
+position = Vector2(239, 113)
 
 [node name="NPC" parent="." unique_id=1324764838 instance=ExtResource("2_w4tvd")]
 z_index = 1
 position = Vector2(359, 210)
 
-[node name="Label" type="Label" parent="." unique_id=375140964]
-z_index = 3
-offset_left = 192.0
-offset_top = 90.0
-offset_right = 313.0
-offset_bottom = 113.0
-text = "tree growing lol"
-
 [node name="pest" parent="." unique_id=1385031108 instance=ExtResource("7_yqybk")]
+z_index = 2
+position = Vector2(302, 193)
+collision_layer = 3
+
+[node name="Sapling" type="Node" parent="." unique_id=293188619]
+
+[node name="Sapling" parent="Sapling" unique_id=2053153133 instance=ExtResource("7_vxnx1")]
 z_index = 1
-position = Vector2(170, 80)
+position = Vector2(137, 57)
+
+[node name="Sapling2" parent="Sapling" unique_id=1242841925 instance=ExtResource("7_vxnx1")]
+z_index = 1
+position = Vector2(234, 58)
+
+[node name="Sapling3" parent="Sapling" unique_id=1121515901 instance=ExtResource("7_vxnx1")]
+z_index = 1
+position = Vector2(339, 59)
+
+[node name="Sapling4" parent="Sapling" unique_id=835784449 instance=ExtResource("7_vxnx1")]
+z_index = 1
+position = Vector2(136, 131)
+
+[node name="Sapling5" parent="Sapling" unique_id=187681670 instance=ExtResource("7_vxnx1")]
+z_index = 1
+position = Vector2(138, 194)
+
+[node name="Sapling6" parent="Sapling" unique_id=235988991 instance=ExtResource("7_vxnx1")]
+z_index = 1
+position = Vector2(239, 196)
+
+[node name="Sapling7" parent="Sapling" unique_id=107739953 instance=ExtResource("7_vxnx1")]
+z_index = 1
+position = Vector2(339, 125)
+
+[node name="Sapling8" parent="Sapling" unique_id=826553767 instance=ExtResource("7_vxnx1")]
+z_index = 1
+position = Vector2(343, 192)
+collision_layer = 3
