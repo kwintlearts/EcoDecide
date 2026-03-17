@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6l6lgyfkuhk6"
-path="res://.godot/imported/pests (flipped).png-1fde543d9d84c1a0d3c56e064ef24ecb.ctex"
+uid="uid://dxuiwdqa6sos8"
+path="res://.godot/imported/sprout wid dirt.png-cc0542785ca4ff4bc950f5c07b950fab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pests (flipped).png"
-dest_files=["res://.godot/imported/pests (flipped).png-1fde543d9d84c1a0d3c56e064ef24ecb.ctex"]
+source_file="res://Assets/sprout wid dirt.png"
+dest_files=["res://.godot/imported/sprout wid dirt.png-cc0542785ca4ff4bc950f5c07b950fab.ctex"]
 
 [params]
 

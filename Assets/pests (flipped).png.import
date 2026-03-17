@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6lcvn2t8ecsr"
-path="res://.godot/imported/tilemap_packed-urban.png-d506e77cad031a776606e8af1103c0a3.ctex"
+uid="uid://b6l6lgyfkuhk6"
+path="res://.godot/imported/pests (flipped).png-fe766034e69fee0c68bf7be91e8c44e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemap_packed-urban.png"
-dest_files=["res://.godot/imported/tilemap_packed-urban.png-d506e77cad031a776606e8af1103c0a3.ctex"]
+source_file="res://Assets/pests (flipped).png"
+dest_files=["res://.godot/imported/pests (flipped).png-fe766034e69fee0c68bf7be91e8c44e6.ctex"]
 
 [params]
 

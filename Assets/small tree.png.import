@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j66b1j5jameq"
-path="res://.godot/imported/tilemap_packed-pico8.png-26d55bc2286f87be68ea7ddecd956567.ctex"
+uid="uid://vlgpqwey86iq"
+path="res://.godot/imported/small tree.png-f3ba6a299d52699f5453f7ea26db900f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemap_packed-pico8.png"
-dest_files=["res://.godot/imported/tilemap_packed-pico8.png-26d55bc2286f87be68ea7ddecd956567.ctex"]
+source_file="res://Assets/small tree.png"
+dest_files=["res://.godot/imported/small tree.png-f3ba6a299d52699f5453f7ea26db900f.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cd280fjgqbogt"
-path="res://.godot/imported/tilemap.png-838486f2ee5f5764f6a08fbb86e9df3c.ctex"
+uid="uid://clvtlpl62osn4"
+path="res://.godot/imported/sprout with dirt.png-9953110287201fb7387abcd488cda977.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemap.png"
-dest_files=["res://.godot/imported/tilemap.png-838486f2ee5f5764f6a08fbb86e9df3c.ctex"]
+source_file="res://Assets/sprout with dirt.png"
+dest_files=["res://.godot/imported/sprout with dirt.png-9953110287201fb7387abcd488cda977.ctex"]
 
 [params]
 
