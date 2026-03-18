@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://c1vj7fxi2rklb"]
+
+[ext_resource type="Script" uid="uid://dakb7shoxrnpr" path="res://Scripts/sapling.gd" id="1_noemw"]
+[ext_resource type="Texture2D" uid="uid://detigih8txrk4" path="res://Assets/tilemap_packed-pico8(edited).png" id="2_gmhoa"]
+[ext_resource type="Texture2D" uid="uid://6lcvn2t8ecsr" path="res://Assets/tilemap_packed-urban.png" id="3_l87m8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjry3"]
+size = Vector2(14, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjry3"]
+atlas = ExtResource("2_gmhoa")
+region = Rect2(352, 128, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jt1dc"]
+atlas = ExtResource("3_l87m8")
+region = Rect2(272, 128, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jvgg"]
+atlas = ExtResource("3_l87m8")
+region = Rect2(256, 128, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w46q3"]
+animations = [{
+"frames": [{
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_mjry3")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_jt1dc")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_5jvgg")
+}],
+"loop": false,
+"name": &"growing",
+"speed": 5.0
+}]
+
+[node name="sapling" type="StaticBody2D" unique_id=1976430978]
+script = ExtResource("1_noemw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1150957152]
+position = Vector2(0, -13)
+shape = SubResource("RectangleShape2D_mjry3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=675789050]
+position = Vector2(0, -13)
+sprite_frames = SubResource("SpriteFrames_w46q3")
+animation = &"growing"
+frame = 2
+frame_progress = 1.0

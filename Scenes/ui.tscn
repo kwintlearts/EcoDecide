@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://bbakv7tmbfbs7"]
+
+[ext_resource type="Script" uid="uid://dex5xc05q4g06" path="res://Scripts/ui.gd" id="1_qdvrb"]
+[ext_resource type="Texture2D" uid="uid://sgp5bu38461l" path="res://Assets/controls/dpad_element_east_highlight.png" id="2_smcll"]
+[ext_resource type="Texture2D" uid="uid://128acnai21s1" path="res://Assets/controls/dpad_element_north_highlight.png" id="3_ryf15"]
+[ext_resource type="Texture2D" uid="uid://bwh6cv7exd8ny" path="res://Assets/controls/dpad_element_south_highlight.png" id="4_mmixe"]
+[ext_resource type="Texture2D" uid="uid://yvvmsk3ief88" path="res://Assets/controls/dpad_element_west_highlight.png" id="5_nt8jn"]
+[ext_resource type="Texture2D" uid="uid://b42xj23pxo1wr" path="res://Assets/controls/button_square_highlight.png" id="6_g0wmg"]
+[ext_resource type="Texture2D" uid="uid://cuxctmkhikfxg" path="res://Assets/controls/icon_hand.png" id="7_4vbiv"]
+
+[node name="UI" type="CanvasLayer" unique_id=805644297]
+script = ExtResource("1_qdvrb")
+
+[node name="HUD" type="Control" parent="." unique_id=1909249313]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Labels" type="Node" parent="HUD" unique_id=1724177051]
+
+[node name="Top_Left" type="MarginContainer" parent="HUD/Labels" unique_id=1777083656]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 60.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Labels/Top_Left" unique_id=654780694]
+layout_mode = 2
+
+[node name="TimeLabel" type="Label" parent="HUD/Labels/Top_Left/VBoxContainer" unique_id=1692580819]
+layout_mode = 2
+text = "Time"
+
+[node name="DayLabel" type="Label" parent="HUD/Labels/Top_Left/VBoxContainer" unique_id=1918567228]
+layout_mode = 2
+text = "Day: 0"
+
+[node name="Top_right" type="MarginContainer" parent="HUD/Labels" unique_id=2072913242]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -77.0
+offset_top = 10.0
+offset_right = -16.0
+offset_bottom = 59.0
+grow_horizontal = 0
+
+[node name="ScoreLabel" type="Label" parent="HUD/Labels/Top_right" unique_id=232022679]
+layout_mode = 2
+text = "Score: 0
+"
+
+[node name="Touch Controls" type="CanvasLayer" parent="HUD" unique_id=561818119]
+
+[node name="Left_Side" type="Control" parent="HUD/Touch Controls" unique_id=882826073]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 152.0
+offset_top = -137.0
+offset_right = 192.0
+offset_bottom = -97.0
+grow_vertical = 0
+
+[node name="Right" type="TouchScreenButton" parent="HUD/Touch Controls/Left_Side" unique_id=273632386]
+position = Vector2(-54, -4)
+scale = Vector2(0.35000062, 0.35000062)
+texture_normal = ExtResource("2_smcll")
+action = "move_right"
+
+[node name="Up" type="TouchScreenButton" parent="HUD/Touch Controls/Left_Side" unique_id=1445937574]
+position = Vector2(-86, -32)
+scale = Vector2(0.35000062, 0.35000062)
+texture_normal = ExtResource("3_ryf15")
+action = "move_up"
+
+[node name="Down" type="TouchScreenButton" parent="HUD/Touch Controls/Left_Side" unique_id=467208963]
+position = Vector2(-86, 22)
+scale = Vector2(0.35000062, 0.35000062)
+texture_normal = ExtResource("4_mmixe")
+action = "move_down"
+
+[node name="Left" type="TouchScreenButton" parent="HUD/Touch Controls/Left_Side" unique_id=1230034683]
+position = Vector2(-119, -4)
+scale = Vector2(0.35000062, 0.35000062)
+texture_normal = ExtResource("5_nt8jn")
+action = "move_left"
+
+[node name="Right_Side" type="Control" parent="HUD/Touch Controls" unique_id=1795021737]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -116.0
+offset_top = -146.0
+offset_right = -116.0
+offset_bottom = -146.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Interact" type="TouchScreenButton" parent="HUD/Touch Controls/Right_Side" unique_id=21033979]
+position = Vector2(13.000074, 9.99999)
+scale = Vector2(0.32031187, 0.3359376)
+texture_normal = ExtResource("6_g0wmg")
+action = "ui_accept"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HUD/Touch Controls/Right_Side/Interact" unique_id=1539982158]
+offset_left = 25.0979
+offset_top = 17.568604
+offset_right = 105.41162
+offset_bottom = 100.39221
+texture = ExtResource("7_4vbiv")

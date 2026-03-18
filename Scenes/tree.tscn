@@ -1,24 +1,57 @@
-[gd_scene format=3 uid="uid://cvh3velhtyd28"]
+[gd_scene format=3 uid="uid://y4oet072nrhw"]
 
-[ext_resource type="Texture2D" uid="uid://j66b1j5jameq" path="res://tilemap_packed-pico8.png" id="1_0vwjc"]
-[ext_resource type="Script" uid="uid://dplipid3u4rd4" path="res://Scripts/tree.gd" id="1_rsuno"]
+[ext_resource type="Texture2D" uid="uid://j66b1j5jameq" path="res://Assets/tilemap_packed-pico8.png" id="1_0vwjc"]
+
+[sub_resource type="GDScript" id="GDScript_0vwjc"]
+script/source = "extends Area2D
+
+var showInteractionLabel = false
+var tree_scene: PackedScene
+
+func _ready() -> void:
+	# Preload the tree scene so it’s ready to spawn
+	tree_scene = preload(\"res://Scenes/tree.tscn\")
+
+func _process(_delta: float) -> void:
+	$Interact.visible = showInteractionLabel
+	
+	if showInteractionLabel and Input.is_action_just_pressed(\"interact\"):
+		_plant_tree()
+		queue_free()
+
+# it was causing errors
+#func _on_body_entered(body: Node2D) -> void:
+	#if body is Player:
+		#showInteractionLabel = true
+#
+#func _on_body_exited(body: Node2D) -> void:
+	#if body is Player:
+		#showInteractionLabel = false
+
+func _plant_tree() -> void:
+	var tree_instance = tree_scene.instantiate()
+	# Place the tree at the same position as the plantable tile
+	tree_instance.position = position
+	# Add it to the parent (usually the main scene/world)
+	get_parent().add_child(tree_instance)
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rsuno"]
 size = Vector2(10, 15)
 
-[node name="Tree" type="Area2D"]
-script = ExtResource("1_rsuno")
+[node name="Tree" type="Area2D" unique_id=671873678]
+script = SubResource("GDScript_0vwjc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1835262896]
 z_index = 2
 texture = ExtResource("1_0vwjc")
 region_enabled = true
 region_rect = Rect2(354.05203, 144.87737, 11.742859, 14.7157135)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1659992511]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_rsuno")
 
-[node name="Interact" type="Label" parent="."]
+[node name="Interact" type="Label" parent="." unique_id=1934623385]
 offset_right = 40.0
 offset_bottom = 23.0
