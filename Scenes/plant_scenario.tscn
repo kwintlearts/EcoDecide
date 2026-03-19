@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ch4vrgpb0bqmk" path="res://Scenes/plantable.tscn" id="3_w4tvd"]
 [ext_resource type="PackedScene" uid="uid://bbakv7tmbfbs7" path="res://Scenes/ui.tscn" id="5_vxnx1"]
 [ext_resource type="PackedScene" uid="uid://d07t7mkybkouj" path="res://Scenes/pest.tscn" id="7_yqybk"]
+[ext_resource type="PackedScene" uid="uid://b6klw74ivqoxf" path="res://Scenes/weeds.tscn" id="8_vxnx1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8sfye"]
 texture = ExtResource("1_72i15")
@@ -802,3 +803,7 @@ position = Vector2(238, 128)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pest Spawner" unique_id=1294014294]
 shape = SubResource("RectangleShape2D_yqybk")
+
+[node name="grow_weeds" parent="." unique_id=1345358504 instance=ExtResource("8_vxnx1")]
+z_index = 2
+position = Vector2(333, 200)

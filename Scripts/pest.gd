@@ -96,3 +96,15 @@ func chase() -> void:
 	velocity = direction * speed
 	move_and_slide()
 	animated_sprite.play("move")
+
+func _input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			remove_pest()
+			
+func remove_pest():
+	if dead:
+		return
+	dead = true
+	detection_shape.disabed = true
+	queue_free()

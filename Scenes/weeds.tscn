@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://b6klw74ivqoxf"]
+
+[ext_resource type="Script" uid="uid://b1yswucxeopnn" path="res://Scripts/weeds.gd" id="1_nv6wh"]
+[ext_resource type="Texture2D" uid="uid://c5a0ku7c3ckt0" path="res://Assets/tile_0044.png" id="1_r1wdr"]
+[ext_resource type="PackedScene" uid="uid://bx6ybcdjsekdf" path="res://Scenes/interactable.tscn" id="3_5mfqa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mfqa"]
+size = Vector2(4, 2)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nyekk"]
+radius = 17.777779
+
+[node name="grow_weeds" type="StaticBody2D" unique_id=1345358504]
+input_pickable = true
+script = ExtResource("1_nv6wh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=770888104]
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource("1_r1wdr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2066601913]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_5mfqa")
+
+[node name="interactable" parent="." unique_id=1498142910 instance=ExtResource("3_5mfqa")]
+scale = Vector2(0.28125, 0.28125)
+interact_name = "Remove weed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactable" unique_id=1524397502]
+position = Vector2(0, 3.5555556)
+shape = SubResource("CircleShape2D_nyekk")

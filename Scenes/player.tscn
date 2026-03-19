@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://btdm00bf3t5pg" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://6lcvn2t8ecsr" path="res://Assets/tilemap_packed-urban.png" id="2_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://bfr2q8id60ckm" path="res://Scenes/interacting_component.tscn" id="3_6t5aa"]
 
 [sub_resource type="Animation" id="Animation_cvnsp"]
 resource_name = "Idle_Down"
@@ -364,3 +365,5 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Direction/ActionableFinder" unique_id=2085082887]
 position = Vector2(0, 13)
 shape = SubResource("CircleShape2D_2ijsl")
+
+[node name="InteractingComponent" parent="." unique_id=546600772 instance=ExtResource("3_6t5aa")]
