@@ -1447,10 +1447,10 @@ tile_map_data = PackedByteArray("AAAcAAoAAAAQAAgAAAAcABMAAAAQAAgAAAAEABMAAAAQAAg
 tile_set = SubResource("TileSet_2y46i")
 
 [node name="Label" type="Label" parent="TileMap/TileMapLayer" unique_id=43162541]
-offset_left = 59.0
-offset_top = -71.0
-offset_right = 197.0
-offset_bottom = 4.0
+offset_left = 388.0
+offset_top = -94.0
+offset_right = 525.0
+offset_bottom = 7.0
 text = "wastesegregation
 
 
@@ -1467,8 +1467,10 @@ script = ExtResource("4_uwsrk")
 [node name="Timer" type="Timer" parent="." unique_id=1933200047]
 
 [node name="timerlabel" type="Label" parent="." unique_id=631954315]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 5.0
+offset_top = -93.0
+offset_right = 68.0
+offset_bottom = -70.0
 text = "time: 60"
 
 [node name="hazardous_bin" parent="." unique_id=1339548799 instance=ExtResource("5_c3umd")]
