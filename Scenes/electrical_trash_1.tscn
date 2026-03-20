@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cbtci5cy10b3d"]
+
+[ext_resource type="Script" uid="uid://0no3f5xcm1q" path="res://Scripts/trash.gd" id="1_qt2a6"]
+[ext_resource type="Texture2D" uid="uid://rjyqpbmi64fh" path="res://TRASH/trash6.png" id="2_23p3m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bsg3b"]
+size = Vector2(200, 454)
+
+[node name="electrical_trash1" type="Node2D" unique_id=1032272329]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2063159471]
+script = ExtResource("1_qt2a6")
+trash_type = "electrical"
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=181233133]
+texture = ExtResource("2_23p3m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1224656798]
+position = Vector2(-2, 2)
+shape = SubResource("RectangleShape2D_bsg3b")
+debug_color = Color(0.93333334, 0.9843137, 1, 0)

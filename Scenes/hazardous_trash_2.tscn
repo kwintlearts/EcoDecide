@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cpcj70sjcih15"]
+
+[ext_resource type="Script" uid="uid://0no3f5xcm1q" path="res://Scripts/trash.gd" id="1_y2bry"]
+[ext_resource type="Texture2D" uid="uid://ct6ctfsq3jadl" path="res://TRASH/trash8.png" id="2_bq8lr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3bkcd"]
+radius = 170.0
+height = 534.0
+
+[node name="hazardous_trash2" type="Node2D" unique_id=574720082]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=174687508]
+script = ExtResource("1_y2bry")
+trash_type = "hazardous"
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1218623021]
+texture = ExtResource("2_bq8lr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1978603898]
+shape = SubResource("CapsuleShape2D_3bkcd")
+debug_color = Color(0.9529412, 0.99215686, 1, 0.0627451)

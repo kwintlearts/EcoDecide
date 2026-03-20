@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://7qsvewsbcas1"]
+
+[ext_resource type="Script" uid="uid://ca2uuymuemyjf" path="res://Scripts/npcscenario2.gd" id="1_xxcha"]
+[ext_resource type="Texture2D" uid="uid://bkrlw45t7knjg" path="res://TRASH/npc.png" id="2_kh24r"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xxcha"]
+radius = 68.0
+height = 218.0
+
+[node name="npcs2" type="Node2D" unique_id=1442986824]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=516052881]
+script = ExtResource("1_xxcha")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=423331017]
+position = Vector2(2, -6.375004)
+scale = Vector2(0.9768212, 0.8027272)
+texture = ExtResource("2_kh24r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1860413588]
+position = Vector2(1, -8)
+shape = SubResource("CapsuleShape2D_xxcha")
+debug_color = Color(0.9843137, 0.99607843, 1, 0.050980393)
+
+[node name="Label" type="Label" parent="Area2D" unique_id=933490859]
+offset_left = 95.0
+offset_top = -90.0
+offset_right = 584.0
+offset_bottom = 66.0
+text = "Good Day!! Today you are task to segregate the trash correctly.
+Each correct segregation corresponds 10 points. 
+Go near the box, Grab the trash, and Segregate.
+RED- Hazardous, Green- Biodegradable, Yellow- Electrical
+Blue- Recyclable. Good Luck!
+"
+
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="Area2D" to="Area2D" method="_on_area_exited"]

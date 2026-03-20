@@ -14,6 +14,7 @@ func start_game():
 	time_left = 60
 	timer_label.text = "Time: 60"
 	timer.start()
+	$TrashBox.spawn_trash()
 
 func _on_timer_timeout():
 	if not game_started:

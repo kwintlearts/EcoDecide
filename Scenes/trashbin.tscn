@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://djnlkpqe060w4"]
+
+[ext_resource type="Script" uid="uid://dj4a8itc02sh1" path="res://Scripts/trashbin.gd" id="1_68q75"]
+[ext_resource type="Texture2D" uid="uid://dt8ioswfd12dy" path="res://t.png" id="2_ort7g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68q75"]
+size = Vector2(198, 202)
+
+[node name="hazardous_bin" type="Node2D" unique_id=1339548799]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=184279173]
+script = ExtResource("1_68q75")
+bin_type = "hazardous"
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1470716686]
+texture = ExtResource("2_ort7g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=725301379]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_68q75")
+debug_color = Color(0.93333334, 0.9843137, 1, 0.05882353)
+
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
