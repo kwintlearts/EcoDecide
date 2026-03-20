@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://djnlkpqe060w4"]
+
+[ext_resource type="Script" uid="uid://dj4a8itc02sh1" path="res://trashbin.gd" id="1_68q75"]
+[ext_resource type="Texture2D" uid="uid://dt8ioswfd12dy" path="res://t.png" id="2_ort7g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dl8t"]
+size = Vector2(205, 203)
+
+[node name="trashbin" type="Node2D" unique_id=504987662]
+script = ExtResource("1_68q75")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=549608750]
+texture = ExtResource("2_ort7g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1072303491]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_3dl8t")
+debug_color = Color(1, 1, 1, 0.03137255)
