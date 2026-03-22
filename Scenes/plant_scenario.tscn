@@ -7,8 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ch4vrgpb0bqmk" path="res://Scenes/plantable.tscn" id="3_w4tvd"]
 [ext_resource type="PackedScene" uid="uid://bbakv7tmbfbs7" path="res://Scenes/ui.tscn" id="5_vxnx1"]
 [ext_resource type="PackedScene" uid="uid://d07t7mkybkouj" path="res://Scenes/pest.tscn" id="7_yqybk"]
-[ext_resource type="Script" uid="uid://bq7301l3robhi" path="res://Scripts/weed_spwaner.gd" id="8_vxnx1"]
-[ext_resource type="PackedScene" uid="uid://b6klw74ivqoxf" path="res://Scenes/weeds.tscn" id="9_5qpw8"]
+[ext_resource type="PackedScene" uid="uid://xy45sxa6nhbr" path="res://Scenes/weed_spwaner.tscn" id="8_vxnx1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8sfye"]
 texture = ExtResource("1_72i15")
@@ -728,9 +727,6 @@ sources/0 = SubResource("TileSetAtlasSource_pcp4y")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqybk"]
 size = Vector2(190, 124)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qpw8"]
-size = Vector2(30, 31)
-
 [node name="Plant Scenario" type="Node2D" unique_id=531500391 node_paths=PackedStringArray("spawn_area") groups=["Player"]]
 script = ExtResource("1_vxnx1")
 spawn_area = NodePath("Pest Spawner")
@@ -784,11 +780,11 @@ position = Vector2(339, 58)
 
 [node name="Player" parent="." unique_id=60092826 instance=ExtResource("2_x6x63")]
 z_index = 2
-position = Vector2(103, 59)
+position = Vector2(439, 228)
 
 [node name="NPC" parent="." unique_id=1324764838 instance=ExtResource("2_w4tvd")]
 z_index = 1
-position = Vector2(359, 210)
+position = Vector2(375, 227)
 
 [node name="pest" parent="." unique_id=1385031108 instance=ExtResource("7_yqybk")]
 z_index = 1
@@ -808,12 +804,28 @@ position = Vector2(238, 128)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pest Spawner" unique_id=1294014294]
 shape = SubResource("RectangleShape2D_yqybk")
 
-[node name="Weed spwaner" type="Area2D" parent="." unique_id=528772938]
-z_index = 5
-script = ExtResource("8_vxnx1")
-weed_scene = ExtResource("9_5qpw8")
+[node name="Weed_spawner" type="Node" parent="." unique_id=44727889]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Weed spwaner" unique_id=90829104]
-z_index = 3
-position = Vector2(136, 56)
-shape = SubResource("RectangleShape2D_5qpw8")
+[node name="Weed spwaner" parent="Weed_spawner" unique_id=1079824979 instance=ExtResource("8_vxnx1")]
+position = Vector2(137, 134)
+
+[node name="Weed spwaner2" parent="Weed_spawner" unique_id=2015371925 instance=ExtResource("8_vxnx1")]
+position = Vector2(137, 58)
+
+[node name="Weed spwaner3" parent="Weed_spawner" unique_id=936951823 instance=ExtResource("8_vxnx1")]
+position = Vector2(234, 60)
+
+[node name="Weed spwaner4" parent="Weed_spawner" unique_id=1770115948 instance=ExtResource("8_vxnx1")]
+position = Vector2(140, 196)
+
+[node name="Weed spwaner5" parent="Weed_spawner" unique_id=1184924535 instance=ExtResource("8_vxnx1")]
+position = Vector2(240, 197)
+
+[node name="Weed spwaner6" parent="Weed_spawner" unique_id=1510602861 instance=ExtResource("8_vxnx1")]
+position = Vector2(342, 194)
+
+[node name="Weed spwaner7" parent="Weed_spawner" unique_id=1517736578 instance=ExtResource("8_vxnx1")]
+position = Vector2(339, 127)
+
+[node name="Weed spwaner8" parent="Weed_spawner" unique_id=2018644858 instance=ExtResource("8_vxnx1")]
+position = Vector2(339, 60)
