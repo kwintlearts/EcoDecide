@@ -4,10 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://cbpw26r5tcwce" path="res://tile_0044.png" id="1_r1wdr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nv6wh"]
-size = Vector2(14, 5)
+size = Vector2(10, 3)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mfqa"]
-size = Vector2(16, 6)
+[sub_resource type="CircleShape2D" id="CircleShape2D_nv6wh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nyekk"]
 radius = 17.0
@@ -16,17 +15,20 @@ radius = 17.0
 script = ExtResource("1_nv6wh")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1289566193]
+z_index = 5
+position = Vector2(-2.3841858e-07, 1.0000001)
+scale = Vector2(0.625, 0.625)
 texture = ExtResource("1_r1wdr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=982165334]
-position = Vector2(0, 4.5)
+position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_nv6wh")
 
 [node name="hitbox" type="Area2D" parent="." unique_id=671608565]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1552943256]
-position = Vector2(0, 4)
-shape = SubResource("RectangleShape2D_5mfqa")
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_nv6wh")
 
 [node name="detectionarea" type="Area2D" parent="." unique_id=253928431]
 

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bbakv7tmbfbs7" path="res://Scenes/ui.tscn" id="5_vxnx1"]
 [ext_resource type="PackedScene" uid="uid://d07t7mkybkouj" path="res://Scenes/pest.tscn" id="7_yqybk"]
 [ext_resource type="Script" uid="uid://bq7301l3robhi" path="res://Scripts/weed_spwaner.gd" id="8_vxnx1"]
+[ext_resource type="PackedScene" uid="uid://b6klw74ivqoxf" path="res://Scenes/weeds.tscn" id="9_5qpw8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8sfye"]
 texture = ExtResource("1_72i15")
@@ -791,7 +792,7 @@ position = Vector2(359, 210)
 
 [node name="pest" parent="." unique_id=1385031108 instance=ExtResource("7_yqybk")]
 z_index = 1
-position = Vector2(-105, -48)
+position = Vector2(-90, -31)
 
 [node name="Lighting" type="Node" parent="." unique_id=282422571]
 
@@ -808,9 +809,11 @@ position = Vector2(238, 128)
 shape = SubResource("RectangleShape2D_yqybk")
 
 [node name="Weed spwaner" type="Area2D" parent="." unique_id=528772938]
+z_index = 5
 script = ExtResource("8_vxnx1")
+weed_scene = ExtResource("9_5qpw8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weed spwaner" unique_id=90829104]
-z_index = 1
+z_index = 3
 position = Vector2(136, 56)
 shape = SubResource("RectangleShape2D_5qpw8")

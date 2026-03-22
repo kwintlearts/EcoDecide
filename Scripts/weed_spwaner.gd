@@ -1,8 +1,8 @@
 extends Area2D
 
 @export var weed_scene: PackedScene   # assign Weed.tscn (StaticBody2D)
-@export var spawn_interval: float = 3.0
-@export var spawn_radius: float = 100.0
+@export var spawn_interval: float = 5.0
+@export var spawn_radius: float = 30.0
 
 var timer: float = 0.0
 
