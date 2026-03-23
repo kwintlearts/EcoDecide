@@ -1,13 +1,13 @@
-[gd_scene format=4 uid="uid://b0f5qcypjnpvc"]
+[gd_scene format=4 uid="uid://cqr2lxtd1rf7w"]
 
-[ext_resource type="Texture2D" uid="uid://6lcvn2t8ecsr" path="res://tilemap_packed-urban.png" id="1_ltkim"]
-[ext_resource type="Texture2D" uid="uid://j66b1j5jameq" path="res://tilemap_packed-pico8.png" id="2_unfp7"]
-[ext_resource type="Texture2D" uid="uid://diravpvdo07yl" path="res://tilemap_packed.png" id="3_qgniy"]
-[ext_resource type="Texture2D" uid="uid://dkx3rk0f0a38e" path="res://69E652AA-8DBA-4849-AC0C-5767EA4F40D6.png" id="4_5l6yw"]
-[ext_resource type="Texture2D" uid="uid://bdjsf0hxh6qgt" path="res://tilemap_packed_bush.png" id="5_unfp7"]
+[ext_resource type="Texture2D" uid="uid://6lcvn2t8ecsr" path="res://tilemap_packed-urban.png" id="1_1gs7m"]
+[ext_resource type="Texture2D" uid="uid://j66b1j5jameq" path="res://tilemap_packed-pico8.png" id="2_vlqsv"]
+[ext_resource type="Texture2D" uid="uid://diravpvdo07yl" path="res://tilemap_packed.png" id="3_7ccg1"]
+[ext_resource type="Texture2D" uid="uid://dkx3rk0f0a38e" path="res://69E652AA-8DBA-4849-AC0C-5767EA4F40D6.png" id="4_d4lx3"]
+[ext_resource type="Texture2D" uid="uid://bdjsf0hxh6qgt" path="res://tilemap_packed_bush.png" id="5_kfak5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xi78i"]
-texture = ExtResource("1_ltkim")
+texture = ExtResource("1_1gs7m")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -499,7 +499,7 @@ texture = ExtResource("1_ltkim")
 sources/0 = SubResource("TileSetAtlasSource_xi78i")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fkdih"]
-texture = ExtResource("2_unfp7")
+texture = ExtResource("2_vlqsv")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -991,7 +991,7 @@ texture = ExtResource("2_unfp7")
 sources/0 = SubResource("TileSetAtlasSource_fkdih")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3m7v7"]
-texture = ExtResource("3_qgniy")
+texture = ExtResource("3_7ccg1")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -1231,7 +1231,7 @@ texture = ExtResource("3_qgniy")
 sources/0 = SubResource("TileSetAtlasSource_3m7v7")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dhqn0"]
-texture = ExtResource("2_unfp7")
+texture = ExtResource("2_vlqsv")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -1723,7 +1723,7 @@ texture = ExtResource("2_unfp7")
 sources/0 = SubResource("TileSetAtlasSource_dhqn0")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e1mls"]
-texture = ExtResource("4_5l6yw")
+texture = ExtResource("4_d4lx3")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -18113,7 +18113,7 @@ texture = ExtResource("4_5l6yw")
 sources/0 = SubResource("TileSetAtlasSource_e1mls")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6nkyj"]
-texture = ExtResource("2_unfp7")
+texture = ExtResource("2_vlqsv")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -18605,7 +18605,7 @@ texture = ExtResource("2_unfp7")
 sources/0 = SubResource("TileSetAtlasSource_6nkyj")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qgniy"]
-texture = ExtResource("5_unfp7")
+texture = ExtResource("5_kfak5")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -18742,6 +18742,34 @@ texture = ExtResource("5_unfp7")
 [sub_resource type="TileSet" id="TileSet_5l6yw"]
 sources/0 = SubResource("TileSetAtlasSource_qgniy")
 
+[sub_resource type="AnimationRootNode" id="AnimationRootNode_p4jko"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3lb56"]
+size = Vector2(15.5, 15.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xbbni"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxakq"]
+atlas = ExtResource("1_1gs7m")
+region = Rect2(383, 96, 20, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4e7tn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxakq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_688qs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nblta"]
+radius = 15.033297
+
 [node name="Node2D" type="Node2D" unique_id=1494261711]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1116936748]
@@ -18770,3 +18798,55 @@ tile_set = SubResource("TileSet_k174g")
 [node name="TileMapLayer" type="TileMapLayer" parent="TileMapLayer2" unique_id=267912109]
 tile_map_data = PackedByteArray("AAD3//f/AAAFAAAAAAAEAPf/AAAEAAIAAAADAPf/AAAEAAIAAAADAPj/AAAEAAIAAAADAPv/AAAEAAIAAAADAPz/AAAEAAIAAAAEAPz/AAAEAAIAAAAHAPv/AAAEAAIAAAAHAPz/AAAEAAIAAAAGAPz/AAAEAAIAAAAHAPj/AAAEAAIAAAAHAPf/AAAEAAIAAAAGAPf/AAAEAAIAAAD4//f/AAAFAAAAAAD7//f/AAAFAAAAAAD6//f/AAAFAAAAAAD4//z/AAAFAAAAAAD3//z/AAAFAAAAAAD6//z/AAAFAAAAAAD7//z/AAAFAAAAAAD3/wMAAAAEAAIAAAD3/wQAAAAEAAIAAAD3/wcAAAAEAAIAAAD3/wgAAAAEAAIAAAD7/wcAAAAEAAIAAAD7/wgAAAAEAAIAAAD7/wQAAAAEAAIAAAD7/wMAAAAEAAIAAAA=")
 tile_set = SubResource("TileSet_5l6yw")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1799917724]
+position = Vector2(-123, -2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=953453857]
+position = Vector2(-48, 1)
+texture = ExtResource("2_vlqsv")
+hframes = 4
+vframes = 3
+frame = 1
+region_enabled = true
+region_rect = Rect2(368, 0, 64.085, 49)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player" unique_id=1943096974]
+root_node = NodePath("../Sprite2D")
+
+[node name="AnimationTree" type="AnimationTree" parent="Player" unique_id=369498228]
+root_node = NodePath("../Sprite2D")
+tree_root = SubResource("AnimationRootNode_p4jko")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1240153622]
+position = Vector2(-48, 2)
+zoom = Vector2(4, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1061498727]
+position = Vector2(-48, 2)
+shape = SubResource("RectangleShape2D_3lb56")
+
+[node name="Marker2D" type="Marker2D" parent="Player" unique_id=285039927]
+position = Vector2(-48, 2)
+
+[node name="Area2D" type="Area2D" parent="Player/Marker2D" unique_id=155755759]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Marker2D/Area2D" unique_id=1256605790]
+position = Vector2(17, 9)
+shape = SubResource("CircleShape2D_xbbni")
+
+[node name="NPC" type="CharacterBody2D" parent="." unique_id=1224432641]
+position = Vector2(103, 30)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPC" unique_id=1448722828]
+sprite_frames = SubResource("SpriteFrames_4e7tn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC" unique_id=2017156615]
+shape = SubResource("RectangleShape2D_688qs")
+
+[node name="Area2D" type="Area2D" parent="NPC" unique_id=1769841779]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/Area2D" unique_id=1518849288]
+shape = SubResource("CircleShape2D_nblta")
