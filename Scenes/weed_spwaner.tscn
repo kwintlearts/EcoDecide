@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://xy45sxa6nhbr"]
+
+[ext_resource type="Script" uid="uid://bq7301l3robhi" path="res://Scripts/weed_spwaner.gd" id="1_d0trx"]
+[ext_resource type="PackedScene" uid="uid://b6klw74ivqoxf" path="res://Scenes/weeds.tscn" id="2_0c2ln"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qpw8"]
+size = Vector2(24, 24.5)
+
+[node name="Weed spwaner" type="Area2D" unique_id=1079824979]
+z_index = 5
+script = ExtResource("1_d0trx")
+weed_scene = ExtResource("2_0c2ln")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1852353178]
+z_index = 3
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_5qpw8")
