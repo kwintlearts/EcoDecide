@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bkfhwgytjabf1" path="res://Scenes/electrical_bin.tscn" id="8_n8bjk"]
 [ext_resource type="PackedScene" uid="uid://bm5mmk4aouc78" path="res://Scenes/trashbox.tscn" id="9_c3umd"]
 [ext_resource type="PackedScene" uid="uid://7qsvewsbcas1" path="res://Scenes/npcs2.tscn" id="10_6l0mk"]
+[ext_resource type="PackedScene" uid="uid://de7xqnd45rs2h" path="res://Scenes/player.tscn" id="11_6l0mk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2o5y3"]
 texture = ExtResource("1_mnqpd")
@@ -1475,24 +1476,28 @@ text = "time: 60"
 
 [node name="hazardous_bin" parent="." unique_id=1339548799 instance=ExtResource("5_c3umd")]
 position = Vector2(138, 67.00001)
-scale = Vector2(0.14486225, 0.1251718)
+scale = Vector2(0.10695369, 0.086751305)
 
 [node name="electrical_bin" parent="." unique_id=823701454 instance=ExtResource("8_n8bjk")]
 position = Vector2(219, 68)
-scale = Vector2(0.1472168, 0.12205727)
+scale = Vector2(0.09971631, 0.08277325)
 
 [node name="biodegradable_bin" parent="." unique_id=1440656353 instance=ExtResource("7_q5ax1")]
 position = Vector2(305, 69.00001)
-scale = Vector2(0.14652517, 0.11899958)
+scale = Vector2(0.10888907, 0.088145845)
 
 [node name="recyclable_bin" parent="." unique_id=1581681044 instance=ExtResource("6_6l0mk")]
 position = Vector2(384, 69)
-scale = Vector2(0.1512549, 0.11880795)
+scale = Vector2(0.10780788, 0.08486071)
 
 [node name="trashbox" parent="." unique_id=1740490223 instance=ExtResource("9_c3umd")]
 position = Vector2(265, 157)
-scale = Vector2(0.26639107, 0.24345382)
+scale = Vector2(0.13222635, 0.119851746)
 
 [node name="npcs2" parent="." unique_id=1442986824 instance=ExtResource("10_6l0mk")]
 position = Vector2(95, 203)
 scale = Vector2(0.17231743, 0.16403736)
+
+[node name="Player" parent="." unique_id=1896034723 instance=ExtResource("11_6l0mk")]
+position = Vector2(90, 231)
+scale = Vector2(1.3174928, 1.3991394)

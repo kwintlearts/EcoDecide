@@ -1,16 +1,18 @@
 extends Area2D
 
-@export var trash_type: String
-var is_dragging = false
+@export var trash_type : String
+
+var dragging = false
 
 func _input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton and event.pressed:
-		is_dragging = true
 
-func _input(event):
-	if is_dragging and event is InputEventMouseButton and not event.pressed:
-		is_dragging = false
+	if event is InputEventMouseButton:
+		if event.pressed:
+			dragging = true
+		else:
+			dragging = false
 
 func _process(delta):
-	if is_dragging:
+
+	if dragging:
 		global_position = get_global_mouse_position()

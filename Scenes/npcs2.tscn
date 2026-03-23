@@ -17,8 +17,9 @@ position = Vector2(2, -6.375004)
 scale = Vector2(0.9768212, 0.8027272)
 texture = ExtResource("2_kh24r")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1860413588]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1860413588 groups=["interactable"]]
 position = Vector2(1, -8)
+scale = Vector2(1.8906429, 1.4039837)
 shape = SubResource("CapsuleShape2D_xxcha")
 debug_color = Color(0.9843137, 0.99607843, 1, 0.050980393)
 
@@ -31,8 +32,8 @@ text = "Good Day!! Today you are task to segregate the trash correctly.
 Each correct segregation corresponds 10 points. 
 Go near the box, Grab the trash, and Segregate.
 RED- Hazardous, Green- Biodegradable, Yellow- Electrical
-Blue- Recyclable. Good Luck!
+Blue- Recyclable. Good Luck! Press E to Start.
 "
 
-[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
-[connection signal="area_exited" from="Area2D" to="Area2D" method="_on_area_exited"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

@@ -4,16 +4,19 @@
 [ext_resource type="Texture2D" uid="uid://d03caswfjs6e0" path="res://TRASH/trash4.png" id="2_b6c5g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bfdah"]
-radius = 33.0
-height = 178.0
+radius = 5.0
+height = 28.0
 
 [node name="recyclable_trash1" type="Node2D" unique_id=1733200984]
+z_index = 10
 
 [node name="Area2D" type="Area2D" parent="." unique_id=713429756]
 script = ExtResource("1_1n36t")
 trash_type = "recyclable"
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1312168547]
+z_index = 10
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_b6c5g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2051586380]

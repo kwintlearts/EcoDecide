@@ -14,18 +14,18 @@
 [ext_resource type="PackedScene" uid="uid://cpcj70sjcih15" path="res://Scenes/hazardous_trash_2.tscn" id="11_fqnh4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_44cwb"]
-size = Vector2(156, 129)
+size = Vector2(200, 168)
 
 [node name="trashbox" type="Node2D" unique_id=1740490223]
 script = ExtResource("1_flakj")
-trash_scenes = Array[PackedScene]([ExtResource("2_pefpl"), ExtResource("3_8ir76"), ExtResource("4_y5j2j"), ExtResource("5_jholf"), ExtResource("6_b4bny"), ExtResource("7_jmt0m"), ExtResource("8_5tnjh"), ExtResource("9_cdhxo"), ExtResource("10_jy4mj"), ExtResource("11_fqnh4")])
+trash_scenes = Array[PackedScene]([ExtResource("11_fqnh4"), ExtResource("10_jy4mj"), ExtResource("9_cdhxo"), ExtResource("8_5tnjh"), ExtResource("7_jmt0m"), ExtResource("6_b4bny"), ExtResource("5_jholf"), ExtResource("4_y5j2j"), ExtResource("3_8ir76"), ExtResource("2_pefpl")])
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1912427452]
 texture = ExtResource("1_kr15v")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1305111575]
-position = Vector2(1, -0.5)
+[node name="Area2D" type="Area2D" parent="." unique_id=485683307]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1305111575]
+position = Vector2(-5, 1)
 shape = SubResource("RectangleShape2D_44cwb")
 debug_color = Color(0.9607843, 0.99215686, 1, 0.09019608)
-
-[node name="Area2D" type="Area2D" parent="." unique_id=485683307]
