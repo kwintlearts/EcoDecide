@@ -3176,4 +3176,11 @@ tile_map_data = PackedByteArray("AAD7//b/AQAQAAgAAAD7//f/AQAQAAkAAAD3//b/AQAQAAg
 tile_set = SubResource("TileSet_5l6yw")
 
 [node name="Player" parent="." unique_id=1896034723 instance=ExtResource("5_qgniy")]
-position = Vector2(-7, 85)
+position = Vector2(-7, 82)
+
+[node name="ari was here" type="Label" parent="Player" unique_id=130271417]
+offset_left = -31.0
+offset_top = 19.0
+offset_right = 65.0
+offset_bottom = 42.0
+text = "Ari was here"
