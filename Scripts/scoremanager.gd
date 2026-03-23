@@ -2,8 +2,8 @@ extends Node
 
 var score = 0
 
-func add_score():
+func add_score(points):
 
-	score += 10
+	score += points
 
-	print("Score:",score)
+	print("Score:", score)

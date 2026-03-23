@@ -4,12 +4,24 @@ extends Area2D
 
 func _on_area_entered(area):
 
-	if area.has_method("get"):
+	if area.is_in_group("trash"):
 
+		var score_manager = get_tree().current_scene.get_node("scoremanager")
+
+		# if correct bin
 		if area.trash_type == bin_type:
 
-			get_tree().current_scene.get_node("scoremanager").add_score()
+			score_manager.add_score(10)
+			print("correct bin +10")
 
-			area.queue_free()
+		# if wrong bin
+		else:
 
-			get_tree().current_scene.get_node("trashbox").spawn_trash()
+			score_manager.add_score(-5)
+			print("wrong bin -5")
+
+		# remove trash after drop
+		area.queue_free()
+
+		# spawn next trash
+		get_tree().current_scene.get_node("trashbox").spawn_trash()

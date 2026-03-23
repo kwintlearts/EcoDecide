@@ -9,7 +9,7 @@ size = Vector2(22, 47)
 [node name="hazardous_trash1" type="Node2D" unique_id=1898237829]
 z_index = 10
 
-[node name="Area2D" type="Area2D" parent="." unique_id=726624790]
+[node name="Area2D" type="Area2D" parent="." unique_id=726624790 groups=["trash"]]
 script = ExtResource("1_n5rt5")
 trash_type = "hazardous"
 

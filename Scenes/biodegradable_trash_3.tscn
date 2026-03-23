@@ -9,7 +9,7 @@ radius = 10.198039
 [node name="biodegradable_trash3" type="Node2D" unique_id=1146634563]
 z_index = 10
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1278878154]
+[node name="Area2D" type="Area2D" parent="." unique_id=1278878154 groups=["trash"]]
 script = ExtResource("1_vgi5t")
 trash_type = "biodegradable"
 

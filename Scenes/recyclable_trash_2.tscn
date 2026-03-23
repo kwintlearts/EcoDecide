@@ -9,7 +9,7 @@ radius = 6.3245554
 [node name="recyclable_trash2" type="Node2D" unique_id=337801914]
 z_index = 5
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1569677708]
+[node name="Area2D" type="Area2D" parent="." unique_id=1569677708 groups=["trash"]]
 script = ExtResource("1_mi3d0")
 trash_type = "recyclable"
 

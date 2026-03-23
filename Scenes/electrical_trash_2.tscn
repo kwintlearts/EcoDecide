@@ -9,7 +9,7 @@ size = Vector2(22, 41)
 [node name="electrical_trash2" type="Node2D" unique_id=342211187]
 z_index = 10
 
-[node name="Area2D" type="Area2D" parent="." unique_id=641990391]
+[node name="Area2D" type="Area2D" parent="." unique_id=641990391 groups=["trash"]]
 script = ExtResource("1_a68cl")
 trash_type = "electrical"
 

@@ -9,7 +9,7 @@ size = Vector2(34, 52)
 [node name="biodegradable_trash2" type="Node2D" unique_id=1814436311]
 z_index = 10
 
-[node name="Area2D" type="Area2D" parent="." unique_id=2024857900]
+[node name="Area2D" type="Area2D" parent="." unique_id=2024857900 groups=["trash"]]
 script = ExtResource("1_1jc52")
 trash_type = "biodegradable"
 
