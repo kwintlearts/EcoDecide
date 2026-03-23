@@ -14,10 +14,3 @@ func _input(event):
 func _process(delta):
 	if is_dragging:
 		global_position = get_global_mouse_position()
-
-func _on_area_entered(area):
-	if area.is_in_group("trash"):
-		if area.trash_type == bin_type:
-			get_node("/root/Game/ScoreManager").add_score()
-			area.queue_free()
-			get_node("/root/Game/TrashBox").spawn_trash()
