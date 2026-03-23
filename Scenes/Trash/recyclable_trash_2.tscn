@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b6vr14107nlnx"]
 
-[ext_resource type="Script" uid="uid://0no3f5xcm1q" path="res://Scripts/trash.gd" id="1_mi3d0"]
-[ext_resource type="Texture2D" uid="uid://dn3cgkifviinq" path="res://TRASH/trash2.png" id="2_s7trj"]
+[ext_resource type="Script" uid="uid://0no3f5xcm1q" path="res://Scripts/trash.gd" id="1_125ol"]
+[ext_resource type="Texture2D" uid="uid://dn3cgkifviinq" path="res://Assets/TRASH/trash2.png" id="2_a46ng"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ulgbm"]
 radius = 6.3245554
@@ -10,13 +10,13 @@ radius = 6.3245554
 z_index = 5
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1569677708]
-script = ExtResource("1_mi3d0")
+script = ExtResource("1_125ol")
 trash_type = "recyclable"
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1162199520]
 z_index = 5
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s7trj")
+texture = ExtResource("2_a46ng")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=307888105]
 shape = SubResource("CircleShape2D_ulgbm")

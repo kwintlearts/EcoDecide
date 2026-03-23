@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://7qsvewsbcas1"]
 
 [ext_resource type="Script" uid="uid://ca2uuymuemyjf" path="res://Scripts/npcscenario2.gd" id="1_xxcha"]
-[ext_resource type="Texture2D" uid="uid://bkrlw45t7knjg" path="res://TRASH/npc.png" id="2_kh24r"]
+[ext_resource type="Texture2D" uid="uid://bkrlw45t7knjg" path="res://Assets/TRASH/npc.png" id="2_kh24r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xxcha"]
 radius = 68.0

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cpo3tcv5ulqth"]
 
-[ext_resource type="Script" uid="uid://0no3f5xcm1q" path="res://Scripts/trash.gd" id="1_1jc52"]
-[ext_resource type="Texture2D" uid="uid://d0gcr0co6ekf6" path="res://TRASH/trash9.png" id="2_gr1os"]
+[ext_resource type="Script" uid="uid://0no3f5xcm1q" path="res://Scripts/trash.gd" id="1_5a248"]
+[ext_resource type="Texture2D" uid="uid://d0gcr0co6ekf6" path="res://Assets/TRASH/trash9.png" id="2_3rmvk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73bvj"]
 size = Vector2(34, 52)
@@ -10,13 +10,13 @@ size = Vector2(34, 52)
 z_index = 10
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2024857900]
-script = ExtResource("1_1jc52")
+script = ExtResource("1_5a248")
 trash_type = "biodegradable"
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=707543022]
 z_index = 10
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_gr1os")
+texture = ExtResource("2_3rmvk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=24528850]
 position = Vector2(1, 0)
