@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ph0yaokbrjf0"]
+
+[ext_resource type="Texture2D" uid="uid://d3exeyimae2ct" path="res://t2.png" id="1_oilco"]
+[ext_resource type="Script" uid="uid://dj4a8itc02sh1" path="res://Scripts/trashbin.gd" id="2_cullq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oilco"]
+size = Vector2(199, 207)
+
+[node name="Node2D" type="Node2D" unique_id=1581681044]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1896777704]
+script = ExtResource("2_cullq")
+bin_type = "recyclable"
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1683317707]
+texture = ExtResource("1_oilco")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1878389806]
+position = Vector2(-0.5, 2.5)
+shape = SubResource("RectangleShape2D_oilco")
+debug_color = Color(0.9529412, 0.99215686, 1, 0.039215688)
+
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]

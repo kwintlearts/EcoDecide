@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://euh3c7p3d1hm"]
+
+[ext_resource type="Script" uid="uid://dj4a8itc02sh1" path="res://Scripts/trashbin.gd" id="1_45jet"]
+[ext_resource type="Texture2D" uid="uid://cpxv3oioaljik" path="res://t3.png" id="2_tk077"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_45jet"]
+size = Vector2(204, 205)
+
+[node name="Node2D" type="Node2D" unique_id=1440656353]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1004294760]
+script = ExtResource("1_45jet")
+bin_type = "biodegradable"
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1616279251]
+texture = ExtResource("2_tk077")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1287373780]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_45jet")
+debug_color = Color(1, 1, 1, 0)
+
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]

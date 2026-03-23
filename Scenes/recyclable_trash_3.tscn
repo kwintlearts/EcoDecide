@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://don4csd67a455"]
+
+[ext_resource type="Script" uid="uid://0no3f5xcm1q" path="res://Scripts/trash.gd" id="1_ynu7f"]
+[ext_resource type="Texture2D" uid="uid://dxx58l057as6a" path="res://TRASH/trash10.png" id="2_088vl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uw2jn"]
+radius = 36.0
+height = 224.0
+
+[node name="recyclable_trash3" type="Node2D" unique_id=1730255612]
+z_index = 10
+
+[node name="Area2D" type="Area2D" parent="." unique_id=261974752]
+script = ExtResource("1_ynu7f")
+trash_type = "recyclable"
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=2000300126]
+z_index = 10
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_088vl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=904279579]
+scale = Vector2(1, -0.24000001)
+shape = SubResource("CapsuleShape2D_uw2jn")
+debug_color = Color(0.9843137, 0.99607843, 1, 0.047058824)

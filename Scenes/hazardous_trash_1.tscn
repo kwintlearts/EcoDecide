@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dwfcbxbs5v35w"]
+
+[ext_resource type="Script" uid="uid://0no3f5xcm1q" path="res://Scripts/trash.gd" id="1_n5rt5"]
+[ext_resource type="Texture2D" uid="uid://b0e5o6d2l4ci0" path="res://TRASH/trash1.jpeg" id="2_oregu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ntku8"]
+size = Vector2(22, 47)
+
+[node name="hazardous_trash1" type="Node2D" unique_id=1898237829]
+z_index = 10
+
+[node name="Area2D" type="Area2D" parent="." unique_id=726624790]
+script = ExtResource("1_n5rt5")
+trash_type = "hazardous"
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1010793348]
+z_index = 10
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_oregu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1671926996]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_ntku8")
+debug_color = Color(0.93333334, 0.9843137, 1, 0.05490196)
