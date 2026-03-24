@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ph0yaokbrjf0"]
 
-[ext_resource type="Texture2D" uid="uid://d3exeyimae2ct" path="res://t2.png" id="1_oilco"]
-[ext_resource type="Script" uid="uid://dj4a8itc02sh1" path="res://Scripts/trashbin.gd" id="2_cullq"]
+[ext_resource type="Texture2D" uid="uid://d3exeyimae2ct" path="res://Assets/t2.png" id="1_oilco"]
+[ext_resource type="Script" uid="uid://dj4a8itc02sh1" path="res://Scripts/trash_scenario/trashbin.gd" id="2_cullq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oilco"]
 size = Vector2(199, 207)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bm5mmk4aouc78"]
 
-[ext_resource type="Script" uid="uid://dqhc0keanbgik" path="res://Scripts/trashbox.gd" id="1_flakj"]
+[ext_resource type="Script" uid="uid://dqhc0keanbgik" path="res://Scripts/trash_scenario/trashbox.gd" id="1_flakj"]
 [ext_resource type="Texture2D" uid="uid://dmh3td732l3v5" path="res://Assets/TRASH/box.jpeg" id="1_kr15v"]
 [ext_resource type="PackedScene" uid="uid://cpo3tcv5ulqth" path="res://Scenes/Trash/biodegradable_trash_2.tscn" id="2_pefpl"]
 [ext_resource type="PackedScene" uid="uid://don4csd67a455" path="res://Scenes/Trash/recyclable_trash_3.tscn" id="3_8ir76"]

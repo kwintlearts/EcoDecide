@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dtt3wnqn7tdvk"]
 
-[ext_resource type="Script" uid="uid://0no3f5xcm1q" path="res://Scripts/trash.gd" id="1_8mac0"]
+[ext_resource type="Script" uid="uid://0no3f5xcm1q" path="res://Scripts/trash_scenario/trash.gd" id="1_8mac0"]
 [ext_resource type="Texture2D" uid="uid://d03caswfjs6e0" path="res://Assets/TRASH/trash4.png" id="2_ifugh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bfdah"]

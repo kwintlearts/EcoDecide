@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cqdhdpsltthf6"]
 
-[ext_resource type="Script" uid="uid://0no3f5xcm1q" path="res://Scripts/trash.gd" id="1_djjv2"]
+[ext_resource type="Script" uid="uid://0no3f5xcm1q" path="res://Scripts/trash_scenario/trash.gd" id="1_djjv2"]
 [ext_resource type="Texture2D" uid="uid://x8pbvd0mx8lu" path="res://Assets/TRASH/bananapeel.png" id="2_bbxyb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5aod8"]
