@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="EcoDecide"
-run/main_scene="uid://cnmh8k7rjemx4"
+run/main_scene="uid://bf6cf7orbgp1l"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 
 DialogueManager="*uid://c3rodes2l3gxb"
 Gamestate="*uid://b08dm2mpe7b8e"
+SceneLoader="*uid://co1iutx1o4gg6"
 
 [dialogue_manager]
 
@@ -72,7 +73,7 @@ pointing/emulate_mouse_from_touch=false
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogue/Main.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogue/Main.dialogue", "res://dialogue/Plant Scenario(3).dialogue")
 
 [layer_names]
 
