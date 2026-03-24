@@ -3178,9 +3178,9 @@ tile_set = SubResource("TileSet_5l6yw")
 [node name="Player" parent="." unique_id=1896034723 instance=ExtResource("5_qgniy")]
 position = Vector2(-7, 82)
 
-[node name="ari was here" type="Label" parent="Player" unique_id=130271417]
+[node name="hello" type="Label" parent="Player" unique_id=130271417]
 offset_left = -31.0
 offset_top = 19.0
 offset_right = 65.0
 offset_bottom = 42.0
-text = "Ari was here"
+text = "gale was here"
