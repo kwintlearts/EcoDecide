@@ -802,3 +802,11 @@ position = Vector2(238, 128)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pest Spawner" unique_id=1294014294]
 shape = SubResource("RectangleShape2D_yqybk")
+
+[node name="Label" type="Label" parent="." unique_id=2027970251]
+offset_left = 219.0
+offset_top = 339.0
+offset_right = 926.0
+offset_bottom = 476.0
+theme_override_font_sizes/font_size = 100
+text = "JUST SHOW UP"
