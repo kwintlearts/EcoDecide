@@ -20,7 +20,15 @@ else
 => END
 
 ~ planting_finished_dialogue
-if Gamestate.day >= 2
+if Gamestate.day >= 5 and Gamestate.check_win_condition()
+	Nathan: All trees fully grown! You saved the garden!
+	=> END
+
+elif Gamestate.day >= 5
+	Nathan: Time's up... not all trees survived.
+	=> END
+
+elif Gamestate.day >= 2
 	Nathan: All Trees Planted!
 	Nathan: Excellent! But remember...
 	Nathan: Pests and weeds spread overnight.
@@ -30,7 +38,7 @@ else
 	Nathan: Come back the next day
 - Come back the next day
 	Nathan: Rest well. The garden waits.
-	do Gamestate.next_day()
+	do get_tree().get_first_node_in_group("plant_world")._end_day()
 - I forgot something to do
 => END
 
@@ -45,9 +53,7 @@ Nathan: Watch for pests among the sprouts.
 	Nathan: Don't wait too long. Weeds spread fast.
 => END
 
-
 ~ check_plant_state
 if Gamestate.planting == ""
 	Soil: Go to Nathan First.
 => END
-

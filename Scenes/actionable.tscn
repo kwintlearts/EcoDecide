@@ -6,3 +6,4 @@
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("1_prvd6")
+use_dialogue = false

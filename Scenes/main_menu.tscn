@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bf6cf7orbgp1l"]
+
+[ext_resource type="Script" uid="uid://kbjv6kstj4lr" path="res://Scripts/main_menu.gd" id="1_28flt"]
+
+[node name="Main Menu" type="Node2D" unique_id=474358265 node_paths=PackedStringArray("play_button")]
+script = ExtResource("1_28flt")
+initial_scene = &"uid://cnmh8k7rjemx4"
+play_button = NodePath("CanvasLayer/CenterContainer/Play")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=727429088]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" unique_id=1569379878]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -20.0
+offset_right = 48.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="CanvasLayer/CenterContainer" unique_id=274515264]
+layout_mode = 2
+text = "Start Game"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="CanvasLayer/CenterContainer/Play" to="." method="_on_play_pressed"]

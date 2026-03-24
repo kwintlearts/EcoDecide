@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://ruhe7kry61co"
+path="res://.godot/imported/Plant Scenario(3).dialogue-da897b61352a7802a9b24d3498c2a8a6.tres"
+
+[deps]
+
+source_file="res://dialogue/Plant Scenario(3).dialogue"
+dest_files=["res://.godot/imported/Plant Scenario(3).dialogue-da897b61352a7802a9b24d3498c2a8a6.tres"]
+
+[params]
+
+defaults=true

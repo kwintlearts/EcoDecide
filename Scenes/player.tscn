@@ -324,9 +324,12 @@ states/Walk/position = Vector2(479.6, 96)
 size = Vector2(14, 15)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2ijsl"]
-radius = 6.0
+radius = 5.0990195
+
+[sub_resource type="CurveTexture" id="CurveTexture_cvnsp"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1896034723]
+z_index = 10
 script = ExtResource("1_cvnsp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1751905208]
@@ -362,5 +365,11 @@ collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Direction/ActionableFinder" unique_id=2085082887]
-position = Vector2(0, 13)
+position = Vector2(0, 9)
 shape = SubResource("CircleShape2D_2ijsl")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=195719883]
+modulate = Color(1, 1, 1, 0.24705882)
+position = Vector2(-2.842171e-14, 9.25)
+scale = Vector2(0.046875, 1.5000005)
+texture = SubResource("CurveTexture_cvnsp")

@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://b13bnjrw62hg1"]
+
+[ext_resource type="Texture2D" uid="uid://sgp5bu38461l" path="res://Assets/controls/dpad_element_east_highlight.png" id="1_ndc1i"]
+[ext_resource type="Texture2D" uid="uid://128acnai21s1" path="res://Assets/controls/dpad_element_north_highlight.png" id="2_tta51"]
+[ext_resource type="Texture2D" uid="uid://bwh6cv7exd8ny" path="res://Assets/controls/dpad_element_south_highlight.png" id="3_aoo0d"]
+[ext_resource type="Texture2D" uid="uid://yvvmsk3ief88" path="res://Assets/controls/dpad_element_west_highlight.png" id="4_acxg4"]
+[ext_resource type="Texture2D" uid="uid://b42xj23pxo1wr" path="res://Assets/controls/button_square_highlight.png" id="5_47shl"]
+[ext_resource type="Texture2D" uid="uid://cuxctmkhikfxg" path="res://Assets/controls/icon_hand.png" id="6_0s5ca"]
+
+[node name="Touch Controls" type="CanvasLayer" unique_id=241173930]
+
+[node name="Left_Side" type="Control" parent="." unique_id=358791022]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 152.0
+offset_top = -137.0
+offset_right = 192.0
+offset_bottom = -97.0
+grow_vertical = 0
+
+[node name="Right" type="TouchScreenButton" parent="Left_Side" unique_id=260389518]
+position = Vector2(-54, -4)
+scale = Vector2(0.35000062, 0.35000062)
+texture_normal = ExtResource("1_ndc1i")
+action = "move_right"
+
+[node name="Up" type="TouchScreenButton" parent="Left_Side" unique_id=1631153949]
+position = Vector2(-86, -32)
+scale = Vector2(0.35000062, 0.35000062)
+texture_normal = ExtResource("2_tta51")
+action = "move_up"
+
+[node name="Down" type="TouchScreenButton" parent="Left_Side" unique_id=274421123]
+position = Vector2(-86, 22)
+scale = Vector2(0.35000062, 0.35000062)
+texture_normal = ExtResource("3_aoo0d")
+action = "move_down"
+
+[node name="Left" type="TouchScreenButton" parent="Left_Side" unique_id=1785845628]
+position = Vector2(-119, -4)
+scale = Vector2(0.35000062, 0.35000062)
+texture_normal = ExtResource("4_acxg4")
+action = "move_left"
+
+[node name="Right_Side" type="Control" parent="." unique_id=1699980652]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -116.0
+offset_top = -146.0
+offset_right = -116.0
+offset_bottom = -146.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Interact" type="TouchScreenButton" parent="Right_Side" unique_id=126638768]
+position = Vector2(13.000074, 9.99999)
+scale = Vector2(0.32031187, 0.3359376)
+texture_normal = ExtResource("5_47shl")
+action = "ui_accept"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Right_Side/Interact" unique_id=1901342493]
+offset_left = 25.0979
+offset_top = 17.568604
+offset_right = 105.41162
+offset_bottom = 100.39221
+texture = ExtResource("6_0s5ca")

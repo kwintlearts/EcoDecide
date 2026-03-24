@@ -1,0 +1,271 @@
+[gd_scene format=3 uid="uid://c1vj7fxi2rklb"]
+
+[ext_resource type="Script" uid="uid://dakb7shoxrnpr" path="res://Scripts/plant_scenario/sapling.gd" id="1_noemw"]
+[ext_resource type="PackedScene" uid="uid://b6klw74ivqoxf" path="res://Scenes/plant_scenario/weeds.tscn" id="2_4p37w"]
+[ext_resource type="Texture2D" uid="uid://detigih8txrk4" path="res://Assets/tilemap_packed-pico8(edited).png" id="2_gmhoa"]
+[ext_resource type="Texture2D" uid="uid://6lcvn2t8ecsr" path="res://Assets/tilemap_packed-urban.png" id="3_l87m8"]
+
+[sub_resource type="Animation" id="Animation_4p37w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -13)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.7, 1.55)]
+}
+
+[sub_resource type="Animation" id="Animation_72rii"]
+resource_name = "growth"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 15.133333, 29.933332),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(0, -5), Vector2(0, -10), Vector2(0, -13)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 15.133333, 29.933332),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(0.505, 0.7), Vector2(0.6, 1.2), Vector2(0.7, 1.55)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.06666667, 14.566667, 29.933332),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_muouw"]
+resource_name = "sapling_day_1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.505, 0.7)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -5)]
+}
+
+[sub_resource type="Animation" id="Animation_0v8c4"]
+resource_name = "sapling_day_2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.6, 1.2)]
+}
+
+[sub_resource type="Animation" id="Animation_1um73"]
+resource_name = "sapling_day_5"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.7, 1.55)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -13)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0v8c4"]
+_data = {
+&"RESET": SubResource("Animation_4p37w"),
+&"growth": SubResource("Animation_72rii"),
+&"sapling_day_1": SubResource("Animation_muouw"),
+&"sapling_day_2": SubResource("Animation_0v8c4"),
+&"sapling_day_5": SubResource("Animation_1um73")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjry3"]
+atlas = ExtResource("2_gmhoa")
+region = Rect2(352, 128, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jt1dc"]
+atlas = ExtResource("3_l87m8")
+region = Rect2(272, 128, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jvgg"]
+atlas = ExtResource("3_l87m8")
+region = Rect2(256, 128, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w46q3"]
+animations = [{
+"frames": [{
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_mjry3")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_jt1dc")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_5jvgg")
+}],
+"loop": false,
+"name": &"growing",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4p37w"]
+
+[node name="sapling" type="StaticBody2D" unique_id=1976430978]
+z_index = 5
+script = ExtResource("1_noemw")
+weed_scene = ExtResource("2_4p37w")
+weed_count = null
+growth_time = null
+max_health = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1945591223]
+libraries/ = SubResource("AnimationLibrary_0v8c4")
+autoplay = &"growth"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=675789050]
+position = Vector2(0, -13)
+sprite_frames = SubResource("SpriteFrames_w46q3")
+animation = &"growing"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=208760351]
+position = Vector2(0, -13)
+scale = Vector2(0.7, 1.55)
+shape = SubResource("RectangleShape2D_4p37w")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1539571944]
+offset_left = -5.0
+offset_top = 3.0
+offset_right = 6.0
+offset_bottom = 7.0
+show_percentage = false

@@ -4,11 +4,13 @@ const SPEED = 100.0
 @onready var actionable_finder: Area2D = $Direction/ActionableFinder
 @onready var animation_tree: AnimationTree = $AnimationTree
 
+
 var input_vector: Vector2 = Vector2.ZERO
 var current_highlight: Area2D = null
 
 func _ready() -> void:
 	animation_tree.active = true
+
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
