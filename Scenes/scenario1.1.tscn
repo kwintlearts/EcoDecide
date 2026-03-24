@@ -18840,6 +18840,12 @@ shape = SubResource("CircleShape2D_xbbni")
 [node name="NPC" type="CharacterBody2D" parent="." unique_id=1224432641]
 position = Vector2(103, 30)
 
+[node name="Label" type="Label" parent="NPC" unique_id=1797765852]
+offset_left = -27.0
+offset_top = -38.0
+offset_right = 13.0
+offset_bottom = -15.0
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPC" unique_id=1448722828]
 sprite_frames = SubResource("SpriteFrames_4e7tn")
 
