@@ -3152,15 +3152,15 @@ texture = ExtResource("1_ltkim")
 sources/0 = SubResource("TileSetAtlasSource_qgniy")
 sources/1 = SubResource("TileSetAtlasSource_5l6yw")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xxsvc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_unfp7"]
 atlas = ExtResource("2_unfp7")
-region = Rect2(384, 192, 16, 16)
+region = Rect2(416, 192, 13, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_unfp7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xxsvc")
+"texture": SubResource("AtlasTexture_unfp7")
 }],
 "loop": true,
 "name": &"default",
