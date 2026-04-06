@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://bai3usyxpegm1"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_g5nb4"]
+[ext_resource type="Texture2D" uid="uid://b0npp7tqji2d3" path="res://assets/FreePixelSurvivalItemsPack/Items/9.png" id="2_322r1"]
+
+[resource]
+script = ExtResource("1_g5nb4")
+id = "laptop"
+name = "Laptop"
+description = "A machine from before the systems started collapsing."
+texture = ExtResource("2_322r1")
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

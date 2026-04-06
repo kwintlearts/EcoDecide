@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c57j5n2kpaw6y"]
+
+[ext_resource type="PackedScene" uid="uid://dotw2g8irmtcv" path="res://scenes/actionable.tscn" id="1_qe3rt"]
+[ext_resource type="Texture2D" uid="uid://iu7amwclamdl" path="res://assets/kenney_rpgUrbanKit/Tilemap/tilemap.png" id="1_qpkib"]
+[ext_resource type="Script" uid="uid://2dacigb3akno" path="res://scripts/character/barangay_captain.gd" id="1_sc1yx"]
+[ext_resource type="Texture2D" uid="uid://pr32aqgvfyde" path="res://assets/User Interface/HardArtcore/SimpleUIIcons/Icons/Filled/ic_star_fill.png" id="3_318gd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpkib"]
+size = Vector2(12, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_318gd"]
+radius = 7.071068
+
+[node name="BarangayCaptain" type="StaticBody2D" unique_id=1368415040]
+script = ExtResource("1_sc1yx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=641108673]
+texture = ExtResource("1_qpkib")
+region_enabled = true
+region_rect = Rect2(410, 207, 12, 13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=554850926]
+shape = SubResource("RectangleShape2D_qpkib")
+
+[node name="Actionable" parent="." unique_id=525290031 instance=ExtResource("1_qe3rt")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable" unique_id=391425959]
+shape = SubResource("CircleShape2D_318gd")
+
+[node name="Star" type="Sprite2D" parent="." unique_id=374256719]
+position = Vector2(0, -15)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("3_318gd")

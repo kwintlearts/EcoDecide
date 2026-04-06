@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://b0aiw8fvft0op"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_tuu32"]
+[ext_resource type="Texture2D" uid="uid://cnk5xyne68s6b" path="res://assets/BigWander_TheBanquet/IndividualSprites/Outline/pt1/Apple_single_Outline_BigWander_TheBanquet.png" id="2_c66dp"]
+
+[resource]
+script = ExtResource("1_tuu32")
+id = "apple_whole"
+name = "Apple (Whole)"
+description = "An Apple that has not been eaten might be contaminated"
+texture = ExtResource("2_c66dp")
+correct_bin = 2
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

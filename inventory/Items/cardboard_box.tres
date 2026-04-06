@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://dvk42ipqutkca"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_40fmh"]
+[ext_resource type="Texture2D" uid="uid://c6vfhywk4lhxl" path="res://assets/recycle_items.png" id="1_x8266"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0rjv"]
+atlas = ExtResource("1_x8266")
+region = Rect2(98, 14, 51, 48)
+
+[resource]
+script = ExtResource("1_40fmh")
+id = "cardboard_box"
+name = "Cardboard box"
+description = "A Cardboard box.. I wonder what was inside.."
+atlas_texture = SubResource("AtlasTexture_w0rjv")
+correct_bin = 1
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

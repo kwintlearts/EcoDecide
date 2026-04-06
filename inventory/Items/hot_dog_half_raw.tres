@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://8qv0gug4uq7n"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_tbn3y"]
+[ext_resource type="Texture2D" uid="uid://25k5bwx3iguj" path="res://assets/BigWander_TheBanquet/IndividualSprites/Outline/pt1/Hotdog_Raw_Half_Top_Outline_BigWander_TheBanquet.png" id="2_tyl1n"]
+
+[resource]
+script = ExtResource("1_tbn3y")
+id = "hot_dog_half_raw"
+name = "Hot Dog Half (raw)"
+description = "its.. not cooked"
+texture = ExtResource("2_tyl1n")
+correct_bin = 2
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

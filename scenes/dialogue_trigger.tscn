@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://db6haojs58op5"]
+
+[ext_resource type="Script" uid="uid://cyhcj34xlboev" path="res://scenes/Scenario 1 WS/dialogue_trigger.gd" id="1_yjflt"]
+[ext_resource type="Resource" uid="uid://d2oa8p14f0cqt" path="res://dialogue/Scene 1 - Waste Segregation.dialogue" id="2_wktwx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wktwx"]
+size = Vector2(26, 144)
+
+[node name="DialogueTrigger" type="Area2D" unique_id=875344377]
+script = ExtResource("1_yjflt")
+dialogue_resource = ExtResource("2_wktwx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1657654792]
+shape = SubResource("RectangleShape2D_wktwx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

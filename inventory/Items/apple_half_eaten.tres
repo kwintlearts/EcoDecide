@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://g07ct0ao2146"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_kc3eo"]
+[ext_resource type="Texture2D" uid="uid://dcek2j1jaj5mf" path="res://assets/BigWander_TheBanquet/IndividualSprites/Outline/pt1/Apple_piece_01_Outline_BigWander_TheBanquet.png" id="2_rqoiw"]
+
+[resource]
+script = ExtResource("1_kc3eo")
+id = "apple_half"
+name = "Apple (half eaten)"
+description = "A half eaten apple"
+texture = ExtResource("2_rqoiw")
+correct_bin = 2
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

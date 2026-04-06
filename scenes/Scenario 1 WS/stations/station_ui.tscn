@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cjkkjkbuog3xy"]
+
+[ext_resource type="Texture2D" uid="uid://cbb7wh1yven3q" path="res://assets/inventory-background.png" id="2_2g1gp"]
+[ext_resource type="PackedScene" uid="uid://cd52kuifnwr6g" path="res://inventory/scene/inv_ui_slot.tscn" id="3_xgmmj"]
+[ext_resource type="FontFile" uid="uid://dsy5ql31cyxib" path="res://assets/fonts/PixelOperator8.ttf" id="3_yywd6"]
+
+[node name="StationUI" type="Control" unique_id=2035691203]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=38758128]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 23.0
+texture = ExtResource("2_2g1gp")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect" unique_id=1563468099]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="StationUISlot" parent="NinePatchRect/GridContainer" unique_id=1880220713 instance=ExtResource("3_xgmmj")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="." unique_id=1135225492]
+modulate = Color(1, 0.3, 0.3, 1)
+layout_mode = 0
+offset_left = -17.0
+offset_top = -11.0
+offset_right = 49.0
+offset_bottom = 12.0
+theme_override_fonts/font = ExtResource("3_yywd6")
+theme_override_font_sizes/font_size = 8
+text = "HAZARDOUS"

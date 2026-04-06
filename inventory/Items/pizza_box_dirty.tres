@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://dte1atoa541kf"]
+
+[ext_resource type="Texture2D" uid="uid://c6vfhywk4lhxl" path="res://assets/recycle_items.png" id="1_n706d"]
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="2_uxvmr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ieqv7"]
+atlas = ExtResource("1_n706d")
+region = Rect2(403, 33, 60, 29)
+
+[resource]
+script = ExtResource("2_uxvmr")
+id = "dirty_pizza_box"
+name = "Pizza Box (Dirty)"
+description = "A Dirty pizza box.. there are some residuals from the pizza"
+atlas_texture = SubResource("AtlasTexture_ieqv7")
+ui_scale = Vector2(0.2, 0.2)
+correct_bin = 3
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

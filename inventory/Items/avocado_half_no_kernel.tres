@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://bkqtr8lnb85of"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_sm8tj"]
+[ext_resource type="Texture2D" uid="uid://qu6kyb8govx7" path="res://assets/BigWander_TheBanquet/IndividualSprites/Outline/pt1/Avocado_Half_NoKernel_Outline_BigWander_TheBanquet.png" id="2_d4t6x"]
+
+[resource]
+script = ExtResource("1_sm8tj")
+id = "avocado_half_no_kernel"
+name = "Avocado (half no kernel)"
+description = "An Avocado without a kernel"
+texture = ExtResource("2_d4t6x")
+correct_bin = 2
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

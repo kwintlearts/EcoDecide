@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cptvdw17yf1uy"]
+
+[ext_resource type="Script" uid="uid://c8kqmp5yrref3" path="res://inventory/scripts/pickup_item.gd" id="1_ojojl"]
+[ext_resource type="PackedScene" uid="uid://dotw2g8irmtcv" path="res://scenes/actionable.tscn" id="2_lwytq"]
+
+[node name="BaseObjectItem" type="StaticBody2D" unique_id=551906335]
+z_index = 1
+script = ExtResource("1_ojojl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=463117632]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=645240900]
+
+[node name="Actionable" parent="." unique_id=525290031 instance=ExtResource("2_lwytq")]
+use_dialogue = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable" unique_id=867888342]

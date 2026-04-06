@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://32ji2xj0c7n"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_tbjs3"]
+[ext_resource type="Texture2D" uid="uid://cmxfu1we25tyk" path="res://assets/FreePixelSurvivalItemsPack/Items/27.png" id="2_qn3qk"]
+
+[resource]
+script = ExtResource("1_tbjs3")
+id = "tire"
+name = "Tire"
+description = "Built for motion. Doomed to sit forever."
+texture = ExtResource("2_qn3qk")
+correct_bin = 1
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

@@ -1,0 +1,84 @@
+~ start
+Plush Toy: This canal used to be clear... now look.
+Plush Toy: Plastic bottles, food wrappers, even old tires. And the rainy season is coming—if this stays clogged, the whole barangay floods.
+Plush Toy: Before we start, choose your collection bag:
+- Plastic sacks (provided by city)
+	Plush Toy: Faster collection, but remember—these sacks become waste too. Every choice has a trade-off.
+	=> set_bag_plastic
+- Woven sacks (brought from home)
+	Plush Toy: Slower, but zero waste! This is what sustainability looks like—planning ahead.
+	=> set_bag_woven
+
+~ set_bag_plastic
+=> start_cleanup
+
+~ set_bag_woven
+=> start_cleanup
+
+~ start_cleanup
+Plush Toy: Got it. Now let's get to work... and watch out for the vendors. Some of them aren't happy about us being here.
+=> decision_1
+
+~ decision_1
+Vendor: Hah! Another clean-up drive? You kids pick up trash today, but tomorrow my customers throw more. What's the point?
+Plush Toy: How do you want to respond?
+- Ignore him, keep cleaning
+	Plush Toy: You cleaned the trash... but he'll just throw more tomorrow. Sometimes the hard conversation is necessary.
+	=> set_response_A
+- Confront him aggressively
+	Vendor: Hey! Who are you to lecture me? Get out of here!
+	Plush Toy: That didn't go well... anger rarely changes minds.
+	=> set_response_B
+- Politely educate + offer bin
+	Player: Sir, I know it seems pointless. But if we all do a little, the floods stop. Here—take this small bin for your stall?
+	Vendor: ...Fine. I'll use it. Thanks, kid.
+	Plush Toy: YES! That's how change happens—one person at a time!
+	=> set_response_C
+
+~ set_response_A
+=> decision_2
+
+~ set_response_B
+=> decision_2
+
+~ set_response_C
+=> decision_2
+
+~ decision_2
+Plush Toy: Whoa! A battery! This is hazardous—can't just throw it with regular trash.
+- Put in special waste container
+	Plush Toy: One battery can contaminate 600,000 liters of water. That's enough for 3,000 people for a day. Worth the extra walk, right?
+	=> set_hazard_A
+- Throw in residual (it's just one)
+	Plush Toy: "Just one" adds up. Imagine if everyone thought that way...
+	=> set_hazard_B
+- Leave it (someone else will handle)
+	Plush Toy: Procrastination is how problems grow. But I understand—it's heavy.
+	=> set_hazard_C
+
+~ set_hazard_A
+=> ending_check
+
+~ set_hazard_B
+=> ending_check
+
+~ set_hazard_C
+=> ending_check
+
+~ ending_check
+=> ending_A
+
+~ ending_A
+Plush Toy: Look at the water! It's actually clearing up. But more importantly—did you notice how the vendor changed his behavior?
+Plush Toy: Clogged drainage is the #1 cause of urban flooding in Davao City. Your cleanup prevented potential flood damage!
+=> END
+
+~ ending_B
+Plush Toy: The canal is clean... for now. But since the community wasn't on board, they'll likely dump here again tomorrow.
+Plush Toy: Clogged drainage is the #1 cause of urban flooding in Davao City. Your cleanup prevented potential flood damage!
+=> END
+
+~ ending_C
+Plush Toy: Oh no... the drain is still clogged. With this much rain coming, the barangay might flood.
+Plush Toy: Clogged drainage is the #1 cause of urban flooding in Davao City. Cleaning requires consistency.
+=> END

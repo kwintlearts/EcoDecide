@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://brlvbi5yxia16"]
+
+[ext_resource type="Texture2D" uid="uid://nawx4lujcq7b" path="res://assets/FREE Pixel Art Trash Pack - Animated/Trash Bins - No Animations/Small Bin 2 - Brown.png" id="1_74d6i"]
+[ext_resource type="Script" uid="uid://yh7pio6xqsin" path="res://scripts/Scenario 1 WS/station.gd" id="1_qo8b1"]
+[ext_resource type="PackedScene" uid="uid://cjkkjkbuog3xy" path="res://scenes/Scenario 1 WS/stations/station_ui.tscn" id="2_4wp3v"]
+[ext_resource type="PackedScene" uid="uid://dotw2g8irmtcv" path="res://scenes/actionable.tscn" id="5_76nqi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74d6i"]
+size = Vector2(14, 24)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ae1a"]
+radius = 13.038404
+
+[node name="Residual" type="StaticBody2D" unique_id=1051303041]
+script = ExtResource("1_qo8b1")
+station_type = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1451506389]
+modulate = Color(0.28235295, 0.29803923, 0, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_74d6i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=584215152]
+shape = SubResource("RectangleShape2D_74d6i")
+
+[node name="StationUI" parent="." unique_id=2035691203 instance=ExtResource("2_4wp3v")]
+offset_left = -12.0
+offset_top = -43.0
+offset_right = -12.0
+offset_bottom = -43.0
+
+[node name="StationUISlot" parent="StationUI/NinePatchRect/GridContainer" parent_id_path=PackedInt32Array(2035691203, 1563468099) index="0" unique_id=1880220713]
+mode = 1
+bin_type = 3
+
+[node name="Label" parent="StationUI" index="1" unique_id=1135225492]
+modulate = Color(0.282, 0.298, 0, 1)
+offset_left = -12.0
+offset_right = 54.0
+text = "RESIDUAL"
+
+[node name="Actionable" parent="." unique_id=525290031 instance=ExtResource("5_76nqi")]
+use_dialogue = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable" unique_id=1587744252]
+shape = SubResource("CircleShape2D_8ae1a")
+
+[editable path="StationUI"]

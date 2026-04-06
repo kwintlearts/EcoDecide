@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://boogo58sohps3"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_4gae6"]
+[ext_resource type="Texture2D" uid="uid://c6vfhywk4lhxl" path="res://assets/recycle_items.png" id="1_5tw3c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nf14c"]
+atlas = ExtResource("1_5tw3c")
+region = Rect2(305, 33, 23, 29)
+
+[resource]
+script = ExtResource("1_4gae6")
+id = "empty_can"
+name = "Can (Empty)"
+description = "An empty can"
+atlas_texture = SubResource("AtlasTexture_nf14c")
+ui_scale = Vector2(0.3, 0.3)
+correct_bin = 1
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

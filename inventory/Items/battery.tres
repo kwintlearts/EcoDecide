@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://cs76o6byq3475"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_jl2pl"]
+[ext_resource type="Texture2D" uid="uid://4j1vr4mtllqs" path="res://assets/FreePixelSurvivalItemsPack/FreePixelSurvivalItemsPack.png" id="1_n4ofq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21av0"]
+atlas = ExtResource("1_n4ofq")
+region = Rect2(103, 8, 18, 18)
+
+[resource]
+script = ExtResource("1_jl2pl")
+id = "battery"
+name = "Battery"
+description = "Stored energy for a failing world."
+atlas_texture = SubResource("AtlasTexture_21av0")
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

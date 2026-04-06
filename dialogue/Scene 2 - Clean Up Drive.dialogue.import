@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://tyjr7142kuca"
+path="res://.godot/imported/Scene 2 - Clean Up Drive.dialogue-a40cbe52cacbb1103b77ac1ef3efaa73.tres"
+
+[deps]
+
+source_file="res://dialogue/Scene 2 - Clean Up Drive.dialogue"
+dest_files=["res://.godot/imported/Scene 2 - Clean Up Drive.dialogue-a40cbe52cacbb1103b77ac1ef3efaa73.tres"]
+
+[params]
+
+defaults=true

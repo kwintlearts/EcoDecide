@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://28k1chxdfh8n"]
+
+[ext_resource type="Texture2D" uid="uid://c6vfhywk4lhxl" path="res://assets/recycle_items.png" id="1_1wexd"]
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_wud5v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5y8qa"]
+atlas = ExtResource("1_1wexd")
+region = Rect2(206, 16, 34, 46)
+
+[resource]
+script = ExtResource("1_wud5v")
+id = "cardboard_paper_bag"
+name = "Cardboard Paper Bag"
+description = "A Paper Bag"
+atlas_texture = SubResource("AtlasTexture_5y8qa")
+ui_scale = Vector2(0.3, 0.3)
+correct_bin = 1
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://dgx11x3ctftfd"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_n05u3"]
+[ext_resource type="Texture2D" uid="uid://4j1vr4mtllqs" path="res://assets/FreePixelSurvivalItemsPack/FreePixelSurvivalItemsPack.png" id="1_ogsv6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lpey"]
+atlas = ExtResource("1_ogsv6")
+region = Rect2(9, 102, 16, 20)
+
+[resource]
+script = ExtResource("1_n05u3")
+id = "smartphone"
+name = "Smartphone"
+description = "A relic of a networked world that no longer connects."
+atlas_texture = SubResource("AtlasTexture_3lpey")
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

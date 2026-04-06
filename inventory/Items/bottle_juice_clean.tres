@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://bh6hw0vm1trb4"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_mlyg7"]
+[ext_resource type="Texture2D" uid="uid://ddgbgom2icrj4" path="res://assets/[16x16] Potions.png" id="1_xpi1o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xktc"]
+atlas = ExtResource("1_xpi1o")
+region = Rect2(1, 1, 14, 15)
+
+[resource]
+script = ExtResource("1_mlyg7")
+id = "bottle_juce_clean"
+name = "Bottle Juice (clean)"
+description = "A freshly rinsed juice bottle."
+atlas_texture = SubResource("AtlasTexture_6xktc")
+ui_scale = Vector2(0.6, 0.6)
+correct_bin = 1
+metadata/_custom_type_script = "uid://d1w0s766i4mib"
