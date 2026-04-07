@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bwak150lwqbkg"]
+
+[ext_resource type="Script" uid="uid://dyujmqut8twuh" path="res://scenes/Scenario 2 Clean Up Drive/ripple.gd" id="1_kavr3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxw37"]
+size = Vector2(68, 54)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kavr3"]
+bg_color = Color(0.14539692, 0.64510816, 0.8889889, 1)
+
+[node name="ripple" type="Area2D" unique_id=172426302]
+script = ExtResource("1_kavr3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1741635049]
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_xxw37")
+
+[node name="Panel" type="Panel" parent="CollisionShape2D" unique_id=62623624]
+offset_left = -33.0
+offset_top = -27.000017
+offset_right = 34.402237
+offset_bottom = 26.701094
+theme_override_styles/panel = SubResource("StyleBoxFlat_kavr3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://cqrylpkqfk3s0"]
+
+[ext_resource type="Resource" uid="uid://c3x54lf57y245" path="res://inventory/Items/plate_clean.tres" id="1_8c65q"]
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="2_wa0n2"]
+[ext_resource type="Texture2D" uid="uid://0qymw5fyrf1c" path="res://assets/BigWander_TheBanquet/IndividualSprites/Outline/pt1/Cutlery_Plate_dirty_02_Outline_TheBanquet.png" id="3_wsicl"]
+
+[resource]
+script = ExtResource("2_wa0n2")
+id = "plate_dirty"
+name = "Plate (Dirty)"
+description = "Crusts and stains cling stubbornly to the surface. Its usefulness has passed."
+texture = ExtResource("3_wsicl")
+can_rinsed = true
+rinse_version = ExtResource("1_8c65q")
+correct_bin = 3
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

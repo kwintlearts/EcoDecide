@@ -7,15 +7,21 @@ signal update
 
 @export var slots: Array[InvSlot]
 
+# inventory.gd
 func insert(item: InvItem):
-	# First, try to find an empty slot
+	# Check if item already exists in inventory (to prevent duplicates)
+	for slot in slots:
+		if slot.item == item:
+			print("Item already in inventory: ", item.name)
+			return false
+	
+	# Find empty slot
 	for slot in slots:
 		if slot.item == null:
 			slot.item = item
 			update.emit()
 			return true
 	
-	# No empty slots found
 	print("Inventory is full! Cannot add: ", item.name)
 	return false
 

@@ -1,7 +1,8 @@
 [gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://cs76o6byq3475"]
 
 [ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_jl2pl"]
-[ext_resource type="Texture2D" uid="uid://4j1vr4mtllqs" path="res://assets/FreePixelSurvivalItemsPack/FreePixelSurvivalItemsPack.png" id="1_n4ofq"]
+[ext_resource type="Texture2D" uid="uid://bjbvxx1lq8cin" path="res://assets/FreePixelSurvivalItemsPack/FreePixelSurvivalItemsPack.png" id="1_n4ofq"]
+[ext_resource type="Resource" uid="uid://tyjr7142kuca" path="res://dialogue/Scene 2 - Clean Up Drive.dialogue" id="2_21av0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_21av0"]
 atlas = ExtResource("1_n4ofq")
@@ -13,4 +14,8 @@ id = "battery"
 name = "Battery"
 description = "Stored energy for a failing world."
 atlas_texture = SubResource("AtlasTexture_21av0")
+ui_scale = Vector2(0.6, 0.6)
+has_dialogue = true
+dialogue_resource = ExtResource("2_21av0")
+dialogue_start = "battery_found"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

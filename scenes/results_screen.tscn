@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://onc2xbn0nuq7"]
 
 [ext_resource type="Script" uid="uid://dqdjysw6e3xhn" path="res://scripts/results_screen.gd" id="1_fqf1x"]
+[ext_resource type="FontFile" uid="uid://dsy5ql31cyxib" path="res://assets/User Interface/fonts/PixelOperator8.ttf" id="2_j5vbe"]
 
-[node name="ResultsScreen" type="Control" unique_id=1251441593]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1009407599]
+
+[node name="ResultsScreen" type="Control" parent="." unique_id=1251441593]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,3 +13,344 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fqf1x")
+
+[node name="Panel" type="Panel" parent="ResultsScreen" unique_id=581519344]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -324.0
+offset_right = 249.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScenarioCompleteLabel" type="Label" parent="ResultsScreen/Panel" unique_id=1223587130]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -118.0
+offset_top = 10.0
+offset_right = 118.0
+offset_bottom = 33.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "Scenario Complete!"
+
+[node name="ResultsLabel" type="Label" parent="ResultsScreen/Panel" unique_id=1659452045]
+layout_mode = 1
+offset_left = 13.0
+offset_top = 84.0
+offset_right = 249.0
+offset_bottom = 107.0
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "Results"
+
+[node name="MetricsS1" type="Control" parent="ResultsScreen/Panel" unique_id=1905850367]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 17.5
+offset_top = -205.0
+offset_right = 17.5
+offset_bottom = -165.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ResultsScreen/Panel/MetricsS1" unique_id=1496692358]
+layout_mode = 0
+offset_left = -290.0
+offset_right = -4.0
+offset_bottom = 40.0
+theme_override_constants/separation = 200
+
+[node name="ItemsSortedLabel" type="Label" parent="ResultsScreen/Panel/MetricsS1/HBoxContainer" unique_id=1029505213]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "Items Sorted:"
+
+[node name="ItemsSortedText" type="Label" parent="ResultsScreen/Panel/MetricsS1/HBoxContainer" unique_id=2121150674]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "18/20"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ResultsScreen/Panel/MetricsS1" unique_id=1721639324]
+layout_mode = 0
+offset_left = -290.0
+offset_top = 32.0
+offset_right = -2.0
+offset_bottom = 72.0
+theme_override_constants/separation = 200
+
+[node name="AcurracyLabel" type="Label" parent="ResultsScreen/Panel/MetricsS1/HBoxContainer2" unique_id=1410183443]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "Accuracy:"
+
+[node name="AcurracyText" type="Label" parent="ResultsScreen/Panel/MetricsS1/HBoxContainer2" unique_id=647273140]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "90%"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ResultsScreen/Panel/MetricsS1" unique_id=1391824222]
+layout_mode = 0
+offset_left = -290.0
+offset_top = 63.0
+offset_right = -2.0
+offset_bottom = 103.0
+theme_override_constants/separation = 200
+
+[node name="EnergyLabel" type="Label" parent="ResultsScreen/Panel/MetricsS1/HBoxContainer3" unique_id=104871234]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "Energy:"
+
+[node name="EnergyText" type="Label" parent="ResultsScreen/Panel/MetricsS1/HBoxContainer3" unique_id=1048990641]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "50%"
+
+[node name="MetricsS2" type="Control" parent="ResultsScreen/Panel" unique_id=1899888666]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 15.5
+offset_top = -205.0
+offset_right = 15.5
+offset_bottom = -165.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ResultsScreen/Panel/MetricsS2" unique_id=1215391984]
+layout_mode = 0
+offset_left = -290.0
+offset_right = -4.0
+offset_bottom = 40.0
+theme_override_constants/separation = 200
+
+[node name="CanalClarityLabel" type="Label" parent="ResultsScreen/Panel/MetricsS2/HBoxContainer" unique_id=1759807815]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "Canal Clarity:"
+
+[node name="CanalClarityText" type="Label" parent="ResultsScreen/Panel/MetricsS2/HBoxContainer" unique_id=434627205]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "18/20"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ResultsScreen/Panel/MetricsS2" unique_id=1210101967]
+layout_mode = 0
+offset_left = -290.0
+offset_top = 32.0
+offset_right = -2.0
+offset_bottom = 72.0
+theme_override_constants/separation = 200
+
+[node name="NPCEngageLabel" type="Label" parent="ResultsScreen/Panel/MetricsS2/HBoxContainer2" unique_id=1686435055]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "NPCs Engaged:"
+
+[node name="NPCEngageText" type="Label" parent="ResultsScreen/Panel/MetricsS2/HBoxContainer2" unique_id=997811240]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "90%"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ResultsScreen/Panel/MetricsS2" unique_id=1512817097]
+layout_mode = 0
+offset_left = -290.0
+offset_top = 63.0
+offset_right = -2.0
+offset_bottom = 103.0
+theme_override_constants/separation = 200
+
+[node name="HazardousLabel" type="Label" parent="ResultsScreen/Panel/MetricsS2/HBoxContainer3" unique_id=630895116]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "Hazardous:"
+
+[node name="HazardousText" type="Label" parent="ResultsScreen/Panel/MetricsS2/HBoxContainer3" unique_id=1087911485]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "Handled"
+
+[node name="MetricsS3" type="Control" parent="ResultsScreen/Panel" unique_id=797271885]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 16.5
+offset_top = -205.0
+offset_right = 16.5
+offset_bottom = -165.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ResultsScreen/Panel/MetricsS3" unique_id=1721640110]
+layout_mode = 0
+offset_left = -290.0
+offset_right = -4.0
+offset_bottom = 40.0
+theme_override_constants/separation = 200
+
+[node name="SurvivalRateLabel" type="Label" parent="ResultsScreen/Panel/MetricsS3/HBoxContainer" unique_id=1779425640]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "Survival Rate:"
+
+[node name="SurvivalRateText" type="Label" parent="ResultsScreen/Panel/MetricsS3/HBoxContainer" unique_id=1484792589]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "80%"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ResultsScreen/Panel/MetricsS3" unique_id=1857522959]
+layout_mode = 0
+offset_left = -290.0
+offset_top = 32.0
+offset_right = -2.0
+offset_bottom = 72.0
+theme_override_constants/separation = 200
+
+[node name="SpeciesLabel" type="Label" parent="ResultsScreen/Panel/MetricsS3/HBoxContainer2" unique_id=85932460]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "Species:"
+
+[node name="SpeciesText" type="Label" parent="ResultsScreen/Panel/MetricsS3/HBoxContainer2" unique_id=937613189]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "Native"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ResultsScreen/Panel/MetricsS3" unique_id=93430499]
+layout_mode = 0
+offset_left = -290.0
+offset_top = 63.0
+offset_right = 256.0
+offset_bottom = 103.0
+theme_override_constants/separation = 200
+
+[node name="SoilHealthLabel" type="Label" parent="ResultsScreen/Panel/MetricsS3/HBoxContainer3" unique_id=1432623987]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "Soil Health:"
+
+[node name="SoilHealthText" type="Label" parent="ResultsScreen/Panel/MetricsS3/HBoxContainer3" unique_id=1298241728]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "High"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ResultsScreen/Panel" unique_id=888726120]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -271.5
+offset_top = -102.0
+offset_right = 260.5
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 200
+
+[node name="EcoScoreEarnedLabel" type="Label" parent="ResultsScreen/Panel/HBoxContainer3" unique_id=563624784]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "EcoScore:"
+
+[node name="EcoScoreEarnedText" type="Label" parent="ResultsScreen/Panel/HBoxContainer3" unique_id=340520932]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "+450"
+
+[node name="FactText" type="Label" parent="ResultsScreen/Panel" unique_id=1344930600]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -271.5
+offset_top = -40.0
+offset_right = 259.5
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "Clean Recyclables are 3x more likely to be processed."
+autowrap_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResultsScreen/Panel" unique_id=777745438]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -271.5
+offset_top = 69.0
+offset_right = 248.5
+offset_bottom = 169.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="TierNameTitle" type="Label" parent="ResultsScreen/Panel/VBoxContainer" unique_id=1905928654]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "Circular Economy"
+
+[node name="TierNameText" type="Label" parent="ResultsScreen/Panel/VBoxContainer" unique_id=1395984213]
+custom_minimum_size = Vector2(261, 35)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "You Closed the loop! Nice work."
+autowrap_mode = 3
+
+[node name="CarryOvertext" type="Label" parent="ResultsScreen/Panel" unique_id=2030904145]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -266.0
+offset_top = -139.0
+offset_right = 225.5
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "Next: Recyclables glow in Scene 2"
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="ResultsScreen/Panel" unique_id=947676862]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -57.0
+offset_top = -50.0
+offset_right = 57.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "Continue"

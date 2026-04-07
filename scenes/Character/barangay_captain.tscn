@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://iu7amwclamdl" path="res://assets/kenney_rpgUrbanKit/Tilemap/tilemap.png" id="1_qpkib"]
 [ext_resource type="Script" uid="uid://2dacigb3akno" path="res://scripts/character/barangay_captain.gd" id="1_sc1yx"]
 [ext_resource type="Texture2D" uid="uid://pr32aqgvfyde" path="res://assets/User Interface/HardArtcore/SimpleUIIcons/Icons/Filled/ic_star_fill.png" id="3_318gd"]
+[ext_resource type="Resource" uid="uid://d2oa8p14f0cqt" path="res://dialogue/Scene 1 - Waste Segregation.dialogue" id="4_8y2kt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qpkib"]
 size = Vector2(12, 14)
@@ -23,6 +24,8 @@ region_rect = Rect2(410, 207, 12, 13)
 shape = SubResource("RectangleShape2D_qpkib")
 
 [node name="Actionable" parent="." unique_id=525290031 instance=ExtResource("1_qe3rt")]
+dialogue_resource = ExtResource("4_8y2kt")
+dialogue_start = "ask_captain"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable" unique_id=391425959]
 shape = SubResource("CircleShape2D_318gd")

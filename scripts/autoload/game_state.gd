@@ -24,6 +24,11 @@ var decision_log: Array = []
 var has_met_plush_toy: bool = false
 var has_completed_scenario_1: bool = false
 var has_asked_captain: bool = false  # Add this line
+var has_talked_to_lola: bool = false
+var has_talked_to_youth: bool = false
+var has_talked_to_vendor: bool = false
+var has_chosen_sack: bool = false
+
 var scenario_flags: Dictionary = {}
 
 var scenario_active: bool = false
@@ -51,6 +56,11 @@ func modify_energy(amount: float):
 	energy = clamp(energy + amount, 0.0, 100.0)
 	stats_updated.emit()
 	#print("Energy: ", round(energy), " (", ("+" if amount > 0 else ""), amount, ")")
+
+func modify_soil_health(amount: int):
+	soil_health = clamp(soil_health + amount, 0, 100)
+	stats_updated.emit()
+	print("Soil Health: ", soil_health, " (", ("+" if amount > 0 else ""), amount, ")")
 
 
 func unlock_badge(badge_name: String):
@@ -88,17 +98,31 @@ func record_disposal(item_name: String, was_correct: bool, bin_type: String):
 	stats_updated.emit()
 	print("Disposal recorded: ", item_name, " - ", "CORRECT" if was_correct else "WRONG", " in ", bin_type)
 
-func record_decision(scenario: String, choice: String):
-	scenario_flags["%s_choice" % scenario] = choice
+func record_decision(decision: String):
+	decision_log.append(decision)
+	# Also save as a flag for easy checking
+	scenario_flags[decision + "_choice"] = true
+	scenario_flags["last_decision"] = decision
 	stats_updated.emit()
+	print("Decision recorded: ", decision)
+
+# Add this helper function
+func did_choose(decision_name: String) -> bool:
+	return scenario_flags.get(decision_name + "_choice", false)
 
 func get_scenario_flag(flag: String, default = null):
 	return scenario_flags.get(flag, default)
 
+# GameState.gd
 func start_scenario(scenario_id: int, use_timer: bool = true):
 	current_scenario = scenario_id
 	scenario_active = true
 	uses_timer = use_timer
+	
+	# Small delay to ensure all nodes are ready
+	await get_tree().process_frame
+	EventBus.scenario_started.emit(scenario_id)
+	
 	print("Scenario ", scenario_id, " started! (Timer: ", use_timer, ")")
 
 func end_scenario():

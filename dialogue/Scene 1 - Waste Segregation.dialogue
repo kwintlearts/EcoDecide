@@ -1,26 +1,27 @@
 ~ plush_toy
-do AnimationManager.animate("PlushToy", "power_off")
-Plush Toy: ...
-do AnimationManager.animate("PlushToy", "power_on")
-Rio: ..
+if not GameState.has_met_plush_toy:
+	do AnimationManager.animate("PlushToy", "power_off")
+	Plush Toy: ...
+	do AnimationManager.animate("PlushToy", "power_on")
+	You: ..
 
-Plush Toy: Finally... someone who sees me.
+	Plush Toy: Finally... someone who sees me.
 
-Rio: Wait... did you just talk?
+	You: Wait... did you just talk?
 
-Plush Toy: I am a reminder.. A link to the world you've forgotten.
-Plush Toy: This city is choking, but it doesn't have to end this way.
-Plush Toy: I'll walk with you. I'll show you the cost of every choice.
-Plush Toy: Ready to clean up this mess?
-- Yes, Let's go
-	do GameState.has_met_plush_toy = true
-	do EventBus.plush_toy_met.emit()  
-	=> END
-- Who are you really?
-	Plush Toy: A cute adorable plush toy.
-	do GameState.has_met_plush_toy = true
-	do EventBus.plush_toy_met.emit() 
-	=> END
+	Plush Toy: I am a reminder.. A link to the world you've forgotten.
+	Plush Toy: This city is choking, but it doesn't have to end this way.
+	Plush Toy: I'll walk with you. I'll show you the cost of every choice.
+	Plush Toy: Ready to clean up this mess?
+	- Yes, Let's go
+		do GameState.has_met_plush_toy = true
+		do EventBus.plush_toy_met.emit()  
+		=> END
+	- Who are you really?
+		Plush Toy: A cute adorable plush toy.
+		do GameState.has_met_plush_toy = true
+		do EventBus.plush_toy_met.emit() 
+		=> END
 => END
 
 ~ locked
@@ -36,7 +37,7 @@ elif not GameState.scenario_active
 	Plush Toy: We need to sort this before the collection truck arrives in 5 minutes!
 	Plush Toy: Remember RA 9003! Proper segregation starts with US. But... some choices aren't simple. Ready?
 	do GameState.start_scenario(1, true)  # Timer enabled
-	do TimerManager.start_timer(300)
+	do TimerManager.start_timer(80)
  
 => END
 
@@ -80,15 +81,11 @@ Plush Toy: Wait... the recycling truck isn't coming today! The driver called in 
 - Mix with residual anyway
 	do GameState.add_score(-15)
 	do GameState.modify_env_health(-10)
-	do GameState.modify_contamination(15)
 	do GameState.record_decision("mixed_waste")
 	Plush Toy: Oh no... now all that waste will go to the landfill instead of being recycled.
 	=> END
 
 - Ask barangay captain for help
-	do GameState.add_score(25)
-	do GameState.modify_community_trust(15)
-	do GameState.record_decision("asked_help")
 	do GameState.has_asked_captain = true 
 	Plush Toy: Excellent! Community action makes a real difference. The captain will arrange a special pickup.
 	=> END
@@ -101,10 +98,13 @@ if GameState.has_asked_captain:
 	Barangay Captain: Tell you what—I'll call a private collector.
 	Barangay Captain: But it'll cost the barangay funds...
 	Plush Toy: See? Speaking up can create systemic change!
+	do GameState.add_score(25)
+	do GameState.modify_community_trust(15)
+	do GameState.record_decision("asked_help")
 	do EventBus.captain_helped.emit() 
 	do GameState.has_asked_captain = false  # Reset so it only happens once
 else:
-	Barangay Captain: Sorry, I'm busy right now.
+	Barangay Captain: Sorry, I'm busy right now.{GameState.eco_score}
 => END
 
 ~ check_completion
@@ -127,15 +127,15 @@ else
 
 ~ ending_good
 Plush Toy: Excellent! Because you rinsed and sorted, the recycling facility will actually accept this. You closed the loop!
-Plush Toy: Your eco score: {GameState.eco_score}
+Plush Toy: Your eco score: {{GameState.eco_score}}
 => END
 
 ~ ending_mid
 Plush Toy: Not bad, but some items were contaminated. The truck driver rejected the dirty bins. Now those recyclables go to the landfill.
-Plush Toy: Your eco score: {GameState.eco_score}
+Plush Toy: Your eco score: {{GameState.eco_score}}
 => END
 
 ~ ending_bad
 Plush Toy: Oh no... because everything was mixed, nothing can be recycled. This all goes to the dump site.
-Plush Toy: Your eco score: {GameState.eco_score}
+Plush Toy: Your eco score: {{GameState.eco_score}}
 => END

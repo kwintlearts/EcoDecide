@@ -2,9 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://cbb7wh1yven3q" path="res://assets/inventory-background.png" id="2_2g1gp"]
 [ext_resource type="PackedScene" uid="uid://cd52kuifnwr6g" path="res://inventory/scene/inv_ui_slot.tscn" id="3_xgmmj"]
-[ext_resource type="FontFile" uid="uid://dsy5ql31cyxib" path="res://assets/fonts/PixelOperator8.ttf" id="3_yywd6"]
+[ext_resource type="FontFile" uid="uid://dsy5ql31cyxib" path="res://assets/User Interface/fonts/PixelOperator8.ttf" id="3_yywd6"]
 
 [node name="StationUI" type="Control" unique_id=2035691203]
+z_index = 6
 layout_mode = 3
 anchors_preset = 0
 

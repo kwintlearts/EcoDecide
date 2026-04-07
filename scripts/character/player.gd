@@ -1,8 +1,11 @@
 # player.gd
 extends CharacterBody2D
-const SPEED = 100.0
-const SPRINT_SPEED = 200.0
+const BASE_SPEED = 70.0
+const BASE_SPRINT_SPEED = 120.0
 const ENERGY_REGEN_RATE = 0.5
+
+const PLASTIC_SACK = preload("uid://cndy7pcxy0wir")
+const WOVEN_SACK = preload("uid://buu65yaotstju")
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var actionable_finder: Area2D = $Direction/ActionableFinder
@@ -11,18 +14,66 @@ const ENERGY_REGEN_RATE = 0.5
 
 @export var inv: Inv
 
+var speed_multiplier: float = 1.0
 var input_vector: Vector2 = Vector2.ZERO
 var current_highlight: Area2D = null
 var facing_direction: String = "down"
 var can_move: bool = true
 var is_sprinting: bool = false
 
+# Speed penalties based on bag choice
+var SPEED = BASE_SPEED
+var SPRINT_SPEED = BASE_SPRINT_SPEED
+
 func _ready():
 	add_to_group("player")
 	AnimationManager.register_character("Player", animated_sprite)
 	
+	# Apply speed penalty for woven sack (slower due to more capacity)
+	if GameState.did_choose("woven_bag"):
+		SPEED = BASE_SPEED * 0.7  # 30% slower
+		SPRINT_SPEED = BASE_SPRINT_SPEED * 0.7
+		print("Woven sack equipped: Speed reduced to ", SPEED)
+	else:
+		SPEED = BASE_SPEED
+		SPRINT_SPEED = BASE_SPRINT_SPEED
+		print("Plastic sack or default: Normal speed")
+	
+	# Register inventory with manager
 	if inv:
 		InventoryManager.set_player_inv(inv)
+
+func switch_to_plastic_sack():
+	inv = PLASTIC_SACK.duplicate()
+	InventoryManager.set_player_inv(inv)
+	
+	# Restore normal speed
+	SPEED = BASE_SPEED
+	SPRINT_SPEED = BASE_SPRINT_SPEED
+	print("Switched to Plastic Sack - Speed restored to ", SPEED)
+	
+	# Refresh UI
+	await get_tree().process_frame
+	if inv_ui and inv_ui.has_method("refresh_inventory"):
+		inv_ui.refresh_inventory()
+	
+	print("Switched to Plastic Sack inventory (10 slots)")
+
+func switch_to_woven_sack():
+	inv = WOVEN_SACK.duplicate()
+	InventoryManager.set_player_inv(inv)
+	
+	# Apply speed penalty
+	SPEED = BASE_SPEED * 0.7
+	SPRINT_SPEED = BASE_SPRINT_SPEED * 0.7
+	print("Switched to Woven Sack - Speed reduced to ", SPEED)
+	
+	# Refresh UI
+	await get_tree().process_frame
+	if inv_ui and inv_ui.has_method("refresh_inventory"):
+		inv_ui.refresh_inventory()
+	
+	print("Switched to Woven Sack inventory (15 slots)")
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("action"):
@@ -37,12 +88,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 	var y_axis: float = Input.get_axis("move_up", "move_down")
 
 	if can_move:
-		if x_axis:
-			input_vector = x_axis * Vector2.RIGHT
-		elif y_axis:
-			input_vector = y_axis * Vector2.DOWN
-		else:
-			input_vector = Vector2.ZERO
+		input_vector = Vector2(x_axis, y_axis).normalized()
 	else:
 		input_vector = Vector2.ZERO
 
@@ -57,48 +103,35 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 	
-	# Store previous position to check if actually moving
 	var previous_position = global_position
 	
 	if input_vector.length() > 0:
-		var current_speed = SPRINT_SPEED if is_sprinting and GameState.energy > 0 else SPEED
+		var current_speed = (SPRINT_SPEED if is_sprinting and GameState.energy > 0 else SPEED) * speed_multiplier
 		velocity = input_vector * current_speed
-		
-		# Energy drain only if actually moving (will check after move_and_slide)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, SPEED)
 	
-	# Apply movement
 	move_and_slide()
 	
-	# Check if we actually moved (not blocked by wall)
 	var actual_movement = global_position - previous_position
 	var is_actually_moving = actual_movement.length() > 0.1
 	
-	# Apply energy drain/regeneration based on actual movement
 	if is_actually_moving and input_vector.length() > 0:
-		var drain_rate = 3.0 if is_sprinting else 1.5
+		var drain_rate = 3.5 if is_sprinting else 2
 		GameState.modify_energy(-drain_rate * delta)
 		
-		# Prevent sprinting when energy is low
 		if GameState.energy <= 0 and is_sprinting:
 			is_sprinting = false
 	elif not is_actually_moving and input_vector.length() > 0:
-		# Player is trying to move but blocked by wall
-		# Small energy penalty for bumping into wall? (optional)
-		pass
+		GameState.modify_energy(ENERGY_REGEN_RATE * delta + 0.5)
 	else:
-		# Standing still - regenerate energy
 		if GameState.energy < 100:
-			GameState.modify_energy(ENERGY_REGEN_RATE * delta)
+			GameState.modify_energy(ENERGY_REGEN_RATE * delta + 0.5)
 	
 	update_animation(is_actually_moving)
 	
 func update_animation(is_actually_moving: bool = true):
-	# Use actual movement for animation, not velocity
 	var is_moving = is_actually_moving and input_vector.length() > 0
-	
-	var animation_prefix = "sprint_" if is_sprinting and is_moving else "walk_" if is_moving else "idle_"
 	
 	if abs(input_vector.x) > abs(input_vector.y):
 		if input_vector.x > 0:
@@ -115,7 +148,8 @@ func update_animation(is_actually_moving: bool = true):
 			facing_direction = "up"
 			direction.rotation = PI
 	
-	# Fallback for missing animations
+	var animation_prefix = "sprint_" if is_sprinting and is_moving else "walk_" if is_moving else "idle_"
+	
 	if not animated_sprite.sprite_frames.has_animation(animation_prefix + facing_direction):
 		animation_prefix = "walk_" if is_moving else "idle_"
 	
@@ -130,10 +164,7 @@ func collect(item):
 		print("Cannot collect ", item.name, " - inventory is full!")
 		if !inv_ui.is_open:
 			inv_ui.open()
-
 		InventoryManager.notify_inventory_full()
-
-		
 	return success
 
 func get_facing_direction() -> Vector2:

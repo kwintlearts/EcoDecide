@@ -39,10 +39,14 @@ func _on_timer_tick():
 func end_scenario():
 	stop_timer()
 	GameState.end_scenario()
+	
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		player.can_move = false
-	print("Scenario ended!")
+	
 	# Show results screen
-	#var results_screen = load("res://ui/results_screen.tscn").instantiate()
-	#get_tree().current_scene.add_child(results_screen)
+	_show_results_screen()
+
+func _show_results_screen():
+	var results_screen = preload("res://scenes/results_screen.tscn").instantiate()
+	get_tree().current_scene.add_child(results_screen)

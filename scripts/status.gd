@@ -8,34 +8,49 @@ extends Control
 @onready var timer_label: Label = $Timer
 @onready var community_trust_label: Label = $TopLeft/CommunityTrust
 
+var pulse_tween: Tween
+
 func _ready():
 	TimerManager.time_updated.connect(_update_timer)
 	GameState.stats_updated.connect(_update_stats)
-	community_trust_label.hide()
+	await get_tree().process_frame
+	
+	if GameState.current_scenario == 2:
+		
+		community_trust_label.show()
+	else:
+		community_trust_label.hide()
+		
 	_update_stats()
 	_update_progress_bar_colors()
 
 func _update_timer(seconds: int):
-	var minutes = seconds / 60  # Remove .00 - integer division
+	var minutes = seconds / 60 
 	var secs = seconds % 60
 	timer_label.text = "%02d:%02d" % [minutes, secs]
 	
 	if seconds <= 45:
 		timer_label.modulate = Color.RED
-		create_tween().tween_property(timer_label, "scale", Vector2(1.1, 1.1), 0.3).set_loops()
+		# Kill existing tween if any
+		if pulse_tween:
+			pulse_tween.kill()
+		# Create new pulsing animation
+		pulse_tween = create_tween()
+		pulse_tween.set_loops()  # Set loops on the tween, not the property
+		pulse_tween.tween_property(timer_label, "scale", Vector2(1.1, 1.1), 0.3)
+		pulse_tween.tween_property(timer_label, "scale", Vector2(1.0, 1.0), 0.3)
 	else:
 		timer_label.modulate = Color.WHITE
 		timer_label.scale = Vector2(1, 1)
+		if pulse_tween:
+			pulse_tween.kill()
+			pulse_tween = null
 
 func _update_stats():
 	env_health_bar.value = GameState.env_health
-	energy_bar.value = GameState.energy  # Float works fine with ProgressBar
+	energy_bar.value = GameState.energy
 	community_trust_bar.value = GameState.community_trust
 	eco_score_label.text = "EcoScore: %d" % GameState.eco_score
-	
-	# Optional: Show energy as integer on label if you have one
-	# if energy_bar.get_node_or_null("Label"):
-	#     energy_bar.get_node("Label").text = "%d" % round(GameState.energy)
 	
 	_update_progress_bar_colors()
 
@@ -57,24 +72,24 @@ func _update_progress_bar_colors():
 	
 	# Add low energy visual feedback
 	if GameState.energy < 20:
-		energy_bar.modulate = Color(1, 0.5, 0.5)  # Light red tint
+		energy_bar.modulate = Color(1, 0.5, 0.5)
 	elif GameState.energy < 50:
-		energy_bar.modulate = Color(1, 1, 0.5)   # Light yellow tint
+		energy_bar.modulate = Color(1, 1, 0.5)
 	else:
 		energy_bar.modulate = Color.WHITE
 
 func _get_health_color(value: int) -> Color:
 	if value >= 70:
-		return Color(0.2, 0.8, 0.2)  # Green
+		return Color(0.2, 0.8, 0.2)
 	elif value >= 40:
-		return Color(0.9, 0.8, 0.2)  # Yellow
+		return Color(0.9, 0.8, 0.2)
 	else:
-		return Color(0.9, 0.2, 0.2)  # Red
+		return Color(0.9, 0.2, 0.2)
 
 func _get_energy_color(value: int) -> Color:
 	if value >= 70:
-		return Color(0.2, 0.8, 0.2)  # Green
+		return Color(0.2, 0.8, 0.2)
 	elif value >= 40:
-		return Color(0.9, 0.5, 0.2)  # Orange
+		return Color(0.9, 0.5, 0.2)
 	else:
-		return Color(0.9, 0.2, 0.2)  # Red
+		return Color(0.9, 0.2, 0.2)

@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dq3if2k387ec4" path="res://assets/inventory-slot.png" id="1_dfngl"]
 [ext_resource type="Script" uid="uid://bjcs3f23yygo1" path="res://inventory/scripts/inv_ui_slot.gd" id="1_fcwim"]
+[ext_resource type="FontFile" uid="uid://dsy5ql31cyxib" path="res://assets/User Interface/fonts/PixelOperator8.ttf" id="3_fk8f0"]
 
 [node name="Inv_UI_Slot" type="Panel" unique_id=1880220713]
 show_behind_parent = true
@@ -13,6 +14,33 @@ script = ExtResource("1_fcwim")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1623609370]
 texture = ExtResource("1_dfngl")
 centered = false
+
+[node name="Panel2" type="Panel" parent="." unique_id=1926417140]
+layout_mode = 0
+offset_left = -56.0
+offset_top = -112.0
+offset_right = 88.0
+
+[node name="Label" type="Label" parent="Panel2" unique_id=1294112629]
+z_index = 6
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -8.0
+offset_right = 68.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_fk8f0")
+theme_override_font_sizes/font_size = 8
+text = "Something:
+A dense, gray loaf made from whatever grains still grow in poisoned soil."
+autowrap_mode = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1237435063]
 custom_minimum_size = Vector2(16, 16)

@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bqfuohjbmo2mm" path="res://scripts/status.gd" id="1_oo0fn"]
 [ext_resource type="PackedScene" uid="uid://drp6wwerhn5u0" path="res://scenes/mobile_controls.tscn" id="1_y4d5l"]
+[ext_resource type="FontFile" uid="uid://dsy5ql31cyxib" path="res://assets/User Interface/fonts/PixelOperator8.ttf" id="2_5ysmq"]
 
-[node name="Hud" type="Control" unique_id=1281269869]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=507491322]
+
+[node name="Hud" type="Control" parent="." unique_id=1281269869]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Status" type="Control" parent="." unique_id=216111570]
+[node name="Status" type="Control" parent="Hud" unique_id=216111570]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -21,68 +24,75 @@ grow_horizontal = 2
 mouse_filter = 2
 script = ExtResource("1_oo0fn")
 
-[node name="TopLeft" type="VBoxContainer" parent="Status" unique_id=575368089]
+[node name="TopLeft" type="VBoxContainer" parent="Hud/Status" unique_id=575368089]
 layout_mode = 0
 offset_left = 32.0
-offset_top = 8.0
+offset_top = 10.0
 offset_right = 304.0
-offset_bottom = 62.0
+offset_bottom = 60.0
+theme_override_constants/separation = 8
 
-[node name="EnvHealth" type="Label" parent="Status/TopLeft" unique_id=1734118931]
+[node name="EnvHealth" type="Label" parent="Hud/Status/TopLeft" unique_id=1734118931]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_5ysmq")
 text = "EnvHealth:"
 
-[node name="ProgressBar" type="ProgressBar" parent="Status/TopLeft/EnvHealth" unique_id=1046559524]
+[node name="ProgressBar" type="ProgressBar" parent="Hud/Status/TopLeft/EnvHealth" unique_id=1046559524]
 layout_mode = 0
-offset_left = 96.0
-offset_top = 8.0
-offset_right = 216.0
-offset_bottom = 20.0
+offset_left = 131.0
+offset_top = 4.0
+offset_right = 251.0
+offset_bottom = 16.0
 size_flags_horizontal = 3
 show_percentage = false
 
-[node name="CommunityTrust" type="Label" parent="Status/TopLeft" unique_id=1305310799]
+[node name="CommunityTrust" type="Label" parent="Hud/Status/TopLeft" unique_id=1305310799]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5ysmq")
 text = "CommunityTrust:"
 
-[node name="ProgressBar" type="ProgressBar" parent="Status/TopLeft/CommunityTrust" unique_id=1798429452]
+[node name="ProgressBar" type="ProgressBar" parent="Hud/Status/TopLeft/CommunityTrust" unique_id=1798429452]
 layout_mode = 0
-offset_left = 144.0
-offset_top = 8.0
-offset_right = 264.0
-offset_bottom = 20.0
+offset_left = 209.0
+offset_top = 4.0
+offset_right = 329.0
+offset_bottom = 16.0
 size_flags_horizontal = 3
 show_percentage = false
 
-[node name="TopRight" type="VBoxContainer" parent="Status" unique_id=1476494064]
+[node name="TopRight" type="VBoxContainer" parent="Hud/Status" unique_id=1476494064]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -220.0
-offset_right = -28.0
-offset_bottom = 50.0
+offset_left = -241.0
+offset_top = 10.0
+offset_right = -49.0
+offset_bottom = 60.0
 grow_horizontal = 0
+theme_override_constants/separation = 8
 
-[node name="EcoScore" type="Label" parent="Status/TopRight" unique_id=1035811529]
+[node name="EcoScore" type="Label" parent="Hud/Status/TopRight" unique_id=1035811529]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5ysmq")
 text = "EcoScore: 000"
 
-[node name="Energy" type="Label" parent="Status/TopRight" unique_id=1961975758]
+[node name="Energy" type="Label" parent="Hud/Status/TopRight" unique_id=1961975758]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5ysmq")
 text = "Energy:"
 
-[node name="ProgressBar" type="ProgressBar" parent="Status/TopRight/Energy" unique_id=1058405598]
+[node name="ProgressBar" type="ProgressBar" parent="Hud/Status/TopRight/Energy" unique_id=1058405598]
 layout_mode = 0
-offset_left = 66.0
-offset_top = 8.0
-offset_right = 186.0
-offset_bottom = 20.0
+offset_left = 96.0
+offset_top = 4.0
+offset_right = 216.0
+offset_bottom = 16.0
 size_flags_horizontal = 3
 show_percentage = false
 
-[node name="Timer" type="Label" parent="Status" unique_id=1177064512]
+[node name="Timer" type="Label" parent="Hud/Status" unique_id=1177064512]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -92,7 +102,8 @@ offset_top = 8.0
 offset_right = 22.5
 offset_bottom = 57.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_5ysmq")
 text = "00:00"
 
-[node name="MobileControls" parent="." unique_id=1409755977 instance=ExtResource("1_y4d5l")]
+[node name="MobileControls" parent="Hud" unique_id=1409755977 instance=ExtResource("1_y4d5l")]
 layout_mode = 1

@@ -19,6 +19,9 @@ enum BinType {
 
 @export var mode: SlotMode = SlotMode.INVENTORY
 @export var bin_type: BinType = BinType.RECYCLABLE
+@onready var label: Label = $Label
+
+const _6_PX_NORMAL = preload("uid://vb3qdyxh8m5i")
 
 var slot_data: InvSlot
 var is_processing: bool = false
@@ -27,8 +30,30 @@ var rinse_item: InvItem = null  # Local storage for rinse station
 func _ready():
 	mouse_default_cursor_shape = Control.CURSOR_MOVE
 	set_process_unhandled_input(true)
+	
+	gui_input.connect(_on_gui_input)
+
+func _on_gui_input(event: InputEvent):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		# Left click or tap
+		_show_item_description()
+	elif event is InputEventScreenTouch and event.pressed:
+		# Touch screen tap
+		_show_item_description()
+
+func _show_item_description():
+	if slot_data and slot_data.item and slot_data.item.description:
+		# Use the existing label
+		label.text = slot_data.item.name+": " + "\n"+ slot_data.item.description
+		label.visible = true
+		
+		# Auto-hide after 2 seconds
+		await get_tree().create_timer(2.0).timeout
+		label.visible = false
+
 
 func update(slot: InvSlot):
+	label.visible = false
 	if mode == SlotMode.RINSE:
 		# For rinse station, use local storage
 		slot_data = null

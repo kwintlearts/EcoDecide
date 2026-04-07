@@ -1,5 +1,5 @@
 # station.gd
-@tool  # Add this to enable editor functionality
+@tool
 extends StaticBody2D
 
 enum StationType {
@@ -21,9 +21,12 @@ enum StationType {
 @onready var slot: Panel = $StationUI/NinePatchRect/GridContainer/StationUISlot
 @onready var label: Label = $StationUI/Label
 
+var is_animating: bool = false
+
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		station_ui.hide()
+		station_ui.scale = Vector2(0, 0)  # Start scaled down
 	
 	_update_station_appearance()
 	
@@ -50,7 +53,6 @@ func _ready() -> void:
 		actionable.area_exited.connect(_on_actionable_area_exited)
 
 func _update_station_appearance():
-	# Update label text based on station type
 	if label:
 		match station_type:
 			StationType.HAZARDOUS:
@@ -69,7 +71,6 @@ func _update_station_appearance():
 				label.text = "RINSE"
 				label.modulate = Color(1.0, 1.0, 1.0, 1.0) 
 	
-	# Update slot appearance in editor too
 	if slot and Engine.is_editor_hint():
 		match station_type:
 			StationType.HAZARDOUS:
@@ -87,20 +88,56 @@ func _update_station_appearance():
 			StationType.RINSE:
 				slot.mode = slot.SlotMode.RINSE
 				slot.bin_type = slot.BinType.RINSEABLE
-		
+
 func _on_actionable_area_entered(_area: Area2D) -> void:
-	if not Engine.is_editor_hint():
-		station_ui.show()
+	if not Engine.is_editor_hint() and not is_animating:
+			show_with_animation()
 
 func _on_actionable_area_exited(_area: Area2D) -> void:
 	if not Engine.is_editor_hint():
-		# Only hide if not processing
 		if slot and not slot.is_processing:
-			station_ui.hide()
+				hide_with_animation()
 
-# Method to take item back from rinse station
+func show_with_animation():
+	if is_animating:
+		return
+	
+	is_animating = true
+	station_ui.visible = true
+	
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_BACK)
+	
+	# Pop-up animation: scale from 0 to 1 with bounce
+	tween.tween_property(station_ui, "scale", Vector2(1.2, 1.2), 0.15)
+	tween.tween_property(station_ui, "scale", Vector2(0.9, 0.9), 0.1)
+	tween.tween_property(station_ui, "scale", Vector2(1.0, 1.0), 0.1)
+	
+	await tween.finished
+	is_animating = false
+
+func hide_with_animation():
+	if is_animating:
+		return
+	
+	is_animating = true
+	
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_IN)
+	tween.set_trans(Tween.TRANS_BACK)
+	
+	# Shrink animation
+	tween.tween_property(station_ui, "scale", Vector2(0.9, 0.9), 0.1)
+	tween.tween_property(station_ui, "scale", Vector2(0, 0), 0.15)
+	
+	await tween.finished
+	station_ui.visible = false
+	station_ui.scale = Vector2(0, 0)  # Reset scale for next time
+	is_animating = false
+
 func take_back_item():
-	if slot and slot.rinse_item:  # For rinse station, check rinse_item instead of slot_data
+	if slot and slot.rinse_item:
 		var item = slot.rinse_item
 		var player = get_tree().get_first_node_in_group("player")
 		if player and player.collect(item):
@@ -109,7 +146,6 @@ func take_back_item():
 			return true
 	return false
 
-# For trash stations, check slot_data
 func retrieve_item():
 	if slot and slot.slot_data and slot.slot_data.item:
 		var item = slot.slot_data.item

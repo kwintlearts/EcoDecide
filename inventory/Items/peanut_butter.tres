@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://ct6st86wtuxd2"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_pb8cc"]
+[ext_resource type="Texture2D" uid="uid://ckdbhclhtrach" path="res://assets/Pixel_Mart/peanut_butter.png" id="2_7ay6a"]
+
+[resource]
+script = ExtResource("1_pb8cc")
+id = "peanut_butter"
+name = "Peanut Butter"
+description = "The jar is half-empty, sticky traces clinging stubbornly. Once a treat, now just remnants of better days."
+texture = ExtResource("2_7ay6a")
+ui_scale = Vector2(0.6, 0.6)
+correct_bin = 3
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

@@ -42,8 +42,9 @@ _data = {
 &"transition": SubResource("Animation_ku3bi")
 }
 
-[node name="LoadingScreen" type="CanvasLayer" unique_id=1939174752]
+[node name="LoadingScreen" type="CanvasLayer" unique_id=1939174752 node_paths=PackedStringArray("animation_player")]
 script = ExtResource("1_ep5rh")
+animation_player = NodePath("AnimationPlayer")
 
 [node name="Panel" type="Panel" parent="." unique_id=2014028213]
 modulate = Color(1, 1, 1, 0)

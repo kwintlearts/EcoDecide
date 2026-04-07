@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://c5m2smfxj3ows"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_50op1"]
+[ext_resource type="Texture2D" uid="uid://bhc7r810dwr2c" path="res://assets/Pixel_Mart/bubble_gum.png" id="2_8mjab"]
+
+[resource]
+script = ExtResource("1_50op1")
+id = "bubble_gum"
+name = "Bubble Gum"
+description = "A flattened sweet, sticky and stubborn. Its flavor has long faded, leaving only residue."
+texture = ExtResource("2_8mjab")
+ui_scale = Vector2(0.3, 0.3)
+correct_bin = 3
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

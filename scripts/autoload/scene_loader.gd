@@ -1,4 +1,4 @@
-# Sceneloader.gd
+# Sceneloader.gd (Autoload)
 extends Node
 
 signal progress_changed(progress)

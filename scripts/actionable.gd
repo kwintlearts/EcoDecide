@@ -29,18 +29,16 @@ func action(interactor = null) -> void:
 	if parent and parent.has_method("get_item_dialogue"):
 		var item_dialogue = parent.get_item_dialogue()
 		if item_dialogue and item_dialogue.dialogue_resource:
-			# Check if inventory is full BEFORE showing dialogue
-			if interactor and interactor.has_method("collect"):
-				# Try to collect first - if fails, don't show dialogue
-				var success = parent.playercollect(interactor)
-				if not success:
-					# Inventory full - show error message instead of item dialogue
-					print("Inventory full! Cannot pick up item.")
-					# Optional: Show floating text "Inventory Full!"
-					return
-			
-			# Only show dialogue if collection was successful or no inventory check
+			# Show dialogue
 			start_dialogue_with_resource(item_dialogue.dialogue_resource, item_dialogue.dialogue_start)
+			
+			# After dialogue, check if should collect
+			await DialogueManager.dialogue_ended
+			
+			# Only collect if player didn't choose to leave it
+			if not GameState.did_choose("battery_ignored"):
+				parent.playercollect(interactor)
+			
 			return
 	
 	# Fallback to default dialogue
@@ -74,3 +72,6 @@ func do_parent_action(interactor = null) -> void:
 	
 	if parent.has_method("playercollect"):
 		parent.playercollect(interactor)
+	
+	if parent.has_method("empty_inventory"):
+		parent.empty_inventory()

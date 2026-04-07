@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://f1fibquy1kcr"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_0y4ek"]
+[ext_resource type="Resource" uid="uid://6vo13kgd4vdi" path="res://inventory/Items/plate_stacked_clean.tres" id="1_pcjed"]
+[ext_resource type="Texture2D" uid="uid://di5c51ff3yhgd" path="res://assets/BigWander_TheBanquet/IndividualSprites/Outline/pt1/Cutlery_Plate_Stack_dirty_Outline_TheBanquet.png" id="2_05fmm"]
+
+[resource]
+script = ExtResource("1_0y4ek")
+id = "plate_stacked_dirty"
+name = "Plate Stacked (Dirty)"
+description = "Layers of leftover grime cling stubbornly, waiting for someone—or something—to deal with them."
+texture = ExtResource("2_05fmm")
+can_rinsed = true
+rinse_version = ExtResource("1_pcjed")
+correct_bin = 3
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

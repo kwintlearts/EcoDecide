@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://c3x54lf57y245"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_ly3bs"]
+[ext_resource type="Texture2D" uid="uid://caonpnsftjuon" path="res://assets/BigWander_TheBanquet/IndividualSprites/Outline/pt1/Cutlery_Plate_Outline_TheBanquet.png" id="2_qal1e"]
+
+[resource]
+script = ExtResource("1_ly3bs")
+id = "plate_clean"
+name = "Plate (Clean)"
+description = "Smooth, spotless, and ready for another use. Few things are still this orderly."
+texture = ExtResource("2_qal1e")
+correct_bin = 1
+metadata/_custom_type_script = "uid://d1w0s766i4mib"
