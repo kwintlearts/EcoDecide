@@ -1,13 +1,13 @@
 # spawner.gd
 extends Area2D
 
-signal item_collected  # Add this line
+signal item_collected
 
 @export var items: Array[InvItem]
 @export var total_items_to_spawn: int = 30
-@export var random_rotation: bool = true
+@export var random_rotation: bool = true  # Enable random rotation
 @export var random_scale: bool = false
-@export var scale_range: Vector2 = Vector2(0.8, 1.2)
+@export var scale_range: Vector2 = Vector2(1, 1)
 
 @export var pickup_item_scene: PackedScene
 
@@ -16,7 +16,6 @@ var spawned_items: Array = []
 func _ready():
 	spawn_items()
 
-# spawner.gd - Add these prints
 func spawn_items():
 	clear_items()
 	
@@ -33,19 +32,16 @@ func spawn_items():
 		print("Error: No items assigned to spawner!")
 		return
 	
-	# Print total items available
 	print("Total items available in array: ", items.size())
 	
 	var items_to_spawn = items.duplicate()
 	items_to_spawn.shuffle()
 	
-	# Limit to total_items_to_spawn
 	if items_to_spawn.size() > total_items_to_spawn:
 		items_to_spawn = items_to_spawn.slice(0, total_items_to_spawn)
 	
 	print("Spawning ", items_to_spawn.size(), " unique items")
 	
-	# Print what items are being spawned
 	for item in items_to_spawn:
 		print("  - ", item.name)
 	
@@ -56,12 +52,12 @@ func spawn_items():
 		pickup.item = item
 		pickup.global_position = random_position
 		
-		if random_rotation:
-			pickup.rotation = randf_range(0, TAU)
+		# Apply 0.3 scale to all items
+		pickup.scale = Vector2(0.5, 0.5)
 		
-		if random_scale:
-			var random_scale_value = randf_range(scale_range.x, scale_range.y)
-			pickup.scale = Vector2(random_scale_value, random_scale_value)
+		# Apply random rotation
+		if random_rotation:
+			pickup.rotation = randf_range(0, TAU)  # TAU = full circle (360 degrees)
 		
 		add_child(pickup)
 		spawned_items.append(pickup)

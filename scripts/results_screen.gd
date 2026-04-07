@@ -123,10 +123,8 @@ func _apply_scenario_1_carry_over():
 	var carry_effects = []
 	
 	if GameState.did_choose("rinsed_bottle"):
-		carry_effects.append("✅ Recyclables will glow blue in next scenario")
+		carry_effects.append("✅ Recyclables will give bonus points in next scenario")
 		GameState.scenario_flags["recyclables_glow"] = true
-	else:
-		carry_effects.append("❌ No glow effect - all trash looks the same")
 	
 	if GameState.did_choose("asked_help"):
 		carry_effects.append("✅ 2nd truck will spawn (less walking)")

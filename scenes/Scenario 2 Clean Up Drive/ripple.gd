@@ -2,7 +2,6 @@
 extends Area2D
 
 @onready var panel: Panel = $CollisionShape2D/Panel
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var slow_multiplier: float = 0.5
 var inside_player: Node2D = null

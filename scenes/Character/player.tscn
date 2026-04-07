@@ -4,6 +4,8 @@
 [ext_resource type="Resource" uid="uid://b3bhjicesrfg3" path="res://inventory/capacity/player_inv.tres" id="2_0tuvh"]
 [ext_resource type="Texture2D" uid="uid://cn3w4ehisou1k" path="res://assets/characters/RPG Top Down Character Asset Pack - FREE/RPG Top Down Characters - Free Version/Blonde Man/blonde_man.png" id="2_g2els"]
 [ext_resource type="PackedScene" uid="uid://cere7rcpumafw" path="res://inventory/scene/inv_ui.tscn" id="3_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://j42w1ton01ww" path="res://inventory/scene/item_info.tscn" id="4_i7wy1"]
+[ext_resource type="Script" uid="uid://bucvtnygr23r5" path="res://inventory/scripts/item_info.gd" id="5_8fgnd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
@@ -290,6 +292,14 @@ offset_top = -64.0
 offset_right = 52.0
 offset_bottom = -16.0
 mouse_filter = 2
+
+[node name="ItemInfo" parent="Inv_UI" unique_id=1477873308 instance=ExtResource("4_i7wy1")]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 48.0
+offset_right = 4.0
+offset_bottom = 48.0
+script = ExtResource("5_8fgnd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=770835459]
 position = Vector2(0, -6)

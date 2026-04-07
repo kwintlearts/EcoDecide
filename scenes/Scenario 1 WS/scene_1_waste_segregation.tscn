@@ -4930,7 +4930,7 @@ follow_distance = 20
 position = Vector2(-344, -616)
 
 [node name="BarangayCaptain" parent="Characters" unique_id=1368415040 instance=ExtResource("19_5ilr6")]
-position = Vector2(152, -256)
+position = Vector2(176, -280)
 
 [node name="Borders" type="Node" parent="." unique_id=94001200]
 
@@ -4960,7 +4960,7 @@ rotation = 1.5707964
 shape = SubResource("RectangleShape2D_husvb")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="Borders/StaticBody2D" unique_id=1429878784]
-position = Vector2(208, -440)
+position = Vector2(208, -384)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_husvb")
 
@@ -4977,7 +4977,7 @@ shape = SubResource("RectangleShape2D_husvb")
 
 [node name="DialogueTrigger" parent="." unique_id=875344377 instance=ExtResource("29_nbdb7")]
 z_index = 2
-position = Vector2(208, -464)
+position = Vector2(208, -416)
 rotation = 1.5707964
 dialogue_start = "start"
 

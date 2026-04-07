@@ -1,8 +1,11 @@
 # player.gd
 extends CharacterBody2D
-const BASE_SPEED = 70.0
-const BASE_SPRINT_SPEED = 120.0
-const ENERGY_REGEN_RATE = 0.5
+# base Speed 50
+# base sprint 80 
+
+const BASE_SPEED = 80.0
+const BASE_SPRINT_SPEED = 110.0
+const ENERGY_REGEN_RATE = 1.7
 
 const PLASTIC_SACK = preload("uid://cndy7pcxy0wir")
 const WOVEN_SACK = preload("uid://buu65yaotstju")
@@ -123,10 +126,10 @@ func _physics_process(delta: float) -> void:
 		if GameState.energy <= 0 and is_sprinting:
 			is_sprinting = false
 	elif not is_actually_moving and input_vector.length() > 0:
-		GameState.modify_energy(ENERGY_REGEN_RATE * delta + 0.5)
+		GameState.modify_energy(ENERGY_REGEN_RATE * delta )
 	else:
 		if GameState.energy < 100:
-			GameState.modify_energy(ENERGY_REGEN_RATE * delta + 0.5)
+			GameState.modify_energy(ENERGY_REGEN_RATE * delta )
 	
 	update_animation(is_actually_moving)
 	

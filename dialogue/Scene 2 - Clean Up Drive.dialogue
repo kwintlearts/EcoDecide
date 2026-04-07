@@ -5,7 +5,7 @@ if not GameState.has_chosen_sack:
 		do GameState.record_decision("plastic_bag")
 		do GameState.has_chosen_sack = true
 		do GameState.start_scenario(2, true)
-		do TimerManager.start_timer(60)
+		do TimerManager.start_timer(90)
 		
 		do get_tree().get_first_node_in_group("player").switch_to_plastic_sack()
 		Plush Toy: Plastic is faster, but it creates more waste.
@@ -14,7 +14,7 @@ if not GameState.has_chosen_sack:
 		do GameState.record_decision("woven_bag")
 		do GameState.has_chosen_sack = true
 		do GameState.start_scenario(2, true)
-		do TimerManager.start_timer(60)
+		do TimerManager.start_timer(90)
 
 		
 		do get_tree().get_first_node_in_group("player").switch_to_woven_sack()

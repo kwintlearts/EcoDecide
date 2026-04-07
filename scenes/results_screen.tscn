@@ -51,7 +51,6 @@ theme_override_fonts/font = ExtResource("2_j5vbe")
 text = "Results"
 
 [node name="MetricsS1" type="Control" parent="ResultsScreen/Panel" unique_id=1905850367]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -187,6 +186,7 @@ theme_override_fonts/font = ExtResource("2_j5vbe")
 text = "Handled"
 
 [node name="MetricsS3" type="Control" parent="ResultsScreen/Panel" unique_id=797271885]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

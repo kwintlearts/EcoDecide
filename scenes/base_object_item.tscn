@@ -10,6 +10,8 @@ script = ExtResource("1_ojojl")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=463117632]
 
+[node name="GlowSprite" type="Sprite2D" parent="." unique_id=1711698769]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=645240900]
 
 [node name="Actionable" parent="." unique_id=525290031 instance=ExtResource("2_lwytq")]

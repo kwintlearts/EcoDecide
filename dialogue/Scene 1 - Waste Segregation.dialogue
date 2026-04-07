@@ -37,7 +37,7 @@ elif not GameState.scenario_active
 	Plush Toy: We need to sort this before the collection truck arrives in 5 minutes!
 	Plush Toy: Remember RA 9003! Proper segregation starts with US. But... some choices aren't simple. Ready?
 	do GameState.start_scenario(1, true)  # Timer enabled
-	do TimerManager.start_timer(80)
+	do TimerManager.start_timer(90)
  
 => END
 

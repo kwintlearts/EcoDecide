@@ -16,8 +16,10 @@ func _ready():
 	GameState.current_scenario = 2
 	print("Current Scenario: ", GameState.current_scenario)
 	
+	# Remove crates at start (path starts OPEN)
+	_remove_crates_at_start()
+	
 	EventBus.vendor_confronted.connect(_on_vendor_confronted)
-	remove_crates_on_start()
 	
 	if spawner:
 		spawner.add_to_group("spawner")
@@ -25,9 +27,26 @@ func _ready():
 		await get_tree().process_frame
 		clogged.update_clarity()
 	
-	# Connect to timer for scenario end
 	TimerManager.time_expired.connect(_on_scenario_end)
-	
+
+func _remove_crates_at_start():
+	for cell in wall.get_used_cells():
+		var tile_data = wall.get_cell_tile_data(cell)
+		if tile_data and tile_data.get_custom_data("is_crate"):
+			crate_cells.append(cell)
+			wall.set_cell(cell, -1)  # Remove the crate
+	print("Removed ", crate_cells.size(), " crates at start. Path is OPEN.")
+
+func _on_vendor_confronted():
+	print("Vendor confronted - blocking path!")
+	spawn_crates()  # Block path by spawning crates
+
+func spawn_crates():
+	print("Spawning ", crate_cells.size(), " crates to block path")
+	for cell in crate_cells:
+		wall.set_cell(cell, SOURCE_ID, CRATE_ATLAS, 0)
+	print("Crates spawned - path BLOCKED")
+
 func save_scenario_results():
 	var remaining = spawner.get_remaining_items()
 	var final_clarity = int((30 - remaining) / 30.0 * 100)
@@ -38,38 +57,18 @@ func _on_scenario_end():
 	if not scenario_ended:
 		scenario_ended = true
 		save_scenario_results()
-		# Show results screen
 		TimerManager.end_scenario()
 
 func _on_item_collected():
 	if clogged:
 		clogged.update_clarity()
 	
-	# Check if all items collected
 	if spawner and spawner.get_remaining_items() <= 0:
 		_on_scenario_end()
 
 func update_clogged_clarity():
 	if clogged:
 		clogged.update_clarity()
-
-func _on_vendor_confronted():
-	print("Vendor confronted - path stays open")
-
-func remove_crates_on_start():
-	for cell in wall.get_used_cells():
-		var tile_data = wall.get_cell_tile_data(cell)
-		if tile_data and tile_data.get_custom_data("is_crate"):
-			crate_cells.append(cell)
-			wall.set_cell(cell, -1)
-
-func spawn_crates():
-	if not GameState.did_choose("confront_vendor"):
-		for cell in crate_cells:
-			wall.set_cell(cell, SOURCE_ID, CRATE_ATLAS, 0)
-		print("Crates spawned - path blocked")
-	else:
-		print("Vendor was confronted - crates stay removed")
 
 func check_cell():
 	var local_pos = wall.to_local(player.global_position)

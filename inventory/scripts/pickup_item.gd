@@ -7,12 +7,11 @@ extends StaticBody2D
 		if item != value:
 			item = value
 			_update_sprite()
-			# Force editor refresh
 			if Engine.is_editor_hint():
 				notify_property_list_changed()
 
-@export var collision_size_offset: Vector2 = Vector2.ZERO  # Optional offset for fine-tuning
-@export var action_size_offset: float = 0.0  # Optional offset for action circle
+@export var collision_size_offset: Vector2 = Vector2.ZERO
+@export var action_size_offset: float = 0.0
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
@@ -36,9 +35,8 @@ func _setup_label():
 		label.add_theme_font_size_override("font_size", 8)
 		
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD
-		label.size = Vector2(112, 23)  # Fixed width, auto height
+		label.size = Vector2(112, 23)
 		
-		# Position label above the item
 		label.position = Vector2(-30, -40)
 
 func _update_sprite():
@@ -54,8 +52,6 @@ func _update_sprite():
 			sprite.texture = null
 		
 		_update_collision_shape()
-		
-		# Update label text based on item's correct bin
 		_update_label_text()
 		
 	elif sprite:
@@ -89,15 +85,15 @@ func _get_bin_name(bin_type: int) -> String:
 func _get_bin_color(bin_type: int) -> Color:
 	match bin_type:
 		0:
-			return Color(1, 0.3, 0.3)  # Red - Hazardous
+			return Color(1, 0.3, 0.3)
 		1:
-			return Color(0.3, 1, 0.3)  # Green - Recyclable
+			return Color(0.3, 1, 0.3)
 		2:
-			return Color(0.3, 0.8, 1)  # Blue - Biodegradable
+			return Color(0.3, 0.8, 1)
 		3:
-			return Color(1, 1, 0.3)    # Yellow - Residual
+			return Color(1, 1, 0.3)
 		4:
-			return Color(1, 0.6, 1)    # Purple - Rinseable
+			return Color(1, 0.6, 1)
 		_:
 			return Color.WHITE
 
@@ -122,27 +118,46 @@ func _update_collision_shape():
 		collision_shape.shape = null
 		action_shape.shape = null
 
-# Add these functions for area enter/exit
 func _on_actionable_area_entered(area: Area2D) -> void:
 	if not Engine.is_editor_hint():
-		if GameState.did_choose("rinsed_bottle") and GameState.current_scenario == 2:
-			_show_label()
-			
+		# Show bonus label for recyclables if player rinsed bottle in Scenario 1
+		if GameState.did_choose("rinsed_bottle") and GameState.current_scenario == 2 and item and item.correct_bin == 1:
+			_show_bonus_label()
+		#else:
+			#_show_label()
 
 func _on_actionable_area_exited(area: Area2D) -> void:
 	if not Engine.is_editor_hint():
-		if GameState.did_choose("rinsed_bottle") and GameState.current_scenario == 2:
-			_hide_label()
+		_hide_label()
+		_hide_bonus_label()
+
+func _show_bonus_label():
+	if label:
+		label.text = "✨ +5 BONUS POINTS! ✨"
+		label.add_theme_color_override("font_color", Color.YELLOW)
+		label.visible = true
+		
+		var tween = create_tween()
+		tween.tween_property(label, "scale", Vector2(1.2, 1.2), 0.1)
+		tween.tween_property(label, "scale", Vector2(1, 1), 0.1)
 
 func _show_label():
 	if label:
+		var bin_name = _get_bin_name(item.correct_bin)
+		var bin_color = _get_bin_color(item.correct_bin)
+		label.text = "🗑️ " + bin_name
+		label.add_theme_color_override("font_color", bin_color)
 		label.visible = true
-		# Optional: Add a little pop animation
+		
 		var tween = create_tween()
 		tween.tween_property(label, "scale", Vector2(1.1, 1.1), 0.1)
 		tween.tween_property(label, "scale", Vector2(1, 1), 0.1)
 
 func _hide_label():
+	if label:
+		label.visible = false
+
+func _hide_bonus_label():
 	if label:
 		label.visible = false
 
@@ -157,12 +172,11 @@ func playercollect(player):
 	if not GameState.scenario_active:
 		print("No active scenario! Cannot pick up items.")
 		return false
-	#
+	
 	var success = player.collect(item)
 	if success:
 		print("Collected: ", item.name)
 		
-		# Notify scene that an item was collected
 		var scene = get_tree().current_scene
 		if scene and scene.has_method("_on_item_collected"):
 			scene._on_item_collected()
@@ -170,7 +184,7 @@ func playercollect(player):
 		queue_free()
 	else:
 		print("Inventory full! Cannot collect: ", item.name)
-		is_being_collected = false  # Reset so player can try again
+		is_being_collected = false
 	
 	return success
 

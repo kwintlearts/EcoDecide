@@ -5013,7 +5013,7 @@ tile_map_data = PackedByteArray("AAAKAAIAAAAGAAQAAAAJAAIAAAADAAQAAAAMAAIAAAAHAAQ
 tile_set = SubResource("TileSet_xnq5q")
 
 [node name="GarbageTruck" parent="TileMapLayers" unique_id=2045981199 instance=ExtResource("8_bnwkb")]
-position = Vector2(655, -409)
+position = Vector2(657, 74)
 
 [node name="GarbageTruck2" parent="TileMapLayers" unique_id=1448792998 instance=ExtResource("8_bnwkb")]
 position = Vector2(-155, -418)
@@ -5044,7 +5044,7 @@ shape = SubResource("RectangleShape2D_em86a")
 
 [node name="Player" parent="Characters" unique_id=1896034723 instance=ExtResource("8_qtjdn")]
 z_index = 4
-position = Vector2(410, -118)
+position = Vector2(634, -60)
 
 [node name="ElderLady" parent="Characters" unique_id=1159156245 instance=ExtResource("10_64ncg")]
 position = Vector2(39, -348)

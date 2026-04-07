@@ -13,9 +13,6 @@ var current_clarity: int = 0  # Start at 0% (fully clogged)
 
 func _ready():
 	_update_visuals()
-	
-	body_entered.connect(_on_body_entered)
-	body_exited.connect(_on_body_exited)
 
 func update_clarity():
 	# Get total items remaining in the canal from spawner
