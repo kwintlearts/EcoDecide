@@ -37,6 +37,12 @@ var locals: Dictionary = {}
 
 var _locale: String = TranslationServer.get_locale()
 
+
+## Touch drag variables
+var touch_start_position: Vector2 = Vector2.ZERO
+var is_touch_dragging: bool = false
+const TOUCH_DRAG_THRESHOLD: float = 20.0
+
 ## The current line
 var dialogue_line: DialogueLine:
 	set(value):
@@ -189,30 +195,58 @@ func _on_mutated(mutation: Dictionary) -> void:
 
 
 func _on_balloon_gui_input(event: InputEvent) -> void:
-	# See if we need to skip typing of the dialogue
+	# Handle touch screen input
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			touch_start_position = event.position
+			is_touch_dragging = false
+		else:
+			# Touch released - check if it was a tap (not a drag)
+			if not is_touch_dragging and is_waiting_for_input and dialogue_line.responses.size() == 0:
+				var balloon_rect = balloon.get_global_rect()
+				if balloon_rect.has_point(event.position):
+					next(dialogue_line.next_id)
+		return
+	
+	# Handle mouse input (desktop)
 	if dialogue_label.is_typing:
-		#var mouse_was_clicked: bool = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()
+		var mouse_was_clicked: bool = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()
 		var skip_button_was_pressed: bool = event.is_action_pressed(skip_action)
-		#if mouse_was_clicked or skip_button_was_pressed:
-		if  skip_button_was_pressed:
+		if skip_button_was_pressed:
 			get_viewport().set_input_as_handled()
 			dialogue_label.skip_typing()
 			return
 
-	if not is_waiting_for_input: return
-	if dialogue_line.responses.size() > 0: return
+	if not is_waiting_for_input: 
+		return
+	if dialogue_line.responses.size() > 0: 
+		return
 
-	# When there are no response options the balloon itself is the clickable thing
 	get_viewport().set_input_as_handled()
 
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
-		next(dialogue_line.next_id)
+		var balloon_rect = balloon.get_global_rect()
+		if balloon_rect.has_point(event.position):
+			next(dialogue_line.next_id)
 	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
 		next(dialogue_line.next_id)
 
 	
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 	next(response.next_id)
+
+
+func force_close():	
+	# Clear responses
+	responses_menu.hide()
+	responses_menu.responses = []
+	
+	# Hide and free
+	hide()
+	queue_free()
+	
+	# Emit dialogue ended to reset state
+	DialogueManager.dialogue_ended.emit(null)
 
 
 #endregion

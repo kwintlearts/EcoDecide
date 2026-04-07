@@ -5,7 +5,7 @@ signal item_collected
 
 @export var items: Array[InvItem]
 @export var total_items_to_spawn: int = 30
-@export var random_rotation: bool = true  # Enable random rotation
+@export var random_rotation: bool = true
 @export var random_scale: bool = false
 @export var scale_range: Vector2 = Vector2(1, 1)
 
@@ -20,6 +20,8 @@ func spawn_items():
 	clear_items()
 	
 	var spawn_rect = _get_spawn_area_rect()
+	print("Spawn rect (global): ", spawn_rect)
+	
 	if spawn_rect.size.x == 0 or spawn_rect.size.y == 0:
 		print("Error: Spawn area has no size!")
 		return
@@ -32,32 +34,50 @@ func spawn_items():
 		print("Error: No items assigned to spawner!")
 		return
 	
-	print("Total items available in array: ", items.size())
+	# Separate required items from random pool
+	var required_items: Array[InvItem] = []
+	var random_items_pool: Array[InvItem] = []
 	
-	var items_to_spawn = items.duplicate()
-	items_to_spawn.shuffle()
+	for item in items:
+		if item.id == "bottle_juice" or item.id == "battery":
+			required_items.append(item)
+			print("Required item found: ", item.name)
+		else:
+			random_items_pool.append(item)
 	
-	if items_to_spawn.size() > total_items_to_spawn:
-		items_to_spawn = items_to_spawn.slice(0, total_items_to_spawn)
+	print("Required items to spawn: ", required_items.size())
+	print("Random items available: ", random_items_pool.size())
 	
-	print("Spawning ", items_to_spawn.size(), " unique items")
+	# Calculate how many random items to spawn
+	var random_items_to_spawn = total_items_to_spawn - required_items.size()
+	
+	if random_items_to_spawn > random_items_pool.size():
+		random_items_to_spawn = random_items_pool.size()
+		print("Not enough random items, spawning only ", random_items_to_spawn)
+	
+	# Shuffle random items
+	random_items_pool.shuffle()
+	var selected_random_items = random_items_pool.slice(0, random_items_to_spawn)
+	
+	# Combine required + selected random items
+	var items_to_spawn = required_items + selected_random_items
+	items_to_spawn.shuffle()  # Shuffle to mix required items with random ones
+	
+	print("Spawning ", items_to_spawn.size(), " items (", required_items.size(), " required, ", selected_random_items.size(), " random)")
 	
 	for item in items_to_spawn:
-		print("  - ", item.name)
-	
-	for item in items_to_spawn:
-		var random_position = _get_random_position_in_rect(spawn_rect)
+		var random_global_position = _get_random_position_in_rect(spawn_rect)
+		var random_local_position = to_local(random_global_position)
+		
+		print("Spawning ", item.name, " at local: ", random_local_position)
 		
 		var pickup = pickup_item_scene.instantiate()
 		pickup.item = item
-		pickup.global_position = random_position
+		pickup.position = random_local_position
+		pickup.scale = Vector2(0.3, 0.3)
 		
-		# Apply 0.3 scale to all items
-		pickup.scale = Vector2(0.5, 0.5)
-		
-		# Apply random rotation
 		if random_rotation:
-			pickup.rotation = randf_range(0, TAU)  # TAU = full circle (360 degrees)
+			pickup.rotation = randf_range(0, TAU)
 		
 		add_child(pickup)
 		spawned_items.append(pickup)
@@ -74,6 +94,9 @@ func _get_spawn_area_rect() -> Rect2:
 		return Rect2()
 	
 	var shape = collision_shape.shape
+	if not shape:
+		return Rect2()
+	
 	var extents: Vector2
 	
 	if shape is RectangleShape2D:
@@ -83,11 +106,11 @@ func _get_spawn_area_rect() -> Rect2:
 	else:
 		return Rect2()
 	
-	var area_position = collision_shape.global_position
-	var top_left = area_position - extents
+	var shape_global_pos = collision_shape.global_position
+	var top_left_global = shape_global_pos - extents
 	var size = extents * 2
 	
-	return Rect2(top_left, size)
+	return Rect2(top_left_global, size)
 
 func _get_random_position_in_rect(rect: Rect2) -> Vector2:
 	var x = randf_range(rect.position.x, rect.position.x + rect.size.x)

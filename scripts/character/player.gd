@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 const BASE_SPEED = 80.0
 const BASE_SPRINT_SPEED = 110.0
-const ENERGY_REGEN_RATE = 1.7
+const ENERGY_REGEN_RATE = 1.5
 
 const PLASTIC_SACK = preload("uid://cndy7pcxy0wir")
 const WOVEN_SACK = preload("uid://buu65yaotstju")
@@ -79,7 +79,7 @@ func switch_to_woven_sack():
 	print("Switched to Woven Sack inventory (15 slots)")
 
 func _unhandled_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("action"):
+	if Input.is_action_just_pressed("interact"):
 		var actionables = actionable_finder.get_overlapping_areas()
 		if actionables.size() > 0:
 			actionables[0].action(self)
@@ -120,7 +120,7 @@ func _physics_process(delta: float) -> void:
 	var is_actually_moving = actual_movement.length() > 0.1
 	
 	if is_actually_moving and input_vector.length() > 0:
-		var drain_rate = 3.5 if is_sprinting else 2
+		var drain_rate = 3.5 if is_sprinting else 1.5
 		GameState.modify_energy(-drain_rate * delta)
 		
 		if GameState.energy <= 0 and is_sprinting:

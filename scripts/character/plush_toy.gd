@@ -18,7 +18,6 @@ func _ready():
 
 	if GameState.has_met_plush_toy:
 		enable_following()
-	
 
 func _exit_tree():
 	AnimationManager.unregister_character("PlushToy")

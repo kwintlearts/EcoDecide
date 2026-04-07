@@ -5,7 +5,7 @@ if not GameState.has_chosen_sack:
 		do GameState.record_decision("plastic_bag")
 		do GameState.has_chosen_sack = true
 		do GameState.start_scenario(2, true)
-		do TimerManager.start_timer(90)
+		do TimerManager.start_timer(240)
 		
 		do get_tree().get_first_node_in_group("player").switch_to_plastic_sack()
 		Plush Toy: Plastic is faster, but it creates more waste.
@@ -14,9 +14,7 @@ if not GameState.has_chosen_sack:
 		do GameState.record_decision("woven_bag")
 		do GameState.has_chosen_sack = true
 		do GameState.start_scenario(2, true)
-		do TimerManager.start_timer(90)
-
-		
+		do TimerManager.start_timer(240)
 		do get_tree().get_first_node_in_group("player").switch_to_woven_sack()
 		Plush Toy: Good choice! Reusable bags are better for the environment.
 		=> END
@@ -31,7 +29,7 @@ if not GameState.has_talked_to_vendor:
 	- Ignore him, keep cleaning
 		do GameState.record_decision("ignore_vendor")
 		do GameState.has_talked_to_vendor = true
-			do GameState.scenario_flags["npc_vendor_engaged"] = true  # Add this
+		do GameState.scenario_flags["npc_vendor_engaged"] = true  # Add this
 		Plush Toy: You kept working... but he'll probably keep throwing trash. Sometimes silence isn't golden.
 		=> END
 		
@@ -41,7 +39,7 @@ if not GameState.has_talked_to_vendor:
 		do GameState.modify_community_trust(-20)
 		do EventBus.vendor_confronted.emit()
 		do GameState.has_talked_to_vendor = true
-			do GameState.scenario_flags["npc_vendor_engaged"] = true  # Add this
+		do GameState.scenario_flags["npc_vendor_engaged"] = true  # Add this
 		Plush Toy: That didn't go well...
 		=> END
 	- Politely educate + offer bin
@@ -49,7 +47,7 @@ if not GameState.has_talked_to_vendor:
 		do GameState.record_decision("educated_vendor")
 		do GameState.modify_community_trust(15)
 		do GameState.has_talked_to_vendor = true
-			do GameState.scenario_flags["npc_vendor_engaged"] = true  # Add this
+		do GameState.scenario_flags["npc_vendor_engaged"] = true  # Add this
 		Vendor: ...Fine. I'll use it. Thanks, kid.
 		Plush Toy: YES! That's how change happens—one person at a time!
 		=> END
@@ -159,4 +157,40 @@ if not GameState.did_choose("battery_ignored"):
 		Plush Toy: Someone might get hurt...
 		do GameState.add_score(-10)
 		=> END
+=> END
+
+
+~ check_completion
+if GameState.total_disposals >= 30
+	=> ending_check
+elif TimerManager.time_remaining <= 0
+	=> ending_check
+else
+	=> END
+
+~ ending_check
+if GameState.final_clarity >= 80 and GameState.community_trust >= 70
+	=> ending_good
+elif GameState.final_clarity >= 50
+	=> ending_mid
+else
+	=> ending_bad
+=> END
+
+~ ending_good
+Plush Toy: Excellent! The canal is clean and the community is involved!
+Plush Toy: Your eco score: {GameState.eco_score}
+do TimerManager._show_results_screen()
+=> END
+
+~ ending_mid
+Plush Toy: Not bad, but the canal could be cleaner...
+Plush Toy: Your eco score: {GameState.eco_score}
+do TimerManager._show_results_screen()
+=> END
+
+~ ending_bad
+Plush Toy: Oh no... the canal is still clogged.
+Plush Toy: Your eco score: {GameState.eco_score}
+do TimerManager._show_results_screen()
 => END

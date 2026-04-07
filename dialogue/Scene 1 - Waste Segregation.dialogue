@@ -37,7 +37,7 @@ elif not GameState.scenario_active
 	Plush Toy: We need to sort this before the collection truck arrives in 5 minutes!
 	Plush Toy: Remember RA 9003! Proper segregation starts with US. But... some choices aren't simple. Ready?
 	do GameState.start_scenario(1, true)  # Timer enabled
-	do TimerManager.start_timer(90)
+	do TimerManager.start_timer(180)
  
 => END
 
@@ -104,7 +104,7 @@ if GameState.has_asked_captain:
 	do EventBus.captain_helped.emit() 
 	do GameState.has_asked_captain = false  # Reset so it only happens once
 else:
-	Barangay Captain: Sorry, I'm busy right now.{GameState.eco_score}
+	Barangay Captain: Sorry, I'm busy right now.
 => END
 
 ~ check_completion
@@ -127,15 +127,15 @@ else
 
 ~ ending_good
 Plush Toy: Excellent! Because you rinsed and sorted, the recycling facility will actually accept this. You closed the loop!
-Plush Toy: Your eco score: {{GameState.eco_score}}
+do TimerManager._show_results_screen()
 => END
 
 ~ ending_mid
 Plush Toy: Not bad, but some items were contaminated. The truck driver rejected the dirty bins. Now those recyclables go to the landfill.
-Plush Toy: Your eco score: {{GameState.eco_score}}
+do TimerManager._show_results_screen()
 => END
 
 ~ ending_bad
 Plush Toy: Oh no... because everything was mixed, nothing can be recycled. This all goes to the dump site.
-Plush Toy: Your eco score: {{GameState.eco_score}}
+do TimerManager._show_results_screen()
 => END

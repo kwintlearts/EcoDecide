@@ -56,13 +56,13 @@ func _update_item_info_position():
 	match slot_count:
 		3:
 			# Position above the 3-slot inventory
-			item_info.position = Vector2(-info_width/2 + 32, -info_height - 5)
+			item_info.position = Vector2(-info_width/2, -info_height + 25)
 		10:
 			# Position above the 10-slot inventory
-			item_info.position = Vector2(-info_width/2 + 52, -info_height - 5)
+			item_info.position = Vector2(-info_width/2, -info_height + 50)
 		15:
 			# Position above the 15-slot inventory
-			item_info.position = Vector2(-info_width/2 + 52, -info_height - 5)
+			item_info.position = Vector2(-info_width/2, -info_height  + 65)
 		_:
 			item_info.position = Vector2(-info_width/2, -info_height - 5)
 

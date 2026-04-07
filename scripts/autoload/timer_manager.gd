@@ -1,4 +1,4 @@
-# timer_manager.gd
+# timer_manager.gd autoload
 extends Node
 
 signal time_updated(remaining: int)
@@ -35,8 +35,10 @@ func _on_timer_tick():
 			time_expired.emit()
 			end_scenario()
 
+
 # timer_manager.gd
 func end_scenario():
+	print("TimerManager.end_scenario() called")
 	stop_timer()
 	GameState.end_scenario()
 	
@@ -44,9 +46,22 @@ func end_scenario():
 	if player:
 		player.can_move = false
 	
-	# Show results screen
-	_show_results_screen()
+	# Wait a frame to ensure everything is settled
+	await get_tree().process_frame
 
 func _show_results_screen():
-	var results_screen = preload("res://scenes/results_screen.tscn").instantiate()
-	get_tree().current_scene.add_child(results_screen)
+	print("Showing results screen from TimerManager...")
+	
+	# Use a CanvasLayer to ensure it appears on top
+	var canvas = CanvasLayer.new()
+	canvas.layer = 100
+	get_tree().current_scene.add_child(canvas)
+	
+	# Load results screen - use absolute path
+	var results_screen = load("res://scenes/results_screen.tscn")
+	if results_screen:
+		var instance = results_screen.instantiate()
+		canvas.add_child(instance)
+		print("Results screen added successfully")
+	else:
+		print("ERROR: Could not load results screen")

@@ -658,3 +658,6 @@ dialogue_start = "plush_toy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable" unique_id=191584220]
 shape = SubResource("CircleShape2D_b4x84")
+
+[connection signal="area_entered" from="Actionable" to="." method="_on_actionable_area_entered"]
+[connection signal="area_exited" from="Actionable" to="." method="_on_actionable_area_exited"]

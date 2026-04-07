@@ -13,6 +13,9 @@ var waste_generated: int = 0
 var correct_disposals: int = 0
 var total_disposals: int = 0
 
+# --- SCENARIO RESULTS ---
+var final_clarity: int = 0  # Add this for Scenario 2
+
 # --- BADGES ---
 var unlocked_badges: Array = []
 
@@ -23,7 +26,8 @@ var decision_log: Array = []
 # --- STORY FLAGS ---
 var has_met_plush_toy: bool = false
 var has_completed_scenario_1: bool = false
-var has_asked_captain: bool = false  # Add this line
+var has_completed_scenario_2: bool = false
+var has_asked_captain: bool = false
 var has_talked_to_lola: bool = false
 var has_talked_to_youth: bool = false
 var has_talked_to_vendor: bool = false
@@ -32,8 +36,8 @@ var has_chosen_sack: bool = false
 var scenario_flags: Dictionary = {}
 
 var scenario_active: bool = false
-var current_scenario: int = 0  # 1, 2, or 3
-var uses_timer: bool = true    # Whether current scenario uses timer
+var current_scenario: int = 0
+var uses_timer: bool = true
 
 signal stats_updated
 
@@ -55,19 +59,16 @@ func modify_community_trust(amount: int):
 func modify_energy(amount: float):
 	energy = clamp(energy + amount, 0.0, 100.0)
 	stats_updated.emit()
-	#print("Energy: ", round(energy), " (", ("+" if amount > 0 else ""), amount, ")")
 
 func modify_soil_health(amount: int):
 	soil_health = clamp(soil_health + amount, 0, 100)
 	stats_updated.emit()
 	print("Soil Health: ", soil_health, " (", ("+" if amount > 0 else ""), amount, ")")
 
-
 func unlock_badge(badge_name: String):
 	if badge_name not in unlocked_badges:
 		unlocked_badges.append(badge_name)
 		print("BADGE UNLOCKED: ", badge_name)
-		# Show badge notification
 		EventBus.emit_signal("badge_unlocked", badge_name)
 
 func get_sorting_accuracy() -> float:
@@ -84,7 +85,6 @@ func get_ending_tier() -> String:
 	else:
 		return "C"
 
-# Then add the function:
 func record_disposal(item_name: String, was_correct: bool, bin_type: String):
 	total_disposals += 1
 	if was_correct:
@@ -100,26 +100,22 @@ func record_disposal(item_name: String, was_correct: bool, bin_type: String):
 
 func record_decision(decision: String):
 	decision_log.append(decision)
-	# Also save as a flag for easy checking
 	scenario_flags[decision + "_choice"] = true
 	scenario_flags["last_decision"] = decision
 	stats_updated.emit()
 	print("Decision recorded: ", decision)
 
-# Add this helper function
 func did_choose(decision_name: String) -> bool:
 	return scenario_flags.get(decision_name + "_choice", false)
 
 func get_scenario_flag(flag: String, default = null):
 	return scenario_flags.get(flag, default)
 
-# GameState.gd
 func start_scenario(scenario_id: int, use_timer: bool = true):
 	current_scenario = scenario_id
 	scenario_active = true
 	uses_timer = use_timer
 	
-	# Small delay to ensure all nodes are ready
 	await get_tree().process_frame
 	EventBus.scenario_started.emit(scenario_id)
 	
@@ -138,9 +134,12 @@ func reset_scenario_1():
 	waste_generated = 0
 	correct_disposals = 0
 	total_disposals = 0
+	final_clarity = 0
 
 func full_reset():
 	reset_scenario_1()
 	unlocked_badges.clear()
 	has_met_plush_toy = false
 	has_completed_scenario_1 = false
+	has_completed_scenario_2 = false
+	

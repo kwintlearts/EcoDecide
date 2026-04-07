@@ -35,8 +35,21 @@
 [ext_resource type="Resource" uid="uid://d1aiir1hphrg0" path="res://inventory/Items/cracked_egg.tres" id="24_svdj8"]
 [ext_resource type="Resource" uid="uid://cqrylpkqfk3s0" path="res://inventory/Items/plate_dirty.tres" id="25_imxk3"]
 [ext_resource type="Resource" uid="uid://dwfgvxl7y3508" path="res://inventory/Items/toothpaste.tres" id="26_bx8tm"]
+[ext_resource type="Script" uid="uid://ckool436fql61" path="res://scripts/Scenario 2 Clean Up Drive/spawner.gd" id="28_e2o58"]
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="29_g6s2f"]
 [ext_resource type="PackedScene" uid="uid://db6haojs58op5" path="res://scenes/dialogue_trigger.tscn" id="29_nbdb7"]
+[ext_resource type="Resource" uid="uid://nk1dn10eomvb" path="res://inventory/Items/sampaguita.tres" id="30_rmulh"]
+[ext_resource type="Resource" uid="uid://brpt8ivo2ufum" path="res://inventory/Items/popsicle.tres" id="31_qy8cb"]
+[ext_resource type="Resource" uid="uid://f1fibquy1kcr" path="res://inventory/Items/plate_stacked_dirty.tres" id="32_v4o6l"]
+[ext_resource type="Resource" uid="uid://c3x54lf57y245" path="res://inventory/Items/plate_clean.tres" id="33_7ngn2"]
+[ext_resource type="Resource" uid="uid://ct6st86wtuxd2" path="res://inventory/Items/peanut_butter.tres" id="34_5x5ro"]
 [ext_resource type="Script" uid="uid://cj06vuu5raq03" path="res://scripts/border.gd" id="35_k0boa"]
+[ext_resource type="Resource" uid="uid://docbywqm5vbb4" path="res://inventory/Items/melon_half.tres" id="35_tkgh5"]
+[ext_resource type="Resource" uid="uid://cas8j2nepj7w3" path="res://inventory/Items/ketchup.tres" id="36_lgmx6"]
+[ext_resource type="Resource" uid="uid://dvk42ipqutkca" path="res://inventory/Items/cardboard_box.tres" id="37_vcfcp"]
+[ext_resource type="Resource" uid="uid://6waoncmhfdub" path="res://inventory/Items/bread_individual.tres" id="38_gpfno"]
+[ext_resource type="Resource" uid="uid://bokjwrnht7t5v" path="res://inventory/Items/boba_milk_tea.tres" id="40_aqbi1"]
+[ext_resource type="Resource" uid="uid://b3t0o6oav6oo6" path="res://inventory/Items/banana.tres" id="42_vilf8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ldft"]
 texture = ExtResource("3_w77pj")
@@ -4743,6 +4756,9 @@ size = Vector2(128, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bx8tm"]
 size = Vector2(205.7143, 160)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ei0rg"]
+size = Vector2(320, 160)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afuid"]
 size = Vector2(376, 20)
 
@@ -4902,6 +4918,20 @@ item = ExtResource("25_imxk3")
 position = Vector2(144, -448)
 scale = Vector2(0.3, 0.3)
 item = ExtResource("26_bx8tm")
+
+[node name="Spawner" type="Area2D" parent="Trash Objects" unique_id=15465778]
+position = Vector2(-288, -656)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("28_e2o58")
+items = Array[ExtResource("29_g6s2f")]([ExtResource("26_bx8tm"), ExtResource("30_rmulh"), ExtResource("31_qy8cb"), ExtResource("32_v4o6l"), ExtResource("16_4th0s"), ExtResource("25_imxk3"), ExtResource("33_7ngn2"), ExtResource("13_o6hax"), ExtResource("34_5x5ro"), ExtResource("7_l7kme"), ExtResource("35_tkgh5"), ExtResource("36_lgmx6"), ExtResource("15_uhqgp"), ExtResource("21_afuid"), ExtResource("11_5ilr6"), ExtResource("12_ajb0f"), ExtResource("6_e1isb"), ExtResource("13_uhqgp"), ExtResource("24_svdj8"), ExtResource("6_s0ww2"), ExtResource("14_4th0s"), ExtResource("37_vcfcp"), ExtResource("23_20onu"), ExtResource("38_gpfno"), ExtResource("40_aqbi1"), ExtResource("42_vilf8"), ExtResource("8_e0wb2"), ExtResource("7_rob5o"), ExtResource("10_7qyl6")])
+total_items_to_spawn = 10
+scale_range = Vector2(50, 50)
+pickup_item_scene = ExtResource("5_vxifi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trash Objects/Spawner" unique_id=2063352615]
+position = Vector2(464, 264)
+shape = SubResource("RectangleShape2D_ei0rg")
 
 [node name="Stations" type="Node" parent="." unique_id=906970882]
 

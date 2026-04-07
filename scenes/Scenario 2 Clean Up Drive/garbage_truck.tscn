@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://bvco8ogotk1jd"]
 
 [ext_resource type="Texture2D" uid="uid://dgcg38kmg68b7" path="res://assets/garbage collection pack/animation/animations/pick up container/vehicle_pickUpContainer_12.png" id="1_5gqgs"]
-[ext_resource type="Script" uid="uid://cuxe4mm50v8ou" path="res://scenes/Scenario 2 Clean Up Drive/garbage_truck.gd" id="1_x3h5b"]
+[ext_resource type="Script" uid="uid://cuxe4mm50v8ou" path="res://scripts/Scenario 2 Clean Up Drive/garbage_truck.gd" id="1_x3h5b"]
 [ext_resource type="PackedScene" uid="uid://dotw2g8irmtcv" path="res://scenes/actionable.tscn" id="2_5aqko"]
+[ext_resource type="FontFile" uid="uid://dsy5ql31cyxib" path="res://assets/User Interface/fonts/PixelOperator8.ttf" id="4_lty7c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gqgs"]
 size = Vector2(840.00024, 319.99997)
@@ -15,6 +16,7 @@ scale = Vector2(0.2, 0.2)
 script = ExtResource("1_x3h5b")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=662867703]
+modulate = Color(0.72043425, 0.72043425, 0.72043425, 1)
 texture = ExtResource("1_5gqgs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1006933490]
@@ -23,9 +25,31 @@ scale = Vector2(0.9999995, 0.9999995)
 shape = SubResource("RectangleShape2D_5gqgs")
 
 [node name="Actionable" parent="." unique_id=525290031 instance=ExtResource("2_5aqko")]
+scale = Vector2(0.99999994, 0.99999994)
 use_dialogue = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable" unique_id=469924410]
 position = Vector2(-20.000044, 42.499992)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_5aqko")
+
+[node name="Label" type="Label" parent="." unique_id=679198066]
+offset_left = -354.99994
+offset_top = -179.99998
+offset_right = -28.999939
+offset_bottom = -153.37108
+theme_override_fonts/font = ExtResource("4_lty7c")
+theme_override_font_sizes/font_size = 24
+text = "Empty Sack?"
+
+[node name="NotificationLabel" type="Label" parent="." unique_id=1463879489]
+offset_left = -155.0
+offset_top = -260.0
+offset_right = 171.0
+offset_bottom = -233.3711
+theme_override_fonts/font = ExtResource("4_lty7c")
+theme_override_font_sizes/font_size = 24
+text = "Sack has been Emptied!"
+
+[connection signal="area_entered" from="Actionable" to="." method="_on_actionable_area_entered"]
+[connection signal="area_exited" from="Actionable" to="." method="_on_actionable_area_exited"]

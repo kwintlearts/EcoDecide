@@ -92,7 +92,7 @@ action = "sprint"
 position = Vector2(144, 104)
 scale = Vector2(0.2, 0.2)
 texture_normal = ExtResource("11_qand6")
-action = "action"
+action = "interact"
 
 [node name="X" type="TouchScreenButton" parent="MarginContainer2" unique_id=1146791728]
 visible = false

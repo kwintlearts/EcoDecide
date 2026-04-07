@@ -21,6 +21,7 @@ extends StaticBody2D
 var is_being_collected: bool = false
 
 func _ready() -> void:
+	label.hide()
 	if Engine.is_editor_hint():
 		await get_tree().process_frame
 	_update_sprite()
@@ -32,11 +33,10 @@ func _setup_label():
 		label.visible = false
 		label.add_theme_color_override("font_color", Color.WHITE)
 		label.add_theme_color_override("font_shadow_color", Color.BLACK)
-		label.add_theme_font_size_override("font_size", 8)
+		label.add_theme_font_size_override("font_size", 10)
 		
-		label.autowrap_mode = TextServer.AUTOWRAP_WORD
-		label.size = Vector2(112, 23)
-		
+		label.text = "📦 Take?"
+		label.size = Vector2(60, 20)
 		label.position = Vector2(-30, -40)
 
 func _update_sprite():
@@ -52,50 +52,9 @@ func _update_sprite():
 			sprite.texture = null
 		
 		_update_collision_shape()
-		_update_label_text()
 		
 	elif sprite:
 		sprite.texture = null
-
-func _update_label_text():
-	if not label or not item:
-		return
-	
-	var bin_name = _get_bin_name(item.correct_bin)
-	var bin_color = _get_bin_color(item.correct_bin)
-	
-	label.text = "🗑️ " + bin_name
-	label.add_theme_color_override("font_color", bin_color)
-
-func _get_bin_name(bin_type: int) -> String:
-	match bin_type:
-		0:
-			return "HAZARDOUS"
-		1:
-			return "RECYCLABLE"
-		2:
-			return "BIODEGRADABLE"
-		3:
-			return "RESIDUAL"
-		4:
-			return "RINSEABLE"
-		_:
-			return "UNKNOWN"
-
-func _get_bin_color(bin_type: int) -> Color:
-	match bin_type:
-		0:
-			return Color(1, 0.3, 0.3)
-		1:
-			return Color(0.3, 1, 0.3)
-		2:
-			return Color(0.3, 0.8, 1)
-		3:
-			return Color(1, 1, 0.3)
-		4:
-			return Color(1, 0.6, 1)
-		_:
-			return Color.WHITE
 
 func _update_collision_shape():
 	if not collision_shape or not action_shape:
@@ -123,8 +82,8 @@ func _on_actionable_area_entered(area: Area2D) -> void:
 		# Show bonus label for recyclables if player rinsed bottle in Scenario 1
 		if GameState.did_choose("rinsed_bottle") and GameState.current_scenario == 2 and item and item.correct_bin == 1:
 			_show_bonus_label()
-		#else:
-			#_show_label()
+		else:
+			_show_label()
 
 func _on_actionable_area_exited(area: Area2D) -> void:
 	if not Engine.is_editor_hint():
@@ -133,7 +92,7 @@ func _on_actionable_area_exited(area: Area2D) -> void:
 
 func _show_bonus_label():
 	if label:
-		label.text = "✨ +5 BONUS POINTS! ✨"
+		label.text = "✨ +5 BONUS! ✨"
 		label.add_theme_color_override("font_color", Color.YELLOW)
 		label.visible = true
 		
@@ -143,10 +102,8 @@ func _show_bonus_label():
 
 func _show_label():
 	if label:
-		var bin_name = _get_bin_name(item.correct_bin)
-		var bin_color = _get_bin_color(item.correct_bin)
-		label.text = "🗑️ " + bin_name
-		label.add_theme_color_override("font_color", bin_color)
+		label.text = "📦 Take?"
+		label.add_theme_color_override("font_color", Color.WHITE)
 		label.visible = true
 		
 		var tween = create_tween()
@@ -176,10 +133,6 @@ func playercollect(player):
 	var success = player.collect(item)
 	if success:
 		print("Collected: ", item.name)
-		
-		var scene = get_tree().current_scene
-		if scene and scene.has_method("_on_item_collected"):
-			scene._on_item_collected()
 		
 		queue_free()
 	else:

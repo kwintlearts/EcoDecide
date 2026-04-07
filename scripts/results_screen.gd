@@ -29,6 +29,7 @@ extends Control
 @onready var button: Button = $Panel/Button
 
 func _ready():
+	add_to_group("results_screen")  # Add this line
 	button.pressed.connect(_on_continue_pressed)
 	_load_scenario_results()
 

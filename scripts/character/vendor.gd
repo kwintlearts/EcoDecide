@@ -1,4 +1,4 @@
-# vendor.gd - Timer-based
+# vendor.gd
 extends CharacterBody2D
 
 const SPEED = 100.0
@@ -10,14 +10,33 @@ var walk_direction: int = 1
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var label: Label = $Label
 
 func _ready():
-	EventBus.vendor_confronted.connect(_on_vendor_confronted)
+	label.add_theme_font_size_override("font_size", 16)
+	
 	if animated_sprite:
 		animated_sprite.play("idle_down")
+	
+	# Initial check
+	_update_emoji_from_choice()
+	
+	# Connect to stats_updated to refresh when choices are made
+	GameState.stats_updated.connect(_update_emoji_from_choice)
 
-func _on_vendor_confronted():
-	leave()
+func _update_emoji_from_choice():
+	if GameState.did_choose("educated_vendor"):
+		label.text = "😊👍"
+		label.show()
+	elif GameState.did_choose("confront_vendor"):
+		label.text = "😠"
+		label.show()
+		leave()
+	elif GameState.did_choose("ignore_vendor"):
+		label.text = "😒"
+		label.show()
+	else:
+		label.hide()
 
 func leave():
 	is_leaving = true
@@ -27,17 +46,15 @@ func leave():
 	if animated_sprite:
 		animated_sprite.play("walk_left_right")
 	
-	# Teleport after 3 seconds
 	await get_tree().create_timer(3.0).timeout
 	global_position = teleport_location
 	is_leaving = false
 	
-	# Switch back to idle animation after teleporting
 	if animated_sprite:
 		animated_sprite.play("idle_down")
 	
-	# Optional: Disable physics completely
 	set_physics_process(false)
+	label.hide()
 
 func _physics_process(delta: float) -> void:
 	if not is_leaving:

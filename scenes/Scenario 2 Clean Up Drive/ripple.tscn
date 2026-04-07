@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bwak150lwqbkg"]
 
-[ext_resource type="Script" uid="uid://dyujmqut8twuh" path="res://scenes/Scenario 2 Clean Up Drive/ripple.gd" id="1_kavr3"]
+[ext_resource type="Script" uid="uid://dyujmqut8twuh" path="res://scripts/Scenario 2 Clean Up Drive/ripple.gd" id="1_kavr3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xxw37"]
 size = Vector2(68, 54)
