@@ -21,7 +21,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -241.0
+offset_top = -320.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
@@ -32,37 +32,43 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -269.0
-offset_right = 256.0
+offset_left = 47.0
+offset_top = -328.0
+offset_right = 303.0
+offset_bottom = -59.0
 grow_vertical = 0
 
 [node name="Left" type="TouchScreenButton" parent="MarginContainer" unique_id=1638781569]
-position = Vector2(16, 104)
-scale = Vector2(0.2, 0.2)
+position = Vector2(-15.999998, 94.4)
+scale = Vector2(0.23125, 0.2375)
 texture_normal = ExtResource("1_c5ny4")
 texture_pressed = ExtResource("2_aab6d")
 action = "move_left"
+visibility_mode = 1
 
 [node name="Down" type="TouchScreenButton" parent="MarginContainer" unique_id=1958731408]
-position = Vector2(80, 168)
-scale = Vector2(0.2, 0.2)
+position = Vector2(70.400024, 183.99997)
+scale = Vector2(0.23749991, 0.2375)
 texture_normal = ExtResource("3_0d5ts")
 texture_pressed = ExtResource("4_isr1u")
 action = "move_down"
+visibility_mode = 1
 
 [node name="Right" type="TouchScreenButton" parent="MarginContainer" unique_id=93825960]
-position = Vector2(144, 104)
-scale = Vector2(0.2, 0.2)
+position = Vector2(159.99998, 94.4)
+scale = Vector2(0.23749995, 0.2375)
 texture_normal = ExtResource("5_nag1u")
 texture_pressed = ExtResource("6_rutdi")
 action = "move_right"
+visibility_mode = 1
 
 [node name="Up" type="TouchScreenButton" parent="MarginContainer" unique_id=1609529872]
-position = Vector2(80, 40)
-scale = Vector2(0.2, 0.2)
+position = Vector2(70.400024, 8.000002)
+scale = Vector2(0.23749991, 0.23125)
 texture_normal = ExtResource("7_skc5g")
 texture_pressed = ExtResource("8_acv4c")
 action = "move_up"
+visibility_mode = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1392046264]
 layout_mode = 1
@@ -71,34 +77,40 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -256.0
-offset_top = -269.0
+offset_left = -303.0
+offset_top = -328.0
+offset_right = -47.0
+offset_bottom = -59.0
 grow_horizontal = 0
 grow_vertical = 0
 
 [node name="Y" type="TouchScreenButton" parent="MarginContainer2" unique_id=228114080]
 visible = false
-position = Vector2(16, 104)
-scale = Vector2(0.2, 0.2)
+position = Vector2(-9.000023, 96)
+scale = Vector2(0.23359375, 0.23125)
 texture_normal = ExtResource("9_tdfkl")
+visibility_mode = 1
 
 [node name="B" type="TouchScreenButton" parent="MarginContainer2" unique_id=172508972]
-position = Vector2(80, 168)
-scale = Vector2(0.2, 0.2)
+position = Vector2(71.4, 176)
+scale = Vector2(0.234, 0.234)
 texture_normal = ExtResource("10_aap6i")
 action = "sprint"
+visibility_mode = 1
 
 [node name="A" type="TouchScreenButton" parent="MarginContainer2" unique_id=1298049019]
-position = Vector2(144, 104)
-scale = Vector2(0.2, 0.2)
+position = Vector2(150.99997, 96)
+scale = Vector2(0.234, 0.234)
 texture_normal = ExtResource("11_qand6")
 action = "interact"
+visibility_mode = 1
 
 [node name="X" type="TouchScreenButton" parent="MarginContainer2" unique_id=1146791728]
 visible = false
-position = Vector2(80, 40)
-scale = Vector2(0.2, 0.2)
+position = Vector2(71.4, 16)
+scale = Vector2(0.23359375, 0.23125)
 texture_normal = ExtResource("12_xpmq5")
+visibility_mode = 1
 
 [node name="MarginContainer3" type="MarginContainer" parent="." unique_id=2080804319]
 layout_mode = 1
@@ -108,15 +120,18 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -11.0
-offset_top = -85.0
+offset_top = -144.0
 offset_right = 40.5
+offset_bottom = -59.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Inventory" type="TouchScreenButton" parent="MarginContainer3" unique_id=1654838693]
-scale = Vector2(0.1, 0.1)
+position = Vector2(-7.8, -8)
+scale = Vector2(0.13, 0.13)
 texture_normal = ExtResource("14_ilxsp")
 action = "inventory"
+visibility_mode = 1
 
 [connection signal="pressed" from="MarginContainer2/B" to="." method="_on_b_pressed"]
 [connection signal="released" from="MarginContainer2/B" to="." method="_on_b_released"]

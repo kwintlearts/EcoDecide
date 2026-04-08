@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bf6cf7orbgp1l"]
+
+[ext_resource type="Script" uid="uid://cxf0crsnluwnd" path="res://scenes/main_menu.gd" id="1_l6cm7"]
+
+[node name="MainMenu" type="Control" unique_id=2125747306]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6cm7")
+
+[node name="Panel" type="Panel" parent="." unique_id=1791234084]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -488.0
+offset_top = -299.0
+offset_right = 488.0
+offset_bottom = 299.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="Panel" unique_id=682404507]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 192.0
+offset_top = -15.5
+offset_right = 288.0
+offset_bottom = 15.5
+grow_vertical = 2
+text = "Play
+"
+
+[node name="Settings" type="Button" parent="Panel" unique_id=1136803112]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -15.5
+offset_right = -178.0
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "Settings"
+
+[connection signal="pressed" from="Panel/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Panel/Settings" to="." method="_on_settings_pressed"]

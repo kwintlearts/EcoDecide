@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" format=3 uid="uid://dt7lx2joqvna"]
+
+[ext_resource type="FontFile" uid="uid://dsy5ql31cyxib" path="res://assets/User Interface/fonts/PixelOperator8.ttf" id="1_5657n"]
+[ext_resource type="FontFile" uid="uid://bdyvnabkl2utk" path="res://assets/User Interface/fonts/NotoColorEmoji-Regular.ttf" id="2_bx1lg"]
+
+[resource]
+fallbacks = Array[Font]([ExtResource("2_bx1lg")])
+base_font = ExtResource("1_5657n")

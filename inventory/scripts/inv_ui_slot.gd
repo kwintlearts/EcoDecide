@@ -261,7 +261,7 @@ func _drop_data(at_position, data):
 						
 					BinType.HAZARDOUS:
 						GameState.add_score(5)
-						GameState.modify_env_health(1)
+						GameState.modify_env_health(2)
 						
 					BinType.RINSEABLE:
 						GameState.add_score(5)
@@ -286,11 +286,9 @@ func _drop_data(at_position, data):
 						GameState.modify_env_health(-3)
 						
 					BinType.HAZARDOUS:
-						GameState.add_score(-30)
-						GameState.modify_env_health(-30)
+						GameState.add_score(-25)
+						GameState.modify_env_health(-25)
 						
-					BinType.RINSEABLE:
-						GameState.add_score(-10)
 				
 				#if data.item.id.contains("food") or data.item.id.contains("banana") or data.item.correct_bin == BinType.BIODEGRADABLE:
 					#GameState.modify_env_health(-5)

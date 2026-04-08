@@ -148,6 +148,11 @@ func _process(_delta: float) -> void:
 		toggle_inventory()
 
 func _gui_input(event: InputEvent):
+	# Only handle when inventory is open
+	if not is_open:
+		return
+	
+	# Handle mouse button (touch will be emulated as mouse)
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			dragging = true
@@ -156,10 +161,12 @@ func _gui_input(event: InputEvent):
 			dragging = false
 		get_viewport().set_input_as_handled()
 	
-	if event is InputEventMouseMotion and dragging:
+	# Handle drag movement
+	if dragging and event is InputEventMouseMotion:
 		global_position = get_global_mouse_position() - drag_offset
-		# Update item info position when dragging inventory
 		_update_item_info_position()
+
+
 
 func toggle_inventory():
 	if is_open: close()

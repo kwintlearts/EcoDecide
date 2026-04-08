@@ -74,7 +74,7 @@ func spawn_items():
 		var pickup = pickup_item_scene.instantiate()
 		pickup.item = item
 		pickup.position = random_local_position
-		pickup.scale = Vector2(0.3, 0.3)
+		pickup.scale = Vector2(item.ui_scale.x, item.ui_scale.y)
 		
 		if random_rotation:
 			pickup.rotation = randf_range(0, TAU)

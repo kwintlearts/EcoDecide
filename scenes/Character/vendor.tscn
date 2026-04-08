@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dotw2g8irmtcv" path="res://scenes/actionable.tscn" id="2_8lqll"]
 [ext_resource type="Resource" uid="uid://tyjr7142kuca" path="res://dialogue/Scene 2 - Clean Up Drive.dialogue" id="3_0g0ne"]
 [ext_resource type="Texture2D" uid="uid://cpovkrmfa0mpn" path="res://assets/characters/Walk.png" id="3_dag0r"]
+[ext_resource type="FontVariation" uid="uid://dt7lx2joqvna" path="res://assets/User Interface/fonts/emoji_pixel_text.tres" id="6_48hrg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m0rg2"]
 atlas = ExtResource("1_hys6f")
@@ -96,4 +97,5 @@ offset_left = -8.0
 offset_top = -32.0
 offset_right = 32.0
 offset_bottom = -9.0
+theme_override_fonts/font = ExtResource("6_48hrg")
 text = "⚠️"

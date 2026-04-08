@@ -18,6 +18,8 @@ extends StaticBody2D
 @onready var action_shape: CollisionShape2D = $Actionable/CollisionShape2D
 @onready var label: Label = $Label
 
+
+
 var is_being_collected: bool = false
 
 func _ready() -> void:
@@ -33,7 +35,7 @@ func _setup_label():
 		label.visible = false
 		label.add_theme_color_override("font_color", Color.WHITE)
 		label.add_theme_color_override("font_shadow_color", Color.BLACK)
-		label.add_theme_font_size_override("font_size", 10)
+		label.add_theme_font_size_override("font_size", 14)
 		
 		label.text = "📦 Take?"
 		label.size = Vector2(60, 20)

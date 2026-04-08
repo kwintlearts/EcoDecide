@@ -196,17 +196,17 @@ func _on_mutated(mutation: Dictionary) -> void:
 
 func _on_balloon_gui_input(event: InputEvent) -> void:
 	# Handle touch screen input
-	if event is InputEventScreenTouch:
-		if event.pressed:
-			touch_start_position = event.position
-			is_touch_dragging = false
-		else:
-			# Touch released - check if it was a tap (not a drag)
-			if not is_touch_dragging and is_waiting_for_input and dialogue_line.responses.size() == 0:
-				var balloon_rect = balloon.get_global_rect()
-				if balloon_rect.has_point(event.position):
-					next(dialogue_line.next_id)
-		return
+	#if event is InputEventScreenTouch:
+		#if event.pressed:
+			#touch_start_position = event.position
+			#is_touch_dragging = false
+		#else:
+			## Touch released - check if it was a tap (not a drag)
+			#if not is_touch_dragging and is_waiting_for_input and dialogue_line.responses.size() == 0:
+				#var balloon_rect = balloon.get_global_rect()
+				#if balloon_rect.has_point(event.position):
+					#next(dialogue_line.next_id)
+		#return
 	
 	# Handle mouse input (desktop)
 	if dialogue_label.is_typing:

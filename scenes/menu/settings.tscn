@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://sipfww0soy16"]
+
+[node name="Settings" type="Control" unique_id=1908758643]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=991103062]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -488.0
+offset_top = -299.0
+offset_right = 488.0
+offset_bottom = 299.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Panel" unique_id=946478462]
+layout_mode = 0
+offset_left = 809.0
+offset_top = 14.0
+offset_right = 964.0
+offset_bottom = 45.0
+text = "Back Button"
+
+[node name="Control" type="Control" parent="Panel" unique_id=1157646735]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -128.0
+offset_right = 304.0
+offset_bottom = 112.0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BGMLabel" type="Label" parent="Panel/Control" unique_id=536667812]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -23.0
+offset_top = 8.0
+offset_right = 23.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "Music"
+
+[node name="SFXLabel" type="Label" parent="Panel/Control" unique_id=941425230]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -11.5
+offset_right = 14.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "SFX"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Control" unique_id=243158956]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -85.5
+offset_right = 136.0
+offset_bottom = 85.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 80
+
+[node name="BGM" type="HSlider" parent="Panel/Control/VBoxContainer" unique_id=1344504028]
+layout_mode = 2
+
+[node name="SFX" type="HSlider" parent="Panel/Control/VBoxContainer" unique_id=953837604]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="Panel" unique_id=1034326532]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 528.0
+offset_top = -128.0
+offset_right = 832.0
+offset_bottom = 112.0
+grow_vertical = 2
+mouse_filter = 2

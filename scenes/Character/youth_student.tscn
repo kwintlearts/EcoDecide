@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dibnk11uu824j" path="res://assets/characters/16x16 Animated Top-down Character V1.1/Seperate Spritesheets/Walk Down.png" id="1_psrhv"]
 [ext_resource type="PackedScene" uid="uid://dotw2g8irmtcv" path="res://scenes/actionable.tscn" id="2_7ysu6"]
 [ext_resource type="Resource" uid="uid://tyjr7142kuca" path="res://dialogue/Scene 2 - Clean Up Drive.dialogue" id="3_1h0iu"]
+[ext_resource type="FontVariation" uid="uid://dt7lx2joqvna" path="res://assets/User Interface/fonts/emoji_pixel_text.tres" id="5_7apja"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ysu6"]
 size = Vector2(14, 16)
@@ -32,6 +33,7 @@ shape = SubResource("CircleShape2D_1h0iu")
 [node name="Label" type="Label" parent="." unique_id=1322958374]
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_7apja")
 
 [connection signal="area_entered" from="Actionable" to="." method="_on_actionable_area_entered"]
 [connection signal="area_exited" from="Actionable" to="." method="_on_actionable_area_exited"]

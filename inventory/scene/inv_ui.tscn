@@ -38,50 +38,30 @@ columns = 5
 
 [node name="Inv_UI_Slot" parent="NinePatchRect/GridContainer" unique_id=1880220713 instance=ExtResource("3_dn3an")]
 layout_mode = 2
-mode = null
-bin_type = null
 
 [node name="Inv_UI_Slot2" parent="NinePatchRect/GridContainer" unique_id=1576309720 instance=ExtResource("3_dn3an")]
 layout_mode = 2
-mode = null
-bin_type = null
 
 [node name="Inv_UI_Slot3" parent="NinePatchRect/GridContainer" unique_id=1341038879 instance=ExtResource("3_dn3an")]
 layout_mode = 2
-mode = null
-bin_type = null
 
 [node name="Inv_UI_Slot4" parent="NinePatchRect/GridContainer" unique_id=1262320830 instance=ExtResource("3_dn3an")]
 layout_mode = 2
-mode = null
-bin_type = null
 
 [node name="Inv_UI_Slot5" parent="NinePatchRect/GridContainer" unique_id=1240845732 instance=ExtResource("3_dn3an")]
 layout_mode = 2
-mode = null
-bin_type = null
 
 [node name="Inv_UI_Slot6" parent="NinePatchRect/GridContainer" unique_id=941015729 instance=ExtResource("3_dn3an")]
 layout_mode = 2
-mode = null
-bin_type = null
 
 [node name="Inv_UI_Slot7" parent="NinePatchRect/GridContainer" unique_id=231943341 instance=ExtResource("3_dn3an")]
 layout_mode = 2
-mode = null
-bin_type = null
 
 [node name="Inv_UI_Slot8" parent="NinePatchRect/GridContainer" unique_id=468148670 instance=ExtResource("3_dn3an")]
 layout_mode = 2
-mode = null
-bin_type = null
 
 [node name="Inv_UI_Slot9" parent="NinePatchRect/GridContainer" unique_id=1409832552 instance=ExtResource("3_dn3an")]
 layout_mode = 2
-mode = null
-bin_type = null
 
 [node name="Inv_UI_Slot10" parent="NinePatchRect/GridContainer" unique_id=529699516 instance=ExtResource("3_dn3an")]
 layout_mode = 2
-mode = null
-bin_type = null

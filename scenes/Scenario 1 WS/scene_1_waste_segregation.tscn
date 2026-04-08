@@ -4757,13 +4757,13 @@ size = Vector2(128, 128)
 size = Vector2(205.7143, 160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ei0rg"]
-size = Vector2(320, 160)
+size = Vector2(384, 232)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afuid"]
 size = Vector2(376, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_husvb"]
-size = Vector2(34, 456)
+size = Vector2(34, 444)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0boa"]
 size = Vector2(20, 448)
@@ -4827,94 +4827,97 @@ shape = SubResource("RectangleShape2D_bx8tm")
 
 [node name="Trash Objects" type="Node" parent="." unique_id=1260426703]
 
-[node name="AppleWhole" parent="Trash Objects" unique_id=2099928376 instance=ExtResource("5_vxifi")]
+[node name="Node2D" type="Node2D" parent="Trash Objects" unique_id=594362156]
+visible = false
+
+[node name="AppleWhole" parent="Trash Objects/Node2D" unique_id=2099928376 instance=ExtResource("5_vxifi")]
 position = Vector2(40, -392)
 item = ExtResource("7_64kwx")
 
-[node name="EmptyBottle" parent="Trash Objects" unique_id=551906335 instance=ExtResource("5_vxifi")]
+[node name="EmptyBottle" parent="Trash Objects/Node2D" unique_id=551906335 instance=ExtResource("5_vxifi")]
 position = Vector2(56.000004, -360)
 scale = Vector2(0.8, 0.8)
 item = ExtResource("6_e1isb")
 
-[node name="EmptyMilkJug" parent="Trash Objects" unique_id=1611661854 instance=ExtResource("5_vxifi")]
+[node name="EmptyMilkJug" parent="Trash Objects/Node2D" unique_id=1611661854 instance=ExtResource("5_vxifi")]
 position = Vector2(184, -376)
 scale = Vector2(0.27, 0.27)
 item = ExtResource("7_l7kme")
 
-[node name="AppleHalfEaten" parent="Trash Objects" unique_id=552784236 instance=ExtResource("5_vxifi")]
+[node name="AppleHalfEaten" parent="Trash Objects/Node2D" unique_id=552784236 instance=ExtResource("5_vxifi")]
 position = Vector2(120, -424)
 item = ExtResource("7_rob5o")
 
-[node name="AvocadoHalf" parent="Trash Objects" unique_id=322063439 instance=ExtResource("5_vxifi")]
+[node name="AvocadoHalf" parent="Trash Objects/Node2D" unique_id=322063439 instance=ExtResource("5_vxifi")]
 position = Vector2(40, -368)
 item = ExtResource("6_ontgw")
 
-[node name="AvocadoHalfNoKernel" parent="Trash Objects" unique_id=1086021392 instance=ExtResource("5_vxifi")]
+[node name="AvocadoHalfNoKernel" parent="Trash Objects/Node2D" unique_id=1086021392 instance=ExtResource("5_vxifi")]
 position = Vector2(112, -344)
 item = ExtResource("8_e0wb2")
 
-[node name="CarrotHalf" parent="Trash Objects" unique_id=1762782478 instance=ExtResource("5_vxifi")]
+[node name="CarrotHalf" parent="Trash Objects/Node2D" unique_id=1762782478 instance=ExtResource("5_vxifi")]
 position = Vector2(144, -416)
 item = ExtResource("6_s0ww2")
 
-[node name="BottleJuice" parent="Trash Objects" unique_id=405285901 instance=ExtResource("5_vxifi")]
+[node name="BottleJuice" parent="Trash Objects/Node2D" unique_id=405285901 instance=ExtResource("5_vxifi")]
 position = Vector2(104.00001, -392)
 scale = Vector2(0.6, 0.6)
 item = ExtResource("10_7qyl6")
 
-[node name="EmptyCanTall" parent="Trash Objects" unique_id=255668029 instance=ExtResource("5_vxifi")]
+[node name="EmptyCanTall" parent="Trash Objects/Node2D" unique_id=255668029 instance=ExtResource("5_vxifi")]
 position = Vector2(112, -368)
 scale = Vector2(0.3, 0.3)
 item = ExtResource("11_5ilr6")
 
-[node name="EmptyCanSmall" parent="Trash Objects" unique_id=224605920 instance=ExtResource("5_vxifi")]
+[node name="EmptyCanSmall" parent="Trash Objects/Node2D" unique_id=224605920 instance=ExtResource("5_vxifi")]
 position = Vector2(184, -360)
 scale = Vector2(0.3, 0.3)
 item = ExtResource("12_ajb0f")
 
-[node name="PizzaBox" parent="Trash Objects" unique_id=144142561 instance=ExtResource("5_vxifi")]
+[node name="PizzaBox" parent="Trash Objects/Node2D" unique_id=144142561 instance=ExtResource("5_vxifi")]
 position = Vector2(224, -360)
 scale = Vector2(0.3, 0.3)
 item = ExtResource("13_o6hax")
 
-[node name="CrackedMug" parent="Trash Objects" unique_id=928123329 instance=ExtResource("5_vxifi")]
+[node name="CrackedMug" parent="Trash Objects/Node2D" unique_id=928123329 instance=ExtResource("5_vxifi")]
 position = Vector2(272, -408.00003)
 scale = Vector2(0.3, 0.3)
 item = ExtResource("13_uhqgp")
 
-[node name="CardBoardPaperBag" parent="Trash Objects" unique_id=1193561648 instance=ExtResource("5_vxifi")]
+[node name="CardBoardPaperBag" parent="Trash Objects/Node2D" unique_id=1193561648 instance=ExtResource("5_vxifi")]
 position = Vector2(176, -432)
 scale = Vector2(0.3, 0.3)
 item = ExtResource("14_4th0s")
 
-[node name="HotDogHalfRaw" parent="Trash Objects" unique_id=692800355 instance=ExtResource("5_vxifi")]
+[node name="HotDogHalfRaw" parent="Trash Objects/Node2D" unique_id=692800355 instance=ExtResource("5_vxifi")]
 position = Vector2(120, -384)
 item = ExtResource("15_uhqgp")
 
-[node name="PlateStacked" parent="Trash Objects" unique_id=418162006 instance=ExtResource("5_vxifi")]
+[node name="PlateStacked" parent="Trash Objects/Node2D" unique_id=418162006 instance=ExtResource("5_vxifi")]
 position = Vector2(112, -448)
 item = ExtResource("16_4th0s")
 
-[node name="EmptyContainer" parent="Trash Objects" unique_id=487230747 instance=ExtResource("5_vxifi")]
+[node name="EmptyContainer" parent="Trash Objects/Node2D" unique_id=487230747 instance=ExtResource("5_vxifi")]
 position = Vector2(200, -392)
 scale = Vector2(0.75, 0.75)
 item = ExtResource("21_afuid")
 
-[node name="BubbleGum" parent="Trash Objects" unique_id=1844572703 instance=ExtResource("5_vxifi")]
+[node name="BubbleGum" parent="Trash Objects/Node2D" unique_id=1844572703 instance=ExtResource("5_vxifi")]
 position = Vector2(232, -440)
 scale = Vector2(0.3, 0.3)
 item = ExtResource("23_20onu")
 
-[node name="CrackedEgg" parent="Trash Objects" unique_id=1335584770 instance=ExtResource("5_vxifi")]
+[node name="CrackedEgg" parent="Trash Objects/Node2D" unique_id=1335584770 instance=ExtResource("5_vxifi")]
 position = Vector2(272, -432)
 scale = Vector2(0.5, 0.5)
 item = ExtResource("24_svdj8")
 
-[node name="PlateDirty" parent="Trash Objects" unique_id=901049775 instance=ExtResource("5_vxifi")]
+[node name="PlateDirty" parent="Trash Objects/Node2D" unique_id=901049775 instance=ExtResource("5_vxifi")]
 position = Vector2(240, -424)
 item = ExtResource("25_imxk3")
 
-[node name="ToothPaste" parent="Trash Objects" unique_id=2139592178 instance=ExtResource("5_vxifi")]
+[node name="ToothPaste" parent="Trash Objects/Node2D" unique_id=2139592178 instance=ExtResource("5_vxifi")]
 position = Vector2(144, -448)
 scale = Vector2(0.3, 0.3)
 item = ExtResource("26_bx8tm")
@@ -4925,12 +4928,12 @@ collision_layer = 0
 collision_mask = 0
 script = ExtResource("28_e2o58")
 items = Array[ExtResource("29_g6s2f")]([ExtResource("26_bx8tm"), ExtResource("30_rmulh"), ExtResource("31_qy8cb"), ExtResource("32_v4o6l"), ExtResource("16_4th0s"), ExtResource("25_imxk3"), ExtResource("33_7ngn2"), ExtResource("13_o6hax"), ExtResource("34_5x5ro"), ExtResource("7_l7kme"), ExtResource("35_tkgh5"), ExtResource("36_lgmx6"), ExtResource("15_uhqgp"), ExtResource("21_afuid"), ExtResource("11_5ilr6"), ExtResource("12_ajb0f"), ExtResource("6_e1isb"), ExtResource("13_uhqgp"), ExtResource("24_svdj8"), ExtResource("6_s0ww2"), ExtResource("14_4th0s"), ExtResource("37_vcfcp"), ExtResource("23_20onu"), ExtResource("38_gpfno"), ExtResource("40_aqbi1"), ExtResource("42_vilf8"), ExtResource("8_e0wb2"), ExtResource("7_rob5o"), ExtResource("10_7qyl6")])
-total_items_to_spawn = 10
+total_items_to_spawn = 20
 scale_range = Vector2(50, 50)
 pickup_item_scene = ExtResource("5_vxifi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trash Objects/Spawner" unique_id=2063352615]
-position = Vector2(464, 264)
+position = Vector2(480, 252)
 shape = SubResource("RectangleShape2D_ei0rg")
 
 [node name="Stations" type="Node" parent="." unique_id=906970882]
@@ -4981,7 +4984,7 @@ rotation = 1.5707964
 shape = SubResource("RectangleShape2D_afuid")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Borders/StaticBody2D" unique_id=843333450]
-position = Vector2(-24, -320)
+position = Vector2(-24, -314)
 shape = SubResource("RectangleShape2D_husvb")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Borders/StaticBody2D" unique_id=1360529027]

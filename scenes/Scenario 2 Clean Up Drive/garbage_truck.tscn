@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dgcg38kmg68b7" path="res://assets/garbage collection pack/animation/animations/pick up container/vehicle_pickUpContainer_12.png" id="1_5gqgs"]
 [ext_resource type="Script" uid="uid://cuxe4mm50v8ou" path="res://scripts/Scenario 2 Clean Up Drive/garbage_truck.gd" id="1_x3h5b"]
 [ext_resource type="PackedScene" uid="uid://dotw2g8irmtcv" path="res://scenes/actionable.tscn" id="2_5aqko"]
-[ext_resource type="FontFile" uid="uid://dsy5ql31cyxib" path="res://assets/User Interface/fonts/PixelOperator8.ttf" id="4_lty7c"]
+[ext_resource type="FontVariation" uid="uid://dt7lx2joqvna" path="res://assets/User Interface/fonts/emoji_pixel_text.tres" id="4_lty7c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gqgs"]
 size = Vector2(840.00024, 319.99997)
