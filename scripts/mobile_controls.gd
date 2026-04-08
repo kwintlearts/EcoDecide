@@ -1,19 +1,37 @@
 # mobile_controls.gd
 extends Control
 
-@onready var a: TouchScreenButton = $MarginContainer2/A
-@onready var b: TouchScreenButton = $MarginContainer2/B
-@onready var inventory: TouchScreenButton = $MarginContainer3/Inventory
+@onready var b: TouchScreenButton = $Buttons/B
+@onready var a: TouchScreenButton = $Buttons/A
+@onready var inventory: TouchScreenButton = $BarBottom/Inventory
+
+var is_mobile_web = false
+
+func _ready() -> void:
+	is_mobile_web = OS.has_feature("web_android") or OS.has_feature("web_ios")
+	
+	if not is_mobile_web:
+		visible = false
+		hide()
+		print("Not mobile web - controls hidden")
+	else:
+		visible = true
+		print("Mobile web - controls visible")
 
 func _process(_delta):
+	if not is_mobile_web:
+		return
+	
 	# Hide controls if there's a dialogue balloon active OR results screen is showing
 	var balloons = get_tree().get_nodes_in_group("dialogue_balloon")
 	var results_screen = get_tree().get_nodes_in_group("results_screen")
 	
 	if balloons.size() > 0 or results_screen.size() > 0:
-		visible = false
+		if visible:
+			visible = false
 	else:
-		visible = true
+		if not visible:
+			visible = true
 
 func _on_a_pressed() -> void:
 	a.scale = Vector2(0.240, 0.240)

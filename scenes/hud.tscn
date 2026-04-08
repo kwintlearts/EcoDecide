@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://drp6wwerhn5u0" path="res://scenes/mobile_controls.tscn" id="1_y4d5l"]
 [ext_resource type="FontFile" uid="uid://dsy5ql31cyxib" path="res://assets/User Interface/fonts/PixelOperator8.ttf" id="2_5ysmq"]
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=507491322]
+[node name="HudLayer" type="CanvasLayer" unique_id=507491322]
 
 [node name="Hud" type="Control" parent="." unique_id=1281269869]
 layout_mode = 3
@@ -105,5 +105,4 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_5ysmq")
 text = "00:00"
 
-[node name="MobileControls" parent="Hud" unique_id=1409755977 instance=ExtResource("1_y4d5l")]
-layout_mode = 1
+[node name="MobileControls" parent="." unique_id=1409755977 instance=ExtResource("1_y4d5l")]

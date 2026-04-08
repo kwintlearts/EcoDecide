@@ -69,7 +69,7 @@ func spawn_items():
 		var random_global_position = _get_random_position_in_rect(spawn_rect)
 		var random_local_position = to_local(random_global_position)
 		
-		print("Spawning ", item.name, " at local: ", random_local_position)
+		#print("Spawning ", item.name, " at local: ", random_local_position)
 		
 		var pickup = pickup_item_scene.instantiate()
 		pickup.item = item

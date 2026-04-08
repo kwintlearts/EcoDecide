@@ -1,14 +1,7 @@
 [gd_scene format=3 uid="uid://drp6wwerhn5u0"]
 
 [ext_resource type="Script" uid="uid://baud3gg848y52" path="res://scripts/mobile_controls.gd" id="1_bswi6"]
-[ext_resource type="Texture2D" uid="uid://mkchlufwwnpc" path="res://assets/User Interface/controls/WhiteAndBlackGUI/arrow_left2.png" id="1_c5ny4"]
-[ext_resource type="Texture2D" uid="uid://dicht2df71gjd" path="res://assets/User Interface/controls/WhiteAndBlackGUI/arrow_left.png" id="2_aab6d"]
-[ext_resource type="Texture2D" uid="uid://uirgtw7mv7nq" path="res://assets/User Interface/controls/WhiteAndBlackGUI/arrow_down2.png" id="3_0d5ts"]
-[ext_resource type="Texture2D" uid="uid://645j0lh5ehyc" path="res://assets/User Interface/controls/WhiteAndBlackGUI/arrow_down.png" id="4_isr1u"]
-[ext_resource type="Texture2D" uid="uid://cedvs54gt3s7o" path="res://assets/User Interface/controls/WhiteAndBlackGUI/arrow_right2.png" id="5_nag1u"]
-[ext_resource type="Texture2D" uid="uid://bt83g6nqrwlnq" path="res://assets/User Interface/controls/WhiteAndBlackGUI/arrow_right.png" id="6_rutdi"]
-[ext_resource type="Texture2D" uid="uid://b1fsw5ndss01c" path="res://assets/User Interface/controls/WhiteAndBlackGUI/arrow_up2.png" id="7_skc5g"]
-[ext_resource type="Texture2D" uid="uid://dixk6gi555uy" path="res://assets/User Interface/controls/WhiteAndBlackGUI/arrow_up.png" id="8_acv4c"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="2_saaj3"]
 [ext_resource type="Texture2D" uid="uid://bm7ovjuhye0cb" path="res://assets/User Interface/controls/WhiteAndBlackGUI/letter_y.png" id="9_tdfkl"]
 [ext_resource type="Texture2D" uid="uid://bghya8x85x8vu" path="res://assets/User Interface/controls/WhiteAndBlackGUI/letter_b.png" id="10_aap6i"]
 [ext_resource type="Texture2D" uid="uid://dljue2ibn7wme" path="res://assets/User Interface/controls/WhiteAndBlackGUI/letter_a.png" id="11_qand6"]
@@ -27,50 +20,22 @@ grow_vertical = 0
 mouse_filter = 2
 script = ExtResource("1_bswi6")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=12557578]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
+[node name="Virtual Joystick" parent="." unique_id=552995822 instance=ExtResource("2_saaj3")]
+layout_mode = 0
+anchors_preset = 0
+anchor_top = 0.0
+anchor_bottom = 0.0
 offset_left = 47.0
-offset_top = -328.0
+offset_top = 0.0
 offset_right = 303.0
-offset_bottom = -59.0
-grow_vertical = 0
+offset_bottom = 269.0
+grow_vertical = 1
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_up"
+action_down = "move_down"
 
-[node name="Left" type="TouchScreenButton" parent="MarginContainer" unique_id=1638781569]
-position = Vector2(-15.999998, 94.4)
-scale = Vector2(0.23125, 0.2375)
-texture_normal = ExtResource("1_c5ny4")
-texture_pressed = ExtResource("2_aab6d")
-action = "move_left"
-visibility_mode = 1
-
-[node name="Down" type="TouchScreenButton" parent="MarginContainer" unique_id=1958731408]
-position = Vector2(70.400024, 183.99997)
-scale = Vector2(0.23749991, 0.2375)
-texture_normal = ExtResource("3_0d5ts")
-texture_pressed = ExtResource("4_isr1u")
-action = "move_down"
-visibility_mode = 1
-
-[node name="Right" type="TouchScreenButton" parent="MarginContainer" unique_id=93825960]
-position = Vector2(159.99998, 94.4)
-scale = Vector2(0.23749995, 0.2375)
-texture_normal = ExtResource("5_nag1u")
-texture_pressed = ExtResource("6_rutdi")
-action = "move_right"
-visibility_mode = 1
-
-[node name="Up" type="TouchScreenButton" parent="MarginContainer" unique_id=1609529872]
-position = Vector2(70.400024, 8.000002)
-scale = Vector2(0.23749991, 0.23125)
-texture_normal = ExtResource("7_skc5g")
-texture_pressed = ExtResource("8_acv4c")
-action = "move_up"
-visibility_mode = 1
-
-[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1392046264]
+[node name="Buttons" type="MarginContainer" parent="." unique_id=1392046264]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -84,35 +49,33 @@ offset_bottom = -59.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Y" type="TouchScreenButton" parent="MarginContainer2" unique_id=228114080]
+[node name="Y" type="TouchScreenButton" parent="Buttons" unique_id=228114080]
 visible = false
 position = Vector2(-9.000023, 96)
 scale = Vector2(0.23359375, 0.23125)
 texture_normal = ExtResource("9_tdfkl")
 visibility_mode = 1
 
-[node name="B" type="TouchScreenButton" parent="MarginContainer2" unique_id=172508972]
-position = Vector2(71.4, 176)
+[node name="B" type="TouchScreenButton" parent="Buttons" unique_id=172508972]
+position = Vector2(71.4, 155)
 scale = Vector2(0.234, 0.234)
 texture_normal = ExtResource("10_aap6i")
 action = "sprint"
-visibility_mode = 1
 
-[node name="A" type="TouchScreenButton" parent="MarginContainer2" unique_id=1298049019]
-position = Vector2(150.99997, 96)
+[node name="A" type="TouchScreenButton" parent="Buttons" unique_id=1298049019]
+position = Vector2(150.99997, 75)
 scale = Vector2(0.234, 0.234)
 texture_normal = ExtResource("11_qand6")
 action = "interact"
-visibility_mode = 1
 
-[node name="X" type="TouchScreenButton" parent="MarginContainer2" unique_id=1146791728]
+[node name="X" type="TouchScreenButton" parent="Buttons" unique_id=1146791728]
 visible = false
 position = Vector2(71.4, 16)
 scale = Vector2(0.23359375, 0.23125)
 texture_normal = ExtResource("12_xpmq5")
 visibility_mode = 1
 
-[node name="MarginContainer3" type="MarginContainer" parent="." unique_id=2080804319]
+[node name="BarBottom" type="MarginContainer" parent="." unique_id=2080804319]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -126,16 +89,15 @@ offset_bottom = -59.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Inventory" type="TouchScreenButton" parent="MarginContainer3" unique_id=1654838693]
-position = Vector2(-7.8, -8)
+[node name="Inventory" type="TouchScreenButton" parent="BarBottom" unique_id=1654838693]
+position = Vector2(-7.8, -29)
 scale = Vector2(0.13, 0.13)
 texture_normal = ExtResource("14_ilxsp")
 action = "inventory"
-visibility_mode = 1
 
-[connection signal="pressed" from="MarginContainer2/B" to="." method="_on_b_pressed"]
-[connection signal="released" from="MarginContainer2/B" to="." method="_on_b_released"]
-[connection signal="pressed" from="MarginContainer2/A" to="." method="_on_a_pressed"]
-[connection signal="released" from="MarginContainer2/A" to="." method="_on_a_released"]
-[connection signal="pressed" from="MarginContainer3/Inventory" to="." method="_on_inventory_pressed"]
-[connection signal="released" from="MarginContainer3/Inventory" to="." method="_on_inventory_released"]
+[connection signal="pressed" from="Buttons/B" to="." method="_on_b_pressed"]
+[connection signal="released" from="Buttons/B" to="." method="_on_b_released"]
+[connection signal="pressed" from="Buttons/A" to="." method="_on_a_pressed"]
+[connection signal="released" from="Buttons/A" to="." method="_on_a_released"]
+[connection signal="pressed" from="BarBottom/Inventory" to="." method="_on_inventory_pressed"]
+[connection signal="released" from="BarBottom/Inventory" to="." method="_on_inventory_released"]
