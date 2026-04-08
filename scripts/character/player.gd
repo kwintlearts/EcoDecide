@@ -29,6 +29,15 @@ var SPEED = BASE_SPEED
 var SPRINT_SPEED = BASE_SPRINT_SPEED
 
 func _ready():
+	#var is_mobile_web = OS.has_feature("web_android") or OS.has_feature("web_ios")
+	#
+	#if is_mobile_web:
+		#scale = Vector2(2,2)
+		#
+	#else:
+	#
+		#scale = Vector2(1, 1)
+	
 	add_to_group("player")
 	AnimationManager.register_character("Player", animated_sprite)
 	
