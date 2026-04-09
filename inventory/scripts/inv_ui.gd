@@ -13,7 +13,7 @@ var is_open = false
 var dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
 
-func _ready():
+func _ready():	
 	await get_tree().process_frame
 	inv = InventoryManager.get_player_inv()
 	if item_info:
@@ -148,6 +148,7 @@ func _process(_delta: float) -> void:
 		toggle_inventory()
 
 func _gui_input(event: InputEvent):
+	
 	# Only handle when inventory is open
 	if not is_open:
 		return
@@ -155,9 +156,11 @@ func _gui_input(event: InputEvent):
 	# Handle mouse button (touch will be emulated as mouse)
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
+			CursorManager.set_cursor(Input.CURSOR_DRAG)
 			dragging = true
 			drag_offset = get_global_mouse_position() - global_position
-		else:
+		else:			
+			CursorManager.set_cursor(Input.CURSOR_CAN_DROP)
 			dragging = false
 		get_viewport().set_input_as_handled()
 	
@@ -188,3 +191,12 @@ func open():
 func close():
 	visible = false
 	is_open = false
+
+
+func _on_mouse_entered() -> void:
+	CursorManager.set_cursor(Input.CURSOR_CAN_DROP)
+	
+
+
+func _on_mouse_exited() -> void:
+	CursorManager.set_cursor(Input.CURSOR_ARROW)

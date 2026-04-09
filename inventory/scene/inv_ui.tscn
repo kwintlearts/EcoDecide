@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cere7rcpumafw"]
 
 [ext_resource type="Script" uid="uid://djajtuxnsjt8k" path="res://inventory/scripts/inv_ui.gd" id="1_f2u1w"]
-[ext_resource type="Texture2D" uid="uid://cbb7wh1yven3q" path="res://assets/inventory-background.png" id="2_w82yi"]
+[ext_resource type="Texture2D" uid="uid://b45q2axgdwpuq" path="res://assets/User Interface/SimplePixelArtUIpack/Artwork/Gray/square/background.png" id="2_5yxb5"]
 [ext_resource type="PackedScene" uid="uid://cd52kuifnwr6g" path="res://inventory/scene/inv_ui_slot.tscn" id="3_dn3an"]
 
 [node name="Inv_UI" type="Control" unique_id=1135568863]
@@ -15,9 +15,10 @@ script = ExtResource("1_f2u1w")
 layout_mode = 0
 offset_right = 104.0
 offset_bottom = 48.0
-texture = ExtResource("2_w82yi")
+texture = ExtResource("2_5yxb5")
+region_rect = Rect2(0, 0, 134, 108)
 patch_margin_left = 6
-patch_margin_top = 6
+patch_margin_top = 4
 patch_margin_right = 6
 patch_margin_bottom = 6
 
@@ -31,7 +32,7 @@ anchor_bottom = 0.5
 offset_left = -48.0
 offset_top = -18.0
 offset_right = 48.0
-offset_bottom = 22.0
+offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 5
@@ -65,3 +66,6 @@ layout_mode = 2
 
 [node name="Inv_UI_Slot10" parent="NinePatchRect/GridContainer" unique_id=529699516 instance=ExtResource("3_dn3an")]
 layout_mode = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

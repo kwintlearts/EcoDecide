@@ -26,14 +26,23 @@ func action(interactor = null) -> void:
 	var parent = get_parent()
 	
 	# Check if parent is a pickup item
-	if parent and parent.has_method("get_item_dialogue"):
+	if parent and parent.has_method("get_item_dialogue") and GameState.scenario_active:
 		var item_dialogue = parent.get_item_dialogue()
 		if item_dialogue and item_dialogue.dialogue_resource:
+			# Lock player movement BEFORE dialogue
+			var player = get_tree().get_first_node_in_group("player")
+			if player:
+				player.can_move = false
+			
 			# Show dialogue
 			start_dialogue_with_resource(item_dialogue.dialogue_resource, item_dialogue.dialogue_start)
 			
 			# After dialogue, check if should collect
 			await DialogueManager.dialogue_ended
+			
+			# Unlock player movement AFTER dialogue
+			if player:
+				player.can_move = true
 			
 			# Only collect if player didn't choose to leave it
 			if not GameState.did_choose("battery_ignored"):
@@ -43,7 +52,20 @@ func action(interactor = null) -> void:
 	
 	# Fallback to default dialogue
 	if use_dialogue and dialogue_resource:
+		# Lock player movement BEFORE dialogue
+		var player = get_tree().get_first_node_in_group("player")
+		if player:
+			player.can_move = false
+		
 		start_dialogue()
+		
+		# Wait for dialogue to end
+		await DialogueManager.dialogue_ended
+		
+		# Unlock player movement AFTER dialogue
+		if player:
+			player.can_move = true
+		
 		return
 	
 	do_parent_action(interactor)
@@ -57,7 +79,8 @@ func start_dialogue_with_resource(resource: DialogueResource, start: String) -> 
 	balloon.add_to_group("dialogue_balloon")
 	get_tree().current_scene.add_child(balloon)
 	DialogueManager.dialogue_ended.connect(
-		func(_r): dialogue_active = false, 
+		func(_r): 
+			dialogue_active = false,
 		CONNECT_ONE_SHOT
 	)
 	balloon.start(resource, start)

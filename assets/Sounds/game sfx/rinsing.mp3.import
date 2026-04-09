@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d12sss5btdbce"
+path="res://.godot/imported/rinsing.mp3-e52bfb78a807d2a23e5c9ce91e178734.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds/game sfx/rinsing.mp3"
+dest_files=["res://.godot/imported/rinsing.mp3-e52bfb78a807d2a23e5c9ce91e178734.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

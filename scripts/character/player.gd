@@ -1,5 +1,7 @@
 # player.gd
 extends CharacterBody2D
+# base Speed 50
+# base sprint 80 
 
 const BASE_SPEED = 80.0
 const BASE_SPRINT_SPEED = 110.0
@@ -30,9 +32,9 @@ func _ready():
 	add_to_group("player")
 	AnimationManager.register_character("Player", animated_sprite)
 	
-	# Apply speed penalty for woven sack
+	# Apply speed penalty for woven sack (slower due to more capacity)
 	if GameState.did_choose("woven_bag"):
-		SPEED = BASE_SPEED * 0.7
+		SPEED = BASE_SPEED * 0.7  # 30% slower
 		SPRINT_SPEED = BASE_SPRINT_SPEED * 0.7
 		print("Woven sack equipped: Speed reduced to ", SPEED)
 	else:
@@ -40,6 +42,7 @@ func _ready():
 		SPRINT_SPEED = BASE_SPRINT_SPEED
 		print("Plastic sack or default: Normal speed")
 	
+	# Register inventory with manager
 	if inv:
 		InventoryManager.set_player_inv(inv)
 
@@ -47,25 +50,33 @@ func switch_to_plastic_sack():
 	inv = PLASTIC_SACK.duplicate()
 	InventoryManager.set_player_inv(inv)
 	
+	# Restore normal speed
 	SPEED = BASE_SPEED
 	SPRINT_SPEED = BASE_SPRINT_SPEED
 	print("Switched to Plastic Sack - Speed restored to ", SPEED)
 	
+	# Refresh UI
 	await get_tree().process_frame
 	if inv_ui and inv_ui.has_method("refresh_inventory"):
 		inv_ui.refresh_inventory()
+	
+	print("Switched to Plastic Sack inventory (10 slots)")
 
 func switch_to_woven_sack():
 	inv = WOVEN_SACK.duplicate()
 	InventoryManager.set_player_inv(inv)
 	
+	# Apply speed penalty
 	SPEED = BASE_SPEED * 0.7
 	SPRINT_SPEED = BASE_SPRINT_SPEED * 0.7
 	print("Switched to Woven Sack - Speed reduced to ", SPEED)
 	
+	# Refresh UI
 	await get_tree().process_frame
 	if inv_ui and inv_ui.has_method("refresh_inventory"):
 		inv_ui.refresh_inventory()
+	
+	print("Switched to Woven Sack inventory (15 slots)")
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
@@ -73,6 +84,9 @@ func _unhandled_input(_event: InputEvent) -> void:
 		if actionables.size() > 0:
 			actionables[0].action(self)
 			get_viewport().set_input_as_handled()
+	
+	is_sprinting = Input.is_action_pressed("sprint") and GameState.energy > 0
+
 
 func _physics_process(delta: float) -> void:
 	if GameState.scenario_active and GameState.uses_timer and TimerManager.time_remaining <= 0:
@@ -82,24 +96,21 @@ func _physics_process(delta: float) -> void:
 	
 	if not can_move:
 		velocity = Vector2.ZERO
-		move_and_slide()
 		return
 	
 	var previous_position = global_position
 	
-	# Get movement from input (works with both keyboard and joystick)
-	var move_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	if can_move:
+		input_vector = Input.get_vector("move_left","move_right","move_up","move_down")
+	else:
+		input_vector = Vector2.ZERO
+		get_viewport().set_input_as_handled()
 	
-	# Sprint
-	is_sprinting = Input.is_action_pressed("sprint") and GameState.energy > 0
-	
-	if can_move and move_vector.length() > 0:
-		input_vector = move_vector
+	if input_vector.length() > 0:
 		var current_speed = (SPRINT_SPEED if is_sprinting and GameState.energy > 0 else SPEED) * speed_multiplier
 		velocity = input_vector * current_speed
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, SPEED)
-		input_vector = Vector2.ZERO
 	
 	move_and_slide()
 	
@@ -113,10 +124,10 @@ func _physics_process(delta: float) -> void:
 		if GameState.energy <= 0 and is_sprinting:
 			is_sprinting = false
 	elif not is_actually_moving and input_vector.length() > 0:
-		GameState.modify_energy(ENERGY_REGEN_RATE * delta)
+		GameState.modify_energy(ENERGY_REGEN_RATE * delta )
 	else:
 		if GameState.energy < 100:
-			GameState.modify_energy(ENERGY_REGEN_RATE * delta)
+			GameState.modify_energy(ENERGY_REGEN_RATE * delta )
 	
 	update_animation(is_actually_moving)
 	
@@ -144,6 +155,9 @@ func update_animation(is_actually_moving: bool = true):
 		animation_prefix = "walk_" if is_moving else "idle_"
 	
 	animated_sprite.play(animation_prefix + facing_direction)
+
+func player():
+	pass
 
 func collect(item):
 	var success = inv.insert(item)

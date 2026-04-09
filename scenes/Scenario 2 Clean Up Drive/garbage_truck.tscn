@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://cuxe4mm50v8ou" path="res://scripts/Scenario 2 Clean Up Drive/garbage_truck.gd" id="1_x3h5b"]
 [ext_resource type="PackedScene" uid="uid://dotw2g8irmtcv" path="res://scenes/actionable.tscn" id="2_5aqko"]
 [ext_resource type="FontVariation" uid="uid://dt7lx2joqvna" path="res://assets/User Interface/fonts/emoji_pixel_text.tres" id="4_lty7c"]
+[ext_resource type="AudioStream" uid="uid://bkw3xifdrlksy" path="res://assets/Sounds/game sfx/interaction.mp3" id="5_4jbnv"]
+[ext_resource type="AudioStream" uid="uid://dt5chp6x8udnn" path="res://assets/Sounds/game sfx/errorsfx.mp3" id="6_3e0nn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gqgs"]
 size = Vector2(840.00024, 319.99997)
@@ -50,6 +52,14 @@ offset_bottom = -233.3711
 theme_override_fonts/font = ExtResource("4_lty7c")
 theme_override_font_sizes/font_size = 24
 text = "Sack has been Emptied!"
+
+[node name="Interaction" type="AudioStreamPlayer" parent="." unique_id=920361315]
+stream = ExtResource("5_4jbnv")
+bus = &"SFX"
+
+[node name="Error" type="AudioStreamPlayer" parent="." unique_id=524019659]
+stream = ExtResource("6_3e0nn")
+bus = &"SFX"
 
 [connection signal="area_entered" from="Actionable" to="." method="_on_actionable_area_entered"]
 [connection signal="area_exited" from="Actionable" to="." method="_on_actionable_area_exited"]

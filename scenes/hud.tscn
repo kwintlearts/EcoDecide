@@ -3,6 +3,12 @@
 [ext_resource type="Script" uid="uid://bqfuohjbmo2mm" path="res://scripts/status.gd" id="1_oo0fn"]
 [ext_resource type="PackedScene" uid="uid://drp6wwerhn5u0" path="res://scenes/mobile_controls.tscn" id="1_y4d5l"]
 [ext_resource type="FontFile" uid="uid://dsy5ql31cyxib" path="res://assets/User Interface/fonts/PixelOperator8.ttf" id="2_5ysmq"]
+[ext_resource type="Script" uid="uid://dyn7gn48sfaju" path="res://scripts/utility.gd" id="3_uo2fv"]
+[ext_resource type="Texture2D" uid="uid://b7vmu7sb2cxjr" path="res://assets/User Interface/SimplePixelArtUIpack/Artwork/ColorCustomizible/icons/isonswhite2.png" id="6_5pdws"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_047uy"]
+atlas = ExtResource("6_5pdws")
+region = Rect2(9, 69, 16, 21)
 
 [node name="HudLayer" type="CanvasLayer" unique_id=507491322]
 
@@ -105,4 +111,87 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_5ysmq")
 text = "00:00"
 
-[node name="MobileControls" parent="." unique_id=1409755977 instance=ExtResource("1_y4d5l")]
+[node name="Utility" type="Control" parent="Hud" unique_id=39900092]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -132.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_uo2fv")
+
+[node name="MarginContainer" type="MarginContainer" parent="Hud/Utility" unique_id=906368239]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.75
+offset_top = -24.0
+offset_right = 25.75
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Inventory" type="TouchScreenButton" parent="Hud/Utility/MarginContainer" unique_id=1542283063]
+position = Vector2(11.750048, 4)
+scale = Vector2(2.5, 2.5)
+texture_normal = SubResource("AtlasTexture_047uy")
+action = "inventory"
+
+[node name="SceneIcon" type="NinePatchRect" parent="Hud/Utility" unique_id=1785564248]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -162.0
+offset_right = 26.0
+offset_bottom = -99.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_5pdws")
+region_rect = Rect2(39, 71, 18, 19)
+
+[node name="SceneButton" type="Button" parent="Hud/Utility/SceneIcon" unique_id=1436287680]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 54.0
+offset_bottom = 64.0
+
+[node name="SettingsIcon" type="NinePatchRect" parent="Hud/Utility" unique_id=566960343]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -280.0
+offset_right = 26.0
+offset_bottom = -217.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_5pdws")
+region_rect = Rect2(71, 71, 18, 19)
+
+[node name="SettingsButton" type="Button" parent="Hud/Utility/SettingsIcon" unique_id=306574425]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 54.0
+offset_bottom = 64.0
+flat = true
+
+[node name="MobileControls" parent="Hud" unique_id=1409755977 instance=ExtResource("1_y4d5l")]
+layout_mode = 1
+
+[connection signal="pressed" from="Hud/Utility/MarginContainer/Inventory" to="Hud/Utility" method="_on_inventory_pressed"]
+[connection signal="released" from="Hud/Utility/MarginContainer/Inventory" to="Hud/Utility" method="_on_inventory_released"]
+[connection signal="pressed" from="Hud/Utility/SceneIcon/SceneButton" to="Hud/Utility" method="_on_scene_button_pressed"]
+[connection signal="pressed" from="Hud/Utility/SettingsIcon/SettingsButton" to="Hud/Utility" method="_on_settings_button_pressed"]

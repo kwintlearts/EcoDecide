@@ -28,18 +28,27 @@ var rinse_item: InvItem = null
 var description_timer: Timer
 
 signal item_selected(item_name, item_description)
+const CAN_DROP = preload("uid://cgslqmoofgmbw")
+const DRAG = preload("uid://b6rjp6l4tsyeu")
+@onready var interaction: AudioStreamPlayer = $Interaction
+@onready var error: AudioStreamPlayer = $Error
+@onready var pick_up: AudioStreamPlayer = $PickUp
+@onready var rinsing: AudioStreamPlayer = $Rinsing
+
+# Store original cursor to restore
+var original_cursor: Texture2D = null
 
 func _ready():
 	mouse_default_cursor_shape = Control.CURSOR_MOVE
 	set_process_unhandled_input(true)
-	gui_input.connect(_on_gui_input)
+
 	
-	# Create timer for hiding description
 	description_timer = Timer.new()
 	description_timer.one_shot = true
 	add_child(description_timer)
 
-func _on_gui_input(event: InputEvent):
+
+func _gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		_show_item_description()
 	elif event is InputEventScreenTouch and event.pressed:
@@ -51,7 +60,6 @@ func _show_item_description():
 
 func update(slot: InvSlot):
 	if mode == SlotMode.RINSE:
-		# For rinse station, use local storage
 		slot_data = null
 		if rinse_item:
 			item_visual.visible = true
@@ -66,7 +74,6 @@ func update(slot: InvSlot):
 		else:
 			item_visual.visible = false
 	else:
-		# For inventory/trash, use slot_data
 		slot_data = slot
 		if !slot or !slot.item:
 			item_visual.visible = false
@@ -95,7 +102,7 @@ func _get_drag_data(at_position):
 		else:
 			preview.texture = rinse_item.texture
 		
-		preview.z_index = 10
+		preview.z_index = 100
 		preview.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		
 		var base_size = Vector2(16, 16)
@@ -117,7 +124,7 @@ func _get_drag_data(at_position):
 		else:
 			preview.texture = slot_data.item.texture
 		
-		preview.z_index = 10
+		preview.z_index = 100
 		preview.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		
 		var base_size = Vector2(16, 16)
@@ -161,6 +168,7 @@ func _drop_data(at_position, data):
 					rinse_slot.rinse_item = null
 					rinse_slot.update(null)
 				print("Moved from rinse station to inventory: ", data.item.name)
+				interaction.play()
 			else:
 				print("Inventory slot not empty!")
 			get_tree().call_group("inventory_ui", "update_slots")
@@ -170,14 +178,12 @@ func _drop_data(at_position, data):
 			var temp = slot_data.item
 			slot_data.item = data.item
 			data.item = temp
+			interaction.play()
 			get_tree().call_group("inventory_ui", "update_slots")
 			return
 	
 	elif mode == SlotMode.RINSE:
 		if data is InvSlot and data.item and data.item.can_rinsed and data.item.rinse_version:
-			
-				
-			
 			is_processing = true
 			_lock_player_movement(true)
 			GameState.modify_energy(-5)
@@ -195,8 +201,9 @@ func _drop_data(at_position, data):
 			tween.set_loops()
 			tween.tween_property(item_visual, "scale", original_scale * 1.1, 0.5)
 			tween.tween_property(item_visual, "scale", original_scale, 0.5)
-			
+			rinsing.play()
 			await get_tree().create_timer(5).timeout
+			rinsing.stop()
 			
 			tween.kill()
 			item_visual.scale = original_scale
@@ -214,8 +221,12 @@ func _drop_data(at_position, data):
 				var flash_tween = create_tween()
 				flash_tween.tween_property(self, "modulate", Color.GREEN, 0.2)
 				flash_tween.tween_property(self, "modulate", Color.WHITE, 0.2)
+				
+				pick_up.play()
 			else:
 				print("Failed to get rinse version!")
+				error.play()
+				
 			
 			if not GameState.unlocked_badges.has("Clean Stream"):
 				GameState.unlock_badge("Clean Stream")
@@ -228,6 +239,8 @@ func _drop_data(at_position, data):
 			var flash_tween = create_tween()
 			flash_tween.tween_property(self, "modulate", Color.RED, 0.2)
 			flash_tween.tween_property(self, "modulate", Color.WHITE, 0.2)
+			error.play()
+			
 			return
 	
 	elif mode == SlotMode.TRASH:
@@ -235,11 +248,13 @@ func _drop_data(at_position, data):
 			
 			if data.item.id == "bottle_juice" and GameState.did_choose("rinsed_bottle"):
 				print("Cannot dispose dirty bottle! Must rinse it first!")
-				# Show error and don't allow disposal
 				var flash_tween = create_tween()
 				flash_tween.tween_property(self, "modulate", Color.RED, 0.2)
 				flash_tween.tween_property(self, "modulate", Color.WHITE, 0.2)
-				return  # Don't dispose the item
+				
+				error.play()
+				
+				return
 		
 			var is_correct = (data.item.correct_bin == bin_type)
 			
@@ -270,6 +285,7 @@ func _drop_data(at_position, data):
 					GameState.add_score(5)
 				
 				data.item = null
+				interaction.play()
 				
 			else:
 				match bin_type:
@@ -290,10 +306,9 @@ func _drop_data(at_position, data):
 						GameState.modify_env_health(-25)
 						
 				
-				#if data.item.id.contains("food") or data.item.id.contains("banana") or data.item.correct_bin == BinType.BIODEGRADABLE:
-					#GameState.modify_env_health(-5)
-				
 				data.item = null
+				error.play()
+				
 			
 			get_tree().call_group("inventory_ui", "update_slots")
 

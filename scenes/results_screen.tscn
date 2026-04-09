@@ -2,8 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dqdjysw6e3xhn" path="res://scripts/results_screen.gd" id="1_fqf1x"]
 [ext_resource type="FontFile" uid="uid://dsy5ql31cyxib" path="res://assets/User Interface/fonts/PixelOperator8.ttf" id="2_j5vbe"]
+[ext_resource type="Texture2D" uid="uid://b7vmu7sb2cxjr" path="res://assets/User Interface/SimplePixelArtUIpack/Artwork/ColorCustomizible/icons/isonswhite2.png" id="2_r40o8"]
 [ext_resource type="FontVariation" uid="uid://dt7lx2joqvna" path="res://assets/User Interface/fonts/emoji_pixel_text.tres" id="3_cij7f"]
 [ext_resource type="FontFile" uid="uid://bdyvnabkl2utk" path="res://assets/User Interface/fonts/NotoColorEmoji-Regular.ttf" id="4_r40o8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msw0o"]
+atlas = ExtResource("2_r40o8")
+region = Rect2(167, 69, 18, 19)
 
 [sub_resource type="FontVariation" id="FontVariation_msw0o"]
 fallbacks = Array[Font]([ExtResource("4_r40o8")])
@@ -20,18 +25,6 @@ base_font = ExtResource("2_j5vbe")
 [sub_resource type="FontVariation" id="FontVariation_v66py"]
 fallbacks = Array[Font]([ExtResource("2_j5vbe"), ExtResource("4_r40o8")])
 base_font = ExtResource("2_j5vbe")
-
-[sub_resource type="FontVariation" id="FontVariation_k5bwu"]
-fallbacks = Array[Font]([ExtResource("2_j5vbe"), ExtResource("4_r40o8")])
-
-[sub_resource type="FontVariation" id="FontVariation_ld3nb"]
-fallbacks = Array[Font]([ExtResource("2_j5vbe"), ExtResource("4_r40o8")])
-
-[sub_resource type="FontVariation" id="FontVariation_oqpqm"]
-fallbacks = Array[Font]([ExtResource("2_j5vbe"), ExtResource("4_r40o8")])
-
-[sub_resource type="FontVariation" id="FontVariation_bes2r"]
-fallbacks = Array[Font]([ExtResource("2_j5vbe"), ExtResource("4_r40o8")])
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1009407599]
 
@@ -57,6 +50,21 @@ offset_right = 284.5
 offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="BackButton" type="Button" parent="ResultsScreen/Panel" unique_id=1592557403]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -41.742554
+offset_top = 4.2426405
+offset_right = -15.742554
+offset_bottom = 31.242641
+grow_horizontal = 0
+rotation = 0.7853982
+scale = Vector2(3, 3)
+icon = SubResource("AtlasTexture_msw0o")
+flat = true
 
 [node name="ScenarioCompleteLabel" type="Label" parent="ResultsScreen/Panel" unique_id=1223587130]
 layout_mode = 1
@@ -321,7 +329,7 @@ offset_right = 259.5
 offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = SubResource("FontVariation_k5bwu")
+theme_override_fonts/font = ExtResource("3_cij7f")
 text = "Clean Recyclables are 3x more likely to be processed."
 autowrap_mode = 3
 
@@ -342,13 +350,13 @@ theme_override_constants/separation = 10
 
 [node name="TierNameTitle" type="Label" parent="ResultsScreen/Panel/VBoxContainer" unique_id=1905928654]
 layout_mode = 2
-theme_override_fonts/font = SubResource("FontVariation_ld3nb")
+theme_override_fonts/font = ExtResource("3_cij7f")
 text = "Circular Economy"
 
 [node name="TierNameText" type="Label" parent="ResultsScreen/Panel/VBoxContainer" unique_id=1395984213]
 custom_minimum_size = Vector2(261, 35)
 layout_mode = 2
-theme_override_fonts/font = SubResource("FontVariation_oqpqm")
+theme_override_fonts/font = ExtResource("3_cij7f")
 text = "You Closed the loop! Nice work."
 autowrap_mode = 3
 
@@ -365,22 +373,39 @@ offset_right = 225.5
 offset_bottom = -61.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = SubResource("FontVariation_bes2r")
+theme_override_fonts/font = ExtResource("3_cij7f")
 text = "Next: Recyclables glow in Scene 2"
 autowrap_mode = 3
 
-[node name="Button" type="Button" parent="ResultsScreen/Panel" unique_id=947676862]
+[node name="ContinueButton" type="Button" parent="ResultsScreen/Panel" unique_id=947676862]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -57.0
+offset_left = -178.5
 offset_top = -50.0
-offset_right = 57.0
+offset_right = -64.5
 offset_bottom = -19.0
-grow_horizontal = 2
+grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_j5vbe")
 text = "Continue"
+
+[node name="RestartButton" type="Button" parent="ResultsScreen/Panel" unique_id=1509070741]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 57.5
+offset_top = -50.0
+offset_right = 171.5
+offset_bottom = -19.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_j5vbe")
+text = "Restart"
+
+[connection signal="pressed" from="ResultsScreen/Panel/BackButton" to="ResultsScreen" method="_on_back_button_pressed"]
+[connection signal="pressed" from="ResultsScreen/Panel/ContinueButton" to="ResultsScreen" method="_on_continue_button_pressed"]
+[connection signal="pressed" from="ResultsScreen/Panel/RestartButton" to="ResultsScreen" method="_on_restart_button_pressed"]

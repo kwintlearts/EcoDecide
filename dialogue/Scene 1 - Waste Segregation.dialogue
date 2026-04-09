@@ -1,10 +1,12 @@
 ~ plush_toy
 if not GameState.has_met_plush_toy:
 	do AnimationManager.animate("PlushToy", "power_off")
+
 	Plush Toy: ...
 	do AnimationManager.animate("PlushToy", "power_on")
 	You: ..
-
+	
+	
 	Plush Toy: Finally... someone who sees me.
 
 	You: Wait... did you just talk?
@@ -37,7 +39,7 @@ elif not GameState.scenario_active
 	Plush Toy: We need to sort this before the collection truck arrives in 5 minutes!
 	Plush Toy: Remember RA 9003! Proper segregation starts with US. But... some choices aren't simple. Ready?
 	do GameState.start_scenario(1, true)  # Timer enabled
-	do TimerManager.start_timer(180)
+	do TimerManager.start_timer(300)
  
 => END
 
@@ -127,15 +129,12 @@ else
 
 ~ ending_good
 Plush Toy: Excellent! Because you rinsed and sorted, the recycling facility will actually accept this. You closed the loop!
-do TimerManager._show_results_screen()
 => END
 
 ~ ending_mid
 Plush Toy: Not bad, but some items were contaminated. The truck driver rejected the dirty bins. Now those recyclables go to the landfill.
-do TimerManager._show_results_screen()
 => END
 
 ~ ending_bad
 Plush Toy: Oh no... because everything was mixed, nothing can be recycled. This all goes to the dump site.
-do TimerManager._show_results_screen()
 => END

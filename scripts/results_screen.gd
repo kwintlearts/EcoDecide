@@ -26,11 +26,10 @@ extends Control
 @onready var tier_name_text: Label = $Panel/VBoxContainer/TierNameText
 @onready var carry_overtext: Label = $Panel/CarryOvertext
 
-@onready var button: Button = $Panel/Button
+@onready var continue_button: Button = $Panel/ContinueButton
 
 func _ready():
 	add_to_group("results_screen")  # Add this line
-	button.pressed.connect(_on_continue_pressed)
 	_load_scenario_results()
 
 func _load_scenario_results():
@@ -49,6 +48,7 @@ func _show_scenario_1_results():
 	metrics_s_2.visible = false
 	metrics_s_3.visible = false
 	
+	continue_button.text = "Continue"
 	items_sorted_text.text = "%d / 20" % GameState.total_disposals
 	acurracy_text.text = "%.1f%%" % GameState.get_sorting_accuracy()
 	energy_text.text = "%d%%" % round(GameState.energy)
@@ -66,6 +66,7 @@ func _show_scenario_2_results():
 	metrics_s_2.visible = true
 	metrics_s_3.visible = false
 	
+	continue_button.text = "Main Menu"
 	# Get actual canal clarity from GameState
 	var final_clarity = GameState.get_scenario_flag("canal_clarity", 0)
 	if final_clarity == 0:
@@ -173,7 +174,8 @@ func _apply_scenario_2_carry_over():
 		carry_effects.append("❌ -5 Soil Health (low clarity penalty)")
 		GameState.modify_soil_health(-5)
 	
-	carry_overtext.text = "📦 CARRY-OVER EFFECTS:\n" + "\n".join(carry_effects)
+	#carry_overtext.text = "📦 CARRY-OVER EFFECTS:\n" + "\n".join(carry_effects)
+	carry_overtext.text = "📦 CARRY-OVER EFFETCS:\n Scene 3 Plant Trees To be continued"
 
 func _set_tier_display(tier: String):
 	match tier:
@@ -194,22 +196,46 @@ func _set_tier_display(tier: String):
 			tier_name_title.text = "Scenario Complete!"
 			tier_name_text.text = "Keep learning and improving!"
 
-func _on_continue_pressed():
+
+
+func _on_back_button_pressed() -> void:
+	queue_free()
+
+
+func _on_continue_button_pressed() -> void:
 	match GameState.current_scenario:
 		1:
 			GameState.has_completed_scenario_1 = true
 			# Hide results screen first
 			visible = false
 			# Load next scene with loading screen
+			GameState.save_carry_over_from_scene_1()
 			SceneLoader.load_scene("res://scenes/Scenario 2 Clean Up Drive/scene_2_clean_up_drive.tscn")
 			# Queue free after loading starts
 			await get_tree().process_frame
 			queue_free()
 		2:
 			visible = false
-			SceneLoader.load_scene("res://scenes/scenario_3.tscn")
+			SceneLoader.load_scene("res://scenes/menu/main_menu.tscn")
+
+
+func _on_restart_button_pressed() -> void:
+	match GameState.current_scenario:
+		1:
+			GameState.reset_scenario_1()
+			GameState.clear_scenario_1_flags()
+			visible = false
+			SceneLoader.load_scene("res://scenes/Scenario 1 WS/scene_1_waste_segregation.tscn")
+			SceneLoader.scene_state.erase("res://scenes/Scenario 1 WS/scene_1_waste_segregation.tscn")
+			
 			await get_tree().process_frame
 			queue_free()
-		3:
+		2:
+			GameState.reset_scenario_2()
+			GameState.clear_scenario_2_flags()
 			visible = false
-			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+			SceneLoader.load_scene("res://scenes/Scenario 2 Clean Up Drive/scene_2_clean_up_drive.tscn")
+			SceneLoader.scene_state.erase("res://scenes/Scenario 2 Clean Up Drive/scene_2_clean_up_drive.tscn")
+			
+			await get_tree().process_frame
+			queue_free()

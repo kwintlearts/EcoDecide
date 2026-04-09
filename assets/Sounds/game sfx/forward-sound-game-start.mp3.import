@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://60v7ccmdqab3"
+path="res://.godot/imported/forward-sound-game-start.mp3-cebc692ca06bd474809adf833308e8ed.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds/game sfx/forward-sound-game-start.mp3"
+dest_files=["res://.godot/imported/forward-sound-game-start.mp3-cebc692ca06bd474809adf833308e8ed.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

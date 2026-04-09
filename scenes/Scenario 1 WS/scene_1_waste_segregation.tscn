@@ -5,14 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://c0pf8pftikvj1" path="res://assets/kenney_roguelike-modern-city/Tilemap/tilemap_packed.png" id="3_afuid"]
 [ext_resource type="Texture2D" uid="uid://0lbwo00f2gjl" path="res://assets/PostApoc_Workshop/PostApoc_Workshop.png" id="3_e7eds"]
 [ext_resource type="Texture2D" uid="uid://cix62u25xjcmn" path="res://assets/kenney_rpgUrbanKit/Tilemap/tilemap_packed.png" id="3_w77pj"]
-[ext_resource type="PackedScene" uid="uid://cptvdw17yf1uy" path="res://scenes/base_object_item.tscn" id="5_vxifi"]
+[ext_resource type="PackedScene" uid="uid://cptvdw17yf1uy" path="res://inventory/scene/pick_up_item.tscn" id="5_vxifi"]
 [ext_resource type="PackedScene" uid="uid://bui2wpxjl0sut" path="res://scenes/Scenario 1 WS/stations/biodegradable.tscn" id="6_77dps"]
 [ext_resource type="PackedScene" uid="uid://de7xqnd45rs2h" path="res://scenes/Character/player.tscn" id="6_a442s"]
 [ext_resource type="Texture2D" uid="uid://crhw70ht3kafg" path="res://assets/GWHouses/GW_Houses_1.png" id="6_bx8tm"]
 [ext_resource type="Resource" uid="uid://bsq0m817yb6p7" path="res://inventory/Items/empty_bottle.tres" id="6_e1isb"]
-[ext_resource type="Resource" uid="uid://pw3pw7ykj6rb" path="res://inventory/Items/avocado_half_kernel.tres" id="6_ontgw"]
 [ext_resource type="Resource" uid="uid://dsyvybk17a3ge" path="res://inventory/Items/carrot_half_top.tres" id="6_s0ww2"]
-[ext_resource type="Resource" uid="uid://b0aiw8fvft0op" path="res://inventory/Items/apple_whole.tres" id="7_64kwx"]
 [ext_resource type="Resource" uid="uid://bmvet30b4t5pu" path="res://inventory/Items/milk_jug_empty.tres" id="7_l7kme"]
 [ext_resource type="PackedScene" uid="uid://c66yol2s6776f" path="res://scenes/Scenario 1 WS/stations/recyclable.tscn" id="7_mtasb"]
 [ext_resource type="Resource" uid="uid://g07ct0ao2146" path="res://inventory/Items/apple_half_eaten.tres" id="7_rob5o"]
@@ -4827,101 +4825,6 @@ shape = SubResource("RectangleShape2D_bx8tm")
 
 [node name="Trash Objects" type="Node" parent="." unique_id=1260426703]
 
-[node name="Node2D" type="Node2D" parent="Trash Objects" unique_id=594362156]
-visible = false
-
-[node name="AppleWhole" parent="Trash Objects/Node2D" unique_id=2099928376 instance=ExtResource("5_vxifi")]
-position = Vector2(40, -392)
-item = ExtResource("7_64kwx")
-
-[node name="EmptyBottle" parent="Trash Objects/Node2D" unique_id=551906335 instance=ExtResource("5_vxifi")]
-position = Vector2(56.000004, -360)
-scale = Vector2(0.8, 0.8)
-item = ExtResource("6_e1isb")
-
-[node name="EmptyMilkJug" parent="Trash Objects/Node2D" unique_id=1611661854 instance=ExtResource("5_vxifi")]
-position = Vector2(184, -376)
-scale = Vector2(0.27, 0.27)
-item = ExtResource("7_l7kme")
-
-[node name="AppleHalfEaten" parent="Trash Objects/Node2D" unique_id=552784236 instance=ExtResource("5_vxifi")]
-position = Vector2(120, -424)
-item = ExtResource("7_rob5o")
-
-[node name="AvocadoHalf" parent="Trash Objects/Node2D" unique_id=322063439 instance=ExtResource("5_vxifi")]
-position = Vector2(40, -368)
-item = ExtResource("6_ontgw")
-
-[node name="AvocadoHalfNoKernel" parent="Trash Objects/Node2D" unique_id=1086021392 instance=ExtResource("5_vxifi")]
-position = Vector2(112, -344)
-item = ExtResource("8_e0wb2")
-
-[node name="CarrotHalf" parent="Trash Objects/Node2D" unique_id=1762782478 instance=ExtResource("5_vxifi")]
-position = Vector2(144, -416)
-item = ExtResource("6_s0ww2")
-
-[node name="BottleJuice" parent="Trash Objects/Node2D" unique_id=405285901 instance=ExtResource("5_vxifi")]
-position = Vector2(104.00001, -392)
-scale = Vector2(0.6, 0.6)
-item = ExtResource("10_7qyl6")
-
-[node name="EmptyCanTall" parent="Trash Objects/Node2D" unique_id=255668029 instance=ExtResource("5_vxifi")]
-position = Vector2(112, -368)
-scale = Vector2(0.3, 0.3)
-item = ExtResource("11_5ilr6")
-
-[node name="EmptyCanSmall" parent="Trash Objects/Node2D" unique_id=224605920 instance=ExtResource("5_vxifi")]
-position = Vector2(184, -360)
-scale = Vector2(0.3, 0.3)
-item = ExtResource("12_ajb0f")
-
-[node name="PizzaBox" parent="Trash Objects/Node2D" unique_id=144142561 instance=ExtResource("5_vxifi")]
-position = Vector2(224, -360)
-scale = Vector2(0.3, 0.3)
-item = ExtResource("13_o6hax")
-
-[node name="CrackedMug" parent="Trash Objects/Node2D" unique_id=928123329 instance=ExtResource("5_vxifi")]
-position = Vector2(272, -408.00003)
-scale = Vector2(0.3, 0.3)
-item = ExtResource("13_uhqgp")
-
-[node name="CardBoardPaperBag" parent="Trash Objects/Node2D" unique_id=1193561648 instance=ExtResource("5_vxifi")]
-position = Vector2(176, -432)
-scale = Vector2(0.3, 0.3)
-item = ExtResource("14_4th0s")
-
-[node name="HotDogHalfRaw" parent="Trash Objects/Node2D" unique_id=692800355 instance=ExtResource("5_vxifi")]
-position = Vector2(120, -384)
-item = ExtResource("15_uhqgp")
-
-[node name="PlateStacked" parent="Trash Objects/Node2D" unique_id=418162006 instance=ExtResource("5_vxifi")]
-position = Vector2(112, -448)
-item = ExtResource("16_4th0s")
-
-[node name="EmptyContainer" parent="Trash Objects/Node2D" unique_id=487230747 instance=ExtResource("5_vxifi")]
-position = Vector2(200, -392)
-scale = Vector2(0.75, 0.75)
-item = ExtResource("21_afuid")
-
-[node name="BubbleGum" parent="Trash Objects/Node2D" unique_id=1844572703 instance=ExtResource("5_vxifi")]
-position = Vector2(232, -440)
-scale = Vector2(0.3, 0.3)
-item = ExtResource("23_20onu")
-
-[node name="CrackedEgg" parent="Trash Objects/Node2D" unique_id=1335584770 instance=ExtResource("5_vxifi")]
-position = Vector2(272, -432)
-scale = Vector2(0.5, 0.5)
-item = ExtResource("24_svdj8")
-
-[node name="PlateDirty" parent="Trash Objects/Node2D" unique_id=901049775 instance=ExtResource("5_vxifi")]
-position = Vector2(240, -424)
-item = ExtResource("25_imxk3")
-
-[node name="ToothPaste" parent="Trash Objects/Node2D" unique_id=2139592178 instance=ExtResource("5_vxifi")]
-position = Vector2(144, -448)
-scale = Vector2(0.3, 0.3)
-item = ExtResource("26_bx8tm")
-
 [node name="Spawner" type="Area2D" parent="Trash Objects" unique_id=15465778]
 position = Vector2(-288, -656)
 collision_layer = 0
@@ -4960,7 +4863,7 @@ player = NodePath("../Player")
 follow_distance = 20
 
 [node name="Player" parent="Characters" unique_id=1896034723 instance=ExtResource("6_a442s")]
-position = Vector2(-344, -616)
+position = Vector2(-328, -608)
 
 [node name="BarangayCaptain" parent="Characters" unique_id=1368415040 instance=ExtResource("19_5ilr6")]
 position = Vector2(176, -280)

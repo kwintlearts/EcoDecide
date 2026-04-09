@@ -172,13 +172,6 @@ func _on_response_gui_input(event: InputEvent, item: Control, response) -> void:
 	if "Disallowed" in item.name: 
 		return
 	
-	## Handle touch screen tap (immediate action)
-	#if event is InputEventScreenTouch:
-		#if event.pressed:
-			#get_viewport().set_input_as_handled()
-			#response_selected.emit(response)
-		#return
-	#
 	# Handle mouse click
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 		get_viewport().set_input_as_handled()

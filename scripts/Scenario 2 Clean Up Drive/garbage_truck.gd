@@ -5,6 +5,8 @@ signal items_disposed(count)
 
 @onready var label: Label = $Label
 @onready var notification_label: Label = $NotificationLabel
+@onready var interaction: AudioStreamPlayer = $Interaction
+@onready var error: AudioStreamPlayer = $Error
 
 func _ready() -> void:
 	add_to_group("garbage_truck")
@@ -40,8 +42,10 @@ func empty_inventory():
 		if slot.item and slot.item.id == "battery" and GameState.did_choose("battery_recycled"):
 			battery_found = true
 			print("Battery must go to hazardous bin, not truck!")
+		
 	
 	if battery_found:
+		error.play()
 		_show_notification("⚠️ Battery must go to HAZARDOUS bin! ⚠️", Color.RED)
 		return  # Don't dispose anything if battery is in inventory
 	
@@ -57,6 +61,7 @@ func empty_inventory():
 				items_emptied += 1
 			
 			slot.item = null
+			interaction.play()
 	
 	var total_items = items_emptied + hazardous_items
 	

@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cptvdw17yf1uy"]
+
+[ext_resource type="Script" uid="uid://c8kqmp5yrref3" path="res://inventory/scripts/pickup_item.gd" id="1_laxqa"]
+[ext_resource type="PackedScene" uid="uid://dotw2g8irmtcv" path="res://scenes/actionable.tscn" id="2_8n5gf"]
+[ext_resource type="FontVariation" uid="uid://dt7lx2joqvna" path="res://assets/User Interface/fonts/emoji_pixel_text.tres" id="3_gsrsc"]
+[ext_resource type="AudioStream" uid="uid://dt5chp6x8udnn" path="res://assets/Sounds/game sfx/errorsfx.mp3" id="4_8n5gf"]
+[ext_resource type="AudioStream" uid="uid://bosbredl0ehh5" path="res://assets/Sounds/game sfx/pick_up_item.mp3" id="4_gsrsc"]
+
+[node name="PickUpItem" type="StaticBody2D" unique_id=551906335]
+z_index = 1
+script = ExtResource("1_laxqa")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=463117632]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=645240900]
+
+[node name="Actionable" parent="." unique_id=525290031 instance=ExtResource("2_8n5gf")]
+use_dialogue = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable" unique_id=867888342]
+
+[node name="Label" type="Label" parent="." unique_id=192910438]
+visible = false
+z_index = 6
+offset_left = -30.0
+offset_top = -40.0
+offset_right = 30.0
+offset_bottom = -3.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_gsrsc")
+theme_override_font_sizes/font_size = 14
+text = "📦 Take?"
+autowrap_mode = 2
+
+[node name="PickUp" type="AudioStreamPlayer" parent="." unique_id=782877524]
+stream = ExtResource("4_gsrsc")
+
+[node name="Error" type="AudioStreamPlayer" parent="." unique_id=251418998]
+stream = ExtResource("4_8n5gf")
+
+[connection signal="area_entered" from="Actionable" to="." method="_on_actionable_area_entered"]
+[connection signal="area_exited" from="Actionable" to="." method="_on_actionable_area_exited"]

@@ -18,11 +18,14 @@ extends StaticBody2D
 @onready var action_shape: CollisionShape2D = $Actionable/CollisionShape2D
 @onready var label: Label = $Label
 
+@onready var pick_up: AudioStreamPlayer = $PickUp
+@onready var error: AudioStreamPlayer = $Error
 
 
 var is_being_collected: bool = false
 
 func _ready() -> void:
+	
 	label.hide()
 	if Engine.is_editor_hint():
 		await get_tree().process_frame
@@ -36,9 +39,8 @@ func _setup_label():
 		label.add_theme_color_override("font_color", Color.WHITE)
 		label.add_theme_color_override("font_shadow_color", Color.BLACK)
 		label.add_theme_font_size_override("font_size", 14)
-		
+		label.size = Vector2(60,20)
 		label.text = "📦 Take?"
-		label.size = Vector2(60, 20)
 		label.position = Vector2(-30, -40)
 
 func _update_sprite():
@@ -82,9 +84,10 @@ func _update_collision_shape():
 func _on_actionable_area_entered(area: Area2D) -> void:
 	if not Engine.is_editor_hint():
 		# Show bonus label for recyclables if player rinsed bottle in Scenario 1
-		if GameState.did_choose("rinsed_bottle") and GameState.current_scenario == 2 and item and item.correct_bin == 1:
+		if GameState.did_choose("rinsed_bottle") and GameState.scenario_active and GameState.current_scenario == 2 and item and item.correct_bin == 1:
 			_show_bonus_label()
-		else:
+		elif GameState.scenario_active:
+			
 			_show_label()
 
 func _on_actionable_area_exited(area: Area2D) -> void:
@@ -135,9 +138,16 @@ func playercollect(player):
 	var success = player.collect(item)
 	if success:
 		print("Collected: ", item.name)
+		# Play pickup sound
+		if pick_up:
+			# Reparent sound to root so it continues playing
+			pick_up.get_parent().remove_child(pick_up)
+			get_tree().current_scene.add_child(pick_up)
+			pick_up.play()
 		
 		queue_free()
 	else:
+		error.play()
 		print("Inventory full! Cannot collect: ", item.name)
 		is_being_collected = false
 	

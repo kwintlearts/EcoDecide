@@ -17,6 +17,6 @@ func get_player_inv() -> Inv:
 
 func notify_item_cleaned(item: InvItem):
 	item_cleaned.emit(item)
-
+	
 func notify_inventory_full():
 	inventory_full.emit()

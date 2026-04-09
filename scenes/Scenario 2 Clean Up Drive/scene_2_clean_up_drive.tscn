@@ -49,7 +49,7 @@
 [ext_resource type="Resource" uid="uid://b3t0o6oav6oo6" path="res://inventory/Items/banana.tres" id="37_cch25"]
 [ext_resource type="Resource" uid="uid://g07ct0ao2146" path="res://inventory/Items/apple_half_eaten.tres" id="38_m650x"]
 [ext_resource type="Resource" uid="uid://bkqtr8lnb85of" path="res://inventory/Items/avocado_half_no_kernel.tres" id="38_pcvb4"]
-[ext_resource type="PackedScene" uid="uid://cptvdw17yf1uy" path="res://scenes/base_object_item.tscn" id="39_rdqka"]
+[ext_resource type="PackedScene" uid="uid://cptvdw17yf1uy" path="res://inventory/scene/pick_up_item.tscn" id="39_rdqka"]
 [ext_resource type="PackedScene" uid="uid://j1hqd0qjocmp" path="res://scenes/hud.tscn" id="50_rb7ay"]
 [ext_resource type="PackedScene" uid="uid://db6haojs58op5" path="res://scenes/dialogue_trigger.tscn" id="51_5gr1u"]
 [ext_resource type="Resource" uid="uid://tyjr7142kuca" path="res://dialogue/Scene 2 - Clean Up Drive.dialogue" id="52_lcxge"]
@@ -4891,6 +4891,10 @@ size = Vector2(472, 110)
 [node name="Scene-2 Clean Up Drive" type="Node2D" unique_id=1230239197]
 script = ExtResource("1_bnwkb")
 
+[node name="GarbageTruck" parent="." unique_id=2045981199 instance=ExtResource("8_bnwkb")]
+z_index = 1
+position = Vector2(657, 74)
+
 [node name="TileMapLayers" type="Node" parent="." unique_id=1564165849]
 
 [node name="Ground" type="TileMapLayer" parent="TileMapLayers" unique_id=241328188]
@@ -5012,12 +5016,6 @@ z_index = 2
 tile_map_data = PackedByteArray("AAAKAAIAAAAGAAQAAAAJAAIAAAADAAQAAAAMAAIAAAAHAAQAAAASAAIAAAAHAAUAAAAVAAIAAAAHAAUAAAAWAAIAAAAIAAUAAAARAP3/AAADAAUAAAASAP3/AAAFAAUAAAAOAP3/AAAEAAUAAAANAP3/AAAEAAUAAAAJAP3/AAAEAAQAAAAKAP3/AAAEAAQAAAAUAP3/AAAHAAQAAAA=")
 tile_set = SubResource("TileSet_xnq5q")
 
-[node name="GarbageTruck" parent="TileMapLayers" unique_id=2045981199 instance=ExtResource("8_bnwkb")]
-position = Vector2(657, 74)
-
-[node name="GarbageTruck2" parent="TileMapLayers" unique_id=1448792998 instance=ExtResource("8_bnwkb")]
-position = Vector2(-155, -418)
-
 [node name="Border" type="Node" parent="." unique_id=1915511510]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Border" unique_id=337759426]
@@ -5098,6 +5096,9 @@ dialogue_start = "start"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueTrigger" unique_id=753176176]
 position = Vector2(30, -7)
 shape = SubResource("RectangleShape2D_rb7ay")
+
+[node name="PlayerStart" type="Marker2D" parent="." unique_id=312450704]
+position = Vector2(633, -67)
 
 [connection signal="body_entered" from="TileMapLayers/Canal/Clogged" to="TileMapLayers/Canal/Clogged" method="_on_body_entered"]
 [connection signal="body_exited" from="TileMapLayers/Canal/Clogged" to="TileMapLayers/Canal/Clogged" method="_on_body_exited"]

@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://j42w1ton01ww"]
 
 [ext_resource type="FontFile" uid="uid://dsy5ql31cyxib" path="res://assets/User Interface/fonts/PixelOperator8.ttf" id="1_h5jno"]
+[ext_resource type="Script" uid="uid://bucvtnygr23r5" path="res://inventory/scripts/item_info.gd" id="1_uuuds"]
 
 [node name="ItemInfo" type="Control" unique_id=1358632728]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_uuuds")
 
 [node name="ItemTitle" type="Label" parent="." unique_id=499435304]
 z_index = 6

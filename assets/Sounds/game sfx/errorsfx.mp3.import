@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dt5chp6x8udnn"
+path="res://.godot/imported/errorsfx.mp3-1e9e7ef122c1740b4ce960129ecd5b5b.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds/game sfx/errorsfx.mp3"
+dest_files=["res://.godot/imported/errorsfx.mp3-1e9e7ef122c1740b4ce960129ecd5b5b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

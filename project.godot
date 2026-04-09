@@ -15,9 +15,13 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="EcoDecide"
-run/main_scene="uid://bw0kppgunfpot"
+run/main_scene="uid://bf6cf7orbgp1l"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://c8g2pq2xvjole"
 
 [autoload]
 
@@ -25,9 +29,11 @@ DialogueManager="*uid://c3rodes2l3gxb"
 SceneLoader="*uid://cya5ir0j7yc0q"
 AnimationManager="*uid://bln8boeh8s80n"
 GameState="*uid://blc4b667tmv7x"
+CursorManager="*uid://flhh0xhhxw2h"
 InventoryManager="*uid://d3plcyldq1stf"
 TimerManager="*uid://cc8ylq3k8ws7n"
 EventBus="*uid://blv0f8b1m6jkh"
+Bgm="*uid://dd323wa8f6yf2"
 
 [dialogue_manager]
 

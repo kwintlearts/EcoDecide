@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dd323wa8f6yf2"]
+
+[ext_resource type="AudioStream" uid="uid://d3vnr7k2qsyc4" path="res://assets/Sounds/game sfx/BG music - wood chapter whispers of the grove.mp3" id="1_q5y64"]
+[ext_resource type="Script" uid="uid://7wpgip0kkvy4" path="res://scenes/bgm.gd" id="2_3c3jb"]
+
+[node name="BGM" type="AudioStreamPlayer" unique_id=48757681]
+stream = ExtResource("1_q5y64")
+autoplay = true
+bus = &"BGM"
+parameters/looping = true
+script = ExtResource("2_3c3jb")

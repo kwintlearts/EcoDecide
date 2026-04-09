@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bosbredl0ehh5"
+path="res://.godot/imported/pick_up_item.mp3-621cca4cd8ae11ad05292f4fb8171149.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds/game sfx/pick_up_item.mp3"
+dest_files=["res://.godot/imported/pick_up_item.mp3-621cca4cd8ae11ad05292f4fb8171149.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,102 +1,277 @@
-[gd_scene format=3 uid="uid://sipfww0soy16"]
+[gd_scene format=3 uid="uid://dvn844wl2y1dm"]
 
-[node name="Settings" type="Control" unique_id=1908758643]
+[ext_resource type="Script" uid="uid://di83lsu660a0p" path="res://scripts/menu/settings.gd" id="1_6biaa"]
+[ext_resource type="Texture2D" uid="uid://otvpqmarahw0" path="res://assets/User Interface/background.jpeg" id="2_e6a17"]
+[ext_resource type="FontFile" uid="uid://pv2lb6i4l6r1" path="res://assets/User Interface/fonts/04B_30__.TTF" id="3_721qi"]
+[ext_resource type="PackedScene" uid="uid://c3pw87ffq8iug" path="res://scenes/menu/volume_slider.tscn" id="4_cxqi8"]
+[ext_resource type="FontFile" uid="uid://dsbommlxytqeg" path="res://assets/User Interface/SimplePixelArtUIpack/fonts/font 1/pixelfont.ttf" id="5_g6uju"]
+[ext_resource type="Texture2D" uid="uid://b7vmu7sb2cxjr" path="res://assets/User Interface/SimplePixelArtUIpack/Artwork/ColorCustomizible/icons/isonswhite2.png" id="6_2kb46"]
+[ext_resource type="FontVariation" uid="uid://bnpyk21ovjuyn" path="res://assets/User Interface/fonts/MonogramVar.tres" id="7_b2m5x"]
+[ext_resource type="Texture2D" uid="uid://b8offkn11lky2" path="res://assets/User Interface/kenney_inputPromptsPixel16×/Tiles/tile_0014.png" id="8_kylx7"]
+[ext_resource type="Texture2D" uid="uid://pgk235cwoicf" path="res://assets/User Interface/Virtual Joystick V2/Joystick_Virtual.png" id="10_by0jv"]
+[ext_resource type="Texture2D" uid="uid://dwk2nvwmq1mj6" path="res://assets/User Interface/Virtual Joystick V2/HandleFilled.png" id="11_c7iio"]
+[ext_resource type="Texture2D" uid="uid://bw5pdfc0jqggv" path="res://assets/User Interface/kenney_inputPromptsPixel16×/Tiles/tile_0013.png" id="12_7grqr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_85fbo"]
+font = ExtResource("5_g6uju")
+font_size = 14
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rd80b"]
+atlas = ExtResource("6_2kb46")
+region = Rect2(167, 69, 18, 19)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bj8wm"]
+font = ExtResource("7_b2m5x")
+font_size = 32
+
+[node name="Settings" type="Control" unique_id=124380772]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6biaa")
 
-[node name="Panel" type="Panel" parent="." unique_id=991103062]
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1786498662]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -488.0
-offset_top = -299.0
-offset_right = 488.0
-offset_bottom = 299.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_e6a17")
+region_rect = Rect2(16, 18, 764, 767)
 
-[node name="Button" type="Button" parent="Panel" unique_id=946478462]
-layout_mode = 0
-offset_left = 809.0
-offset_top = 14.0
-offset_right = 964.0
-offset_bottom = 45.0
-text = "Back Button"
-
-[node name="Control" type="Control" parent="Panel" unique_id=1157646735]
+[node name="Panel" type="Panel" parent="NinePatchRect" unique_id=685539395]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -128.0
-offset_right = 304.0
-offset_bottom = 112.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="BGMLabel" type="Label" parent="Panel/Control" unique_id=536667812]
+[node name="Label" type="Label" parent="NinePatchRect" unique_id=418703431]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -23.0
-offset_top = 8.0
-offset_right = 23.0
-offset_bottom = 31.0
+offset_left = -203.5
+offset_top = 42.0
+offset_right = 203.5
+offset_bottom = 107.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_721qi")
+theme_override_font_sizes/font_size = 64
+text = "Settings"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect" unique_id=192293772]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -152.0
+offset_right = 221.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="VolumeSlider" parent="NinePatchRect/VBoxContainer" unique_id=24097562 instance=ExtResource("4_cxqi8")]
+layout_mode = 2
+
+[node name="Label" parent="NinePatchRect/VBoxContainer/VolumeSlider" index="0" unique_id=1152844122]
+offset_left = -59.0
+offset_top = -3.0
+offset_right = 12.0
+offset_bottom = 24.0
 text = "Music"
 
-[node name="SFXLabel" type="Label" parent="Panel/Control" unique_id=941425230]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -14.0
-offset_top = -11.5
-offset_right = 14.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="SFX" parent="NinePatchRect/VBoxContainer" unique_id=394131854 instance=ExtResource("4_cxqi8")]
+layout_mode = 2
+bus_name = "SFX"
+
+[node name="Label" parent="NinePatchRect/VBoxContainer/SFX" index="0" unique_id=1152844122]
+offset_left = -51.0
+offset_top = 0.0
+offset_right = 22.0
+offset_bottom = 27.0
 text = "SFX"
+label_settings = SubResource("LabelSettings_85fbo")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Control" unique_id=243158956]
+[node name="BackButton" type="Button" parent="." unique_id=262520361]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -77.0
+offset_top = 10.999999
+offset_right = -51.0
+offset_bottom = 42.0
+grow_horizontal = 0
+rotation = 0.7853982
+scale = Vector2(3, 3)
+icon = SubResource("AtlasTexture_rd80b")
+flat = true
+
+[node name="Control" type="Control" parent="." unique_id=62116291]
+layout_mode = 1
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -136.0
-offset_top = -85.5
-offset_right = 136.0
-offset_bottom = 85.5
+anchor_bottom = 1.0
+offset_left = -214.0
+offset_top = -368.0
+offset_right = 214.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 80
+grow_vertical = 0
 
-[node name="BGM" type="HSlider" parent="Panel/Control/VBoxContainer" unique_id=1344504028]
-layout_mode = 2
+[node name="HowToPlayTitle" type="Label" parent="Control" unique_id=1818199006]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -98.25
+offset_right = 98.25
+offset_bottom = 38.0
+grow_horizontal = 2
+text = "How To Play"
+label_settings = SubResource("LabelSettings_bj8wm")
 
-[node name="SFX" type="HSlider" parent="Panel/Control/VBoxContainer" unique_id=953837604]
-layout_mode = 2
-
-[node name="Control2" type="Control" parent="Panel" unique_id=1034326532]
+[node name="SprintLabel" type="Label" parent="Control" unique_id=145908125]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 528.0
-offset_top = -128.0
-offset_right = 832.0
-offset_bottom = 112.0
+offset_top = 13.0
+offset_right = 367.0
+offset_bottom = 51.0
 grow_vertical = 2
-mouse_filter = 2
+text = "SHIFT to Sprint or"
+label_settings = SubResource("LabelSettings_bj8wm")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/SprintLabel" unique_id=1101405138]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("8_kylx7")
+
+[node name="Inventorylabel" type="Label" parent="Control" unique_id=1722834120]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -37.0
+offset_right = 435.0
+offset_bottom = 1.0
+grow_vertical = 2
+text = "I to open inventory or"
+label_settings = SubResource("LabelSettings_bj8wm")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/Inventorylabel" unique_id=2045563202]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -15.0
+offset_right = -5.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("6_2kb46")
+region_rect = Rect2(9, 69, 16, 21)
+
+[node name="MoveLabel" type="Label" parent="Control" unique_id=2112878775]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -88.0
+offset_right = 367.0
+offset_bottom = -50.0
+grow_vertical = 2
+text = "WASD to Move or"
+label_settings = SubResource("LabelSettings_bj8wm")
+
+[node name="Base" type="TextureRect" parent="Control/MoveLabel" unique_id=1313159019]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 91.5
+offset_top = -24.0
+offset_right = 139.5
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(100, 100)
+mouse_force_pass_scroll_events = false
+texture = ExtResource("10_by0jv")
+stretch_mode = 5
+
+[node name="Tip" type="TextureRect" parent="Control/MoveLabel/Base" unique_id=1964693227]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.5
+offset_top = -28.0
+offset_right = 29.5
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(50, 50)
+texture = ExtResource("11_c7iio")
+stretch_mode = 5
+
+[node name="InteractLabel" type="Label" parent="Control" unique_id=812501256]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 68.0
+offset_right = 403.0
+offset_bottom = 106.0
+grow_vertical = 2
+text = "Space to interact or"
+label_settings = SubResource("LabelSettings_bj8wm")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/InteractLabel" unique_id=1133591132]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("12_7grqr")
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+
+[editable path="NinePatchRect/VBoxContainer/VolumeSlider"]
+[editable path="NinePatchRect/VBoxContainer/SFX"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://8t4pkvkjwmrx"
+path="res://.godot/imported/the-sound-of-a-person-walking-on-the-ground-dried-mud.mp3-1f99647a2055f82b60290c40fccf3763.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds/game sfx/the-sound-of-a-person-walking-on-the-ground-dried-mud.mp3"
+dest_files=["res://.godot/imported/the-sound-of-a-person-walking-on-the-ground-dried-mud.mp3-1f99647a2055f82b60290c40fccf3763.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

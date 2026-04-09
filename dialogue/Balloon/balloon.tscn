@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://ces1wo2ycfpbh"]
 
 [ext_resource type="Script" uid="uid://c4ywigkj76523" path="res://dialogue/Balloon/balloon.gd" id="1_36de5"]
+[ext_resource type="FontFile" uid="uid://dsbommlxytqeg" path="res://assets/User Interface/SimplePixelArtUIpack/fonts/font 1/pixelfont.ttf" id="2_5ptrj"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
+[ext_resource type="FontFile" uid="uid://dgc6f2kpejdf" path="res://assets/User Interface/fonts/Pixel Game.otf" id="4_ir2hi"]
+[ext_resource type="AudioStream" uid="uid://bm6ewjq43wair" path="res://assets/Sounds/game sfx/talk.mp3" id="5_dhksj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -143,6 +146,7 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
 mouse_filter = 1
+theme_override_fonts/normal_font = ExtResource("2_5ptrj")
 bbcode_enabled = true
 text = "Character"
 fit_content = true
@@ -152,6 +156,8 @@ scroll_active = false
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("4_ir2hi")
+theme_override_font_sizes/normal_font_size = 32
 text = "Dialogue..."
 
 [node name="Control" type="Control" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=759958559]
@@ -189,10 +195,14 @@ response_template = NodePath("ResponseExample")
 
 [node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu" unique_id=358108154]
 layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_fonts/font = ExtResource("2_5ptrj")
 text = "Response example"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1202821927]
 unique_name_in_owner = true
+stream = ExtResource("5_dhksj")
+bus = &"SFX"
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

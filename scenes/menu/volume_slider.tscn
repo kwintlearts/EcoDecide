@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://c3pw87ffq8iug"]
+
+[ext_resource type="Script" uid="uid://b0qftip5a70gf" path="res://scripts/menu/volume_slider.gd" id="1_0mhdm"]
+[ext_resource type="FontFile" uid="uid://dsbommlxytqeg" path="res://assets/User Interface/SimplePixelArtUIpack/fonts/font 1/pixelfont.ttf" id="2_6bmtd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vq7es"]
+bg_color = Color(0.4745098, 0.56078434, 0.99215686, 1)
+border_width_left = 70
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 70.0
+expand_margin_top = 8.0
+expand_margin_right = 5.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpsjk"]
+bg_color = Color(0.3409477, 0.97587496, 0.48596197, 1)
+corner_radius_top_left = 5
+corner_radius_bottom_left = 5
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_a7bes"]
+font = ExtResource("2_6bmtd")
+font_size = 14
+font_color = Color(0, 0, 0, 1)
+
+[node name="VolumeSlider" type="HSlider" unique_id=24097562]
+offset_right = 395.0
+offset_bottom = 16.0
+theme_override_constants/center_grabber = 1
+theme_override_styles/slider = SubResource("StyleBoxFlat_vq7es")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gpsjk")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_gpsjk")
+max_value = 1.0
+step = 0.001
+value = 0.5
+script = ExtResource("1_0mhdm")
+bus_name = "BGM"
+
+[node name="Label" type="Label" parent="." unique_id=1152844122]
+layout_mode = 0
+offset_left = -64.0
+offset_top = -2.0
+offset_right = 7.0
+offset_bottom = 25.0
+text = "Slider"
+label_settings = SubResource("LabelSettings_a7bes")
+
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]

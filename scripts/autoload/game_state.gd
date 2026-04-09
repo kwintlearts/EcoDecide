@@ -39,7 +39,12 @@ var scenario_active: bool = false
 var current_scenario: int = 0
 var uses_timer: bool = true
 
+var carry_over_eco_score: int = 0
+var carry_over_env_health: int = 50
+var carry_over_energy: int = 100
+
 signal stats_updated
+signal scenario_completed(scenario_id)
 
 func add_score(amount: int):
 	eco_score += amount
@@ -121,11 +126,87 @@ func start_scenario(scenario_id: int, use_timer: bool = true):
 	
 	print("Scenario ", scenario_id, " started! (Timer: ", use_timer, ")")
 
+func complete_scenario(scenario_id: int):
+	match scenario_id:
+		1:
+			has_completed_scenario_1 = true
+		2:
+			has_completed_scenario_2 = true
+	scenario_completed.emit(scenario_id)
+	print("Scenario ", scenario_id, " completed!")
+
 func end_scenario():
-	scenario_active = false
+	scenario_active = false	
 	print("Scenario ended!")
 
+# GameState.gd
+func clear_scenario_1_flags():
+	var scene1_flags = ["rinsed_bottle_choice", "dirty_recycle_choice", "residual_waste_choice", 
+						"stored_home_choice", "mixed_waste_choice", "asked_help_choice"]
+	for flag in scene1_flags:
+		scenario_flags.erase(flag)
+
+func clear_scenario_2_flags():
+	var scene2_flags = ["plastic_bag_choice", "woven_bag_choice", "educated_vendor_choice", 
+						"confront_vendor_choice", "ignore_vendor_choice", "battery_recycled_choice",
+						"battery_trashed_choice", "battery_ignored_choice", "grandson_help_choice",
+						"comforted_lola_choice", "asked_lola_choice", "blamed_lola_choice",
+						"youth_joined_choice", "youth_inspired_choice", "youth_asked_choice", "youth_lectured_choice"]
+	for flag in scene2_flags:
+		scenario_flags.erase(flag)
+
 func reset_scenario_1():
+	eco_score = 0
+	env_health = 50
+	energy = 100
+	soil_health = 50
+	waste_generated = 0
+	correct_disposals = 0
+	total_disposals = 0
+	final_clarity = 0
+	has_met_plush_toy = false
+	has_completed_scenario_1 = false
+	unlocked_badges.clear()
+
+
+func save_carry_over_from_scene_1():
+	carry_over_eco_score = eco_score
+	carry_over_env_health = env_health
+	carry_over_energy = energy
+
+
+func load_carry_over_to_scene_2():
+	eco_score = carry_over_eco_score
+	env_health = carry_over_env_health
+	energy = carry_over_energy
+
+
+func reset_scenario_2():
+	# Restore carry-over values
+	eco_score = carry_over_eco_score
+	env_health = carry_over_env_health
+	energy = carry_over_energy
+	
+	# Reset Scenario 2 specific stats
+	community_trust = 50
+	waste_generated = 0
+	correct_disposals = 0
+	total_disposals = 0
+	final_clarity = 0
+	has_completed_scenario_2 = false
+
+func full_reset():
+	# Reset all story flags
+	has_met_plush_toy = false
+	has_completed_scenario_1 = false
+	has_completed_scenario_2 = false
+	has_asked_captain = false
+	has_talked_to_lola = false
+	has_talked_to_youth = false
+	has_talked_to_vendor = false
+	has_chosen_sack = false
+	
+	# Reset all stats (not using reset_scenario_1 or 2)
 	eco_score = 0
 	env_health = 50
 	community_trust = 50
@@ -135,11 +216,20 @@ func reset_scenario_1():
 	correct_disposals = 0
 	total_disposals = 0
 	final_clarity = 0
-
-func full_reset():
-	reset_scenario_1()
-	unlocked_badges.clear()
-	has_met_plush_toy = false
-	has_completed_scenario_1 = false
-	has_completed_scenario_2 = false
 	
+	# Reset carry-over values
+	carry_over_eco_score = 0
+	carry_over_env_health = 50
+	carry_over_energy = 100
+	
+	# Clear flags and logs
+	scenario_flags.clear()
+	unlocked_badges.clear()
+	disposal_log.clear()
+	decision_log.clear()
+	
+	# Reset scenario state
+	scenario_active = false
+	current_scenario = 0
+	
+	print("Full game reset complete!")

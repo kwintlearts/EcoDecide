@@ -42,10 +42,7 @@ func end_scenario():
 	stop_timer()
 	GameState.end_scenario()
 	
-	var player = get_tree().get_first_node_in_group("player")
-	if player:
-		player.can_move = false
-	
+
 	# Wait a frame to ensure everything is settled
 	await get_tree().process_frame
 

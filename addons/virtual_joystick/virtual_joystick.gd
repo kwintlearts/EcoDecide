@@ -65,7 +65,6 @@ var _is_dragging := false
 
 func _ready() -> void:
 	add_to_group("joystick")
-	print("joystick is here")
 	if not DisplayServer.is_touchscreen_available() and visibility_mode == Visibility_mode.TOUCHSCREEN_ONLY :
 		hide()
 	
@@ -73,6 +72,10 @@ func _ready() -> void:
 		hide()
 
 func _input(event: InputEvent) -> void:
+
+	if not visible:
+		return
+
 	# Handle mouse/touch as mouse events
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
