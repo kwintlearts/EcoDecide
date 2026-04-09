@@ -2977,7 +2977,7 @@ texture = ExtResource("4_0f0sr")
 sources/1 = SubResource("TileSetAtlasSource_scq2u")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xxw37"]
-size = Vector2(68, 54)
+size = Vector2(48, 54)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pub8v"]
 size = Vector2(495, 95)
@@ -4895,6 +4895,10 @@ script = ExtResource("1_bnwkb")
 z_index = 1
 position = Vector2(657, 74)
 
+[node name="Hazardous" parent="." unique_id=1599980597 instance=ExtResource("7_1xtt7")]
+visible = false
+position = Vector2(310, -415)
+
 [node name="TileMapLayers" type="Node" parent="." unique_id=1564165849]
 
 [node name="Ground" type="TileMapLayer" parent="TileMapLayers" unique_id=241328188]
@@ -4956,18 +4960,17 @@ region_enabled = true
 region_rect = Rect2(97, 296, 47, 33)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayers/Canal/Clogged" unique_id=426675213]
-position = Vector2(199, -204)
+position = Vector2(199, -208)
 rotation = -1.5707964
 shape = SubResource("RectangleShape2D_xxw37")
 
-[node name="Hazardous" parent="TileMapLayers/Canal/Clogged" unique_id=1599980597 instance=ExtResource("7_1xtt7")]
-position = Vector2(310, -415)
-
 [node name="ripple" parent="TileMapLayers/Canal" unique_id=172426302 instance=ExtResource("8_1xtt7")]
-position = Vector2(311, -186)
+position = Vector2(311, -181)
+scale = Vector2(1, 0.857716)
 
 [node name="ripple2" parent="TileMapLayers/Canal" unique_id=727549964 instance=ExtResource("8_1xtt7")]
-position = Vector2(113, -219)
+position = Vector2(113, -224.00002)
+scale = Vector2(1, 0.8896657)
 
 [node name="Spawner" type="Area2D" parent="TileMapLayers/Canal" unique_id=1945927686]
 collision_layer = 0

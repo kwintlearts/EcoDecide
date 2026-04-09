@@ -6,6 +6,7 @@ extends Node2D
 @onready var plush_toy: CharacterBody2D = $"Characters/Plush Toy"
 @onready var clogged: Area2D = $TileMapLayers/Canal/Clogged
 @onready var spawner: Area2D = $TileMapLayers/Canal/Spawner
+@onready var hazardous: StaticBody2D = $Hazardous
 
 const SCENE_2_DIALOGUE = preload("uid://tyjr7142kuca")
 
@@ -18,16 +19,18 @@ var crates_removed: bool = false  # Add this variable
 var total_items_processed: int = 0
 var total_items_to_process: int = 30
 const GARBAGE_TRUCK_SCENE = preload("uid://bvco8ogotk1jd")
+var battery_ignored: bool = false
 
 func _ready():
 	GameState.current_scenario = 2
 	if GameState.did_choose("asked_help"):
 		_spawn_second_truck()
-		
-
-	print("Current Scenario: ", GameState.current_scenario)
-	
 	_remove_crates_at_start()
+	
+	hazardous.hide()
+	
+	
+	print("Current Scenario: ", GameState.current_scenario)
 	
 	EventBus.vendor_confronted.connect(_on_vendor_confronted)
 	
@@ -41,6 +44,25 @@ func _ready():
 	var truck = get_tree().get_first_node_in_group("garbage_truck")
 	if truck:
 		truck.items_disposed.connect(_on_truck_disposal)
+	GameState.stats_updated.connect(_on_stats_updated)
+
+func _on_stats_updated():
+	# Update battery choice when it's made
+	if not battery_ignored and GameState.did_choose("battery_ignored"):
+		update_battery_choice()
+		
+	if GameState.did_choose("battery_recycled"):
+		hazardous.show()
+		print("Hazardous bin shown for battery disposal")
+	
+func update_battery_choice():
+	battery_ignored = GameState.did_choose("battery_ignored")
+	if battery_ignored:
+		total_items_to_process = 29
+		print("Battery ignored - need to process 29 items")
+	else:
+		total_items_to_process = 30
+		print("Battery will be processed - need to process 30 items")
 
 func _spawn_second_truck():
 	var second_truck = GARBAGE_TRUCK_SCENE.instantiate()
@@ -73,6 +95,7 @@ func save_scenario_results():
 	var remaining = spawner.get_remaining_items()
 	var final_clarity = int((30 - remaining) / 30.0 * 100)
 	GameState.scenario_flags["canal_clarity"] = final_clarity
+	GameState.final_clarity = final_clarity  # Add this line
 	print("Saved scenario results - Clarity: ", final_clarity, "%")
 
 func _on_scenario_end():
@@ -92,8 +115,7 @@ func _on_item_collected():
 	if clogged:
 		clogged.update_clarity()
 	
-	if spawner and spawner.get_remaining_items() <= 0:
-		_on_scenario_end()
+	_check_completion()
 
 func update_clogged_clarity():
 	if clogged:
@@ -109,8 +131,11 @@ func check_cell():
 func _on_truck_disposal(count: int):
 	total_items_processed += count
 	print("Items disposed in truck: ", count, " Total: ", total_items_processed)
-	
-	if total_items_processed >= total_items_to_process:
+	_check_completion()
+
+func _check_completion():
+	if GameState.total_disposals >= total_items_to_process and not scenario_ended:
+		print("All items disposed! Total disposals: ", GameState.total_disposals)
 		_on_scenario_end()
 
 # scene_2_clean_up_drive.gd

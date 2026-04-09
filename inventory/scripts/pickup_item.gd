@@ -138,16 +138,15 @@ func playercollect(player):
 	var success = player.collect(item)
 	if success:
 		print("Collected: ", item.name)
-		# Play pickup sound
+		
+		# Play pickup sound - simpler approach, don't reparent
 		if pick_up:
-			# Reparent sound to root so it continues playing
-			pick_up.get_parent().remove_child(pick_up)
-			get_tree().current_scene.add_child(pick_up)
 			pick_up.play()
 		
 		queue_free()
 	else:
-		error.play()
+		if error:
+			error.play()
 		print("Inventory full! Cannot collect: ", item.name)
 		is_being_collected = false
 	

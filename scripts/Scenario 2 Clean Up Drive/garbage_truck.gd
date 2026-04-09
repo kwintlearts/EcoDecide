@@ -52,8 +52,11 @@ func empty_inventory():
 	# Loop through all slots and clear them
 	for slot in inv.slots:
 		if slot.item:
-			# Check if item is hazardous (correct_bin == 0 for Hazardous)
-			if slot.item.correct_bin == 0:
+			# RECORD THE DISPOSAL
+			var is_hazardous = (slot.item.correct_bin == 0)
+			GameState.record_disposal(slot.item.name, false, "TRUCK")
+			
+			if is_hazardous:
 				print("Hazardous item disposed in truck (PENALTY): ", slot.item.name)
 				hazardous_items += 1
 			else:

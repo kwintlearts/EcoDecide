@@ -3,9 +3,9 @@ extends CharacterBody2D
 # base Speed 50
 # base sprint 80 
 
-const BASE_SPEED = 80.0
-const BASE_SPRINT_SPEED = 110.0
-const ENERGY_REGEN_RATE = 1.5
+const BASE_SPEED = 45
+const BASE_SPRINT_SPEED = 80
+const ENERGY_REGEN_RATE = 2
 
 const PLASTIC_SACK = preload("uid://cndy7pcxy0wir")
 const WOVEN_SACK = preload("uid://buu65yaotstju")
@@ -27,10 +27,16 @@ var is_sprinting: bool = false
 # Speed penalties based on bag choice
 var SPEED = BASE_SPEED
 var SPRINT_SPEED = BASE_SPRINT_SPEED
+var movement_lock_timer: Timer
 
 func _ready():
 	add_to_group("player")
 	AnimationManager.register_character("Player", animated_sprite)
+	
+	movement_lock_timer = Timer.new()
+	movement_lock_timer.one_shot = true
+	movement_lock_timer.timeout.connect(_unlock_movement_safety)
+	add_child(movement_lock_timer)
 	
 	# Apply speed penalty for woven sack (slower due to more capacity)
 	if GameState.did_choose("woven_bag"):
@@ -45,6 +51,11 @@ func _ready():
 	# Register inventory with manager
 	if inv:
 		InventoryManager.set_player_inv(inv)
+
+func _unlock_movement_safety():
+	if not can_move:
+		print("Safety: Unlocking player movement")
+		can_move = true
 
 func switch_to_plastic_sack():
 	inv = PLASTIC_SACK.duplicate()

@@ -210,6 +210,7 @@ func _on_continue_button_pressed() -> void:
 			visible = false
 			# Load next scene with loading screen
 			GameState.save_carry_over_from_scene_1()
+			
 			SceneLoader.load_scene("res://scenes/Scenario 2 Clean Up Drive/scene_2_clean_up_drive.tscn")
 			# Queue free after loading starts
 			await get_tree().process_frame

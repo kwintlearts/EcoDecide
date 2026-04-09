@@ -233,3 +233,8 @@ func full_reset():
 	current_scenario = 0
 	
 	print("Full game reset complete!")
+	
+func set_mid_clean_visuals():
+	var clogged = get_tree().get_first_node_in_group("clogged_area")
+	if clogged and clogged.has_method("set_mid_clean_visuals"):
+		clogged.set_mid_clean_visuals()

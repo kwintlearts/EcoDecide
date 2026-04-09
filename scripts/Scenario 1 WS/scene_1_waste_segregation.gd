@@ -37,7 +37,7 @@ func _check_scenario_completion():
 	if GameState.total_disposals >= 20 and not scenario_ending:
 		scenario_ending = true
 		GameState.complete_scenario(1)  # Add this line
-		#TimerManager.end_scenario()
+		TimerManager.end_scenario()
 		_close_all_dialogues()
 		_show_ending()
 
@@ -136,7 +136,7 @@ func load_state(state: Dictionary) -> void:
 				var item_id = slot_data["item_id"]
 				for inv_item in spawner.items:
 					if inv_item.id == item_id:
-						await get_tree().create_timer(0.5).timeout
+						await get_tree().create_timer(0.3).timeout
 						player.inv.slots[i].item = inv_item
 						print("Restored item to slot ", i, ": ", inv_item.name)
 						break

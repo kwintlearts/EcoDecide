@@ -42,7 +42,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_e6a17")
-region_rect = Rect2(16, 18, 764, 767)
+region_rect = Rect2(18, 18, 762, 765)
 
 [node name="Panel" type="Panel" parent="NinePatchRect" unique_id=685539395]
 layout_mode = 1

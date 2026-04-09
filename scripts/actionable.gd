@@ -29,22 +29,29 @@ func action(interactor = null) -> void:
 	if parent and parent.has_method("get_item_dialogue") and GameState.scenario_active:
 		var item_dialogue = parent.get_item_dialogue()
 		if item_dialogue and item_dialogue.dialogue_resource:
-			# Lock player movement BEFORE dialogue
 			var player = get_tree().get_first_node_in_group("player")
+			
+			# Check inventory full
+			if player and player.inv and player.inv.is_full():
+				print("Inventory full! Cannot pick up item.")
+				parent.playercollect(interactor)
+				return
+			
+			# Lock movement
 			if player:
 				player.can_move = false
 			
-			# Show dialogue
+			# Show dialogue with error handling
 			start_dialogue_with_resource(item_dialogue.dialogue_resource, item_dialogue.dialogue_start)
 			
-			# After dialogue, check if should collect
+			# After dialogue
 			await DialogueManager.dialogue_ended
 			
-			# Unlock player movement AFTER dialogue
+			# ALWAYS unlock movement, even if error occurs
 			if player:
 				player.can_move = true
 			
-			# Only collect if player didn't choose to leave it
+			# Only collect if not ignored
 			if not GameState.did_choose("battery_ignored"):
 				parent.playercollect(interactor)
 			
@@ -52,17 +59,14 @@ func action(interactor = null) -> void:
 	
 	# Fallback to default dialogue
 	if use_dialogue and dialogue_resource:
-		# Lock player movement BEFORE dialogue
 		var player = get_tree().get_first_node_in_group("player")
 		if player:
 			player.can_move = false
 		
 		start_dialogue()
 		
-		# Wait for dialogue to end
 		await DialogueManager.dialogue_ended
 		
-		# Unlock player movement AFTER dialogue
 		if player:
 			player.can_move = true
 		

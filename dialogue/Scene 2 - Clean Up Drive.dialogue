@@ -6,7 +6,6 @@ if not GameState.has_chosen_sack:
 		do GameState.has_chosen_sack = true
 		do GameState.start_scenario(2, true)
 		do TimerManager.start_timer(420)
-		
 		do get_tree().get_first_node_in_group("player").switch_to_plastic_sack()
 		Plush Toy: Plastic is faster, but it creates more waste.
 		=> END
@@ -171,6 +170,8 @@ else
 ~ ending_check
 if GameState.final_clarity >= 80 and GameState.community_trust >= 70
 	=> ending_good
+elif GameState.final_clarity >= 80
+	=> ending_mid_clean
 elif GameState.final_clarity >= 50
 	=> ending_mid
 else
@@ -178,19 +179,23 @@ else
 => END
 
 ~ ending_good
-Plush Toy: Excellent! The canal is clean and the community is involved!
+Plush Toy: Excellent! The canal is clean AND the community is involved!
+Plush Toy: Because you talked to the vendors, the elder, and the youth, they'll help keep it clean.
+Plush Toy: This is how real change happens!
+=> END
 
-
+~ ending_mid_clean
+do GameState.set_mid_clean_visuals()
+Plush Toy: The canal is clean... but look around.
+Plush Toy: The vendors are still throwing trash. The youth don't care. The elder is still worried.
+Plush Toy: You cleaned the water, but you didn't clean the community.
+Plush Toy: Without their help, this canal will just get clogged again next week.
 => END
 
 ~ ending_mid
 Plush Toy: Not bad, but the canal could be cleaner...
-
-
 => END
 
 ~ ending_bad
 Plush Toy: Oh no... the canal is still clogged.
-
-
 => END
