@@ -1,0 +1,140 @@
+~ plush_toy
+if not GameState.has_met_plush_toy:
+	do AnimationManager.animate("PlushToy", "power_off")
+
+	Plush Toy: ...
+	do AnimationManager.animate("PlushToy", "power_on")
+	You: ..
+	
+	
+	Plush Toy: Finally... someone who sees me.
+
+	You: Wait... did you just talk?
+
+	Plush Toy: I am a reminder.. A link to the world you've forgotten.
+	Plush Toy: This city is choking, but it doesn't have to end this way.
+	Plush Toy: I'll walk with you. I'll show you the cost of every choice.
+	Plush Toy: Ready to clean up this mess?
+	- Yes, Let's go
+		do GameState.has_met_plush_toy = true
+		do EventBus.plush_toy_met.emit()  
+		=> END
+	- Who are you really?
+		Plush Toy: A cute adorable plush toy.
+		do GameState.has_met_plush_toy = true
+		do EventBus.plush_toy_met.emit() 
+		=> END
+=> END
+
+~ locked
+Game Notification: You Saw a Plush Toy on the way.. try interacting with it.
+=> END
+
+~ start
+if not GameState.has_met_plush_toy
+	=> locked
+	
+elif not GameState.scenario_active
+	Plush Toy: Hey! Look at this mess... The fiesta was fun, but now the barangay hall is drowning in trash.
+	Plush Toy: We need to sort this before the collection truck arrives in 5 minutes!
+	Plush Toy: Remember RA 9003! Proper segregation starts with US. But... some choices aren't simple. Ready?
+	do GameState.start_scenario(1, true)  # Timer enabled
+	do TimerManager.start_timer(300)
+ 
+=> END
+
+~ decision_bottle_juice
+Plush Toy: This bottle still has juice in it. What do you want to do?
+- Rinse it first, then recycle
+	do GameState.modify_energy(-5)
+	do GameState.add_score(15)
+	do GameState.modify_env_health(5)
+	do GameState.record_decision("rinsed_bottle")
+	Plush Toy: Good! It takes extra effort, but now this cup can actually be recycled.
+	Plush Toy: Clean recyclables = less waste in the long run!
+	=> END
+	
+- Throw in recyclable as-is
+	do GameState.add_score(5)
+	do GameState.modify_env_health(-10)
+	do GameState.record_decision("dirty_recycle")
+	Plush Toy: Hmm... that's okay, but the leftover juice will contaminate other recyclables.
+	=> END
+
+- Just toss it in residual
+	do GameState.add_score(0)
+	do GameState.modify_env_health(-5)
+	do GameState.record_decision("residual_waste")
+	Plush Toy: Well... at least it's in the right bin, but that bottle could have been recycled!
+	=> END
+
+=> END
+
+~ decision_missing_truck
+Plush Toy: Wait... the recycling truck isn't coming today! The driver called in sick. What now?
+- Store it at home until next week
+	do GameState.modify_energy(-10)
+	do GameState.add_score(20)
+	do GameState.modify_community_trust(10)
+	do GameState.record_decision("stored_home")
+	Plush Toy: Smart! Storing it properly ensures it will actually get recycled.
+	=> END
+
+- Mix with residual anyway
+	do GameState.add_score(-15)
+	do GameState.modify_env_health(-10)
+	do GameState.record_decision("mixed_waste")
+	Plush Toy: Oh no... now all that waste will go to the landfill instead of being recycled.
+	=> END
+
+- Ask barangay captain for help
+	do GameState.has_asked_captain = true 
+	Plush Toy: Excellent! Community action makes a real difference. The captain will arrange a special pickup.
+	=> END
+
+=> END
+
+~ ask_captain
+if GameState.has_asked_captain:
+	Barangay Captain: Ah, you're helping clean up?
+	Barangay Captain: Tell you what—I'll call a private collector.
+	Barangay Captain: But it'll cost the barangay funds...
+	Plush Toy: See? Speaking up can create systemic change!
+	do GameState.add_score(25)
+	do GameState.modify_community_trust(15)
+	do GameState.record_decision("asked_help")
+	do EventBus.captain_helped.emit() 
+	do GameState.has_asked_captain = false  # Reset so it only happens once
+else:
+	Barangay Captain: Sorry, I'm busy right now.
+=> END
+
+~ check_completion
+if GameState.total_disposals >= 20
+	=> ending_check
+elif TimerManager.time_remaining <= 0
+	=> ending_check
+else
+	=> END
+
+~ ending_check
+if GameState.get_sorting_accuracy() > 90 and GameState.energy > 20
+	=> ending_good
+elif GameState.get_sorting_accuracy() >= 50 or GameState.energy <= 20
+	=> ending_mid
+else
+	=> ending_bad
+=> END
+
+
+~ ending_good
+Plush Toy: Excellent! Because you rinsed and sorted, the recycling facility will actually accept this. You closed the loop!
+=> END
+
+~ ending_mid
+Plush Toy: Not bad, but some items were contaminated. The truck driver rejected the dirty bins. Now those recyclables go to the landfill.
+=> END
+
+~ ending_bad
+Plush Toy: Oh no... because everything was mixed, nothing can be recycled. This all goes to the dump site.
+=> END

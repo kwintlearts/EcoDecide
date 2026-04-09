@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://cas8j2nepj7w3"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_mx4br"]
+[ext_resource type="Texture2D" uid="uid://mn4s7b8t4ljb" path="res://assets/Pixel_Mart/ketchup.png" id="2_gt8co"]
+
+[resource]
+script = ExtResource("1_mx4br")
+id = "ketchup"
+name = "Ketchup"
+description = "A smear clings stubbornly to the sides. Its taste lingers, though time has dulled it."
+texture = ExtResource("2_gt8co")
+ui_scale = Vector2(0.6, 0.6)
+correct_bin = 3
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

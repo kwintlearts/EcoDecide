@@ -1,0 +1,93 @@
+~ start
+Plush Toy: This hillside... it used to be forest. Now it's bare.
+Plush Toy: The city wants to reforest it, but the budget is limited. We can't plant everywhere.
+Plush Toy: Here's the hard truth: Planting trees is easy. Keeping them alive? That's where most projects fail.
+=> decision_1
+
+~ decision_1
+Plush Toy: Choose which saplings to plant. Each has trade-offs.
+- Native species (slow but sustainable)
+	Plush Toy: Native species support local wildlife and survive better long-term. But... it'll take years to see results. Patience is part of sustainability.
+	=> set_native
+- Exotic fast-growing (quick green cover)
+	Plush Toy: Look how green it gets! But... some of these species might outcompete native plants. Fast isn't always better.
+	=> set_exotic
+- Fruit trees (community benefit)
+	Plush Toy: The community loves this! Free food = they'll protect the trees. But the budget... we can plant fewer.
+	=> set_fruit
+
+~ set_native
+=> decision_2
+
+~ set_exotic
+=> decision_2
+
+~ set_fruit
+=> decision_2
+
+~ decision_2
+Plush Toy: Total budget: ₱1,000. How do you want to use it?
+- Plant as many as possible (₱30/tree = 33 trees, no maintenance)
+	Plush Toy: Think long-term. What matters more—looking good on paper today, or having a forest in 10 years?
+	=> set_quantity
+- Balanced approach (₱80/tree = 12 trees, basic care)
+	Plush Toy: A middle path. Not too risky, not too safe. Let's see if it's enough.
+	=> set_balanced
+- Quality over quantity (₱120/tree = 8 trees, full care)
+	Plush Toy: Fewer trees, but they'll actually survive. This is the smart choice.
+	=> set_quality
+
+~ set_quantity
+=> pest_decision
+
+~ set_balanced
+=> pest_decision
+
+~ set_quality
+=> pest_decision
+
+~ pest_decision
+Plush Toy: Do you want to allocate funds for weed and pest control?
+- Yes, manual weeding team
+	Plush Toy: Hard work, but it keeps the soil healthy. This is true sustainability.
+	=> set_manual
+- Yes, chemical pesticides
+	Plush Toy: Cheap and fast... but they hurt the soil. Nothing else can grow there afterward.
+	=> set_chemical
+- No, save money for more trees
+	Plush Toy: Risky... Without maintenance, even the best intentions wither.
+	=> set_none
+
+~ set_manual
+=> time_skip
+
+~ set_chemical
+=> time_skip
+
+~ set_none
+=> time_skip
+
+~ time_skip
+Plush Toy: ONE YEAR LATER...
+=> outcome_check
+
+~ outcome_check
+=> outcome_A
+
+~ outcome_A
+Plush Toy: You did it! These trees will live for decades.
+Plush Toy: The soil is healthier, the air is cleaner... and look! Birds are coming back.
+Plush Toy: In the Philippines, only 40% of planted trees survive past 5 years due to lack of maintenance. Quality > Quantity!
+=> END
+
+~ outcome_B
+Plush Toy: The trees survived... but look at the soil. Nothing else can grow here now.
+Plush Toy: It's a "green desert"—trees without life.
+Plush Toy: In the Philippines, only 40% of planted trees survive past 5 years due to lack of maintenance. Quality > Quantity!
+=> END
+
+~ outcome_C
+Plush Toy: Most of the trees didn't make it...
+Plush Toy: Without maintenance, even the best intentions wither. Next time, maybe fewer trees with more care?
+Plush Toy: In the Philippines, only 40% of planted trees survive past 5 years due to lack of maintenance. Quality > Quantity!
+=> END

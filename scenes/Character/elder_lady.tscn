@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://baoce4ei7qpel"]
+
+[ext_resource type="Script" uid="uid://bvc1qcgeq8hsb" path="res://scripts/character/elder_lady.gd" id="1_8kv8p"]
+[ext_resource type="Texture2D" uid="uid://byh314a2c5p6s" path="res://assets/characters/RPG Top Down Character Asset Pack - FREE/RPG Top Down Characters - Free Version/Blue Haired Woman/blue_haired_woman.png" id="1_epmdr"]
+[ext_resource type="PackedScene" uid="uid://dotw2g8irmtcv" path="res://scenes/actionable.tscn" id="2_k34hk"]
+[ext_resource type="Resource" uid="uid://tyjr7142kuca" path="res://dialogue/Scene 2 - Clean Up Drive.dialogue" id="3_2sxpd"]
+[ext_resource type="FontVariation" uid="uid://dt7lx2joqvna" path="res://assets/User Interface/fonts/emoji_pixel_text.tres" id="5_5dnvv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rnuy"]
+size = Vector2(16, 18)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4vkox"]
+radius = 7.0
+
+[node name="ElderLady" type="StaticBody2D" unique_id=1159156245]
+script = ExtResource("1_8kv8p")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=486127857]
+texture = ExtResource("1_epmdr")
+region_enabled = true
+region_rect = Rect2(8, 13, 16, 18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1497318102]
+shape = SubResource("RectangleShape2D_1rnuy")
+
+[node name="Actionable" parent="." unique_id=525290031 instance=ExtResource("2_k34hk")]
+dialogue_resource = ExtResource("3_2sxpd")
+dialogue_start = "elder_lady"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable" unique_id=1503608118]
+shape = SubResource("CircleShape2D_4vkox")
+
+[node name="Label" type="Label" parent="." unique_id=1413925573]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_5dnvv")

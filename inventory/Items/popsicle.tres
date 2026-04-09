@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://brpt8ivo2ufum"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_xbetw"]
+[ext_resource type="Texture2D" uid="uid://du3mcvqdx8jws" path="res://assets/Free_pixel_food_16x16/Icons/popsicle_blue.png" id="2_abyan"]
+
+[resource]
+script = ExtResource("1_xbetw")
+id = "popsicle"
+name = "popsicle"
+description = "“Melted and sticky, clinging to the container’s edges. Once a treat, now a mess.”"
+texture = ExtResource("2_abyan")
+correct_bin = 3
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

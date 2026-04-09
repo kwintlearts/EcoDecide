@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://pw3pw7ykj6rb"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_bd0im"]
+[ext_resource type="Texture2D" uid="uid://c03j7r30koona" path="res://assets/BigWander_TheBanquet/IndividualSprites/Outline/pt1/Avocado_Half_Outline_BigWander_TheBanquet.png" id="2_bd0im"]
+
+[resource]
+script = ExtResource("1_bd0im")
+id = "avocado_half_kernel"
+name = "Avocado (Half with kernel)"
+description = "An Avocado that is half with a kernel"
+texture = ExtResource("2_bd0im")
+correct_bin = 2
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

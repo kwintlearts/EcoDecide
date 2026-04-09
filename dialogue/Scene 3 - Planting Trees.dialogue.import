@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cbl6fsvo62xp7"
+path="res://.godot/imported/Scene 3 - Planting Trees.dialogue-cdd6b7eb9e5f38ba40c6be2cc5a27ded.tres"
+
+[deps]
+
+source_file="res://dialogue/Scene 3 - Planting Trees.dialogue"
+dest_files=["res://.godot/imported/Scene 3 - Planting Trees.dialogue-cdd6b7eb9e5f38ba40c6be2cc5a27ded.tres"]
+
+[params]
+
+defaults=true

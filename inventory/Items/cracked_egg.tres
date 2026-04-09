@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://d1aiir1hphrg0"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_u42uw"]
+[ext_resource type="Texture2D" uid="uid://cy6nmx88sw6g" path="res://assets/Free_pixel_food_16x16/Icons/eggs_softboiled.png" id="2_md67s"]
+
+[resource]
+script = ExtResource("1_u42uw")
+id = "cracked_egg"
+name = "Egg (cracked)"
+description = "The shell has split, and a faint smell escapes. Time hasn’t been kind."
+texture = ExtResource("2_md67s")
+ui_scale = Vector2(0.5, 0.5)
+correct_bin = 3
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

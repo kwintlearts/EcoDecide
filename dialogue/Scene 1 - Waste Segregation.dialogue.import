@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://d2oa8p14f0cqt"
+path="res://.godot/imported/Scene 1 - Waste Segregation.dialogue-c8b6b52ede0d0ec931bd2bcdcbd45134.tres"
+
+[deps]
+
+source_file="res://dialogue/Scene 1 - Waste Segregation.dialogue"
+dest_files=["res://.godot/imported/Scene 1 - Waste Segregation.dialogue-c8b6b52ede0d0ec931bd2bcdcbd45134.tres"]
+
+[params]
+
+defaults=true

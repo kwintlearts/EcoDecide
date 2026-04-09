@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://7pyunlavlj5l"]
+
+[ext_resource type="Texture2D" uid="uid://ddgbgom2icrj4" path="res://assets/[16x16] Potions.png" id="1_hjbtt"]
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="2_7q6lt"]
+[ext_resource type="Resource" uid="uid://d2oa8p14f0cqt" path="res://dialogue/Scene 1 - Waste Segregation.dialogue" id="2_yra7x"]
+[ext_resource type="Resource" uid="uid://bh6hw0vm1trb4" path="res://inventory/Items/bottle_juice_clean.tres" id="3_yra7x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kn2sa"]
+atlas = ExtResource("1_hjbtt")
+region = Rect2(1, 49, 14, 15)
+
+[resource]
+script = ExtResource("2_7q6lt")
+id = "bottle_juice"
+name = "Juice Bottle"
+description = "Still have some juice left"
+atlas_texture = SubResource("AtlasTexture_kn2sa")
+ui_scale = Vector2(0.6, 0.6)
+has_dialogue = true
+dialogue_resource = ExtResource("2_yra7x")
+dialogue_start = "decision_bottle_juice"
+can_rinsed = true
+rinse_version = ExtResource("3_yra7x")
+correct_bin = 3
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

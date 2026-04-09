@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://drp6wwerhn5u0"]
+
+[ext_resource type="Script" uid="uid://baud3gg848y52" path="res://scripts/mobile_controls.gd" id="1_bswi6"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="2_saaj3"]
+[ext_resource type="Texture2D" uid="uid://b8offkn11lky2" path="res://assets/User Interface/kenney_inputPromptsPixel16×/Tiles/tile_0014.png" id="4_puaky"]
+[ext_resource type="Texture2D" uid="uid://bokkhepcfssce" path="res://assets/User Interface/kenney_inputPromptsPixel16×/Tiles/tile_0043.png" id="5_0g8qj"]
+[ext_resource type="Texture2D" uid="uid://bw5pdfc0jqggv" path="res://assets/User Interface/kenney_inputPromptsPixel16×/Tiles/tile_0013.png" id="5_yr8f1"]
+[ext_resource type="Texture2D" uid="uid://dsfk23q7roduk" path="res://assets/User Interface/kenney_inputPromptsPixel16×/Tiles/tile_0042.png" id="7_kth8y"]
+[ext_resource type="Texture2D" uid="uid://bm7ovjuhye0cb" path="res://assets/User Interface/controls/WhiteAndBlackGUI/letter_y.png" id="9_tdfkl"]
+[ext_resource type="Texture2D" uid="uid://bjebr77rakfvx" path="res://assets/User Interface/controls/WhiteAndBlackGUI/letter_x.png" id="12_xpmq5"]
+
+[node name="MobileControls" type="Control" unique_id=1409755977]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -320.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("1_bswi6")
+
+[node name="Virtual Joystick" parent="." unique_id=552995822 instance=ExtResource("2_saaj3")]
+layout_mode = 0
+anchors_preset = 0
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = 47.0
+offset_top = 0.0
+offset_right = 303.0
+offset_bottom = 269.0
+grow_vertical = 1
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_up"
+action_down = "move_down"
+
+[node name="Buttons" type="MarginContainer" parent="." unique_id=1392046264]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -303.0
+offset_top = -328.0
+offset_right = -47.0
+offset_bottom = -59.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Y" type="TouchScreenButton" parent="Buttons" unique_id=228114080]
+visible = false
+position = Vector2(-9.000023, 96)
+scale = Vector2(0.23359375, 0.23125)
+texture_normal = ExtResource("9_tdfkl")
+visibility_mode = 1
+
+[node name="B" type="TouchScreenButton" parent="Buttons" unique_id=172508972]
+position = Vector2(71.4, 155)
+scale = Vector2(5.5, 5.5)
+texture_normal = ExtResource("4_puaky")
+texture_pressed = ExtResource("5_0g8qj")
+action = "sprint"
+
+[node name="A" type="TouchScreenButton" parent="Buttons" unique_id=1298049019]
+position = Vector2(162.99997, 88)
+scale = Vector2(5.5, 5.5)
+texture_normal = ExtResource("5_yr8f1")
+texture_pressed = ExtResource("7_kth8y")
+action = "interact"
+
+[node name="X" type="TouchScreenButton" parent="Buttons" unique_id=1146791728]
+visible = false
+position = Vector2(71.4, 16)
+scale = Vector2(0.23359375, 0.23125)
+texture_normal = ExtResource("12_xpmq5")
+visibility_mode = 1
+
+[connection signal="pressed" from="Buttons/B" to="." method="_on_b_pressed"]
+[connection signal="released" from="Buttons/B" to="." method="_on_b_released"]
+[connection signal="pressed" from="Buttons/A" to="." method="_on_a_pressed"]
+[connection signal="released" from="Buttons/A" to="." method="_on_a_released"]

@@ -1,0 +1,197 @@
+[gd_scene format=3 uid="uid://j1hqd0qjocmp"]
+
+[ext_resource type="Script" uid="uid://bqfuohjbmo2mm" path="res://scripts/status.gd" id="1_oo0fn"]
+[ext_resource type="PackedScene" uid="uid://drp6wwerhn5u0" path="res://scenes/mobile_controls.tscn" id="1_y4d5l"]
+[ext_resource type="FontFile" uid="uid://dsy5ql31cyxib" path="res://assets/User Interface/fonts/PixelOperator8.ttf" id="2_5ysmq"]
+[ext_resource type="Script" uid="uid://dyn7gn48sfaju" path="res://scripts/utility.gd" id="3_uo2fv"]
+[ext_resource type="Texture2D" uid="uid://b7vmu7sb2cxjr" path="res://assets/User Interface/SimplePixelArtUIpack/Artwork/ColorCustomizible/icons/isonswhite2.png" id="6_5pdws"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_047uy"]
+atlas = ExtResource("6_5pdws")
+region = Rect2(9, 69, 16, 21)
+
+[node name="HudLayer" type="CanvasLayer" unique_id=507491322]
+
+[node name="Hud" type="Control" parent="." unique_id=1281269869]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Status" type="Control" parent="Hud" unique_id=216111570]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 77.0
+grow_horizontal = 2
+mouse_filter = 2
+script = ExtResource("1_oo0fn")
+
+[node name="TopLeft" type="VBoxContainer" parent="Hud/Status" unique_id=575368089]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 10.0
+offset_right = 304.0
+offset_bottom = 60.0
+theme_override_constants/separation = 8
+
+[node name="EnvHealth" type="Label" parent="Hud/Status/TopLeft" unique_id=1734118931]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_5ysmq")
+text = "EnvHealth:"
+
+[node name="ProgressBar" type="ProgressBar" parent="Hud/Status/TopLeft/EnvHealth" unique_id=1046559524]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 4.0
+offset_right = 251.0
+offset_bottom = 16.0
+size_flags_horizontal = 3
+show_percentage = false
+
+[node name="CommunityTrust" type="Label" parent="Hud/Status/TopLeft" unique_id=1305310799]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5ysmq")
+text = "CommunityTrust:"
+
+[node name="ProgressBar" type="ProgressBar" parent="Hud/Status/TopLeft/CommunityTrust" unique_id=1798429452]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 4.0
+offset_right = 329.0
+offset_bottom = 16.0
+size_flags_horizontal = 3
+show_percentage = false
+
+[node name="TopRight" type="VBoxContainer" parent="Hud/Status" unique_id=1476494064]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -241.0
+offset_top = 10.0
+offset_right = -49.0
+offset_bottom = 60.0
+grow_horizontal = 0
+theme_override_constants/separation = 8
+
+[node name="EcoScore" type="Label" parent="Hud/Status/TopRight" unique_id=1035811529]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5ysmq")
+text = "EcoScore: 000"
+
+[node name="Energy" type="Label" parent="Hud/Status/TopRight" unique_id=1961975758]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5ysmq")
+text = "Energy:"
+
+[node name="ProgressBar" type="ProgressBar" parent="Hud/Status/TopRight/Energy" unique_id=1058405598]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 4.0
+offset_right = 216.0
+offset_bottom = 16.0
+size_flags_horizontal = 3
+show_percentage = false
+
+[node name="Timer" type="Label" parent="Hud/Status" unique_id=1177064512]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.0
+offset_top = 8.0
+offset_right = 22.5
+offset_bottom = 57.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_5ysmq")
+text = "00:00"
+
+[node name="Utility" type="Control" parent="Hud" unique_id=39900092]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -132.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_uo2fv")
+
+[node name="MarginContainer" type="MarginContainer" parent="Hud/Utility" unique_id=906368239]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.75
+offset_top = -24.0
+offset_right = 25.75
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Inventory" type="TouchScreenButton" parent="Hud/Utility/MarginContainer" unique_id=1542283063]
+position = Vector2(11.750048, 4)
+scale = Vector2(2.5, 2.5)
+texture_normal = SubResource("AtlasTexture_047uy")
+action = "inventory"
+
+[node name="SceneIcon" type="NinePatchRect" parent="Hud/Utility" unique_id=1785564248]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -162.0
+offset_right = 26.0
+offset_bottom = -99.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_5pdws")
+region_rect = Rect2(39, 71, 18, 19)
+
+[node name="SceneButton" type="Button" parent="Hud/Utility/SceneIcon" unique_id=1436287680]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 54.0
+offset_bottom = 64.0
+
+[node name="SettingsIcon" type="NinePatchRect" parent="Hud/Utility" unique_id=566960343]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -280.0
+offset_right = 26.0
+offset_bottom = -217.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_5pdws")
+region_rect = Rect2(71, 71, 18, 19)
+
+[node name="SettingsButton" type="Button" parent="Hud/Utility/SettingsIcon" unique_id=306574425]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 54.0
+offset_bottom = 64.0
+flat = true
+
+[node name="MobileControls" parent="Hud" unique_id=1409755977 instance=ExtResource("1_y4d5l")]
+layout_mode = 1
+
+[connection signal="pressed" from="Hud/Utility/MarginContainer/Inventory" to="Hud/Utility" method="_on_inventory_pressed"]
+[connection signal="released" from="Hud/Utility/MarginContainer/Inventory" to="Hud/Utility" method="_on_inventory_released"]
+[connection signal="pressed" from="Hud/Utility/SceneIcon/SceneButton" to="Hud/Utility" method="_on_scene_button_pressed"]
+[connection signal="pressed" from="Hud/Utility/SettingsIcon/SettingsButton" to="Hud/Utility" method="_on_settings_button_pressed"]

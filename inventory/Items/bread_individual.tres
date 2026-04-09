@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://6waoncmhfdub"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_jegpi"]
+[ext_resource type="Texture2D" uid="uid://dwuspi1xfh5u3" path="res://assets/BigWander_TheBanquet/IndividualSprites/Outline/pt1/Bread_Individual_Outline_BigWander_TheBanquet.png" id="2_biarm"]
+
+[resource]
+script = ExtResource("1_jegpi")
+id = "bread_individual"
+name = "Bread"
+description = "A dense, gray loaf made from whatever grains still grow in poisoned soil. It’s dry, tasteless, and barely nourishing—but it keeps you alive one more day."
+texture = ExtResource("2_biarm")
+correct_bin = 2
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

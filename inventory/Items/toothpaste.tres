@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://dwfgvxl7y3508"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_qbw4c"]
+[ext_resource type="Texture2D" uid="uid://gn3mgc8nivue" path="res://assets/Pixel_Mart/toothpaste.png" id="2_4y54i"]
+
+[resource]
+script = ExtResource("1_qbw4c")
+id = "toothpaste"
+name = "Toothpaste"
+description = "Squeezed and twisted, a faint stripe of paste clings stubbornly. It’s seen better days."
+texture = ExtResource("2_4y54i")
+ui_scale = Vector2(0.3, 0.3)
+correct_bin = 3
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

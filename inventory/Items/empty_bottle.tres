@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://bsq0m817yb6p7"]
+
+[ext_resource type="Texture2D" uid="uid://cpsuxpu7xuwud" path="res://assets/GB_GlassBottles/Bottles/Glass Bottles/Empty/DB1.png" id="1_3sbvn"]
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="2_8w86d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d453n"]
+atlas = ExtResource("1_3sbvn")
+region = Rect2(0, 1, 15, 15)
+
+[resource]
+script = ExtResource("2_8w86d")
+id = "empty_bottle"
+name = "Bottle (Empty)"
+description = "An Empty Bottle"
+atlas_texture = SubResource("AtlasTexture_d453n")
+ui_scale = Vector2(0.8, 0.8)
+correct_bin = 1
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

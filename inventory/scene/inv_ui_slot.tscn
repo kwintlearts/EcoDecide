@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cd52kuifnwr6g"]
+
+[ext_resource type="Script" uid="uid://bjcs3f23yygo1" path="res://inventory/scripts/inv_ui_slot.gd" id="1_fcwim"]
+[ext_resource type="Texture2D" uid="uid://c4gkge5ghrii5" path="res://assets/User Interface/SimplePixelArtUIpack/Artwork/Gray/square/slot.png" id="2_vak28"]
+[ext_resource type="AudioStream" uid="uid://bkw3xifdrlksy" path="res://assets/Sounds/game sfx/interaction.mp3" id="3_5mxwt"]
+[ext_resource type="AudioStream" uid="uid://dt5chp6x8udnn" path="res://assets/Sounds/game sfx/errorsfx.mp3" id="4_wkagn"]
+[ext_resource type="AudioStream" uid="uid://bosbredl0ehh5" path="res://assets/Sounds/game sfx/pick_up_item.mp3" id="5_3rqm5"]
+[ext_resource type="AudioStream" uid="uid://d12sss5btdbce" path="res://assets/Sounds/game sfx/rinsing.mp3" id="6_wkagn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vak28"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Inv_UI_Slot" type="Panel" unique_id=1880220713]
+show_behind_parent = true
+custom_minimum_size = Vector2(16, 16)
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vak28")
+script = ExtResource("1_fcwim")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1623609370]
+scale = Vector2(0.6153846, 0.6153846)
+texture = ExtResource("2_vak28")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 26, 26)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1237435063]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=1298359038]
+layout_mode = 2
+
+[node name="item_display" type="Sprite2D" parent="CenterContainer/Panel" unique_id=1204454155]
+z_index = 4
+
+[node name="Interaction" type="AudioStreamPlayer" parent="." unique_id=40199457]
+stream = ExtResource("3_5mxwt")
+bus = &"SFX"
+
+[node name="Error" type="AudioStreamPlayer" parent="." unique_id=369910107]
+stream = ExtResource("4_wkagn")
+bus = &"SFX"
+
+[node name="PickUp" type="AudioStreamPlayer" parent="." unique_id=1784315358]
+stream = ExtResource("5_3rqm5")
+bus = &"SFX"
+
+[node name="Rinsing" type="AudioStreamPlayer" parent="." unique_id=1826380227]
+stream = ExtResource("6_wkagn")
+bus = &"SFX"

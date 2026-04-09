@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://docbywqm5vbb4"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_lr861"]
+[ext_resource type="Texture2D" uid="uid://cqyhq8xy1l36l" path="res://assets/BigWander_TheBanquet/IndividualSprites/Outline/pt1/Watermelon_Half_Bottom_Outline_BigWander_TheBanquet.png" id="2_1bkp3"]
+
+[resource]
+script = ExtResource("1_lr861")
+id = "melon_half"
+name = "Melon (Half)"
+description = "Flies and spores have already found it. In this world, nothing unclaimed stays clean for long."
+texture = ExtResource("2_1bkp3")
+correct_bin = 2
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

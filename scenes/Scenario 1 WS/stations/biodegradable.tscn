@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bui2wpxjl0sut"]
+
+[ext_resource type="Texture2D" uid="uid://nawx4lujcq7b" path="res://assets/FREE Pixel Art Trash Pack - Animated/Trash Bins - No Animations/Small Bin 2 - Brown.png" id="1_jckok"]
+[ext_resource type="Script" uid="uid://yh7pio6xqsin" path="res://scripts/Scenario 1 WS/station.gd" id="1_w8j58"]
+[ext_resource type="PackedScene" uid="uid://cjkkjkbuog3xy" path="res://scenes/Scenario 1 WS/stations/station_ui.tscn" id="2_p2hjq"]
+[ext_resource type="PackedScene" uid="uid://dotw2g8irmtcv" path="res://scenes/actionable.tscn" id="5_pfo3h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3tb8x"]
+size = Vector2(14, 24)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t8m73"]
+radius = 13.038404
+
+[node name="Biodegradable" type="StaticBody2D" unique_id=1562216016]
+z_index = 1
+script = ExtResource("1_w8j58")
+station_type = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1711665485]
+modulate = Color(0.623, 2.223, 0.13, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_jckok")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=278619057]
+shape = SubResource("RectangleShape2D_3tb8x")
+
+[node name="StationUI" parent="." unique_id=2035691203 instance=ExtResource("2_p2hjq")]
+offset_left = -12.0
+offset_top = -43.0
+offset_right = -12.0
+offset_bottom = -43.0
+
+[node name="StationUISlot" parent="StationUI/NinePatchRect/GridContainer" parent_id_path=PackedInt32Array(2035691203, 1563468099) index="0" unique_id=1880220713]
+mode = 1
+bin_type = 2
+
+[node name="Label" parent="StationUI" index="1" unique_id=1135225492]
+modulate = Color(0.3, 0.8, 1, 1)
+offset_left = -28.0
+offset_right = 61.0
+text = "BIODEGRADABLE"
+
+[node name="Actionable" parent="." unique_id=525290031 instance=ExtResource("5_pfo3h")]
+use_dialogue = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable" unique_id=152901803]
+shape = SubResource("CircleShape2D_t8m73")
+
+[editable path="StationUI"]

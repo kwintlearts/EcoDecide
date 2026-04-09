@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://bmvet30b4t5pu"]
+
+[ext_resource type="Texture2D" uid="uid://c6vfhywk4lhxl" path="res://assets/recycle_items.png" id="1_lj1q1"]
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="2_ehwnq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqdnx"]
+atlas = ExtResource("1_lj1q1")
+region = Rect2(19, 7, 39, 55)
+
+[resource]
+script = ExtResource("2_ehwnq")
+id = "milk_jug_empty"
+name = "Milk Jug (empty)"
+description = "A single-use milk jug. It will outlive the person who threw it away."
+atlas_texture = SubResource("AtlasTexture_rqdnx")
+ui_scale = Vector2(0.27, 0.27)
+correct_bin = 1
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

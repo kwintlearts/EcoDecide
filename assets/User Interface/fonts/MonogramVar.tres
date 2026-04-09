@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" format=3 uid="uid://bnpyk21ovjuyn"]
+
+[ext_resource type="FontFile" uid="uid://tl18hbi6oqpp" path="res://assets/User Interface/fonts/minibyte-regular.ttf" id="1_bxyte"]
+[ext_resource type="FontFile" uid="uid://bdyvnabkl2utk" path="res://assets/User Interface/fonts/NotoColorEmoji-Regular.ttf" id="2_5fjw2"]
+
+[resource]
+fallbacks = Array[Font]([ExtResource("2_5fjw2")])
+base_font = ExtResource("1_bxyte")

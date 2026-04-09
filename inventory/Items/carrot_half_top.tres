@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://dsyvybk17a3ge"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_haicb"]
+[ext_resource type="Texture2D" uid="uid://cho80835qeykc" path="res://assets/BigWander_TheBanquet/IndividualSprites/Outline/pt1/Carrot_Half_TopOutline_BigWander_TheBanquet.png" id="2_usej6"]
+
+[resource]
+script = ExtResource("1_haicb")
+id = "carrot_half_top"
+name = "Carrot (Half Top)"
+description = "A Half Carrot Top"
+texture = ExtResource("2_usej6")
+correct_bin = 2
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

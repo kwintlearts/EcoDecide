@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://cj4n807c7stxj"]
+
+[ext_resource type="Texture2D" uid="uid://c6vfhywk4lhxl" path="res://assets/recycle_items.png" id="1_wu2uv"]
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_xr6ra"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwgwy"]
+atlas = ExtResource("1_wu2uv")
+region = Rect2(330, 22, 21, 40)
+
+[resource]
+script = ExtResource("1_xr6ra")
+id = "empty_can_tall"
+name = "Can Tall (Empty)"
+description = "A Tall empty can"
+atlas_texture = SubResource("AtlasTexture_iwgwy")
+ui_scale = Vector2(0.2, 0.2)
+correct_bin = 1
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

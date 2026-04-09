@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://xmycmfgx5ijw"]
+
+[ext_resource type="Texture2D" uid="uid://bjbvxx1lq8cin" path="res://assets/FreePixelSurvivalItemsPack/FreePixelSurvivalItemsPack.png" id="1_nm7vb"]
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="2_1x06x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhycr"]
+atlas = ExtResource("1_nm7vb")
+region = Rect2(263, 70, 18, 21)
+
+[resource]
+script = ExtResource("2_1x06x")
+id = "empty_container"
+name = "Container (empty)"
+description = "Once full, now empty—but not useless. Could store water, ferment scraps, or be melted down for raw materials."
+atlas_texture = SubResource("AtlasTexture_fhycr")
+ui_scale = Vector2(0.7, 0.7)
+correct_bin = 1
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

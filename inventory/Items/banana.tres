@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://b3t0o6oav6oo6"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_r5cdo"]
+[ext_resource type="Texture2D" uid="uid://nu6nohoyk15c" path="res://assets/BigWander_TheBanquet/IndividualSprites/Outline/pt1/Banana_group_Outline_BigWander_TheBanquet.png" id="2_bfdto"]
+
+[resource]
+script = ExtResource("1_r5cdo")
+id = "banana_group"
+name = "banana (group)"
+description = "Grown in controlled habitats after blight wiped out wild crops. Its bright color feels unnatural in a fading world."
+texture = ExtResource("2_bfdto")
+correct_bin = 2
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

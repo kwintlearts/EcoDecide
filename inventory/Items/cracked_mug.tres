@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://ccjcaf5dj5hbh"]
+
+[ext_resource type="Texture2D" uid="uid://c6vfhywk4lhxl" path="res://assets/recycle_items.png" id="1_p6nt7"]
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="2_m37da"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmg2x"]
+atlas = ExtResource("1_p6nt7")
+region = Rect2(465, 36, 29, 26)
+
+[resource]
+script = ExtResource("2_m37da")
+id = "cracked_mug"
+name = "Mug (Cracked)"
+description = "A Mug that is cracked"
+atlas_texture = SubResource("AtlasTexture_lmg2x")
+ui_scale = Vector2(0.3, 0.3)
+correct_bin = 1
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

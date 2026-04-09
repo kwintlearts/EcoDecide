@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://bokjwrnht7t5v"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_31jb8"]
+[ext_resource type="Texture2D" uid="uid://cahf3252sfqsd" path="res://assets/Free_pixel_food_16x16/Icons/boba_milktea.png" id="2_43upy"]
+
+[resource]
+script = ExtResource("1_31jb8")
+id = "boba_milk_tea"
+name = "boba Milk tea"
+description = "Leftover sips clinging to the cup. Sweetness has soured with time."
+texture = ExtResource("2_43upy")
+correct_bin = 3
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://uako5i0wbrp5"
+path="res://.godot/imported/the-sound-of-victory-in-the-game-level.mp3-e55c0a0366ae89c632ed79e8f8778b65.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds/game sfx/the-sound-of-victory-in-the-game-level.mp3"
+dest_files=["res://.godot/imported/the-sound-of-victory-in-the-game-level.mp3-e55c0a0366ae89c632ed79e8f8778b65.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://db6haojs58op5"]
+
+[ext_resource type="Script" uid="uid://cyhcj34xlboev" path="res://scripts/dialogue_trigger.gd" id="1_yjflt"]
+[ext_resource type="Resource" uid="uid://d2oa8p14f0cqt" path="res://dialogue/Scene 1 - Waste Segregation.dialogue" id="2_wktwx"]
+
+[node name="DialogueTrigger" type="Area2D" unique_id=875344377]
+script = ExtResource("1_yjflt")
+dialogue_resource = ExtResource("2_wktwx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

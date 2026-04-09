@@ -37,6 +37,12 @@ var locals: Dictionary = {}
 
 var _locale: String = TranslationServer.get_locale()
 
+
+## Touch drag variables
+var touch_start_position: Vector2 = Vector2.ZERO
+var is_touch_dragging: bool = false
+const TOUCH_DRAG_THRESHOLD: float = 20.0
+
 ## The current line
 var dialogue_line: DialogueLine:
 	set(value):
@@ -45,6 +51,7 @@ var dialogue_line: DialogueLine:
 			apply_dialogue_line()
 		else:
 			# The dialogue has finished so close the balloon
+
 			if owner == null:
 				queue_free()
 			else:
@@ -70,11 +77,16 @@ var mutation_cooldown: Timer = Timer.new()
 ## Indicator to show that player can progress dialogue.
 @onready var progress: Polygon2D = %Progress
 
+const TALK = preload("uid://bm6ewjq43wair")
+
+var player = CharacterBody2D
+
 
 func _ready() -> void:
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
-
+	# Get player reference here when the tree is ready
+	player = get_tree().get_first_node_in_group("player")
 	# If the responses menu doesn't have a next action set, use this one
 	if responses_menu.next_action.is_empty():
 		responses_menu.next_action = next_action
@@ -117,8 +129,9 @@ func start(with_dialogue_resource: DialogueResource = null, title: String = "", 
 		dialogue_resource = with_dialogue_resource
 	if not title.is_empty():
 		start_from_title = title
-	dialogue_line = await dialogue_resource.get_next_dialogue_line(start_from_title, temporary_game_states)
+	dialogue_line = await dialogue_resource.get_next_dialogue_line(start_from_title, temporary_game_states)	
 	show()
+
 
 
 ## Apply any changes to the balloon given a new [DialogueLine].
@@ -143,18 +156,25 @@ func apply_dialogue_line() -> void:
 	balloon.show()
 	will_hide_balloon = false
 
+
+	# Wait for next line
+	audio_stream_player.play()
+
+
 	dialogue_label.show()
 	if not dialogue_line.text.is_empty():
 		dialogue_label.type_out()
 		await dialogue_label.finished_typing
 
-	# Wait for next line
 	if dialogue_line.has_tag("voice"):
+		#print(dialogue_line.tags)
+		#print(dialogue_line.get_tag_value("voice"))
 		audio_stream_player.stream = load(dialogue_line.get_tag_value("voice"))
+		#audio_stream_player.stream = TALK	
 		audio_stream_player.play()
 		await audio_stream_player.finished
 		next(dialogue_line.next_id)
-	elif dialogue_line.responses.size() > 0:
+	if dialogue_line.responses.size() > 0:
 		balloon.focus_mode = Control.FOCUS_NONE
 		responses_menu.show()
 	elif dialogue_line.time != "":
@@ -189,24 +209,26 @@ func _on_mutated(mutation: Dictionary) -> void:
 
 
 func _on_balloon_gui_input(event: InputEvent) -> void:
-	# See if we need to skip typing of the dialogue
+	# Handle mouse input (desktop)
 	if dialogue_label.is_typing:
-		#var mouse_was_clicked: bool = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()
+		var mouse_was_clicked: bool = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()
 		var skip_button_was_pressed: bool = event.is_action_pressed(skip_action)
-		#if mouse_was_clicked or skip_button_was_pressed:
-		if  skip_button_was_pressed:
+		if skip_button_was_pressed:
 			get_viewport().set_input_as_handled()
 			dialogue_label.skip_typing()
 			return
 
-	if not is_waiting_for_input: return
-	if dialogue_line.responses.size() > 0: return
+	if not is_waiting_for_input: 
+		return
+	if dialogue_line.responses.size() > 0: 
+		return
 
-	# When there are no response options the balloon itself is the clickable thing
 	get_viewport().set_input_as_handled()
 
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
-		next(dialogue_line.next_id)
+		var balloon_rect = balloon.get_global_rect()
+		if balloon_rect.has_point(event.position):
+			next(dialogue_line.next_id)
 	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
 		next(dialogue_line.next_id)
 
@@ -215,4 +237,21 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 	next(response.next_id)
 
 
+func force_close():	
+	# Clear responses
+	responses_menu.hide()
+	responses_menu.responses = []
+	
+	# Hide and free
+	hide()
+	queue_free()
+	
+	# Emit dialogue ended to reset state
+	DialogueManager.dialogue_ended.emit(null)
+
+
 #endregion
+
+
+func _on_dialogue_label_spoke(letter: String, letter_index: int, speed: float) -> void:
+	pass # Replace with function body.

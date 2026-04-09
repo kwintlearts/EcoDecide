@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dxjqt7mxs7ef5"]
+
+[ext_resource type="Script" uid="uid://yh7pio6xqsin" path="res://scripts/Scenario 1 WS/station.gd" id="1_c02lk"]
+[ext_resource type="Texture2D" uid="uid://b521qddgsaq25" path="res://assets/pixelinterior_BA_v1.0/cabinets_BA.png" id="2_s0upp"]
+[ext_resource type="Texture2D" uid="uid://c5dj6ovmb6heh" path="res://assets/pixelinterior_BA_v1.0/fixtures_BA.png" id="3_11kir"]
+[ext_resource type="PackedScene" uid="uid://dotw2g8irmtcv" path="res://scenes/actionable.tscn" id="4_yun1d"]
+[ext_resource type="PackedScene" uid="uid://cjkkjkbuog3xy" path="res://scenes/Scenario 1 WS/stations/station_ui.tscn" id="5_2eq57"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1u61k"]
+size = Vector2(32, 29)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p2ndy"]
+radius = 18.110771
+
+[node name="RinseStation" type="StaticBody2D" unique_id=1178643728]
+script = ExtResource("1_c02lk")
+
+[node name="Bottom" type="Sprite2D" parent="." unique_id=1010366187]
+position = Vector2(0, 4)
+texture = ExtResource("2_s0upp")
+region_enabled = true
+region_rect = Rect2(16, 76, 32, 20)
+
+[node name="Sink" type="Sprite2D" parent="." unique_id=2052117607]
+position = Vector2(0, -8)
+texture = ExtResource("3_11kir")
+region_enabled = true
+region_rect = Rect2(105, 13, 32, 21)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1978033180]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1u61k")
+
+[node name="StationUI" parent="." unique_id=2035691203 instance=ExtResource("5_2eq57")]
+offset_left = -12.0
+offset_top = -46.0
+offset_right = -12.0
+offset_bottom = -46.0
+
+[node name="StationUISlot" parent="StationUI/NinePatchRect/GridContainer" parent_id_path=PackedInt32Array(2035691203, 1563468099) index="0" unique_id=1880220713]
+mode = 1
+
+[node name="Label" parent="StationUI" index="1" unique_id=1135225492]
+modulate = Color(0.2, 0.839, 1, 1)
+offset_left = -4.0
+offset_right = 31.0
+text = "RECYCLABLE"
+
+[node name="Actionable" parent="." unique_id=525290031 instance=ExtResource("4_yun1d")]
+use_dialogue = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable" unique_id=2021962439]
+shape = SubResource("CircleShape2D_p2ndy")
+
+[editable path="StationUI"]

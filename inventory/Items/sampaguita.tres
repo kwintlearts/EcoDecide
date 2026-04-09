@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://nk1dn10eomvb"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_2y0de"]
+[ext_resource type="Texture2D" uid="uid://clfdr41kdw4uf" path="res://assets/GourmetMarketStalls.png" id="1_5euu2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgpmh"]
+atlas = ExtResource("1_5euu2")
+region = Rect2(161, 96, 13, 28)
+
+[resource]
+script = ExtResource("1_2y0de")
+id = "sampaguita"
+name = "Sampaguita"
+description = "Soft petals in a place that forgot how to care for them."
+atlas_texture = SubResource("AtlasTexture_cgpmh")
+correct_bin = 2
+metadata/_custom_type_script = "uid://d1w0s766i4mib"
