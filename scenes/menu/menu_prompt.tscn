@@ -3,6 +3,10 @@
 [ext_resource type="FontFile" uid="uid://dsy5ql31cyxib" path="res://assets/User Interface/fonts/PixelOperator8.ttf" id="1_5i0nl"]
 [ext_resource type="Script" uid="uid://0wi27ccnvege" path="res://scripts/menu/menu_prompt.gd" id="1_rxjm5"]
 [ext_resource type="AudioStream" uid="uid://dpydioqkbtr24" path="res://assets/Sounds/game sfx/button_sound2.mp3" id="3_aeylp"]
+[ext_resource type="FontVariation" uid="uid://dt7lx2joqvna" path="res://assets/User Interface/fonts/emoji_pixel_text.tres" id="3_p72w8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rqs1p"]
+font = ExtResource("3_p72w8")
 
 [node name="MenuPrompt" type="Control" unique_id=778278159]
 layout_mode = 3
@@ -20,9 +24,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -240.0
+offset_left = -283.0
 offset_top = -88.5
-offset_right = 240.0
+offset_right = 283.0
 offset_bottom = 88.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -39,7 +43,8 @@ offset_bottom = 59.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_5i0nl")
 theme_override_font_sizes/font_size = 24
-text = "Are You Sure?"
+text = "Are you Going Back to Menu?"
+label_settings = SubResource("LabelSettings_rqs1p")
 
 [node name="YesButton" type="Button" parent="Panel" unique_id=2053724045]
 layout_mode = 1
@@ -52,7 +57,7 @@ offset_right = 151.0
 offset_bottom = -40.0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_5i0nl")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 16
 text = "YES"
 
 [node name="NoButton" type="Button" parent="Panel" unique_id=994984275]
@@ -69,7 +74,7 @@ offset_bottom = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_5i0nl")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 16
 text = "NO"
 
 [node name="SFXButtons" type="AudioStreamPlayer" parent="." unique_id=1789111128]

@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://dsy5ql31cyxib" path="res://assets/User Interface/fonts/PixelOperator8.ttf" id="2_j5vbe"]
 [ext_resource type="Texture2D" uid="uid://b7vmu7sb2cxjr" path="res://assets/User Interface/SimplePixelArtUIpack/Artwork/ColorCustomizible/icons/isonswhite2.png" id="2_r40o8"]
 [ext_resource type="FontVariation" uid="uid://dt7lx2joqvna" path="res://assets/User Interface/fonts/emoji_pixel_text.tres" id="3_cij7f"]
+[ext_resource type="FontFile" uid="uid://cid2agaypdxai" path="res://assets/User Interface/fonts/PixelOperator8-Bold.ttf" id="4_kjwg5"]
 [ext_resource type="FontFile" uid="uid://bdyvnabkl2utk" path="res://assets/User Interface/fonts/NotoColorEmoji-Regular.ttf" id="4_r40o8"]
 [ext_resource type="AudioStream" uid="uid://dua8fl70yolu1" path="res://assets/Sounds/game sfx/results2.mp3" id="6_msw0o"]
 [ext_resource type="AudioStream" uid="uid://dpydioqkbtr24" path="res://assets/Sounds/game sfx/button_sound2.mp3" id="7_smigx"]
@@ -11,6 +12,9 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_msw0o"]
 atlas = ExtResource("2_r40o8")
 region = Rect2(167, 69, 18, 19)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qwkdv"]
+font = ExtResource("4_kjwg5")
 
 [sub_resource type="FontVariation" id="FontVariation_msw0o"]
 fallbacks = Array[Font]([ExtResource("4_r40o8")])
@@ -73,13 +77,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -118.0
-offset_top = 10.0
-offset_right = 118.0
-offset_bottom = 33.0
+offset_left = -129.5
+offset_top = 19.0
+offset_right = 129.5
+offset_bottom = 42.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_j5vbe")
 text = "Scenario Complete!"
+label_settings = SubResource("LabelSettings_qwkdv")
 
 [node name="ResultsLabel" type="Label" parent="ResultsScreen/Panel" unique_id=1659452045]
 layout_mode = 1

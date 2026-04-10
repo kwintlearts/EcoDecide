@@ -41,16 +41,16 @@ offset_top = -179.99998
 offset_right = -28.999939
 offset_bottom = -153.37108
 theme_override_fonts/font = ExtResource("4_lty7c")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "Empty Sack?"
 
 [node name="NotificationLabel" type="Label" parent="." unique_id=1463879489]
-offset_left = -155.0
-offset_top = -260.0
-offset_right = 171.0
-offset_bottom = -233.3711
+offset_left = -165.0
+offset_top = -290.0
+offset_right = 403.0
+offset_bottom = -252.0
 theme_override_fonts/font = ExtResource("4_lty7c")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 40
 text = "Sack has been Emptied!"
 
 [node name="Interaction" type="AudioStreamPlayer" parent="." unique_id=920361315]

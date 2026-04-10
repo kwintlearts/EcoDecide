@@ -285,6 +285,7 @@ script = ExtResource("1_cvnsp")
 inv = ExtResource("2_0tuvh")
 
 [node name="Inv_UI" parent="." unique_id=1135568863 instance=ExtResource("3_qhqgy")]
+visible = false
 z_index = 4
 
 [node name="ItemInfo" parent="Inv_UI" unique_id=1358632728 instance=ExtResource("4_i7wy1")]
@@ -313,5 +314,5 @@ collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Direction/ActionableFinder" unique_id=2085082887]
-position = Vector2(0, 16)
+position = Vector2(0, 15)
 shape = SubResource("CircleShape2D_2ijsl")

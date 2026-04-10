@@ -42,6 +42,8 @@ var uses_timer: bool = true
 var carry_over_eco_score: int = 0
 var carry_over_env_health: int = 50
 var carry_over_energy: int = 100
+var is_bulk_disposal: bool = false
+
 
 signal stats_updated
 signal scenario_completed(scenario_id)
@@ -89,6 +91,21 @@ func get_ending_tier() -> String:
 		return "B"
 	else:
 		return "C"
+
+
+
+func record_bulk_disposal(total: int, regular: int, hazardous: int):
+	disposal_log.append({
+		"item": "Bulk Truck Disposal",
+		"correct": false,
+		"bin": "TRUCK",
+		"category": "Bulk",
+		"total_items": total,
+		"regular_items": regular,
+		"hazardous_items": hazardous,
+		"timestamp": Time.get_ticks_msec()
+	})
+	stats_updated.emit()
 
 func record_disposal(item_name: String, was_correct: bool, bin_type: String, category: String = "Other"):
 	total_disposals += 1
