@@ -27,8 +27,11 @@ extends Control
 @onready var carry_overtext: Label = $Panel/CarryOvertext
 
 @onready var continue_button: Button = $Panel/ContinueButton
+@onready var sfx_results: AudioStreamPlayer = $"../SFXResults"
+@onready var sfx_buttons: AudioStreamPlayer = $"../SFXButtons"
 
 func _ready():
+	sfx_results.play()
 	add_to_group("results_screen")  # Add this line
 	_load_scenario_results()
 
@@ -199,10 +202,13 @@ func _set_tier_display(tier: String):
 
 
 func _on_back_button_pressed() -> void:
+	sfx_buttons.play()
+	
 	queue_free()
 
 
 func _on_continue_button_pressed() -> void:
+	sfx_buttons.play()
 	match GameState.current_scenario:
 		1:
 			GameState.has_completed_scenario_1 = true
@@ -210,7 +216,7 @@ func _on_continue_button_pressed() -> void:
 			visible = false
 			# Load next scene with loading screen
 			GameState.save_carry_over_from_scene_1()
-			
+			GameState.total_disposals = 0
 			SceneLoader.load_scene("res://scenes/Scenario 2 Clean Up Drive/scene_2_clean_up_drive.tscn")
 			# Queue free after loading starts
 			await get_tree().process_frame
@@ -221,6 +227,7 @@ func _on_continue_button_pressed() -> void:
 
 
 func _on_restart_button_pressed() -> void:
+	sfx_buttons.play()
 	match GameState.current_scenario:
 		1:
 			GameState.reset_scenario_1()
@@ -240,3 +247,4 @@ func _on_restart_button_pressed() -> void:
 			
 			await get_tree().process_frame
 			queue_free()
+		

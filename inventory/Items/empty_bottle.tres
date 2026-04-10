@@ -15,4 +15,5 @@ description = "An Empty Bottle"
 atlas_texture = SubResource("AtlasTexture_d453n")
 ui_scale = Vector2(0.8, 0.8)
 correct_bin = 1
+category = "Glass"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

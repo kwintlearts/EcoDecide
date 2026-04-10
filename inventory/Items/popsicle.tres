@@ -6,8 +6,9 @@
 [resource]
 script = ExtResource("1_xbetw")
 id = "popsicle"
-name = "popsicle"
+name = "popsicle (melting)"
 description = "“Melted and sticky, clinging to the container’s edges. Once a treat, now a mess.”"
 texture = ExtResource("2_abyan")
-correct_bin = 3
+correct_bin = 2
+category = "Food"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

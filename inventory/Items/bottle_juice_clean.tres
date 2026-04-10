@@ -15,4 +15,5 @@ description = "A freshly rinsed juice bottle."
 atlas_texture = SubResource("AtlasTexture_6xktc")
 ui_scale = Vector2(0.6, 0.6)
 correct_bin = 1
+category = "Glass"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

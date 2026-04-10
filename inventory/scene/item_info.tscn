@@ -8,37 +8,28 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_uuuds")
 
-[node name="ItemTitle" type="Label" parent="." unique_id=499435304]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=227937866]
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 128.0
+
+[node name="ItemTitle" type="Label" parent="VBoxContainer" unique_id=499435304]
 z_index = 6
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_right = 136.0
-offset_bottom = 16.0
-grow_horizontal = 2
+custom_minimum_size = Vector2(144, 8)
+layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.8980392, 0.57254905, 1)
 theme_override_colors/font_shadow_color = Color(0.0054360074, 0.36744145, 0.07417361, 1)
 theme_override_fonts/font = ExtResource("1_h5jno")
 theme_override_font_sizes/font_size = 8
-text = "Something"
+text = "Something (ceramic)"
 autowrap_mode = 3
 
-[node name="ItemDescription" type="Label" parent="." unique_id=1902372128]
+[node name="ItemDescription" type="Label" parent="VBoxContainer" unique_id=1902372128]
 z_index = 6
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = 16.0
-offset_right = 136.0
-offset_bottom = 84.0
-grow_horizontal = 2
-grow_vertical = 2
+custom_minimum_size = Vector2(144, 41)
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.14509805)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_h5jno")
 theme_override_font_sizes/font_size = 8
 text = "A dense, gray loaf made from whatever grains still grow in poisoned soil."

@@ -10,9 +10,10 @@ region = Rect2(465, 36, 29, 26)
 [resource]
 script = ExtResource("2_m37da")
 id = "cracked_mug"
-name = "Mug (Cracked)"
+name = "Mug"
 description = "A Mug that is cracked"
 atlas_texture = SubResource("AtlasTexture_lmg2x")
 ui_scale = Vector2(0.3, 0.3)
-correct_bin = 1
+correct_bin = 3
+category = "Ceramic"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

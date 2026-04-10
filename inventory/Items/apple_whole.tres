@@ -10,4 +10,5 @@ name = "Apple (Whole)"
 description = "An Apple that has not been eaten might be contaminated"
 texture = ExtResource("2_c66dp")
 correct_bin = 2
+category = "Food"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

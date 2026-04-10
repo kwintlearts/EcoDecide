@@ -10,9 +10,10 @@ region = Rect2(206, 16, 34, 46)
 [resource]
 script = ExtResource("1_wud5v")
 id = "cardboard_paper_bag"
-name = "Cardboard Paper Bag"
-description = "A Paper Bag"
+name = "Cardboard Paper Bag (empty)"
+description = "A Paper Bag its empty"
 atlas_texture = SubResource("AtlasTexture_5y8qa")
 ui_scale = Vector2(0.3, 0.3)
 correct_bin = 1
+category = "Paper"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

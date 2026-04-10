@@ -15,4 +15,5 @@ description = "Once full, now empty—but not useless. Could store water, fermen
 atlas_texture = SubResource("AtlasTexture_fhycr")
 ui_scale = Vector2(0.7, 0.7)
 correct_bin = 1
+category = "Plastic"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

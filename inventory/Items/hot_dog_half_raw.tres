@@ -10,4 +10,5 @@ name = "Hot Dog Half (raw)"
 description = "its.. not cooked"
 texture = ExtResource("2_tyl1n")
 correct_bin = 2
+category = "Food"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

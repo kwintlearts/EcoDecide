@@ -15,4 +15,5 @@ description = "A single-use milk jug. It will outlive the person who threw it aw
 atlas_texture = SubResource("AtlasTexture_rqdnx")
 ui_scale = Vector2(0.27, 0.27)
 correct_bin = 1
+category = "Plastic"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

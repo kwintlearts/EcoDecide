@@ -41,7 +41,7 @@ offset_bottom = -46.0
 mode = 1
 
 [node name="Label" parent="StationUI" index="1" unique_id=1135225492]
-modulate = Color(0.2, 0.839, 1, 1)
+modulate = Color(0.2, 0.8392157, 1, 1)
 offset_left = -4.0
 offset_right = 31.0
 text = "RECYCLABLE"

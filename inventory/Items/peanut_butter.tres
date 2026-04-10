@@ -6,9 +6,10 @@
 [resource]
 script = ExtResource("1_pb8cc")
 id = "peanut_butter"
-name = "Peanut Butter"
+name = "Peanut Butter (half-fiiled)"
 description = "The jar is half-empty, sticky traces clinging stubbornly. Once a treat, now just remnants of better days."
 texture = ExtResource("2_7ay6a")
 ui_scale = Vector2(0.6, 0.6)
 correct_bin = 3
+category = "Plastic"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

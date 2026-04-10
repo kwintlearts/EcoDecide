@@ -15,4 +15,5 @@ description = "A Dirty pizza box.. there are some residuals from the pizza"
 atlas_texture = SubResource("AtlasTexture_ieqv7")
 ui_scale = Vector2(0.2, 0.2)
 correct_bin = 3
+category = "Paper"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

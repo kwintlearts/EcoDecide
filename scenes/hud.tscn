@@ -5,6 +5,8 @@
 [ext_resource type="FontFile" uid="uid://dsy5ql31cyxib" path="res://assets/User Interface/fonts/PixelOperator8.ttf" id="2_5ysmq"]
 [ext_resource type="Script" uid="uid://dyn7gn48sfaju" path="res://scripts/utility.gd" id="3_uo2fv"]
 [ext_resource type="Texture2D" uid="uid://b7vmu7sb2cxjr" path="res://assets/User Interface/SimplePixelArtUIpack/Artwork/ColorCustomizible/icons/isonswhite2.png" id="6_5pdws"]
+[ext_resource type="AudioStream" uid="uid://dpydioqkbtr24" path="res://assets/Sounds/game sfx/button_sound2.mp3" id="6_047uy"]
+[ext_resource type="AudioStream" uid="uid://bosbredl0ehh5" path="res://assets/Sounds/game sfx/pick_up_item.mp3" id="7_5pdws"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_047uy"]
 atlas = ExtResource("6_5pdws")
@@ -113,28 +115,26 @@ text = "00:00"
 
 [node name="Utility" type="Control" parent="Hud" unique_id=39900092]
 layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -132.0
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("3_uo2fv")
 
 [node name="MarginContainer" type="MarginContainer" parent="Hud/Utility" unique_id=906368239]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -25.75
-offset_top = -24.0
-offset_right = 25.75
-offset_bottom = 61.0
-grow_horizontal = 2
+offset_left = -104.0
+offset_top = -8.0
+offset_right = -52.5
+offset_bottom = 77.0
+grow_horizontal = 0
 grow_vertical = 2
 
 [node name="Inventory" type="TouchScreenButton" parent="Hud/Utility/MarginContainer" unique_id=1542283063]
@@ -145,16 +145,16 @@ action = "inventory"
 
 [node name="SceneIcon" type="NinePatchRect" parent="Hud/Utility" unique_id=1785564248]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -26.0
-offset_top = -162.0
-offset_right = 26.0
-offset_bottom = -99.0
-grow_horizontal = 2
+offset_left = -96.0
+offset_top = -144.0
+offset_right = -44.0
+offset_bottom = -81.0
+grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("6_5pdws")
 region_rect = Rect2(39, 71, 18, 19)
@@ -164,19 +164,43 @@ show_behind_parent = true
 layout_mode = 0
 offset_right = 54.0
 offset_bottom = 64.0
+flat = true
+
+[node name="MainMenuIcon" type="NinePatchRect" parent="Hud/Utility" unique_id=52882994]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1216.0
+offset_top = -264.0
+offset_right = -1164.0
+offset_bottom = -201.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("6_5pdws")
+region_rect = Rect2(39, 132, 18, 22)
+
+[node name="MainMenuButton" type="Button" parent="Hud/Utility/MainMenuIcon" unique_id=705512418]
+show_behind_parent = true
+layout_mode = 1
+offset_right = 54.0
+offset_bottom = 64.0
+flat = true
 
 [node name="SettingsIcon" type="NinePatchRect" parent="Hud/Utility" unique_id=566960343]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -26.0
-offset_top = -280.0
-offset_right = 26.0
-offset_bottom = -217.0
-grow_horizontal = 2
+offset_left = -96.0
+offset_top = -264.0
+offset_right = -44.0
+offset_bottom = -201.0
+grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("6_5pdws")
 region_rect = Rect2(71, 71, 18, 19)
@@ -191,7 +215,16 @@ flat = true
 [node name="MobileControls" parent="Hud" unique_id=1409755977 instance=ExtResource("1_y4d5l")]
 layout_mode = 1
 
+[node name="SFXButtons" type="AudioStreamPlayer" parent="." unique_id=1848789625]
+stream = ExtResource("6_047uy")
+bus = &"SFX"
+
+[node name="SFXInventory" type="AudioStreamPlayer" parent="." unique_id=1431754807]
+stream = ExtResource("7_5pdws")
+bus = &"SFX"
+
 [connection signal="pressed" from="Hud/Utility/MarginContainer/Inventory" to="Hud/Utility" method="_on_inventory_pressed"]
 [connection signal="released" from="Hud/Utility/MarginContainer/Inventory" to="Hud/Utility" method="_on_inventory_released"]
 [connection signal="pressed" from="Hud/Utility/SceneIcon/SceneButton" to="Hud/Utility" method="_on_scene_button_pressed"]
+[connection signal="pressed" from="Hud/Utility/MainMenuIcon/MainMenuButton" to="Hud/Utility" method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="Hud/Utility/SettingsIcon/SettingsButton" to="Hud/Utility" method="_on_settings_button_pressed"]

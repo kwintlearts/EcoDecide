@@ -6,9 +6,10 @@
 [resource]
 script = ExtResource("1_mx4br")
 id = "ketchup"
-name = "Ketchup"
+name = "Ketchup (half-filled)"
 description = "A smear clings stubbornly to the sides. Its taste lingers, though time has dulled it."
 texture = ExtResource("2_gt8co")
 ui_scale = Vector2(0.6, 0.6)
 correct_bin = 3
+category = "Plastic"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

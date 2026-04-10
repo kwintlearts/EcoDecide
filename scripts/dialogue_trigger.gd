@@ -15,7 +15,6 @@ func _on_body_entered(body: Node2D) -> void:
 	# Check if scenario is already active - DON'T trigger
 	if GameState.scenario_active:
 		print("Scenario already active - skipping dialogue trigger")
-		queue_free()
 		return
 	
 	if is_triggered:

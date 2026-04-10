@@ -6,9 +6,10 @@
 [resource]
 script = ExtResource("1_50op1")
 id = "bubble_gum"
-name = "Bubble Gum"
+name = "Bubble Gum (half-filled)"
 description = "A flattened sweet, sticky and stubborn. Its flavor has long faded, leaving only residue."
 texture = ExtResource("2_8mjab")
 ui_scale = Vector2(0.3, 0.3)
 correct_bin = 3
+category = "Plastic"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

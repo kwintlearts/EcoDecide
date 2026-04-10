@@ -6,9 +6,10 @@
 [resource]
 script = ExtResource("1_qbw4c")
 id = "toothpaste"
-name = "Toothpaste"
+name = "Toothpaste (half-filled)"
 description = "Squeezed and twisted, a faint stripe of paste clings stubbornly. It’s seen better days."
 texture = ExtResource("2_4y54i")
 ui_scale = Vector2(0.3, 0.3)
 correct_bin = 3
+category = "Plastic"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

@@ -90,7 +90,7 @@ func get_ending_tier() -> String:
 	else:
 		return "C"
 
-func record_disposal(item_name: String, was_correct: bool, bin_type: String):
+func record_disposal(item_name: String, was_correct: bool, bin_type: String, category: String = "Other"):
 	total_disposals += 1
 	if was_correct:
 		correct_disposals += 1
@@ -98,6 +98,7 @@ func record_disposal(item_name: String, was_correct: bool, bin_type: String):
 		"item": item_name,
 		"correct": was_correct,
 		"bin": bin_type,
+		"category": category,  # Add this
 		"timestamp": Time.get_ticks_msec()
 	})
 	stats_updated.emit()
@@ -166,6 +167,7 @@ func reset_scenario_1():
 	final_clarity = 0
 	has_met_plush_toy = false
 	has_completed_scenario_1 = false
+	total_disposals = 0
 	unlocked_badges.clear()
 
 

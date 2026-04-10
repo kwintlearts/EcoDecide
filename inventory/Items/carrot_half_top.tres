@@ -10,4 +10,5 @@ name = "Carrot (Half Top)"
 description = "A Half Carrot Top"
 texture = ExtResource("2_usej6")
 correct_bin = 2
+category = "Food"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

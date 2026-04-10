@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://6hr4xwxris6k"]
+
+[ext_resource type="FontFile" uid="uid://dsy5ql31cyxib" path="res://assets/User Interface/fonts/PixelOperator8.ttf" id="1_5i0nl"]
+[ext_resource type="Script" uid="uid://0wi27ccnvege" path="res://scripts/menu/menu_prompt.gd" id="1_rxjm5"]
+[ext_resource type="AudioStream" uid="uid://dpydioqkbtr24" path="res://assets/Sounds/game sfx/button_sound2.mp3" id="3_aeylp"]
+
+[node name="MenuPrompt" type="Control" unique_id=778278159]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rxjm5")
+
+[node name="Panel" type="Panel" parent="." unique_id=1437847561]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -88.5
+offset_right = 240.0
+offset_bottom = 88.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel" unique_id=1461333738]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -87.0
+offset_top = 24.0
+offset_right = 87.0
+offset_bottom = 59.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_5i0nl")
+theme_override_font_sizes/font_size = 24
+text = "Are You Sure?"
+
+[node name="YesButton" type="Button" parent="Panel" unique_id=2053724045]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = -72.0
+offset_right = 151.0
+offset_bottom = -40.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_5i0nl")
+theme_override_font_sizes/font_size = 24
+text = "YES"
+
+[node name="NoButton" type="Button" parent="Panel" unique_id=994984275]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -152.0
+offset_top = -72.0
+offset_right = -81.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_5i0nl")
+theme_override_font_sizes/font_size = 24
+text = "NO"
+
+[node name="SFXButtons" type="AudioStreamPlayer" parent="." unique_id=1789111128]
+stream = ExtResource("3_aeylp")
+bus = &"SFX"
+
+[connection signal="pressed" from="Panel/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="Panel/NoButton" to="." method="_on_no_button_pressed"]

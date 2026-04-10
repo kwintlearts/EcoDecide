@@ -18,8 +18,17 @@ func _validate_property(property: Dictionary) -> void:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 
 var dialogue_active: bool = false
+var last_action_time: float = 0.0
+var is_processing: bool = false
+const ACTION_COOLDOWN: float = 0.5
 
 func action(interactor = null) -> void: 
+	var current_time = Time.get_ticks_msec() / 1000.0
+	if current_time - last_action_time < ACTION_COOLDOWN:
+		print("Action on cooldown, ignoring...")
+		return
+	last_action_time = current_time
+	
 	if dialogue_active:
 		return
 	
@@ -82,6 +91,7 @@ func start_dialogue_with_resource(resource: DialogueResource, start: String) -> 
 	var balloon = Balloon.instantiate()
 	balloon.add_to_group("dialogue_balloon")
 	get_tree().current_scene.add_child(balloon)
+	
 	DialogueManager.dialogue_ended.connect(
 		func(_r): 
 			dialogue_active = false,
@@ -90,8 +100,13 @@ func start_dialogue_with_resource(resource: DialogueResource, start: String) -> 
 	balloon.start(resource, start)
 
 func do_parent_action(interactor = null) -> void:  
+	if is_processing:
+		return
+	is_processing = true
+	
 	var parent = get_parent()
 	if not parent:
+		is_processing = false
 		return
 	
 	if parent.has_method("power_on"):
@@ -102,3 +117,7 @@ func do_parent_action(interactor = null) -> void:
 	
 	if parent.has_method("empty_inventory"):
 		parent.empty_inventory()
+	
+	# Reset after a short delay
+	await get_tree().create_timer(0.2).timeout
+	is_processing = false

@@ -13,4 +13,5 @@ texture = ExtResource("3_wsicl")
 can_rinsed = true
 rinse_version = ExtResource("1_8c65q")
 correct_bin = 3
+category = "Ceramic"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

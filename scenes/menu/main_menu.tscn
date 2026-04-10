@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://otvpqmarahw0" path="res://assets/User Interface/background.jpeg" id="2_247la"]
 [ext_resource type="FontFile" uid="uid://pv2lb6i4l6r1" path="res://assets/User Interface/fonts/04B_30__.TTF" id="3_hj162"]
 [ext_resource type="FontVariation" uid="uid://bnpyk21ovjuyn" path="res://assets/User Interface/fonts/MonogramVar.tres" id="3_kiqgm"]
+[ext_resource type="AudioStream" uid="uid://dpydioqkbtr24" path="res://assets/Sounds/game sfx/button_sound2.mp3" id="5_hj162"]
 
 [node name="MainMenu" type="Control" unique_id=2125747306]
 layout_mode = 3
@@ -78,6 +79,10 @@ theme_type_variation = &"FlatButton"
 theme_override_fonts/font = ExtResource("3_kiqgm")
 theme_override_font_sizes/font_size = 64
 text = "Settings"
+
+[node name="SFXButtons" type="AudioStreamPlayer" parent="." unique_id=1116672521]
+stream = ExtResource("5_hj162")
+bus = &"SFX"
 
 [connection signal="pressed" from="NinePatchRect/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="NinePatchRect/VBoxContainer/Settings" to="." method="_on_settings_pressed"]

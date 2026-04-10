@@ -14,4 +14,5 @@ name = "Sampaguita"
 description = "Soft petals in a place that forgot how to care for them."
 atlas_texture = SubResource("AtlasTexture_cgpmh")
 correct_bin = 2
+category = "Organic"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

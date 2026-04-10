@@ -9,5 +9,6 @@ id = "plate_stacked_clean"
 name = "Stacked Plates (Clean)"
 description = "Not trash yet—unless you make it so."
 texture = ExtResource("2_i0e6e")
-correct_bin = 1
+correct_bin = 3
+category = "Ceramic"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

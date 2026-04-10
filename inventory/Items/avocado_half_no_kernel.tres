@@ -10,4 +10,5 @@ name = "Avocado (half no kernel)"
 description = "An Avocado without a kernel"
 texture = ExtResource("2_d4t6x")
 correct_bin = 2
+category = "Food"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

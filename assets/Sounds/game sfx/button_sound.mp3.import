@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bjk5u20jcttqp"
+path="res://.godot/imported/button_sound.mp3-39a27c8d2411eea8546b11f37ae0ff5a.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds/game sfx/button_sound.mp3"
+dest_files=["res://.godot/imported/button_sound.mp3-39a27c8d2411eea8546b11f37ae0ff5a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ckl2b75jjnr3x" path="res://assets/characters/SS_Blue Guy/SpriteSheet/Move_NSWENWNESWSE_1&2.png" id="4_l33fj"]
 [ext_resource type="PackedScene" uid="uid://dotw2g8irmtcv" path="res://scenes/actionable.tscn" id="6_j5xx7"]
 [ext_resource type="Resource" uid="uid://d2oa8p14f0cqt" path="res://dialogue/Scene 1 - Waste Segregation.dialogue" id="7_b4x84"]
+[ext_resource type="FontVariation" uid="uid://dt7lx2joqvna" path="res://assets/User Interface/fonts/emoji_pixel_text.tres" id="8_mcrva"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yuv5v"]
 atlas = ExtResource("1_714st")
@@ -658,6 +659,25 @@ dialogue_start = "plush_toy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable" unique_id=191584220]
 shape = SubResource("CircleShape2D_b4x84")
+
+[node name="FeedBackLabel" type="Label" parent="." unique_id=119038537]
+visible = false
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -77.0
+offset_right = 51.0
+offset_bottom = -7.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_mcrva")
+theme_override_font_sizes/font_size = 8
+text = "That should have gone to recycling bin"
+autowrap_mode = 3
 
 [connection signal="area_entered" from="Actionable" to="." method="_on_actionable_area_entered"]
 [connection signal="area_exited" from="Actionable" to="." method="_on_actionable_area_exited"]

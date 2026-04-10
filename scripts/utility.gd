@@ -4,6 +4,9 @@ extends Control
 @onready var inventory: TouchScreenButton = $MarginContainer/Inventory
 @onready var scene_icon: NinePatchRect = $SceneIcon
 @onready var settings_icon: NinePatchRect = $SettingsIcon
+@onready var sfx_buttons: AudioStreamPlayer = $"../../SFXButtons"
+@onready var sfx_inventory: AudioStreamPlayer = $"../../SFXInventory"
+@onready var main_menu_icon: NinePatchRect = $MainMenuIcon
 
 var pulse_tween: Tween
 
@@ -63,20 +66,43 @@ func _process(delta: float) -> void:
 			visible = true
 			print("Controls shown")
 
+func _show_menu_prompt():
+	var canvas = CanvasLayer.new()
+	canvas.layer = 200  # Higher than results screen (100)
+	get_tree().current_scene.add_child(canvas)
+	
+	var menu_prompt = load("res://scenes/menu/menu_prompt.tscn").instantiate()
+	canvas.add_child(menu_prompt)
+
 func _on_inventory_pressed() -> void:
+	sfx_inventory.play()
 	inventory.scale = Vector2(2.7, 2.7)
 
 func _on_inventory_released() -> void:
 	inventory.scale = Vector2(2.5, 2.5)
 
 func _on_scene_button_pressed() -> void:	
+	sfx_buttons.play()
+	
 	var tween = create_tween()
 	tween.tween_property(scene_icon, "scale", Vector2(1.2, 1.2), 0.02)
 	tween.tween_property(scene_icon, "scale", Vector2(1.0, 1.0), 0.02)
 	TimerManager._show_results_screen()
 
 func _on_settings_button_pressed() -> void:
+	sfx_buttons.play()
+	
 	var tween = create_tween()
 	tween.tween_property(settings_icon, "scale", Vector2(1.2, 1.2), 0.02)
 	tween.tween_property(settings_icon, "scale", Vector2(1.0, 1.0), 0.02)
 	SceneLoader.load_scene("res://scenes/menu/settings.tscn")
+
+
+func _on_main_menu_button_pressed() -> void:
+	sfx_buttons.play()
+	
+	var tween = create_tween()
+	tween.tween_property(main_menu_icon, "scale", Vector2(1.2, 1.2), 0.02)
+	tween.tween_property(main_menu_icon, "scale", Vector2(1.0, 1.0), 0.02)
+	_show_menu_prompt()
+	

@@ -53,7 +53,6 @@ func _on_stats_updated():
 		
 	if GameState.did_choose("battery_recycled"):
 		hazardous.show()
-		print("Hazardous bin shown for battery disposal")
 	
 func update_battery_choice():
 	battery_ignored = GameState.did_choose("battery_ignored")

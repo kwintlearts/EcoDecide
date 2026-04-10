@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bjcs3f23yygo1" path="res://inventory/scripts/inv_ui_slot.gd" id="1_fcwim"]
 [ext_resource type="Texture2D" uid="uid://c4gkge5ghrii5" path="res://assets/User Interface/SimplePixelArtUIpack/Artwork/Gray/square/slot.png" id="2_vak28"]
-[ext_resource type="AudioStream" uid="uid://bkw3xifdrlksy" path="res://assets/Sounds/game sfx/interaction.mp3" id="3_5mxwt"]
-[ext_resource type="AudioStream" uid="uid://dt5chp6x8udnn" path="res://assets/Sounds/game sfx/errorsfx.mp3" id="4_wkagn"]
+[ext_resource type="AudioStream" uid="uid://of2j4kll56g0" path="res://assets/Sounds/game sfx/correct.mp3" id="3_wkagn"]
+[ext_resource type="AudioStream" uid="uid://c58io02rcgkiq" path="res://assets/Sounds/game sfx/error2.mp3" id="4_wkagn"]
 [ext_resource type="AudioStream" uid="uid://bosbredl0ehh5" path="res://assets/Sounds/game sfx/pick_up_item.mp3" id="5_3rqm5"]
 [ext_resource type="AudioStream" uid="uid://d12sss5btdbce" path="res://assets/Sounds/game sfx/rinsing.mp3" id="6_wkagn"]
 
@@ -38,7 +38,7 @@ layout_mode = 2
 z_index = 4
 
 [node name="Interaction" type="AudioStreamPlayer" parent="." unique_id=40199457]
-stream = ExtResource("3_5mxwt")
+stream = ExtResource("3_wkagn")
 bus = &"SFX"
 
 [node name="Error" type="AudioStreamPlayer" parent="." unique_id=369910107]

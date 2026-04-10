@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://b7vmu7sb2cxjr" path="res://assets/User Interface/SimplePixelArtUIpack/Artwork/ColorCustomizible/icons/isonswhite2.png" id="2_r40o8"]
 [ext_resource type="FontVariation" uid="uid://dt7lx2joqvna" path="res://assets/User Interface/fonts/emoji_pixel_text.tres" id="3_cij7f"]
 [ext_resource type="FontFile" uid="uid://bdyvnabkl2utk" path="res://assets/User Interface/fonts/NotoColorEmoji-Regular.ttf" id="4_r40o8"]
+[ext_resource type="AudioStream" uid="uid://dua8fl70yolu1" path="res://assets/Sounds/game sfx/results2.mp3" id="6_msw0o"]
+[ext_resource type="AudioStream" uid="uid://dpydioqkbtr24" path="res://assets/Sounds/game sfx/button_sound2.mp3" id="7_smigx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_msw0o"]
 atlas = ExtResource("2_r40o8")
@@ -405,6 +407,14 @@ offset_bottom = -19.0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_j5vbe")
 text = "Restart"
+
+[node name="SFXResults" type="AudioStreamPlayer" parent="." unique_id=1465396554]
+stream = ExtResource("6_msw0o")
+bus = &"SFX"
+
+[node name="SFXButtons" type="AudioStreamPlayer" parent="." unique_id=39681328]
+stream = ExtResource("7_smigx")
+bus = &"SFX"
 
 [connection signal="pressed" from="ResultsScreen/Panel/BackButton" to="ResultsScreen" method="_on_back_button_pressed"]
 [connection signal="pressed" from="ResultsScreen/Panel/ContinueButton" to="ResultsScreen" method="_on_continue_button_pressed"]

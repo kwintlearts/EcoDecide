@@ -6,7 +6,7 @@ extends Area2D
 @onready var percent_71_100: Sprite2D = $percent_71_100
 @onready var murky_water: TileMapLayer = $"../MurkyWater"
 @onready var in_murky_water: TileMapLayer = $"../InMurkyWater"
-@onready var litter_sprites: Node2D = $LitterSprites  # Add a node for litter
+
 
 var slow_multiplier: float = 0.5
 var inside_player: CharacterBody2D = null
@@ -56,7 +56,6 @@ func _update_visuals():
 			murky_water.hide()
 			in_murky_water.hide()
 			percent_71_100.modulate = Color(0.5, 0.8, 1.0, 0.6)  # Faded/dull blue
-			_show_litter()
 			print("Canal: Clean but neglected (mid-clean)")
 		else:
 			# True clean - vibrant
@@ -80,10 +79,6 @@ func _update_visuals():
 		percent_0_30.show()
 		print("Canal: Heavily clogged (0-30%)")
 
-func _show_litter():
-	# Add some litter sprites to show neglect
-	if litter_sprites:
-		litter_sprites.visible = true
 
 func _update_slow_multiplier():
 	if current_clarity >= 100:

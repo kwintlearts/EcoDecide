@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b8offkn11lky2" path="res://assets/User Interface/kenney_inputPromptsPixel16×/Tiles/tile_0014.png" id="8_kylx7"]
 [ext_resource type="Texture2D" uid="uid://pgk235cwoicf" path="res://assets/User Interface/Virtual Joystick V2/Joystick_Virtual.png" id="10_by0jv"]
 [ext_resource type="Texture2D" uid="uid://dwk2nvwmq1mj6" path="res://assets/User Interface/Virtual Joystick V2/HandleFilled.png" id="11_c7iio"]
+[ext_resource type="AudioStream" uid="uid://dpydioqkbtr24" path="res://assets/Sounds/game sfx/button_sound2.mp3" id="12_6biaa"]
 [ext_resource type="Texture2D" uid="uid://bw5pdfc0jqggv" path="res://assets/User Interface/kenney_inputPromptsPixel16×/Tiles/tile_0013.png" id="12_7grqr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_85fbo"]
@@ -126,9 +127,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -214.0
+offset_left = -199.0
 offset_top = -368.0
-offset_right = 214.0
+offset_right = 229.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -137,8 +138,8 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -98.25
-offset_right = 98.25
+offset_left = -97.0
+offset_right = 99.5
 offset_bottom = 38.0
 grow_horizontal = 2
 text = "How To Play"
@@ -270,6 +271,10 @@ offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("12_7grqr")
+
+[node name="SFXButtons" type="AudioStreamPlayer" parent="." unique_id=1471156231]
+stream = ExtResource("12_6biaa")
+bus = &"SFX"
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 

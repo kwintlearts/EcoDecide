@@ -6,9 +6,10 @@
 [resource]
 script = ExtResource("1_u42uw")
 id = "cracked_egg"
-name = "Egg (cracked)"
+name = "Cracked Egg "
 description = "The shell has split, and a faint smell escapes. Time hasn’t been kind."
 texture = ExtResource("2_md67s")
 ui_scale = Vector2(0.5, 0.5)
-correct_bin = 3
+correct_bin = 2
+category = "Food"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

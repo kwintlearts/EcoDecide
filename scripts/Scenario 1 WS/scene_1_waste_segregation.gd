@@ -24,6 +24,7 @@ func _on_time_expired():
 	_show_ending()
 
 func _on_stats_updated():
+	print(GameState.total_disposals)
 	if scenario_ending:
 		return
 	

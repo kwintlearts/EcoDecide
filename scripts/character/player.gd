@@ -3,9 +3,9 @@ extends CharacterBody2D
 # base Speed 50
 # base sprint 80 
 
-const BASE_SPEED = 45
+const BASE_SPEED = 50
 const BASE_SPRINT_SPEED = 80
-const ENERGY_REGEN_RATE = 2
+const ENERGY_REGEN_RATE = 2.5
 
 const PLASTIC_SACK = preload("uid://cndy7pcxy0wir")
 const WOVEN_SACK = preload("uid://buu65yaotstju")
@@ -28,6 +28,9 @@ var is_sprinting: bool = false
 var SPEED = BASE_SPEED
 var SPRINT_SPEED = BASE_SPRINT_SPEED
 var movement_lock_timer: Timer
+
+var last_interact_time: float = 0.0
+const INTERACT_COOLDOWN: float = 0.5
 
 func _ready():
 	add_to_group("player")
@@ -91,6 +94,11 @@ func switch_to_woven_sack():
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
+		var current_time = Time.get_ticks_msec() / 1000.0
+		if current_time - last_interact_time < INTERACT_COOLDOWN:
+			return
+		last_interact_time = current_time
+		
 		var actionables = actionable_finder.get_overlapping_areas()
 		if actionables.size() > 0:
 			actionables[0].action(self)
@@ -106,16 +114,14 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	if not can_move:
-		velocity = Vector2.ZERO
+		#velocity = Vector2.ZERO
+		move_and_slide()
 		return
 	
 	var previous_position = global_position
 	
 	if can_move:
 		input_vector = Input.get_vector("move_left","move_right","move_up","move_down")
-	else:
-		input_vector = Vector2.ZERO
-		get_viewport().set_input_as_handled()
 	
 	if input_vector.length() > 0:
 		var current_speed = (SPRINT_SPEED if is_sprinting and GameState.energy > 0 else SPEED) * speed_multiplier

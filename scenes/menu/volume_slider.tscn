@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b0qftip5a70gf" path="res://scripts/menu/volume_slider.gd" id="1_0mhdm"]
 [ext_resource type="FontFile" uid="uid://dsbommlxytqeg" path="res://assets/User Interface/SimplePixelArtUIpack/fonts/font 1/pixelfont.ttf" id="2_6bmtd"]
+[ext_resource type="AudioStream" uid="uid://dpydioqkbtr24" path="res://assets/Sounds/game sfx/button_sound2.mp3" id="3_pc6qf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vq7es"]
 bg_color = Color(0.4745098, 0.56078434, 0.99215686, 1)
@@ -53,4 +54,9 @@ offset_bottom = 25.0
 text = "Slider"
 label_settings = SubResource("LabelSettings_a7bes")
 
+[node name="SFXButtons" type="AudioStreamPlayer" parent="." unique_id=77089388]
+stream = ExtResource("3_pc6qf")
+bus = &"SFX"
+
+[connection signal="drag_started" from="." to="." method="_on_drag_started"]
 [connection signal="value_changed" from="." to="." method="_on_value_changed"]

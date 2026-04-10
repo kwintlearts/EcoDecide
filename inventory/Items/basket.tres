@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://b53pth2li07cs"]
+
+[ext_resource type="Script" uid="uid://d1w0s766i4mib" path="res://inventory/scripts/inventory_item.gd" id="1_v6wwb"]
+[ext_resource type="Texture2D" uid="uid://b3fw3l7od5g75" path="res://assets/Pixel_Mart/basket_metal.png" id="2_i0e6e"]
+
+[resource]
+script = ExtResource("1_v6wwb")
+id = "basket"
+name = "Basket"
+description = "A shopping basket"
+texture = ExtResource("2_i0e6e")
+ui_scale = Vector2(0.6, 0.6)
+correct_bin = 1
+category = "Plastic"
+metadata/_custom_type_script = "uid://d1w0s766i4mib"

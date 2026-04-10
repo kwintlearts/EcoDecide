@@ -1,4 +1,5 @@
 extends HSlider
+@onready var sfx_buttons: AudioStreamPlayer = $SFXButtons
 
 @export
 var bus_name: String
@@ -19,3 +20,7 @@ func _on_value_changed(value: float) -> void:
 	linear_to_db(value)
 	)
 	
+
+
+func _on_drag_started() -> void:
+	sfx_buttons.play()

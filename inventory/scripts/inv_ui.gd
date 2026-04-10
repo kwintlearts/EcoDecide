@@ -34,10 +34,10 @@ func _ready():
 	close()
 	mouse_filter = Control.MOUSE_FILTER_STOP
 
-func show_item_info(item_name: String, item_description: String):
+func show_item_info(item_name: String, item_description: String, item: InvItem = null):
 	if item_info:
 		item_info.visible = true
-		item_info.update_info(item_name, item_description)
+		item_info.update_info(item_name, item_description, item)  # Pass the item
 		
 		# Position item info relative to inventory UI
 		_update_item_info_position()
@@ -140,8 +140,8 @@ func _build_slots():
 		slot.item_selected.connect(_on_item_selected)
 		grid.add_child(slot)
 	
-func _on_item_selected(item_name: String, item_description: String):
-	show_item_info(item_name, item_description)
+func _on_item_selected(item_name: String, item_description: String, item: InvItem):
+	show_item_info(item_name, item_description, item)
 	
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("inventory"):

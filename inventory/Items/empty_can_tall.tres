@@ -15,4 +15,5 @@ description = "A Tall empty can"
 atlas_texture = SubResource("AtlasTexture_iwgwy")
 ui_scale = Vector2(0.2, 0.2)
 correct_bin = 1
+category = "Metal"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

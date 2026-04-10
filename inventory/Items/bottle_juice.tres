@@ -12,7 +12,7 @@ region = Rect2(1, 49, 14, 15)
 [resource]
 script = ExtResource("2_7q6lt")
 id = "bottle_juice"
-name = "Juice Bottle"
+name = "Juice Bottle (half-filled)"
 description = "Still have some juice left"
 atlas_texture = SubResource("AtlasTexture_kn2sa")
 ui_scale = Vector2(0.6, 0.6)
@@ -22,4 +22,5 @@ dialogue_start = "decision_bottle_juice"
 can_rinsed = true
 rinse_version = ExtResource("3_yra7x")
 correct_bin = 3
+category = "Glass"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

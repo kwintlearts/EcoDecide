@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cuw2dhvi3fyc4"
+path="res://.godot/imported/results.mp3-ac8546da56bb7f317a20398caeece06f.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds/game sfx/results.mp3"
+dest_files=["res://.godot/imported/results.mp3-ac8546da56bb7f317a20398caeece06f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

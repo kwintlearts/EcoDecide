@@ -9,5 +9,6 @@ id = "plate_clean"
 name = "Plate (Clean)"
 description = "Smooth, spotless, and ready for another use. Few things are still this orderly."
 texture = ExtResource("2_qal1e")
-correct_bin = 1
+correct_bin = 3
+category = "Ceramic"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

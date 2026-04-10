@@ -10,4 +10,5 @@ name = "banana (group)"
 description = "Grown in controlled habitats after blight wiped out wild crops. Its bright color feels unnatural in a fading world."
 texture = ExtResource("2_bfdto")
 correct_bin = 2
+category = "Food"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"

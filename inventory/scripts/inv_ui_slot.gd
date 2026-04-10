@@ -27,7 +27,7 @@ var is_processing: bool = false
 var rinse_item: InvItem = null
 var description_timer: Timer
 
-signal item_selected(item_name, item_description)
+signal item_selected(item_name, item_description, item)  # Add item parameter
 const CAN_DROP = preload("uid://cgslqmoofgmbw")
 const DRAG = preload("uid://b6rjp6l4tsyeu")
 @onready var interaction: AudioStreamPlayer = $Interaction
@@ -56,8 +56,8 @@ func _gui_input(event: InputEvent):
 
 func _show_item_description():
 	if slot_data and slot_data.item:
-		item_selected.emit(slot_data.item.name, slot_data.item.description)
-
+		item_selected.emit(slot_data.item.name, slot_data.item.description, slot_data.item)  # Pass item
+		
 func update(slot: InvSlot):
 	if mode == SlotMode.RINSE:
 		slot_data = null
@@ -258,7 +258,7 @@ func _drop_data(at_position, data):
 		
 			var is_correct = (data.item.correct_bin == bin_type)
 			
-			GameState.record_disposal(data.item.name, is_correct, BinType.keys()[bin_type])
+			GameState.record_disposal(data.item.name, is_correct, BinType.keys()[bin_type], data.item.category)
 			
 			if is_correct:
 				match bin_type:

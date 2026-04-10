@@ -10,4 +10,5 @@ name = "Bread"
 description = "A dense, gray loaf made from whatever grains still grow in poisoned soil. It’s dry, tasteless, and barely nourishing—but it keeps you alive one more day."
 texture = ExtResource("2_biarm")
 correct_bin = 2
+category = "Food"
 metadata/_custom_type_script = "uid://d1w0s766i4mib"
