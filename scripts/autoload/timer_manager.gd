@@ -55,7 +55,7 @@ func _show_results_screen():
 	get_tree().current_scene.add_child(canvas)
 	
 	# Load results screen - use absolute path
-	var results_screen = load("res://scenes/results_screen.tscn")
+	var results_screen = load("res://scenes/menu/results_screen.tscn")
 	if results_screen:
 		var instance = results_screen.instantiate()
 		canvas.add_child(instance)

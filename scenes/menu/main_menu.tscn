@@ -80,9 +80,17 @@ theme_override_fonts/font = ExtResource("3_kiqgm")
 theme_override_font_sizes/font_size = 64
 text = "Settings"
 
+[node name="Quit" type="Button" parent="NinePatchRect/VBoxContainer" unique_id=391326375]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+theme_override_fonts/font = ExtResource("3_kiqgm")
+theme_override_font_sizes/font_size = 64
+text = "Quit"
+
 [node name="SFXButtons" type="AudioStreamPlayer" parent="." unique_id=1116672521]
 stream = ExtResource("5_hj162")
 bus = &"SFX"
 
 [connection signal="pressed" from="NinePatchRect/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="NinePatchRect/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

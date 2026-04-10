@@ -4,10 +4,10 @@ extends Control
 @onready var inventory: TouchScreenButton = $MarginContainer/Inventory
 @onready var scene_icon: NinePatchRect = $SceneIcon
 @onready var settings_icon: NinePatchRect = $SettingsIcon
+@onready var main_menu_icon: NinePatchRect = $MainMenuIcon
+@onready var scene_info: NinePatchRect = $SceneInfo
 @onready var sfx_buttons: AudioStreamPlayer = $"../../SFXButtons"
 @onready var sfx_inventory: AudioStreamPlayer = $"../../SFXInventory"
-@onready var main_menu_icon: NinePatchRect = $MainMenuIcon
-
 var pulse_tween: Tween
 
 func _ready():
@@ -66,13 +66,13 @@ func _process(delta: float) -> void:
 			visible = true
 			print("Controls shown")
 
-func _show_menu_prompt():
+func _show_prompt(scene: String):
 	var canvas = CanvasLayer.new()
 	canvas.layer = 200  # Higher than results screen (100)
 	get_tree().current_scene.add_child(canvas)
 	
-	var menu_prompt = load("res://scenes/menu/menu_prompt.tscn").instantiate()
-	canvas.add_child(menu_prompt)
+	var prompt = load(scene).instantiate()
+	canvas.add_child(prompt)
 
 func _on_inventory_pressed() -> void:
 	sfx_inventory.play()
@@ -85,24 +85,38 @@ func _on_scene_button_pressed() -> void:
 	sfx_buttons.play()
 	
 	var tween = create_tween()
-	tween.tween_property(scene_icon, "scale", Vector2(1.2, 1.2), 0.02)
+	tween.tween_property(scene_icon, "scale", Vector2(1.3, 1.3), 0.02)
 	tween.tween_property(scene_icon, "scale", Vector2(1.0, 1.0), 0.02)
+	await tween.finished 
 	TimerManager._show_results_screen()
 
 func _on_settings_button_pressed() -> void:
 	sfx_buttons.play()
 	
 	var tween = create_tween()
-	tween.tween_property(settings_icon, "scale", Vector2(1.2, 1.2), 0.02)
+	tween.tween_property(settings_icon, "scale", Vector2(1.3, 1.3), 0.02)
 	tween.tween_property(settings_icon, "scale", Vector2(1.0, 1.0), 0.02)
+	await tween.finished 
 	SceneLoader.load_scene("res://scenes/menu/settings.tscn")
 
 
 func _on_main_menu_button_pressed() -> void:
 	sfx_buttons.play()
+
+	var tween = create_tween()
+	tween.tween_property(main_menu_icon, "scale", Vector2(1.3, 1.3), 0.05)
+	tween.tween_property(main_menu_icon, "scale", Vector2(1.0, 1.0), 0.05)
+	await tween.finished 
+	_show_prompt("res://scenes/menu/menu_prompt.tscn")
+
+
+func _on_scene_info_button_pressed() -> void:
+	sfx_buttons.play()
 	
 	var tween = create_tween()
-	tween.tween_property(main_menu_icon, "scale", Vector2(1.2, 1.2), 0.02)
-	tween.tween_property(main_menu_icon, "scale", Vector2(1.0, 1.0), 0.02)
-	_show_menu_prompt()
+	tween.tween_property(scene_info, "scale", Vector2(1.3, 1.3), 0.05)
+	tween.tween_property(scene_info, "scale", Vector2(1.0, 1.0), 0.05)
+	await tween.finished
+	_show_prompt("res://scenes/menu/scene_info.tscn")
+	
 	

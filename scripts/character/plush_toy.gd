@@ -54,6 +54,18 @@ func _on_disposal_recorded():
 		return
 	
 	var last_disposal = GameState.disposal_log[-1]
+	
+	if last_disposal.get("category") == "Bulk":
+		var total = last_disposal.get("total_items", 0)
+		var regular = last_disposal.get("regular_items", 0)
+		var hazardous = last_disposal.get("hazardous_items", 0)
+		
+		var message = "🚛 Truck emptied %d items" % total
+		if hazardous > 0:
+			message += " (⚠️ %d hazardous items penalized)" % hazardous
+		_show_feedback("")
+		return
+	
 	var timestamp = last_disposal.get("timestamp", 0)
 	
 	if timestamp == last_disposal_timestamp:
@@ -129,14 +141,13 @@ func _show_feedback(message: String):
 	
 	feedback_label.text = message
 	feedback_label.show()
-	feedback_label.modulate = Color.WHITE
 	feedback_label.scale = Vector2(1.0, 1.0)
 	
 	var tween = create_tween()
 	tween.tween_property(feedback_label, "scale", Vector2(1.2, 1.2), 0.1)
 	tween.tween_property(feedback_label, "scale", Vector2(1.0, 1.0), 0.1)
 	
-	feedback_timer.start(3.0)
+	feedback_timer.start(2.5)
 
 func _hide_feedback():
 	if not feedback_label.visible:

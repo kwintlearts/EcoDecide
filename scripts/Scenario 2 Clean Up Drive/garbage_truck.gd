@@ -60,7 +60,8 @@ func empty_inventory():
 			
 			slot.item = null
 			interaction.play()
-	
+			
+	GameState.is_bulk_disposal = true
 	var total_items = items_emptied + hazardous_items
 	
 	if total_items > 0:
@@ -81,14 +82,16 @@ func empty_inventory():
 		
 		_update_clogged_clarity()
 		_show_notification("Truck emptied " + str(total_items) + " items!")
-		
+		GameState.record_bulk_disposal(total_items, items_emptied, hazardous_items)
 		print("Truck emptied ", total_items, " items")
 		print("Points: ", points_earned)
 	else:
 		print("Truck: No items to collect")
 		_show_notification("No items to collect!", Color.ORANGE)
-		
+	
+	GameState.is_bulk_disposal = false
 	if total_items > 0:
+		await get_tree().process_frame
 		items_disposed.emit(total_items)
 
 func _show_notification(message: String, color: Color = Color.GREEN):

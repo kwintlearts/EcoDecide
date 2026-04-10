@@ -1,0 +1,313 @@
+[gd_scene format=3 uid="uid://clqawcp0hm43f"]
+
+[ext_resource type="Script" uid="uid://5wt8k5kjweyd" path="res://scripts/menu/scene_info.gd" id="1_yvv7b"]
+[ext_resource type="FontFile" uid="uid://cid2agaypdxai" path="res://assets/User Interface/fonts/PixelOperator8-Bold.ttf" id="2_5xqpk"]
+[ext_resource type="FontVariation" uid="uid://dt7lx2joqvna" path="res://assets/User Interface/fonts/emoji_pixel_text.tres" id="3_5xqpk"]
+[ext_resource type="FontFile" uid="uid://dsy5ql31cyxib" path="res://assets/User Interface/fonts/PixelOperator8.ttf" id="3_a1ukp"]
+[ext_resource type="AudioStream" uid="uid://dpydioqkbtr24" path="res://assets/Sounds/game sfx/button_sound2.mp3" id="4_a1ukp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_og1p8"]
+font = ExtResource("2_5xqpk")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_pt1ds"]
+font = ExtResource("2_5xqpk")
+font_color = Color(0.62617016, 0.6261702, 0.62617016, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a1ukp"]
+font = ExtResource("2_5xqpk")
+font_size = 12
+font_color = Color(0.71862566, 0.71862566, 0.71862566, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nuouo"]
+font = ExtResource("3_5xqpk")
+
+[node name="SceneInfo" type="Control" unique_id=537261671]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yvv7b")
+
+[node name="ScenePanel" type="Panel" parent="." unique_id=1207149497]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 323.0
+offset_top = 39.0
+offset_right = -323.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Scene1" type="Control" parent="ScenePanel" unique_id=2027289699]
+anchors_preset = 0
+offset_left = 18.0
+offset_top = 25.0
+offset_right = 58.0
+offset_bottom = 65.0
+
+[node name="SceneTitle" type="Label" parent="ScenePanel/Scene1" unique_id=538181527]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 28.0
+offset_top = 15.0
+offset_right = 530.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Scene 1: Waste Segregation"
+label_settings = SubResource("LabelSettings_og1p8")
+
+[node name="SceneLocationLabel" type="Label" parent="ScenePanel/Scene1/SceneTitle" unique_id=900333189]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -153.0
+offset_top = 18.0
+offset_right = 153.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Location: Barangay Hall "
+label_settings = SubResource("LabelSettings_pt1ds")
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="ScenePanel/Scene1/SceneTitle" unique_id=1131695813]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -107.5
+offset_top = 51.0
+offset_right = 107.5
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Time Limit: 5 mins"
+label_settings = SubResource("LabelSettings_a1ukp")
+
+[node name="Control" type="Control" parent="ScenePanel/Scene1" unique_id=1839997135]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 39.0
+offset_top = 145.0
+offset_right = 524.0
+offset_bottom = 432.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ScenePanel/Scene1/Control" unique_id=1228609014]
+layout_mode = 0
+offset_right = 490.0
+offset_bottom = 25.0
+text = "Walk to trash piles and pick up items"
+label_settings = SubResource("LabelSettings_nuouo")
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="ScenePanel/Scene1/Control" unique_id=491985180]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 386.0
+offset_bottom = 74.0
+text = "Sort items into the correct bin"
+label_settings = SubResource("LabelSettings_nuouo")
+
+[node name="Label3" type="Label" parent="ScenePanel/Scene1/Control" unique_id=497976163]
+custom_minimum_size = Vector2(440, 75)
+layout_mode = 0
+offset_top = 103.0
+offset_right = 440.0
+offset_bottom = 188.0
+text = "Watch for the Juice Bottle 🥤: It has juice inside! Decide whether to rinse it first (costs Energy) or throw it as-is."
+label_settings = SubResource("LabelSettings_nuouo")
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="ScenePanel/Scene1/Control" unique_id=1107849110]
+layout_mode = 0
+offset_top = 220.0
+offset_right = 449.0
+offset_bottom = 261.0
+text = "Finish by sorting all items OR when time runs out."
+label_settings = SubResource("LabelSettings_nuouo")
+autowrap_mode = 3
+
+[node name="Label5" type="Label" parent="ScenePanel/Scene1/Control" unique_id=304501997]
+custom_minimum_size = Vector2(440, 49)
+layout_mode = 0
+offset_top = 319.0
+offset_right = 440.0
+offset_bottom = 372.0
+text = "💡Tip: Rinsing recyclables takes effort but prevents contamination!"
+label_settings = SubResource("LabelSettings_nuouo")
+autowrap_mode = 3
+
+[node name="Scene2" type="Control" parent="ScenePanel" unique_id=1602772668]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SceneTitle" type="Label" parent="ScenePanel/Scene2" unique_id=634039079]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 30.0
+offset_top = 40.0
+offset_right = 564.0
+offset_bottom = 65.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Scene 2: Community Clean-UP"
+label_settings = SubResource("LabelSettings_og1p8")
+horizontal_alignment = 1
+
+[node name="SceneLocationLabel" type="Label" parent="ScenePanel/Scene2/SceneTitle" unique_id=1477683854]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -153.0
+offset_top = 18.0
+offset_right = 153.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Location: Clogged Canal"
+label_settings = SubResource("LabelSettings_pt1ds")
+
+[node name="TimeLabel" type="Label" parent="ScenePanel/Scene2/SceneTitle" unique_id=1324651079]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -107.5
+offset_top = 51.0
+offset_right = 107.5
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Time Limit: 7 mins"
+label_settings = SubResource("LabelSettings_a1ukp")
+
+[node name="Control" type="Control" parent="ScenePanel/Scene2" unique_id=690114254]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 57.0
+offset_top = 149.0
+offset_right = 542.0
+offset_bottom = 528.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ScenePanel/Scene2/Control" unique_id=653658053]
+layout_mode = 0
+offset_top = -18.0
+offset_right = 519.0
+offset_bottom = 17.0
+text = "Choose your Sack at the start. Go to canal to trigger it"
+label_settings = SubResource("LabelSettings_nuouo")
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="ScenePanel/Scene2/Control" unique_id=1643551533]
+layout_mode = 0
+offset_top = 46.0
+offset_right = 424.0
+offset_bottom = 87.0
+text = "Pick up trash in the water to collect it into your Sack."
+label_settings = SubResource("LabelSettings_nuouo")
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="ScenePanel/Scene2/Control" unique_id=1000597220]
+custom_minimum_size = Vector2(440, 75)
+layout_mode = 0
+offset_top = 105.0
+offset_right = 440.0
+offset_bottom = 180.0
+text = "Walk to the Truck 🚛 to dump your Sack."
+label_settings = SubResource("LabelSettings_nuouo")
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="ScenePanel/Scene2/Control" unique_id=722526802]
+layout_mode = 0
+offset_top = 169.0
+offset_right = 498.0
+offset_bottom = 250.0
+text = "Talk to NPCs 👨‍🍳👵🧑. Choose your dialogue wisely to build Community Trust."
+label_settings = SubResource("LabelSettings_nuouo")
+autowrap_mode = 3
+
+[node name="Label5" type="Label" parent="ScenePanel/Scene2/Control" unique_id=215514800]
+custom_minimum_size = Vector2(440, 49)
+layout_mode = 0
+offset_top = 252.0
+offset_right = 440.0
+offset_bottom = 315.0
+text = "Find the Battery 🔋: If you see it, handle it carefully! Do NOT put it in your sack."
+label_settings = SubResource("LabelSettings_nuouo")
+autowrap_mode = 3
+
+[node name="Label6" type="Label" parent="ScenePanel/Scene2/Control" unique_id=984795918]
+custom_minimum_size = Vector2(440, 49)
+layout_mode = 0
+offset_top = 336.0
+offset_right = 462.0
+offset_bottom = 385.0
+text = "Clear the canal before time runs out."
+label_settings = SubResource("LabelSettings_nuouo")
+
+[node name="Label7" type="Label" parent="ScenePanel/Scene2/Control" unique_id=643089057]
+custom_minimum_size = Vector2(440, 49)
+layout_mode = 0
+offset_top = 371.0
+offset_right = 462.0
+offset_bottom = 434.0
+text = "💡 Tip: Engaging with residents helps unlock volunteers for future tasks!"
+label_settings = SubResource("LabelSettings_nuouo")
+autowrap_mode = 3
+
+[node name="CloseButton" type="Button" parent="ScenePanel" unique_id=1762571410]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -29.0
+offset_top = -58.0
+offset_right = 29.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_a1ukp")
+theme_override_font_sizes/font_size = 16
+text = "Close"
+
+[node name="SFXButtons" type="AudioStreamPlayer" parent="." unique_id=1238194614]
+stream = ExtResource("4_a1ukp")
+bus = &"SFX"
+
+[connection signal="pressed" from="ScenePanel/CloseButton" to="." method="_on_close_button_pressed"]

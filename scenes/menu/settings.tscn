@@ -22,6 +22,10 @@ font_color = Color(0, 0, 0, 1)
 atlas = ExtResource("6_2kb46")
 region = Rect2(167, 69, 18, 19)
 
+[sub_resource type="LabelSettings" id="LabelSettings_6biaa"]
+font = ExtResource("3_721qi")
+font_size = 44
+
 [sub_resource type="LabelSettings" id="LabelSettings_bj8wm"]
 font = ExtResource("7_b2m5x")
 font_size = 32
@@ -133,17 +137,17 @@ offset_right = 229.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="HowToPlayTitle" type="Label" parent="Control" unique_id=1818199006]
+[node name="Controls" type="Label" parent="Control" unique_id=1818199006]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -97.0
-offset_right = 99.5
-offset_bottom = 38.0
+offset_left = -146.0
+offset_right = 146.0
+offset_bottom = 45.0
 grow_horizontal = 2
-text = "How To Play"
-label_settings = SubResource("LabelSettings_bj8wm")
+text = "Controls"
+label_settings = SubResource("LabelSettings_6biaa")
 
 [node name="SprintLabel" type="Label" parent="Control" unique_id=145908125]
 layout_mode = 1

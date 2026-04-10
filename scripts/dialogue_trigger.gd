@@ -16,6 +16,14 @@ func _on_body_entered(body: Node2D) -> void:
 	if GameState.scenario_active:
 		print("Scenario already active - skipping dialogue trigger")
 		return
+		
+	if GameState.current_scenario == 1 and GameState.has_completed_scenario_1:
+		print("Scenario 1 already completed - skipping dialogue trigger")
+		return
+
+	if GameState.current_scenario == 2 and GameState.has_completed_scenario_2:
+		print("Scenario 2 already completed - skipping dialogue trigger")
+		return
 	
 	if is_triggered:
 		return
