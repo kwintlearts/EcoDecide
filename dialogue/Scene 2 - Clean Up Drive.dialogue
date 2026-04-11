@@ -182,6 +182,7 @@ else
 Plush Toy: Excellent! The canal is clean AND the community is involved!
 Plush Toy: Because you talked to the vendors, the elder, and the youth, they'll help keep it clean.
 Plush Toy: This is how real change happens!
+do TimerManager._show_results_screen()
 => END
 
 ~ ending_mid_clean
@@ -190,12 +191,16 @@ Plush Toy: The canal is clean... but look around.
 Plush Toy: The vendors are still throwing trash. The youth don't care. The elder is still worried.
 Plush Toy: You cleaned the water, but you didn't clean the community.
 Plush Toy: Without their help, this canal will just get clogged again next week.
+do TimerManager._show_results_screen()
+
 => END
 
 ~ ending_mid
 Plush Toy: Not bad, but the canal could be cleaner...
+do TimerManager._show_results_screen()
 => END
 
 ~ ending_bad
 Plush Toy: Oh no... the canal is still clogged.
+do TimerManager._show_results_screen()
 => END

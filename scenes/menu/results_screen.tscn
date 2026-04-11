@@ -165,7 +165,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_bottom = 40.0
+offset_left = 14.0
+offset_top = 115.0
+offset_right = 14.0
+offset_bottom = 155.0
 grow_horizontal = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ResultsScreen/Panel/MetricsS2" unique_id=1215391984]
@@ -227,7 +230,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_bottom = 40.0
+offset_left = 14.0
+offset_top = 115.0
+offset_right = 14.0
+offset_bottom = 155.0
 grow_horizontal = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ResultsScreen/Panel/MetricsS3" unique_id=1721640110]

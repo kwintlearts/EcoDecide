@@ -4,7 +4,6 @@ extends StaticBody2D
 @onready var label: Label = $Label
 
 func _ready() -> void:
-	label.hide()
 	label.add_theme_font_size_override("font_size", 16)
 	
 	# Initial check

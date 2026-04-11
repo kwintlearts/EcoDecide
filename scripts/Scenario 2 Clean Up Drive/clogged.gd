@@ -54,7 +54,6 @@ func _update_visuals():
 			# Show clean water but with litter
 			percent_71_100.show()
 			murky_water.hide()
-			in_murky_water.hide()
 			percent_71_100.modulate = Color(0.5, 0.8, 1.0, 0.6)  # Faded/dull blue
 			print("Canal: Clean but neglected (mid-clean)")
 		else:
