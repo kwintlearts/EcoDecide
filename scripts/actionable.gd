@@ -35,8 +35,11 @@ func action() -> void:
 			if player and player.inv and player.inv.is_full():
 				print("Inventory full! Cannot pick up item.")
 				parent.playercollect(player)
+
 				return
 			
+
+				
 			# Lock movement
 			if player:
 				player.can_move = false
@@ -82,11 +85,13 @@ func start_dialogue_with_resource(resource: DialogueResource, start: String) -> 
 	balloon.add_to_group("dialogue_balloon")
 	get_tree().current_scene.add_child(balloon)
 	
-	var player = get_tree().get_first_node_in_group("player")
+
 	
 	DialogueManager.dialogue_ended.connect(
 		func(_r): 
-			dialogue_active = false,
+			dialogue_active = false
+			var player = get_tree().get_first_node_in_group("player")
+			player.can_move = true,
 		CONNECT_ONE_SHOT
 	)
 	balloon.start(resource, start)

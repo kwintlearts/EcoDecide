@@ -49,18 +49,19 @@ func _update_visuals():
 		# Fully clear - hide murky water
 		murky_water.hide()
 		in_murky_water.hide()
-		
-		if is_mid_clean:
-			# Show clean water but with litter
-			percent_71_100.show()
-			murky_water.hide()
-			percent_71_100.modulate = Color(0.5, 0.8, 1.0, 0.6)  # Faded/dull blue
-			print("Canal: Clean but neglected (mid-clean)")
-		else:
-			# True clean - vibrant
-			percent_71_100.show()
-			percent_71_100.modulate = Color(0.3, 0.9, 1.0, 1.0)  # Vibrant blue
-			print("Canal: Fully clear!")
+		percent_71_100.show()
+		percent_71_100.modulate = Color(0.3, 0.9, 1.0, 1.0)
+		#if is_mid_clean:
+			## Show clean water but with litter
+			#percent_71_100.show()
+			#murky_water.hide()
+			#percent_71_100.modulate = Color(0.5, 0.8, 1.0, 0.6)  # Faded/dull blue
+			#print("Canal: Clean but neglected (mid-clean)")
+		#else:
+			## True clean - vibrant
+			#percent_71_100.show()
+			#percent_71_100.modulate = Color(0.3, 0.9, 1.0, 1.0)  # Vibrant blue
+			#print("Canal: Fully clear!")
 			
 	elif current_clarity >= 71:
 		murky_water.show()

@@ -7,6 +7,8 @@ signal items_disposed(count)
 @onready var notification_label: Label = $NotificationLabel
 @onready var interaction: AudioStreamPlayer = $Interaction
 @onready var error: AudioStreamPlayer = $Error
+var is_processing: bool = false
+
 
 func _ready() -> void:
 	add_to_group("garbage_truck")
@@ -14,16 +16,24 @@ func _ready() -> void:
 	notification_label.hide()
 
 func empty_inventory():
+	if is_processing:
+		print("Already processing truck disposal, ignoring...")
+		return
+	
+	is_processing = true
+	
 	var player = get_tree().get_first_node_in_group("player")
 	
 	if not player or not player.has_method("collect"):
 		print("No player found!")
+		is_processing = false
 		return
 	
 	var inv = player.inv
 	
 	if not inv:
 		print("No inventory found!")
+		is_processing = false
 		return
 	
 	var items_emptied = 0
@@ -39,64 +49,61 @@ func empty_inventory():
 	if battery_found and GameState.did_choose("battery_recycled"):
 		error.play()
 		_show_notification("⚠️ Battery must go to HAZARDOUS bin! ⚠️", Color.RED)
-		return  # Don't dispose anything if battery is in inventory
+		is_processing = false
+		return
 	
-	# Check if player is using plastic sacks (only apply penalty if we actually empty items)
 	var using_plastic_sacks = GameState.did_choose("plastic_bag")
 	
-	# Loop through all slots and clear them
+	# Count items first
 	for slot in inv.slots:
 		if slot.item:
-			# RECORD THE DISPOSAL
-			var is_hazardous = (slot.item.correct_bin == 0)
-			#GameState.record_disposal(slot.item.name, false, "TRUCK")
-			
-			if is_hazardous:
-				print("Hazardous item disposed in truck (PENALTY): ", slot.item.name)
+			if slot.item.correct_bin == 0:
 				hazardous_items += 1
 			else:
-				print("Truck collected: ", slot.item.name)
 				items_emptied += 1
+	
+	var total_items = items_emptied + hazardous_items
+	
+	if total_items == 0:
+		print("Truck: No items to collect")
+		_show_notification("No items to collect!", Color.ORANGE)
+		is_processing = false
+		return
+	
+	# Actually clear the items
+	for slot in inv.slots:
+		if slot.item:
+			if slot.item.correct_bin == 0:
+				print("Hazardous item disposed in truck (PENALTY): ", slot.item.name)
+			else:
+				print("Truck collected: ", slot.item.name)
 			
 			slot.item = null
 			interaction.play()
-			
-	GameState.is_bulk_disposal = true
-	var total_items = items_emptied + hazardous_items
 	
-	if total_items > 0:
-		get_tree().call_group("inventory_ui", "update_slots")
-		
-		# Apply plastic sack penalty ONLY if items were actually emptied
-		if using_plastic_sacks:
-			print("Plastic sacks detected! -5 environmental penalty")
-			GameState.modify_env_health(-5)
-		
-		# Points: +5 for regular, -20 for hazardous (truck penalty)
-		var points_earned = (items_emptied * 5) - (hazardous_items * 20)
-		GameState.add_score(points_earned)
-		
-		# Environmental penalty for hazardous items in truck
-		if hazardous_items > 0:
-			GameState.modify_env_health(-15 * hazardous_items)
-		
-		_update_clogged_clarity()
-		_show_notification("Truck emptied " + str(total_items) + " items!")	
-		
-		GameState.record_bulk_disposal(total_items, items_emptied, hazardous_items)
-		await get_tree().create_timer(0.1).timeout
-		items_disposed.emit(total_items)	
+	get_tree().call_group("inventory_ui", "update_slots")
 	
-		print("Truck emptied ", total_items, " items")
-		print("Points: ", points_earned)
-	else:
-		print("Truck: No items to collect")
-		_show_notification("No items to collect!", Color.ORANGE)
+	if using_plastic_sacks:
+		print("Plastic sacks detected! -5 environmental penalty")
+		GameState.modify_env_health(-5)
 	
-	#GameState.is_bulk_disposal = false
-	#if total_items > 0:a
-		#await get_tree().process_frame
-		#items_disposed.emit(total_items)
+	var points_earned = (items_emptied * 5) - (hazardous_items * 20)
+	GameState.add_score(points_earned)
+	
+	if hazardous_items > 0:
+		GameState.modify_env_health(-15 * hazardous_items)
+	
+	_update_clogged_clarity()
+	_show_notification("Truck emptied " + str(total_items) + " items!")	
+	
+	GameState.record_bulk_disposal(total_items, items_emptied, hazardous_items)
+	
+	items_disposed.emit(total_items)
+	
+	print("Truck emptied ", total_items, " items")
+	print("Points: ", points_earned)
+	
+	is_processing = false
 
 func _show_notification(message: String, color: Color = Color.GREEN):
 	if notification_label:

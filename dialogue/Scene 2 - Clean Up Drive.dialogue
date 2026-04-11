@@ -22,115 +22,121 @@ if not GameState.has_chosen_sack:
 => END
 
 ~ vendor
-if not GameState.has_talked_to_vendor:
-	Vendor: Hah! Another clean-up drive?
-	Vendor: You kids pick up trash today, but tomorrow my customers throw more. What's the point? 
-	- Ignore him, keep cleaning
-		do GameState.record_decision("ignore_vendor")
-		do GameState.has_talked_to_vendor = true
-		do GameState.scenario_flags["npc_vendor_engaged"] = true  # Add this
-		Plush Toy: You kept working... but he'll probably keep throwing trash. Sometimes silence isn't golden.
-		=> END
-		
-	- Confront aggressively
-		Vendor: Hey! Who are you to lecture me? Get out of here!
-		do GameState.record_decision("confront_vendor")
-		do GameState.modify_community_trust(-20)
-		do EventBus.vendor_confronted.emit()
-		do GameState.has_talked_to_vendor = true
-		do GameState.scenario_flags["npc_vendor_engaged"] = true  # Add this
-		Plush Toy: That didn't go well...
-		=> END
-	- Politely educate + offer bin
-	#	Rio: Sir, I know it seems pointless. But if we all do a little, the floods stop. Here—take this small bin for your stall
-		do GameState.record_decision("educated_vendor")
-		do GameState.modify_community_trust(15)
-		do GameState.has_talked_to_vendor = true
-		do GameState.scenario_flags["npc_vendor_engaged"] = true  # Add this
-		Vendor: ...Fine. I'll use it. Thanks, kid.
-		Plush Toy: YES! That's how change happens—one person at a time!
-		=> END
+if not GameState.has_completed_scenario_2
+	if not GameState.has_talked_to_vendor:
+		Vendor: Hah! Another clean-up drive?
+		Vendor: You kids pick up trash today, but tomorrow my customers throw more. What's the point? 
+		- Ignore him, keep cleaning
+			do GameState.record_decision("ignore_vendor")
+			do GameState.has_talked_to_vendor = true
+			do GameState.scenario_flags["npc_vendor_engaged"] = true  # Add this
+			Plush Toy: You kept working... but he'll probably keep throwing trash. Sometimes silence isn't golden.
+			=> END
+			
+		- Confront aggressively
+			Vendor: Hey! Who are you to lecture me? Get out of here!
+			do GameState.record_decision("confront_vendor")
+			do GameState.modify_community_trust(-20)
+			do EventBus.vendor_confronted.emit()
+			do GameState.has_talked_to_vendor = true
+			do GameState.scenario_flags["npc_vendor_engaged"] = true  # Add this
+			Plush Toy: That didn't go well...
+			=> END
+		- Politely educate + offer bin
+		#	Rio: Sir, I know it seems pointless. But if we all do a little, the floods stop. Here—take this small bin for your stall
+			do GameState.record_decision("educated_vendor")
+			do GameState.modify_community_trust(15)
+			do GameState.has_talked_to_vendor = true
+			do GameState.scenario_flags["npc_vendor_engaged"] = true  # Add this
+			Vendor: ...Fine. I'll use it. Thanks, kid.
+			Plush Toy: YES! That's how change happens—one person at a time!
+			=> END
 => END
 
 ~ elder_lady
-if not GameState.has_talked_to_lola:
-	Elder lady: Hay nako... Every rainy season, my floor gets wet because of this clogged canal. I'm too old to clean it myself.
-	- We're cleaning it now, lola
-		do GameState.record_decision("comforted_lola")
-		do GameState.modify_community_trust(20)
-		do GameState.has_talked_to_lola = true
-		do EventBus.ripple_glow.emit()
-		do GameState.scenario_flags["npc_lola_engaged"] = true  # Add this
-		
-		# Lola should Hint the ripples 
-		Elder Lady: Sige, salamat mga anak. Be careful ha? The water is deep near the middle.
-		=> END
-	- You should help too
-		do GameState.record_decision("blamed_lola")
-		do GameState.modify_community_trust(-10)
-		do GameState.has_talked_to_lola = true
-		Elder Lady: That's rude!
-		do GameState.scenario_flags["npc_lola_engaged"] = true  # Add this
-		
-		=> END
-	- How long has this been a problem?
-		do GameState.has_talked_to_lola = true
-		do GameState.record_decision("asked_lola")
-		do GameState.modify_community_trust(20)
-		do GameState.scenario_flags["npc_lola_engaged"] = true  # Add this
-		
-		Elder Lady: Since I was young... 40 years.
-		Elder Lady: You know what? My grandson can help you. He's around here somewhere.
-		do GameState.record_decision("grandson_help")
-		Plush Toy: Wow! She's sending her grandson to help!
-		=> END
+if not GameState.has_completed_scenario_2
+	if not GameState.has_talked_to_lola:
+		Elder lady: Hay nako... Every rainy season, my floor gets wet because of this clogged canal. I'm too old to clean it myself.
+		- We're cleaning it now, lola
+			do GameState.record_decision("comforted_lola")
+			do GameState.modify_community_trust(10)
+			do GameState.has_talked_to_lola = true
+			do EventBus.ripple_glow.emit()
+			do GameState.scenario_flags["npc_lola_engaged"] = true  # Add this
+			
+			# Lola should Hint the ripples 
+			Elder Lady: Sige, salamat mga anak. Be careful ha? The water is deep near the middle.
+			=> END
+		- You should help too
+			do GameState.record_decision("blamed_lola")
+			do GameState.modify_community_trust(-10)
+			do GameState.has_talked_to_lola = true
+			Elder Lady: That's rude!
+			do GameState.scenario_flags["npc_lola_engaged"] = true  # Add this
+			
+			=> END
+		- How long has this been a problem?
+			do GameState.has_talked_to_lola = true
+			do GameState.record_decision("asked_lola")
+			do GameState.modify_community_trust(20)
+			do GameState.scenario_flags["npc_lola_engaged"] = true  # Add this
+			
+			Elder Lady: Since I was young... 40 years.
+			Elder Lady: You know what? My grandson can help you. He's around here somewhere.
+			do GameState.record_decision("grandson_help")
+			Plush Toy: Wow! She's sending her grandson to help!
+			=> END
 => END
 
 ~ youth_student
-if not GameState.has_talked_to_youth and GameState.has_talked_to_lola:
-	if GameState.did_choose("grandson_help")
-		Youth: Hey! My lola said you guys are cleaning the canal.
-		Youth: She said you actually listen to people.
-		Youth: I'm in. What do you need?
-		do GameState.record_decision("youth_joined")
-		do GameState.has_talked_to_youth = true
-		do GameState.scenario_flags["npc_youth_engaged"] = true
+if not GameState.has_completed_scenario_2
+	if not GameState.has_talked_to_youth and GameState.has_talked_to_lola:
+		if GameState.did_choose("grandson_help")
+			Youth: Hey! My lola said you guys are cleaning the canal.
+			Youth: She said you actually listen to people.
+			Youth: I'm in. What do you need?
+			do GameState.record_decision("youth_joined")
+			do GameState.has_talked_to_youth = true
+			do GameState.scenario_flags["npc_youth_engaged"] = true
+			=> END
+		else
+			Youth: *Doesn't look up from phone*
+			Youth: Hm? Oh. Clean-up drive. Cool.
+			Youth: *Goes back to scrolling*
+			- Can you help us?
+				do GameState.record_decision("youth_asked")
+				do GameState.has_talked_to_youth = true
+				do GameState.modify_community_trust(5)
+				do GameState.scenario_flags["npc_youth_engaged"] = true
+				Youth: Fine, 2 minutes. Then I'm out.
+				Plush Toy: Every bit helps, but don't expect him to go out of his way for hazardous stuff.
+				=> END
+			- You should care about your future
+				do GameState.record_decision("youth_lectured")
+				do GameState.has_talked_to_youth = true
+				do GameState.modify_community_trust(-5)
+				do GameState.scenario_flags["npc_youth_engaged"] = true
+				Youth: Yeah, yeah, I know. Just go.
+				Plush Toy: Lectures rarely inspire action.
+				=> END
+			- Look at this before/after photo
+				Youth: Whoa... this was our canal? It actually looked clean?
+				Youth: ...I guess I can help.
+				do GameState.has_talked_to_youth = true
+				do GameState.modify_community_trust(15)
+				do GameState.record_decision("youth_inspired")
+				do GameState.record_decision("youth_joined")
+				do GameState.scenario_flags["npc_youth_engaged"] = true
+				Plush Toy: YES! Visual proof works!
+				=> END
+			=> END
+	elif GameState.has_talked_to_youth
 		=> END
 	else
-		Youth: *Doesn't look up from phone*
-		Youth: Hm? Oh. Clean-up drive. Cool.
-		Youth: *Goes back to scrolling*
-		- Can you help us?
-			do GameState.record_decision("youth_asked")
-			do GameState.has_talked_to_youth = true
-			do GameState.modify_community_trust(5)
-			do GameState.scenario_flags["npc_youth_engaged"] = true
-			Youth: Fine, 2 minutes. Then I'm out.
-			Plush Toy: Not enthusiastic, but every bit helps.
-			=> END
-		- You should care about your future
-			do GameState.record_decision("youth_lectured")
-			do GameState.has_talked_to_youth = true
-			do GameState.modify_community_trust(-5)
-			do GameState.scenario_flags["npc_youth_engaged"] = true
-			Youth: Yeah, yeah, I know. Just go.
-			Plush Toy: Lectures rarely inspire action.
-			=> END
-		- Look at this before/after photo
-			Youth: Whoa... this was our canal? It actually looked clean?
-			Youth: ...I guess I can help.
-			do GameState.has_talked_to_youth = true
-			do GameState.modify_community_trust(15)
-			do GameState.record_decision("youth_inspired")
-			do GameState.record_decision("youth_joined")
-			do GameState.scenario_flags["npc_youth_engaged"] = true
-			Plush Toy: YES! Visual proof works!
-			=> END
-		=> END
-else:
-	Youth: *Ignores you*
-	Plush Toy: Maybe talk to the elder lady first..
+		Youth: *Ignores you*
+		Plush Toy: Maybe talk to the elder lady first..
 => END
+
 
 ~ battery_found
 if not GameState.did_choose("battery_ignored"):
@@ -146,16 +152,16 @@ if not GameState.did_choose("battery_ignored"):
 		=> END
 	- Throw in Sack
 		do GameState.record_decision("battery_trashed")
-		Plush Toy: That's dangerous for the environment...
+		Plush Toy: That's dangerous for the environmawwwwent...
 		do GameState.add_score(-30)
 		do GameState.modify_env_health(-15)
 		
-#		=> END
-#	- Leave it (someone else will handle)
-#		do GameState.record_decision("battery_ignored")
-#		Plush Toy: Someone might get hurt...
-#		do GameState.add_score(-10)
-#		=> END
+		=> END
+	- Leave it (someone else will handle)
+		do GameState.record_decision("battery_ignored")
+		Plush Toy: Someone might get hurt...
+		do GameState.add_score(-10)
+		=> END
 => END
 
 
@@ -168,39 +174,34 @@ else
 	=> END
 
 ~ ending_check
-if GameState.final_clarity >= 80 and GameState.community_trust >= 70
+# Tier A: Community Led - High clarity AND high trust
+if GameState.final_clarity >= 80 and GameState.community_trust >= 80	
 	=> ending_good
+
+# Tier B: Clean but Fragile - Clean water but low trust
 elif GameState.final_clarity >= 80
-	=> ending_mid_clean
-elif GameState.final_clarity >= 50
 	=> ending_mid
+
+# Tier C: The Flash Flood - Still clogged
 else
 	=> ending_bad
 => END
 
 ~ ending_good
-Plush Toy: Excellent! The canal is clean AND the community is involved!
-Plush Toy: Because you talked to the vendors, the elder, and the youth, they'll help keep it clean.
-Plush Toy: This is how real change happens!
+Plush Toy: Look! The vendors are using bins. The youth are helping. Lola feels heard.
+Plush Toy: Because you brought the community together, this canal will stay clean.
 do TimerManager._show_results_screen()
-=> END
-
-~ ending_mid_clean
-do GameState.set_mid_clean_visuals()
-Plush Toy: The canal is clean... but look around.
-Plush Toy: The vendors are still throwing trash. The youth don't care. The elder is still worried.
-Plush Toy: You cleaned the water, but you didn't clean the community.
-Plush Toy: Without their help, this canal will just get clogged again next week.
-do TimerManager._show_results_screen()
-
 => END
 
 ~ ending_mid
-Plush Toy: Not bad, but the canal could be cleaner...
+#do GameState.set_mid_clean_visuals()
+Plush Toy: The canal is clean... for now.
+Plush Toy: But since the community wasn't fully on board, they'll likely dump here again tomorrow.
 do TimerManager._show_results_screen()
 => END
 
 ~ ending_bad
-Plush Toy: Oh no... the canal is still clogged.
+Plush Toy: The drain is still clogged. No one stepped up to help.
+Plush Toy: With this much rain, the barangay might flood.
 do TimerManager._show_results_screen()
 => END

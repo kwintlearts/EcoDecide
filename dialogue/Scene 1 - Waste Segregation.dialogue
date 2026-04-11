@@ -78,7 +78,7 @@ Plush Toy: Wait... the recycling truck isn't coming today! The driver called in 
 - Store it at home until next week
 	do GameState.modify_energy(-10)
 	do GameState.add_score(20)
-	do GameState.modify_community_trust(10)
+	do GameState.modify_community_trust(5)
 	do GameState.record_decision("stored_home")
 	Plush Toy: Smart! Storing it properly ensures it will actually get recycled.
 	=> END
@@ -92,7 +92,8 @@ Plush Toy: Wait... the recycling truck isn't coming today! The driver called in 
 
 - Ask barangay captain for help
 	do GameState.has_asked_captain = true 
-	Plush Toy: Excellent! Community action makes a real difference. The captain will arrange a special pickup.
+	Plush Toy: Excellent! Community action makes a real difference. The captain will arrange a special pickup. Let's go to him!
+	
 	=> END
 
 => END
@@ -104,7 +105,7 @@ if GameState.has_asked_captain:
 	Barangay Captain: But it'll cost the barangay funds...
 	Plush Toy: See? Speaking up can create systemic change!
 	do GameState.add_score(25)
-	do GameState.modify_community_trust(15)
+	do GameState.modify_community_trust(5)
 	do GameState.record_decision("asked_help")
 	do EventBus.captain_helped.emit() 
 	do GameState.has_asked_captain = false  # Reset so it only happens once

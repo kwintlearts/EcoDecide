@@ -30,9 +30,11 @@ extends Control
 @onready var sfx_results: AudioStreamPlayer = $"../SFXResults"
 @onready var sfx_buttons: AudioStreamPlayer = $"../SFXButtons"
 
+var battery_handled_by_npc = false
+
 func _ready():
 	sfx_results.play()
-	add_to_group("results_screen")  # Add this line
+	add_to_group("results_screen")
 	_load_scenario_results()
 
 func _load_scenario_results():
@@ -59,7 +61,7 @@ func _show_scenario_1_results():
 	eco_score_earned_text.text = "%d" % GameState.eco_score
 	
 	var tier = GameState.get_ending_tier()
-	_set_tier_display(tier)
+	_set_tier_display_scene_1(tier)
 	_apply_scenario_1_carry_over()
 	
 	fact_text.text = "💡 DID YOU KNOW?\nRinsing recyclables prevents contamination and saves up to 30% of materials from going to landfills!"
@@ -70,10 +72,10 @@ func _show_scenario_2_results():
 	metrics_s_3.visible = false
 	
 	continue_button.text = "Main Menu"
+	
 	# Get actual canal clarity from GameState
 	var final_clarity = GameState.get_scenario_flag("canal_clarity", 0)
 	if final_clarity == 0:
-		# Calculate from remaining items if not set
 		var spawner = get_tree().get_first_node_in_group("spawner")
 		if spawner and spawner.has_method("get_remaining_items"):
 			var remaining = spawner.get_remaining_items()
@@ -81,7 +83,7 @@ func _show_scenario_2_results():
 	
 	canal_clarity_text.text = str(final_clarity) + "%"
 	
-	# Count engaged NPCs based on choices
+	# Count engaged NPCs
 	var npc_count = 0
 	if GameState.did_choose("comforted_lola") or GameState.did_choose("asked_lola"):
 		npc_count += 1
@@ -92,22 +94,49 @@ func _show_scenario_2_results():
 	
 	npc_engage_text.text = str(npc_count) + " / 3"
 	
-	# Hazardous disposal
-	if GameState.did_choose("battery_recycled"):
+	# Check battery status
+	if GameState.did_choose("battery_ignored"):
+		if GameState.did_choose("educated_vendor") or GameState.did_choose("youth_joined") or GameState.did_choose("grandson_help"):
+			battery_handled_by_npc = true
+			hazardous_text.text = "✅ Handled by " + _get_helping_npc_name()
+			hazardous_text.modulate = Color.YELLOW
+		else:
+			hazardous_text.text = "❌ Left in canal"
+			hazardous_text.modulate = Color.RED
+	elif GameState.did_choose("battery_recycled"):
 		hazardous_text.text = "✅ Properly Disposed"
 		hazardous_text.modulate = Color.GREEN
-	else:
+	else:  # battery_trashed
 		hazardous_text.text = "❌ Improperly Disposed"
 		hazardous_text.modulate = Color.RED
 	
 	eco_score_earned_text.text = str(GameState.eco_score)
 	
-	var tier = GameState.get_ending_tier()
-	_set_tier_display(tier)
+	# Get Scene 2 tier
+	var tier = _get_scene_2_tier(final_clarity, GameState.community_trust)
+	_set_tier_display_scene_2(tier)
 	_apply_scenario_2_carry_over()
 	
 	fact_text.text = "💡 DID YOU KNOW?\nOne battery can contaminate 600,000 liters of water - enough for 3,000 people for a day!"
 
+func _get_scene_2_tier(clarity: int, trust: int) -> String:
+	if clarity > 80 and trust > 80:
+		return "A"
+	elif clarity > 80:
+		return "B"
+	else:
+		return "C"
+
+func _get_helping_npc_name() -> String:
+	if GameState.did_choose("educated_vendor"):
+		return "Vendor"
+	elif GameState.did_choose("youth_joined"):
+		return "Youth"
+	elif GameState.did_choose("grandson_help"):
+		return "Grandson"
+	else:
+		return "NPC"
+		
 func _show_scenario_3_results():
 	metrics_s_1.visible = false
 	metrics_s_2.visible = false
@@ -120,7 +149,7 @@ func _show_scenario_3_results():
 	eco_score_earned_text.text = "%d" % GameState.eco_score
 	
 	var tier = GameState.get_ending_tier()
-	_set_tier_display(tier)
+	_set_tier_display_scene_1(tier)
 	
 	fact_text.text = "💡 DID YOU KNOW?\nNative trees support 10x more local wildlife than exotic species!"
 
@@ -177,10 +206,11 @@ func _apply_scenario_2_carry_over():
 		carry_effects.append("❌ -5 Soil Health (low clarity penalty)")
 		GameState.modify_soil_health(-5)
 	
-	#carry_overtext.text = "📦 CARRY-OVER EFFECTS:\n" + "\n".join(carry_effects)
-	carry_overtext.text = "📦 CARRY-OVER EFFETCS:\n Scene 3 Plant Trees To be continued"
+	#aaaaaa
+		
+	carry_overtext.text = "📦 CARRY-OVER EFFECTS:\n Scene 3: Plant Trees To Be Continued"
 
-func _set_tier_display(tier: String):
+func _set_tier_display_scene_1(tier: String):
 	match tier:
 		"A":
 			tier_name_title.text = "🎉 TIER A: Circular Economy 🎉"
@@ -199,13 +229,28 @@ func _set_tier_display(tier: String):
 			tier_name_title.text = "Scenario Complete!"
 			tier_name_text.text = "Keep learning and improving!"
 
-
+func _set_tier_display_scene_2(tier: String):
+	match tier:
+		"A":
+			tier_name_title.text = "🎉 TIER A: Community Led 🎉"
+			tier_name_text.text = "Community united! This canal stays clean."
+			carry_overtext.modulate = Color.GREEN
+			GameState.add_score(100)
+		"B":
+			tier_name_title.text = "📊 TIER B: Clean but Fragile 📊"
+			tier_name_text.text = "Clean water, but community isn't on board."
+			carry_overtext.modulate = Color.YELLOW
+		"C":
+			tier_name_title.text = "⚠️ TIER C: The Flash Flood ⚠️"
+			tier_name_text.text = "Canal still clogged. Flood risk remains."
+			carry_overtext.modulate = Color.RED
+		_:
+			tier_name_title.text = "Scenario Complete!"
+			tier_name_text.text = "Keep learning and improving!"
 
 func _on_back_button_pressed() -> void:
 	sfx_buttons.play()
-	
 	queue_free()
-
 
 func _on_continue_button_pressed() -> void:
 	sfx_buttons.play()
@@ -214,19 +259,15 @@ func _on_continue_button_pressed() -> void:
 		1:
 			GameState.has_completed_scenario_1 = true
 			GameState.scenario_active = false
-			# Hide results screen first
 			visible = false
-			# Load next scene with loading screen
 			GameState.save_carry_over_from_scene_1()
 			GameState.total_disposals = 0
 			SceneLoader.load_scene("res://scenes/Scenario 2 Clean Up Drive/scene_2_clean_up_drive.tscn")
-			# Queue free after loading starts
 			await get_tree().process_frame
 			queue_free()
 		2:
 			visible = false
 			SceneLoader.load_scene("res://scenes/menu/main_menu.tscn")
-
 
 func _on_restart_button_pressed() -> void:
 	sfx_buttons.play()
@@ -237,7 +278,6 @@ func _on_restart_button_pressed() -> void:
 			visible = false
 			SceneLoader.load_scene("res://scenes/Scenario 1 WS/scene_1_waste_segregation.tscn")
 			SceneLoader.scene_state.erase("res://scenes/Scenario 1 WS/scene_1_waste_segregation.tscn")
-			
 			await get_tree().process_frame
 			queue_free()
 		2:
@@ -246,7 +286,5 @@ func _on_restart_button_pressed() -> void:
 			visible = false
 			SceneLoader.load_scene("res://scenes/Scenario 2 Clean Up Drive/scene_2_clean_up_drive.tscn")
 			SceneLoader.scene_state.erase("res://scenes/Scenario 2 Clean Up Drive/scene_2_clean_up_drive.tscn")
-			
 			await get_tree().process_frame
 			queue_free()
-		

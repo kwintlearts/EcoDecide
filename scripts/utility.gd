@@ -138,6 +138,9 @@ func _process(delta: float) -> void:
 		if visible:
 			visible = false
 			print("Controls hidden")
+			var inv_ui = get_tree().get_first_node_in_group("inventory_ui")
+			if inv_ui and inv_ui.is_open:
+				inv_ui.close()
 	else:
 		if not visible:
 			visible = true

@@ -126,6 +126,9 @@ func _hide_bonus_label():
 	if label:
 		label.visible = false
 
+func get_item():
+	return item
+	
 func playercollect(player):
 	if Engine.is_editor_hint():
 		return false

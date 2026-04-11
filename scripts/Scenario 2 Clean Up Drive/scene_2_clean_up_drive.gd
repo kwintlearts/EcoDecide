@@ -20,6 +20,7 @@ var total_items_processed: int = 0
 var total_items_to_process: int = 30
 const GARBAGE_TRUCK_SCENE = preload("uid://bvco8ogotk1jd")
 var battery_ignored: bool = false
+var battery_handled_by_npc: bool = false
 
 func _ready():
 	await get_tree().process_frame
@@ -52,6 +53,13 @@ func _on_stats_updated():
 	# Update battery choice when it's made
 	if not battery_ignored and GameState.did_choose("battery_ignored"):
 		update_battery_choice()
+		# Also update the needed count immediately
+		if battery_ignored:
+			total_items_to_process = 29
+			print("Battery ignored - need to process 29 items")
+		else:
+			total_items_to_process = 30
+			print("Battery will be processed - need to process 30 items")
 		
 	if GameState.did_choose("battery_recycled"):
 		hazardous.show()
@@ -226,7 +234,7 @@ func load_state(state: Dictionary) -> void:
 				var item_id = slot_data["item_id"]
 				for inv_item in spawner.items:
 					if inv_item.id == item_id:
-						await get_tree().create_timer(0.5).timeout
+						await get_tree().create_timer(0.1).timeout
 						player.inv.slots[i].item = inv_item
 						print("Restored item to slot ", i, ": ", inv_item.name)
 						break

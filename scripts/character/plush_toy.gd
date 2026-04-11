@@ -18,10 +18,12 @@ var last_feedback_time: float = 0.0
 const FEEDBACK_COOLDOWN: float = 2.0
 var is_showing_feedback: bool = false
 var last_disposal_timestamp: int = 0
+var is_priority_message: bool = false
 
 func _ready():
 	AnimationManager.register_character("PlushToy", animated_sprite)
 	EventBus.plush_toy_met.connect(_on_plush_toy_met)
+	EventBus.npc_collected_battery.connect(_on_npc_collected_battery)  # Add this
 	
 	GameState.stats_updated.connect(_on_disposal_recorded)
 	
@@ -39,6 +41,36 @@ func _ready():
 		# Before meeting, keep actionable area active
 		_disable_actionable_area(false)
 
+func _on_npc_collected_battery(npc_name: String):
+	print("Plush toy received signal from: ", npc_name)
+	
+	# Set priority flag
+	is_priority_message = true
+	
+	# Reset cooldown
+	last_feedback_time = 0
+	
+	var message = "🙌 " + npc_name + " took care of the battery! +10 points!"
+	
+	# Stop any current feedback
+	if feedback_timer.is_inside_tree():
+		feedback_timer.stop()
+	
+	# Clear the label and show new message
+	feedback_label.text = message
+	feedback_label.show()
+	feedback_label.scale = Vector2(1.0, 1.0)
+	
+	var tween = create_tween()
+	tween.tween_property(feedback_label, "scale", Vector2(1.2, 1.2), 0.1)
+	tween.tween_property(feedback_label, "scale", Vector2(1.0, 1.0), 0.1)
+	
+	# Start a longer timer for priority message
+	feedback_timer.start(3.0)
+	
+	# Reset priority flag after timer
+	await feedback_timer.timeout
+	is_priority_message = false
 
 func _disable_actionable_area(disabled: bool):
 	if actionable:
@@ -63,20 +95,28 @@ func enable_following():
 	print("Plush toy is now following!")
 
 func _on_disposal_recorded():
+	if is_priority_message:
+		print("Skipping disposal feedback - priority message showing")
+		return
+		
 	if GameState.disposal_log.is_empty():
 		return
 	
 	var last_disposal = GameState.disposal_log[-1]
 	
-	if last_disposal.get("category") == "Bulk":
-		var total = last_disposal.get("total_items", 0)
-		var regular = last_disposal.get("regular_items", 0)
-		var hazardous = last_disposal.get("hazardous_items", 0)
-		
-		var message = "🚛 Truck emptied %d items" % total
-		if hazardous > 0:
-			message += " (⚠️ %d hazardous items penalized)" % hazardous
-		_show_feedback("")
+	#if last_disposal.get("category") == "Bulk":
+		#var total = last_disposal.get("total_items", 0)
+		#var regular = last_disposal.get("regular_items", 0)
+		#var hazardous = last_disposal.get("hazardous_items", 0)
+		#
+		#var message = "🚛 Truck emptied %d items" % total
+		#if hazardous > 0:
+			#message += " (⚠️ %d hazardous items penalized)" % hazardous
+		#_show_feedback("")
+		#return
+
+	if last_disposal.get("bin") == "TRUCK":
+		print("Skipping truck disposal feedback")
 		return
 	
 	var timestamp = last_disposal.get("timestamp", 0)

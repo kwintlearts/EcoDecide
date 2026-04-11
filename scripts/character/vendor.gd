@@ -11,6 +11,7 @@ var walk_direction: int = 1
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var label: Label = $Label
+var has_collected_battery: bool = false
 
 func _ready():
 	label.add_theme_font_size_override("font_size", 16)
@@ -18,11 +19,41 @@ func _ready():
 	if animated_sprite:
 		animated_sprite.play("idle_down")
 	
-	# Initial check
+	_update_emoji_from_choice()
+	GameState.stats_updated.connect(_on_stats_updated)
+
+func _on_stats_updated():
 	_update_emoji_from_choice()
 	
-	# Connect to stats_updated to refresh when choices are made
-	GameState.stats_updated.connect(_update_emoji_from_choice)
+	# Check if battery was just ignored and vendor was educated
+	if not has_collected_battery and GameState.did_choose("battery_ignored"):
+		if GameState.did_choose("educated_vendor"):
+			await get_tree().create_timer(7).timeout
+
+			_collect_ignored_battery()
+
+func _collect_ignored_battery():
+	if has_collected_battery:
+		return
+	
+	has_collected_battery = true
+	
+	var spawner = get_tree().get_first_node_in_group("spawner")
+	if spawner:
+		for item in spawner.spawned_items:
+			if is_instance_valid(item) and item.item and item.item.id == "battery":
+				item.queue_free()
+				print("Vendor collected the ignored battery!")
+				
+				# Emit signal for plush toy
+				print("NPC collecting battery: ", "Vender")  # Add this
+
+				EventBus.npc_collected_battery.emit("Vendor")
+				
+				GameState.add_score(10)
+				GameState.total_disposals += 1
+				return
+
 
 func _update_emoji_from_choice():
 	if GameState.did_choose("educated_vendor"):

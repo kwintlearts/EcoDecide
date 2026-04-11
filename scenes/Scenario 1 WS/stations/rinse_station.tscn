@@ -44,7 +44,7 @@ mode = 1
 modulate = Color(0.2, 0.839, 1, 1)
 offset_left = -4.0
 offset_right = 29.0
-text = "RINSE"
+text = "RECYCLABLE"
 
 [node name="Actionable" parent="." unique_id=525290031 instance=ExtResource("4_yun1d")]
 use_dialogue = false

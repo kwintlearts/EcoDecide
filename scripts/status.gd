@@ -13,13 +13,6 @@ var pulse_tween: Tween
 func _ready():
 	TimerManager.time_updated.connect(_update_timer)
 	GameState.stats_updated.connect(_update_stats)
-	await get_tree().process_frame
-	
-	if GameState.current_scenario == 2:
-		
-		community_trust_label.show()
-	else:
-		community_trust_label.hide()
 		
 	_update_stats()
 	_update_progress_bar_colors()
