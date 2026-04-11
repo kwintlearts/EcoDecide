@@ -22,11 +22,12 @@ enum StationType {
 @onready var label: Label = $StationUI/Label
 
 var is_animating: bool = false
+var current_tween: Tween = null
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		station_ui.hide()
-		station_ui.scale = Vector2(0, 0)  # Start scaled down
+		station_ui.scale = Vector2(0, 0)
 	
 	_update_station_appearance()
 	
@@ -90,51 +91,63 @@ func _update_station_appearance():
 				slot.bin_type = slot.BinType.RINSEABLE
 
 func _on_actionable_area_entered(_area: Area2D) -> void:
-	if not Engine.is_editor_hint() and not is_animating:
-			show_with_animation()
+	if not Engine.is_editor_hint() and not is_animating and not station_ui.visible:
+		show_with_animation()
 
 func _on_actionable_area_exited(_area: Area2D) -> void:
 	if not Engine.is_editor_hint():
-		if slot and not slot.is_processing:
-				hide_with_animation()
+		# Only hide if not processing and UI is visible
+		if slot and not slot.is_processing and station_ui.visible:
+			hide_with_animation()
 
 func show_with_animation():
 	if is_animating:
 		return
 	
+	# Kill any existing tween
+	if current_tween:
+		current_tween.kill()
+	
 	is_animating = true
 	station_ui.visible = true
+	station_ui.scale = Vector2(0, 0)
 	
-	var tween = create_tween()
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_BACK)
+	current_tween = create_tween()
+	current_tween.set_ease(Tween.EASE_OUT)
+	current_tween.set_trans(Tween.TRANS_BACK)
 	
 	# Pop-up animation: scale from 0 to 1 with bounce
-	tween.tween_property(station_ui, "scale", Vector2(1.2, 1.2), 0.15)
-	tween.tween_property(station_ui, "scale", Vector2(0.9, 0.9), 0.1)
-	tween.tween_property(station_ui, "scale", Vector2(1.0, 1.0), 0.1)
+	current_tween.tween_property(station_ui, "scale", Vector2(1.2, 1.2), 0.15)
+	current_tween.tween_property(station_ui, "scale", Vector2(0.9, 0.9), 0.1)
+	current_tween.tween_property(station_ui, "scale", Vector2(1.0, 1.0), 0.1)
 	
-	await tween.finished
+	#await current_tween.finished
 	is_animating = false
+	current_tween = null
 
 func hide_with_animation():
 	if is_animating:
 		return
 	
+	# Kill any existing tween
+	if current_tween:
+		current_tween.kill()
+	
 	is_animating = true
 	
-	var tween = create_tween()
-	tween.set_ease(Tween.EASE_IN)
-	tween.set_trans(Tween.TRANS_BACK)
+	current_tween = create_tween()
+	current_tween.set_ease(Tween.EASE_IN)
+	current_tween.set_trans(Tween.TRANS_BACK)
 	
 	# Shrink animation
-	tween.tween_property(station_ui, "scale", Vector2(0.9, 0.9), 0.1)
-	tween.tween_property(station_ui, "scale", Vector2(0, 0), 0.15)
+	current_tween.tween_property(station_ui, "scale", Vector2(0.9, 0.9), 0.1)
+	current_tween.tween_property(station_ui, "scale", Vector2(0, 0), 0.15)
 	
-	await tween.finished
+	await current_tween.finished
 	station_ui.visible = false
-	station_ui.scale = Vector2(0, 0)  # Reset scale for next time
+	station_ui.scale = Vector2(0, 0)
 	is_animating = false
+	current_tween = null
 
 func take_back_item():
 	if slot and slot.rinse_item:

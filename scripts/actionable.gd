@@ -18,17 +18,8 @@ func _validate_property(property: Dictionary) -> void:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 
 var dialogue_active: bool = false
-var last_action_time: float = 0.0
-var is_processing: bool = false
-const ACTION_COOLDOWN: float = 0.5
 
-func action(interactor = null) -> void: 
-	var current_time = Time.get_ticks_msec() / 1000.0
-	if current_time - last_action_time < ACTION_COOLDOWN:
-		print("Action on cooldown, ignoring...")
-		return
-	last_action_time = current_time
-	
+func action() -> void: 
 	if dialogue_active:
 		return
 	
@@ -43,7 +34,7 @@ func action(interactor = null) -> void:
 			# Check inventory full
 			if player and player.inv and player.inv.is_full():
 				print("Inventory full! Cannot pick up item.")
-				parent.playercollect(interactor)
+				parent.playercollect(player)
 				return
 			
 			# Lock movement
@@ -62,26 +53,25 @@ func action(interactor = null) -> void:
 			
 			# Only collect if not ignored
 			if not GameState.did_choose("battery_ignored"):
-				parent.playercollect(interactor)
+				parent.playercollect(player)
 			
 			return
 	
 	# Fallback to default dialogue
 	if use_dialogue and dialogue_resource:
 		var player = get_tree().get_first_node_in_group("player")
-		if player:
-			player.can_move = false
+
+		player.can_move = false
 		
 		start_dialogue()
 		
 		await DialogueManager.dialogue_ended
 		
-		if player:
-			player.can_move = true
+		player.can_move = true
 		
 		return
 	
-	do_parent_action(interactor)
+	do_parent_action()
 
 func start_dialogue() -> void:
 	start_dialogue_with_resource(dialogue_resource, dialogue_start)
@@ -92,6 +82,8 @@ func start_dialogue_with_resource(resource: DialogueResource, start: String) -> 
 	balloon.add_to_group("dialogue_balloon")
 	get_tree().current_scene.add_child(balloon)
 	
+	var player = get_tree().get_first_node_in_group("player")
+	
 	DialogueManager.dialogue_ended.connect(
 		func(_r): 
 			dialogue_active = false,
@@ -99,25 +91,17 @@ func start_dialogue_with_resource(resource: DialogueResource, start: String) -> 
 	)
 	balloon.start(resource, start)
 
-func do_parent_action(interactor = null) -> void:  
-	if is_processing:
-		return
-	is_processing = true
-	
+func do_parent_action() -> void:  
+
 	var parent = get_parent()
-	if not parent:
-		is_processing = false
-		return
-	
+
 	if parent.has_method("power_on"):
 		parent.power_on()
-	
+		
+	var player = get_tree().get_first_node_in_group("player")	
 	if parent.has_method("playercollect"):
-		parent.playercollect(interactor)
+		await parent.playercollect(player)
 	
 	if parent.has_method("empty_inventory"):
 		parent.empty_inventory()
 	
-	# Reset after a short delay
-	await get_tree().create_timer(0.2).timeout
-	is_processing = false

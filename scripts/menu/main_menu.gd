@@ -15,13 +15,14 @@ func _on_play_pressed() -> void:
 	sfx_buttons.play()
 	SceneLoader.scene_state.clear()
 	GameState.full_reset()
+	GameState.scenario_flags.erase("scene_info_clicked_scenario_1")
+	GameState.scenario_flags.erase("scene_info_clicked_scenario_2")
 	
 	SceneLoader.load_scene(SCENE_1_WASTE_SEGREGATION)
 
 
 func _on_settings_pressed() -> void:
 	sfx_buttons.play()
-	
 	SceneLoader.load_scene("res://scenes/menu/settings.tscn")
 
 

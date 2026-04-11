@@ -27,19 +27,11 @@ var is_sprinting: bool = false
 # Speed penalties based on bag choice
 var SPEED = BASE_SPEED
 var SPRINT_SPEED = BASE_SPRINT_SPEED
-var movement_lock_timer: Timer
-
-var last_interact_time: float = 0.0
-const INTERACT_COOLDOWN: float = 0.5
 
 func _ready():
+	actionable_finder.add_to_group("player_detector")
 	add_to_group("player")
 	AnimationManager.register_character("Player", animated_sprite)
-	
-	movement_lock_timer = Timer.new()
-	movement_lock_timer.one_shot = true
-	movement_lock_timer.timeout.connect(_unlock_movement_safety)
-	add_child(movement_lock_timer)
 	
 	# Apply speed penalty for woven sack (slower due to more capacity)
 	if GameState.did_choose("woven_bag"):
@@ -54,11 +46,6 @@ func _ready():
 	# Register inventory with manager
 	if inv:
 		InventoryManager.set_player_inv(inv)
-
-func _unlock_movement_safety():
-	if not can_move:
-		print("Safety: Unlocking player movement")
-		can_move = true
 
 func switch_to_plastic_sack():
 	inv = PLASTIC_SACK.duplicate()
@@ -93,15 +80,10 @@ func switch_to_woven_sack():
 	print("Switched to Woven Sack inventory (15 slots)")
 
 func _unhandled_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("interact"):
-		var current_time = Time.get_ticks_msec() / 1000.0
-		if current_time - last_interact_time < INTERACT_COOLDOWN:
-			return
-		last_interact_time = current_time
-		
+	if Input.is_action_just_pressed("interact"):	
 		var actionables = actionable_finder.get_overlapping_areas()
 		if actionables.size() > 0:
-			actionables[0].action(self)
+			actionables[0].action()
 			get_viewport().set_input_as_handled()
 	
 	is_sprinting = Input.is_action_pressed("sprint") and GameState.energy > 0
@@ -114,14 +96,15 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	if not can_move:
-		#velocity = Vector2.ZERO
+		animated_sprite.play("idle_" + facing_direction)
+		velocity = Vector2.ZERO
+		input_vector = Vector2.ZERO
 		move_and_slide()
 		return
 	
 	var previous_position = global_position
 	
-	if can_move:
-		input_vector = Input.get_vector("move_left","move_right","move_up","move_down")
+	input_vector = Input.get_vector("move_left","move_right","move_up","move_down")
 	
 	if input_vector.length() > 0:
 		var current_speed = (SPRINT_SPEED if is_sprinting and GameState.energy > 0 else SPEED) * speed_multiplier
@@ -146,10 +129,10 @@ func _physics_process(delta: float) -> void:
 		if GameState.energy < 100:
 			GameState.modify_energy(ENERGY_REGEN_RATE * delta )
 	
-	update_animation(is_actually_moving)
+	update_animation()
 	
-func update_animation(is_actually_moving: bool = true):
-	var is_moving = is_actually_moving and input_vector.length() > 0
+func update_animation():
+	var is_moving = input_vector.length() > 0
 	
 	if abs(input_vector.x) > abs(input_vector.y):
 		if input_vector.x > 0:
@@ -166,13 +149,13 @@ func update_animation(is_actually_moving: bool = true):
 			facing_direction = "up"
 			direction.rotation = PI
 	
-	var animation_prefix = "sprint_" if is_sprinting and is_moving else "walk_" if is_moving else "idle_"
+	var animation_prefix = "walk_" if is_moving else "idle_"
 	
 	if not animated_sprite.sprite_frames.has_animation(animation_prefix + facing_direction):
 		animation_prefix = "walk_" if is_moving else "idle_"
 	
 	animated_sprite.play(animation_prefix + facing_direction)
-
+	
 func player():
 	pass
 

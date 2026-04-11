@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bjcs3f23yygo1" path="res://inventory/scripts/inv_ui_slot.gd" id="1_fcwim"]
 [ext_resource type="Texture2D" uid="uid://c4gkge5ghrii5" path="res://assets/User Interface/SimplePixelArtUIpack/Artwork/Gray/square/slot.png" id="2_vak28"]
+[ext_resource type="FontVariation" uid="uid://dt7lx2joqvna" path="res://assets/User Interface/fonts/emoji_pixel_text.tres" id="3_3rqm5"]
 [ext_resource type="AudioStream" uid="uid://of2j4kll56g0" path="res://assets/Sounds/game sfx/correct.mp3" id="3_wkagn"]
 [ext_resource type="AudioStream" uid="uid://c58io02rcgkiq" path="res://assets/Sounds/game sfx/error2.mp3" id="4_wkagn"]
 [ext_resource type="AudioStream" uid="uid://bosbredl0ehh5" path="res://assets/Sounds/game sfx/pick_up_item.mp3" id="5_3rqm5"]
@@ -9,6 +10,10 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vak28"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_h3njn"]
+font = ExtResource("3_3rqm5")
+font_size = 8
 
 [node name="Inv_UI_Slot" type="Panel" unique_id=1880220713]
 show_behind_parent = true
@@ -36,6 +41,13 @@ layout_mode = 2
 
 [node name="item_display" type="Sprite2D" parent="CenterContainer/Panel" unique_id=1204454155]
 z_index = 4
+
+[node name="RinseCompleteLabel" type="Label" parent="." unique_id=367675629]
+layout_mode = 0
+offset_left = -6.0
+offset_top = -8.0
+offset_right = 71.0
+label_settings = SubResource("LabelSettings_h3njn")
 
 [node name="Interaction" type="AudioStreamPlayer" parent="." unique_id=40199457]
 stream = ExtResource("3_wkagn")

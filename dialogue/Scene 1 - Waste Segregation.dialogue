@@ -18,11 +18,15 @@ if not GameState.has_met_plush_toy:
 	- Yes, Let's go
 		do GameState.has_met_plush_toy = true
 		do EventBus.plush_toy_met.emit()  
+		do EventBus.scenario_started.emit(1)
+	
 		=> END
 	- Who are you really?
 		Plush Toy: A cute adorable plush toy.
 		do GameState.has_met_plush_toy = true
 		do EventBus.plush_toy_met.emit() 
+		do EventBus.scenario_started.emit(1)
+
 		=> END
 => END
 
@@ -46,7 +50,6 @@ elif not GameState.scenario_active
 ~ decision_bottle_juice
 Plush Toy: This bottle still has juice in it. What do you want to do?
 - Rinse it first, then recycle
-	do GameState.modify_energy(-5)
 	do GameState.add_score(15)
 	do GameState.modify_env_health(5)
 	do GameState.record_decision("rinsed_bottle")
@@ -129,12 +132,15 @@ else
 
 ~ ending_good
 Plush Toy: Excellent! Because you rinsed and sorted, the recycling facility will actually accept this. You closed the loop!
+do TimerManager._show_results_screen()
 => END
 
 ~ ending_mid
 Plush Toy: Not bad, but some items were contaminated. The truck driver rejected the dirty bins. Now those recyclables go to the landfill.
+do TimerManager._show_results_screen()
 => END
 
 ~ ending_bad
 Plush Toy: Oh no... because everything was mixed, nothing can be recycled. This all goes to the dump site.
+do TimerManager._show_results_screen()
 => END

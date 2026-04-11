@@ -16,17 +16,18 @@ func _ready() -> void:
 func _update_emoji_from_choice():
 	if GameState.did_choose("youth_joined"):
 		label.text = "🧹"
-		label.show()
+
 	elif GameState.did_choose("youth_asked"):
 		_show_temporary_emoji("🧹", 30.0)
 	elif GameState.did_choose("youth_lectured"):
 		label.text = "😤"
-		label.show()
+
 	elif GameState.did_choose("grandson_help"):
 		label.text = "🧹"
-		label.show()
+
 	else:
-		label.hide()
+		label.text = "❗"
+
 
 func _show_temporary_emoji(emoji: String, duration: float = 2.0):
 	label.text = emoji

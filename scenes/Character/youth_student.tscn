@@ -31,9 +31,12 @@ dialogue_start = "youth_student"
 shape = SubResource("CircleShape2D_1h0iu")
 
 [node name="Label" type="Label" parent="." unique_id=1322958374]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -10.0
+offset_top = -32.0
+offset_right = 30.0
+offset_bottom = -9.0
 theme_override_fonts/font = ExtResource("5_7apja")
+text = "❗"
 
 [connection signal="area_entered" from="Actionable" to="." method="_on_actionable_area_entered"]
 [connection signal="area_exited" from="Actionable" to="." method="_on_actionable_area_exited"]

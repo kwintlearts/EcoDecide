@@ -6,12 +6,16 @@ var inv
 @onready var grid: GridContainer = $NinePatchRect/GridContainer
 @onready var slot_scene = preload("res://inventory/scene/inv_ui_slot.tscn")
 @onready var item_info: Control = $ItemInfo
+@onready var drag_handle: NinePatchRect = $DragHandle
+
 
 var padding: Vector2 = Vector2(4, 4)
 
 var is_open = false
 var dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
+var is_mouse_over_inventory: bool = false
+
 
 func _ready():	
 	await get_tree().process_frame
@@ -147,30 +151,6 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("inventory"):
 		toggle_inventory()
 
-func _gui_input(event: InputEvent):
-	
-	# Only handle when inventory is open
-	if not is_open:
-		return
-	
-	# Handle mouse button (touch will be emulated as mouse)
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed:
-			CursorManager.set_cursor(Input.CURSOR_DRAG)
-			dragging = true
-			drag_offset = get_global_mouse_position() - global_position
-		else:			
-			CursorManager.set_cursor(Input.CURSOR_CAN_DROP)
-			dragging = false
-		get_viewport().set_input_as_handled()
-	
-	# Handle drag movement
-	if dragging and event is InputEventMouseMotion:
-		global_position = get_global_mouse_position() - drag_offset
-		_update_item_info_position()
-
-
-
 func toggle_inventory():
 	if is_open: close()
 	else: open()
@@ -200,3 +180,22 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	CursorManager.set_cursor(Input.CURSOR_ARROW)
+
+
+func _on_drag_handle_gui_input(event: InputEvent) -> void:
+	if not is_open:
+		return
+	
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			dragging = true
+			drag_offset = get_global_mouse_position() - global_position
+			CursorManager.set_cursor(Input.CURSOR_DRAG)
+		else:
+			dragging = false
+			CursorManager.set_cursor(Input.CURSOR_ARROW)
+		get_viewport().set_input_as_handled()
+	
+	if dragging and event is InputEventMouseMotion:
+		global_position = get_global_mouse_position() - drag_offset
+		_update_item_info_position() # Replace with function body.

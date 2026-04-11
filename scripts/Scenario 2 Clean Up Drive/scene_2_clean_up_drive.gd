@@ -22,6 +22,8 @@ const GARBAGE_TRUCK_SCENE = preload("uid://bvco8ogotk1jd")
 var battery_ignored: bool = false
 
 func _ready():
+	await get_tree().process_frame
+	EventBus.scenario_started.emit(2)
 	GameState.current_scenario = 2
 	if GameState.did_choose("asked_help"):
 		_spawn_second_truck()

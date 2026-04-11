@@ -121,10 +121,11 @@ autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="ScenePanel/Scene1/Control" unique_id=491985180]
 layout_mode = 0
-offset_top = 49.0
-offset_right = 386.0
-offset_bottom = 74.0
-text = "Sort items into the correct bin"
+offset_top = 43.0
+offset_right = 404.0
+offset_bottom = 84.0
+text = "Sort items into the correct bin. 
+(Drag and Drop)"
 label_settings = SubResource("LabelSettings_nuouo")
 
 [node name="Label3" type="Label" parent="ScenePanel/Scene1/Control" unique_id=497976163]

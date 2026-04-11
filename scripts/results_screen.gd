@@ -209,6 +209,7 @@ func _on_back_button_pressed() -> void:
 
 func _on_continue_button_pressed() -> void:
 	sfx_buttons.play()
+	
 	match GameState.current_scenario:
 		1:
 			GameState.has_completed_scenario_1 = true

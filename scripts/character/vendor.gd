@@ -27,16 +27,15 @@ func _ready():
 func _update_emoji_from_choice():
 	if GameState.did_choose("educated_vendor"):
 		label.text = "😊👍"
-		label.show()
 	elif GameState.did_choose("confront_vendor"):
 		label.text = "😠"
-		label.show()
 		leave()
 	elif GameState.did_choose("ignore_vendor"):
 		label.text = "😒"
-		label.show()
 	else:
-		label.hide()
+		label.text = "❗"
+
+	
 
 func leave():
 	is_leaving = true

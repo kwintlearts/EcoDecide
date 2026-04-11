@@ -11,6 +11,7 @@ const SCENE_1_DIALOGUE = preload("uid://d2oa8p14f0cqt")
 
 func _ready():
 	GameState.current_scenario = 1
+	
 	print("Current Scenario: ", GameState.current_scenario)
 	
 	TimerManager.time_expired.connect(_on_time_expired)

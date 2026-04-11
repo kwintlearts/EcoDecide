@@ -93,9 +93,9 @@ dialogue_start = "vendor"
 shape = SubResource("CircleShape2D_dag0r")
 
 [node name="Label" type="Label" parent="." unique_id=1748397228]
-offset_left = -8.0
+offset_left = -10.0
 offset_top = -32.0
-offset_right = 32.0
+offset_right = 30.0
 offset_bottom = -9.0
 theme_override_fonts/font = ExtResource("6_48hrg")
-text = "⚠️"
+text = "❗"

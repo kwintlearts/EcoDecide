@@ -4,7 +4,9 @@
 [ext_resource type="Resource" uid="uid://b3bhjicesrfg3" path="res://inventory/capacity/player_inv.tres" id="2_0tuvh"]
 [ext_resource type="Texture2D" uid="uid://cn3w4ehisou1k" path="res://assets/characters/RPG Top Down Character Asset Pack - FREE/RPG Top Down Characters - Free Version/Blonde Man/blonde_man.png" id="2_g2els"]
 [ext_resource type="PackedScene" uid="uid://cere7rcpumafw" path="res://inventory/scene/inv_ui.tscn" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://b45q2axgdwpuq" path="res://assets/User Interface/SimplePixelArtUIpack/Artwork/Gray/square/background.png" id="4_8fgnd"]
 [ext_resource type="PackedScene" uid="uid://j42w1ton01ww" path="res://inventory/scene/item_info.tscn" id="4_i7wy1"]
+[ext_resource type="Texture2D" uid="uid://b7iar7qiydfup" path="res://assets/User Interface/bruh.png" id="5_xpp3s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
@@ -285,14 +287,37 @@ script = ExtResource("1_cvnsp")
 inv = ExtResource("2_0tuvh")
 
 [node name="Inv_UI" parent="." unique_id=1135568863 instance=ExtResource("3_qhqgy")]
-visible = false
 z_index = 4
+
+[node name="DragHandle" type="NinePatchRect" parent="Inv_UI" unique_id=764295727]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -11.0
+offset_right = 63.0
+offset_bottom = 1.0
+mouse_filter = 0
+texture = ExtResource("4_8fgnd")
+region_rect = Rect2(0, 0, 134, 108)
+patch_margin_left = 6
+patch_margin_top = 4
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="TextureRect" type="TextureRect" parent="Inv_UI/DragHandle" unique_id=374957937]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 57.0
+offset_bottom = 9.0
+texture = ExtResource("5_xpp3s")
+expand_mode = 1
 
 [node name="ItemInfo" parent="Inv_UI" unique_id=1358632728 instance=ExtResource("4_i7wy1")]
 z_index = 7
 layout_mode = 0
 offset_top = 48.0
 offset_bottom = 48.0
+mouse_filter = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=770835459]
 position = Vector2(0, -6)
@@ -316,3 +341,5 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Direction/ActionableFinder" unique_id=2085082887]
 position = Vector2(0, 15)
 shape = SubResource("CircleShape2D_2ijsl")
+
+[connection signal="gui_input" from="Inv_UI/DragHandle" to="Inv_UI" method="_on_drag_handle_gui_input"]

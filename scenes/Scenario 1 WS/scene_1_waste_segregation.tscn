@@ -48,6 +48,8 @@
 [ext_resource type="Resource" uid="uid://6waoncmhfdub" path="res://inventory/Items/bread_individual.tres" id="38_gpfno"]
 [ext_resource type="Resource" uid="uid://bokjwrnht7t5v" path="res://inventory/Items/boba_milk_tea.tres" id="40_aqbi1"]
 [ext_resource type="Resource" uid="uid://b3t0o6oav6oo6" path="res://inventory/Items/banana.tres" id="42_vilf8"]
+[ext_resource type="FontFile" uid="uid://dsy5ql31cyxib" path="res://assets/User Interface/fonts/PixelOperator8.ttf" id="49_le0hc"]
+[ext_resource type="FontFile" uid="uid://vb3qdyxh8m5i" path="res://assets/User Interface/fonts/6px-Normal.ttf" id="50_ei0rg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ldft"]
 texture = ExtResource("3_w77pj")
@@ -4863,7 +4865,7 @@ player = NodePath("../Player")
 follow_distance = 20
 
 [node name="Player" parent="Characters" unique_id=1896034723 instance=ExtResource("6_a442s")]
-position = Vector2(-328, -608)
+position = Vector2(-296, -616)
 
 [node name="BarangayCaptain" parent="Characters" unique_id=1368415040 instance=ExtResource("19_5ilr6")]
 position = Vector2(176, -280)
@@ -4896,7 +4898,7 @@ rotation = 1.5707964
 shape = SubResource("RectangleShape2D_husvb")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="Borders/StaticBody2D" unique_id=1429878784]
-position = Vector2(208, -384)
+position = Vector2(208, -472)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_husvb")
 
@@ -4920,5 +4922,26 @@ dialogue_start = "start"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueTrigger" unique_id=975412919]
 position = Vector2(0, -7.9999847)
 shape = SubResource("RectangleShape2D_k0boa")
+
+[node name="Label" type="Label" parent="." unique_id=508207209]
+z_index = 1
+offset_left = 56.0
+offset_top = -624.0
+offset_right = 304.0
+offset_bottom = -601.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.2901961)
+theme_override_fonts/font = ExtResource("49_le0hc")
+text = "DRAG AND DROP ITEMS"
+
+[node name="Label2" type="Label" parent="." unique_id=1110780623]
+z_index = 1
+offset_left = 56.0
+offset_top = -600.0
+offset_right = 446.0
+offset_bottom = -577.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.2901961)
+theme_override_fonts/font = ExtResource("50_ei0rg")
+theme_override_font_sizes/font_size = 8
+text = "YOU CAN DRAG THE INVENTORY BTW"
 
 [editable path="DialogueTrigger"]

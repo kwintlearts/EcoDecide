@@ -83,12 +83,12 @@ func _update_collision_shape():
 
 func _on_actionable_area_entered(area: Area2D) -> void:
 	if not Engine.is_editor_hint():
-		# Show bonus label for recyclables if player rinsed bottle in Scenario 1
-		if GameState.did_choose("rinsed_bottle") and GameState.scenario_active and GameState.current_scenario == 2 and item and item.correct_bin == 1:
-			_show_bonus_label()
-		elif GameState.scenario_active:
-			
-			_show_label()
+		# Only react to the player's detector area
+		if area.is_in_group("player_detector"):
+			if GameState.did_choose("rinsed_bottle") and GameState.scenario_active and GameState.current_scenario == 2 and item and item.correct_bin == 1:
+				_show_bonus_label()
+			else:
+				_show_label()
 
 func _on_actionable_area_exited(area: Area2D) -> void:
 	if not Engine.is_editor_hint():
@@ -107,7 +107,10 @@ func _show_bonus_label():
 
 func _show_label():
 	if label:
-		label.text = "📦 Take?"
+		if GameState.scenario_active:
+			label.text = "📦 Take?"
+		else:
+			label.text = "Scenario is not active!"
 		label.add_theme_color_override("font_color", Color.WHITE)
 		label.visible = true
 		

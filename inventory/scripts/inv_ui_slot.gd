@@ -34,6 +34,7 @@ const DRAG = preload("uid://b6rjp6l4tsyeu")
 @onready var error: AudioStreamPlayer = $Error
 @onready var pick_up: AudioStreamPlayer = $PickUp
 @onready var rinsing: AudioStreamPlayer = $Rinsing
+@onready var rinse_complete_label: Label = $RinseCompleteLabel
 
 # Store original cursor to restore
 var original_cursor: Texture2D = null
@@ -41,11 +42,33 @@ var original_cursor: Texture2D = null
 func _ready():
 	mouse_default_cursor_shape = Control.CURSOR_MOVE
 	set_process_unhandled_input(true)
+	
+		# Hide rinse complete label initially
+	if rinse_complete_label:
+		rinse_complete_label.hide()
+		rinse_complete_label.add_theme_color_override("font_color", Color.GREEN)
+		rinse_complete_label.add_theme_color_override("font_shadow_color", Color.BLACK)
+		rinse_complete_label.add_theme_font_size_override("font_size", 14)
 
 	
 	description_timer = Timer.new()
 	description_timer.one_shot = true
 	add_child(description_timer)
+
+func _show_rinse_complete_message():
+	if rinse_complete_label:
+		rinse_complete_label.text = "✨ Item Cleaned! ✨"
+		rinse_complete_label.show()
+		rinse_complete_label.scale = Vector2(0.5, 0.5)
+		
+		# Pop animation
+		var tween = create_tween()
+		tween.tween_property(rinse_complete_label, "scale", Vector2(1.2, 1.2), 0.1)
+		tween.tween_property(rinse_complete_label, "scale", Vector2(1.0, 1.0), 0.1)
+		
+		# Hide after 2 seconds
+		await get_tree().create_timer(2.0).timeout
+		rinse_complete_label.hide()
 
 
 func _gui_input(event: InputEvent):
@@ -217,6 +240,8 @@ func _drop_data(at_position, data):
 				GameState.modify_energy(-5)
 				
 				update(null)
+				
+				_show_rinse_complete_message()
 				
 				var flash_tween = create_tween()
 				flash_tween.tween_property(self, "modulate", Color.GREEN, 0.2)
