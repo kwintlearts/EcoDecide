@@ -11,7 +11,7 @@ var is_triggered: bool = false
 func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("player"):
 		return
-	
+		
 	# Check if scenario is already active - DON'T trigger
 	if GameState.scenario_active:
 		print("Scenario already active - skipping dialogue trigger")

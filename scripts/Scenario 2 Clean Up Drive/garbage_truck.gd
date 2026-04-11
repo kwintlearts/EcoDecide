@@ -36,7 +36,7 @@ func empty_inventory():
 			battery_found = true
 			print("Battery must go to hazardous bin, not truck!")
 	
-	if battery_found:
+	if battery_found and GameState.did_choose("battery_recycled"):
 		error.play()
 		_show_notification("⚠️ Battery must go to HAZARDOUS bin! ⚠️", Color.RED)
 		return  # Don't dispose anything if battery is in inventory
@@ -49,7 +49,7 @@ func empty_inventory():
 		if slot.item:
 			# RECORD THE DISPOSAL
 			var is_hazardous = (slot.item.correct_bin == 0)
-			GameState.record_disposal(slot.item.name, false, "TRUCK")
+			#GameState.record_disposal(slot.item.name, false, "TRUCK")
 			
 			if is_hazardous:
 				print("Hazardous item disposed in truck (PENALTY): ", slot.item.name)
@@ -81,18 +81,22 @@ func empty_inventory():
 			GameState.modify_env_health(-15 * hazardous_items)
 		
 		_update_clogged_clarity()
-		_show_notification("Truck emptied " + str(total_items) + " items!")
+		_show_notification("Truck emptied " + str(total_items) + " items!")	
+		
 		GameState.record_bulk_disposal(total_items, items_emptied, hazardous_items)
+		await get_tree().create_timer(0.1).timeout
+		items_disposed.emit(total_items)	
+	
 		print("Truck emptied ", total_items, " items")
 		print("Points: ", points_earned)
 	else:
 		print("Truck: No items to collect")
 		_show_notification("No items to collect!", Color.ORANGE)
 	
-	GameState.is_bulk_disposal = false
-	if total_items > 0:
-		await get_tree().process_frame
-		items_disposed.emit(total_items)
+	#GameState.is_bulk_disposal = false
+	#if total_items > 0:a
+		#await get_tree().process_frame
+		#items_disposed.emit(total_items)
 
 func _show_notification(message: String, color: Color = Color.GREEN):
 	if notification_label:

@@ -17,7 +17,7 @@ func _update_emoji_from_choice():
 		label.text = "🧹"
 
 	elif GameState.did_choose("youth_asked"):
-		_show_temporary_emoji("🧹", 30.0)
+		_show_temporary_emoji("🧹", 120)
 	elif GameState.did_choose("youth_lectured"):
 		label.text = "😤"
 

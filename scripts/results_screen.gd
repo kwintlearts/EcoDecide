@@ -213,6 +213,7 @@ func _on_continue_button_pressed() -> void:
 	match GameState.current_scenario:
 		1:
 			GameState.has_completed_scenario_1 = true
+			GameState.scenario_active = false
 			# Hide results screen first
 			visible = false
 			# Load next scene with loading screen

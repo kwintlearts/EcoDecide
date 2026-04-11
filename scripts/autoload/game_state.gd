@@ -95,6 +95,9 @@ func get_ending_tier() -> String:
 
 
 func record_bulk_disposal(total: int, regular: int, hazardous: int):
+	total_disposals += total
+	if regular > 0:
+		correct_disposals += regular  # Assuming regular items are "correct" for truck? Adjust as needed
 	disposal_log.append({
 		"item": "Bulk Truck Disposal",
 		"correct": false,
@@ -106,6 +109,7 @@ func record_bulk_disposal(total: int, regular: int, hazardous: int):
 		"timestamp": Time.get_ticks_msec()
 	})
 	stats_updated.emit()
+	print("Bulk disposal recorded: ", total, " items. Total disposals: ", total_disposals)
 
 func record_disposal(item_name: String, was_correct: bool, bin_type: String, category: String = "Other"):
 	total_disposals += 1
@@ -217,6 +221,10 @@ func reset_scenario_2():
 	final_clarity = 0
 	scenario_active = false
 	has_completed_scenario_2 = false
+	has_chosen_sack = false
+	has_talked_to_lola = false
+	has_talked_to_youth = false
+	has_talked_to_vendor = false
 	TimerManager.stop_timer()
 	TimerManager.time_remaining = 420
 

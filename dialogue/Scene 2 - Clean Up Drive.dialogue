@@ -87,14 +87,14 @@ if not GameState.has_talked_to_lola:
 => END
 
 ~ youth_student
-if not GameState.has_talked_to_youth:
+if not GameState.has_talked_to_youth and GameState.has_talked_to_lola:
 	if GameState.did_choose("grandson_help")
 		Youth: Hey! My lola said you guys are cleaning the canal.
 		Youth: She said you actually listen to people.
 		Youth: I'm in. What do you need?
 		do GameState.record_decision("youth_joined")
 		do GameState.has_talked_to_youth = true
-		do GameState.scenario_flags["npc_youth_engaged"] = true  # Add this
+		do GameState.scenario_flags["npc_youth_engaged"] = true
 		=> END
 	else
 		Youth: *Doesn't look up from phone*
@@ -104,32 +104,32 @@ if not GameState.has_talked_to_youth:
 			do GameState.record_decision("youth_asked")
 			do GameState.has_talked_to_youth = true
 			do GameState.modify_community_trust(5)
-			do GameState.scenario_flags["npc_youth_engaged"] = true  # Add this
-			
-			Youth: Fine, 10 minutes. Then I'm out.
+			do GameState.scenario_flags["npc_youth_engaged"] = true
+			Youth: Fine, 2 minutes. Then I'm out.
 			Plush Toy: Not enthusiastic, but every bit helps.
-			Plush Toy: Small participation is better than none.
 			=> END
 		- You should care about your future
 			do GameState.record_decision("youth_lectured")
 			do GameState.has_talked_to_youth = true
 			do GameState.modify_community_trust(-5)
-			do GameState.scenario_flags["npc_youth_engaged"] = true  # Add this
-			
-			Youth: Yeah, yeah, I know. Boomers always lecturing. Just go.
-			Plush Toy: Lectures rarely inspire action. People need to see the impact, not just hear about it.
+			do GameState.scenario_flags["npc_youth_engaged"] = true
+			Youth: Yeah, yeah, I know. Just go.
+			Plush Toy: Lectures rarely inspire action.
 			=> END
 		- Look at this before/after photo
 			Youth: Whoa... this was our canal? It actually looked clean?
-			Youth: ...I guess I can help. This is actually kind of important.
+			Youth: ...I guess I can help.
 			do GameState.has_talked_to_youth = true
 			do GameState.modify_community_trust(15)
 			do GameState.record_decision("youth_inspired")
 			do GameState.record_decision("youth_joined")
-			do GameState.scenario_flags["npc_youth_engaged"] = true  # Add this
-			Plush Toy: YES! Visual proof works! When people SEE the change, they want to be part of it!
+			do GameState.scenario_flags["npc_youth_engaged"] = true
+			Plush Toy: YES! Visual proof works!
 			=> END
 		=> END
+else:
+	Youth: *Ignores you*
+	Plush Toy: Maybe talk to the elder lady first..
 => END
 
 ~ battery_found
@@ -144,18 +144,18 @@ if not GameState.did_choose("battery_ignored"):
 		do GameState.modify_env_health(5)
 		do GameState.modify_energy(5)
 		=> END
-	- Throw in residual (it's just one)
+	- Throw in Sack
 		do GameState.record_decision("battery_trashed")
 		Plush Toy: That's dangerous for the environment...
 		do GameState.add_score(-30)
 		do GameState.modify_env_health(-15)
 		
-		=> END
-	- Leave it (someone else will handle)
-		do GameState.record_decision("battery_ignored")
-		Plush Toy: Someone might get hurt...
-		do GameState.add_score(-10)
-		=> END
+#		=> END
+#	- Leave it (someone else will handle)
+#		do GameState.record_decision("battery_ignored")
+#		Plush Toy: Someone might get hurt...
+#		do GameState.add_score(-10)
+#		=> END
 => END
 
 

@@ -135,6 +135,7 @@ func _on_truck_disposal(count: int):
 	_check_completion()
 
 func _check_completion():
+	print("Checking completion - Total disposals: ", GameState.total_disposals, " / ", total_items_to_process)
 	if GameState.total_disposals >= total_items_to_process and not scenario_ended:
 		print("All items disposed! Total disposals: ", GameState.total_disposals)
 		_on_scenario_end()
