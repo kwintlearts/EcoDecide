@@ -34,9 +34,9 @@ mode = 1
 bin_type = 3
 
 [node name="Label" parent="StationUI" index="1" unique_id=1135225492]
-modulate = Color(0.28235295, 0.29803923, 0, 1)
-offset_left = -12.0
-offset_right = 54.0
+modulate = Color(0.282, 0.298, 0, 1)
+offset_left = -13.0
+offset_right = 41.0
 text = "RESIDUAL"
 
 [node name="Actionable" parent="." unique_id=525290031 instance=ExtResource("5_76nqi")]

@@ -7,8 +7,9 @@ extends CharacterBody2D
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var action_shape: CollisionShape2D = $Actionable/CollisionShape2D
 @onready var feedback_label: Label = $FeedBackLabel
+@onready var actionable: Area2D = $Actionable
+@onready var action_shape: CollisionShape2D = $Actionable/CollisionShape2D
 
 var is_following: bool = false
 var last_direction: String = "down"
@@ -34,6 +35,17 @@ func _ready():
 	
 	if GameState.has_met_plush_toy:
 		enable_following()
+	else:
+		# Before meeting, keep actionable area active
+		_disable_actionable_area(false)
+
+
+func _disable_actionable_area(disabled: bool):
+	if actionable:
+		actionable.monitoring = not disabled
+		actionable.monitorable = not disabled
+	if action_shape:
+		action_shape.disabled = disabled
 
 func _exit_tree():
 	AnimationManager.unregister_character("PlushToy")
@@ -47,6 +59,7 @@ func _on_plush_toy_met():
 func enable_following():
 	is_following = true
 	collision_shape.disabled = true
+	_disable_actionable_area(true)
 	print("Plush toy is now following!")
 
 func _on_disposal_recorded():

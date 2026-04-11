@@ -212,7 +212,7 @@ func load_state(state: Dictionary) -> void:
 	# Restore inventory items
 	if player and player.inv:
 		var inventory_state = state.get("inventory_state", [])
-		print(inventory_state)
+	
 		
 		# Clear all slots first
 		for i in range(player.inv.slots.size()):

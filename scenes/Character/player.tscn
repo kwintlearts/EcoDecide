@@ -287,6 +287,7 @@ script = ExtResource("1_cvnsp")
 inv = ExtResource("2_0tuvh")
 
 [node name="Inv_UI" parent="." unique_id=1135568863 instance=ExtResource("3_qhqgy")]
+visible = false
 z_index = 4
 
 [node name="DragHandle" type="NinePatchRect" parent="Inv_UI" unique_id=764295727]

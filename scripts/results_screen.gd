@@ -125,8 +125,8 @@ func _show_scenario_3_results():
 	fact_text.text = "💡 DID YOU KNOW?\nNative trees support 10x more local wildlife than exotic species!"
 
 func _apply_scenario_1_carry_over():
-	var carry_effects = []
-	
+	var carry_effects = []	
+
 	if GameState.did_choose("rinsed_bottle"):
 		carry_effects.append("✅ Recyclables will give bonus points in next scenario")
 		GameState.scenario_flags["recyclables_glow"] = true

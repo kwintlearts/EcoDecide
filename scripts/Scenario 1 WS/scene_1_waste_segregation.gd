@@ -127,7 +127,6 @@ func load_state(state: Dictionary) -> void:
 	# Then restore inventory
 	if player and player.inv:
 		var inventory_state = state.get("inventory_state", [])
-		print(inventory_state)
 		
 		for i in range(player.inv.slots.size()):
 			player.inv.slots[i].item = null

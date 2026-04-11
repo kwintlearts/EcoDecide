@@ -51,9 +51,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -284.5
-offset_top = -324.0
+offset_top = -363.0
 offset_right = 284.5
-offset_bottom = 324.0
+offset_bottom = 363.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -97,17 +97,14 @@ text = "Results"
 
 [node name="MetricsS1" type="Control" parent="ResultsScreen/Panel" unique_id=1905850367]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 17.5
-offset_top = -205.0
-offset_right = 17.5
-offset_bottom = -165.0
+offset_left = 14.0
+offset_top = 119.0
+offset_right = 14.0
+offset_bottom = 159.0
 grow_horizontal = 2
-grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ResultsScreen/Panel/MetricsS1" unique_id=1496692358]
 layout_mode = 0
@@ -165,17 +162,11 @@ text = "50%"
 [node name="MetricsS2" type="Control" parent="ResultsScreen/Panel" unique_id=1899888666]
 visible = false
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 15.5
-offset_top = -205.0
-offset_right = 15.5
-offset_bottom = -165.0
+offset_bottom = 40.0
 grow_horizontal = 2
-grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ResultsScreen/Panel/MetricsS2" unique_id=1215391984]
 layout_mode = 0
@@ -233,17 +224,11 @@ text = "Handled"
 [node name="MetricsS3" type="Control" parent="ResultsScreen/Panel" unique_id=797271885]
 visible = false
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 16.5
-offset_top = -205.0
-offset_right = 16.5
-offset_bottom = -165.0
+offset_bottom = 40.0
 grow_horizontal = 2
-grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ResultsScreen/Panel/MetricsS3" unique_id=1721640110]
 layout_mode = 0
@@ -300,17 +285,14 @@ text = "High"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="ResultsScreen/Panel" unique_id=888726120]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -271.5
-offset_top = -102.0
-offset_right = 260.5
-offset_bottom = -62.0
+offset_left = -276.0
+offset_top = 234.0
+offset_right = 256.0
+offset_bottom = 274.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_constants/separation = 200
 
 [node name="EcoScoreEarnedLabel" type="Label" parent="ResultsScreen/Panel/HBoxContainer3" unique_id=563624784]
@@ -325,34 +307,28 @@ text = "+450"
 
 [node name="FactText" type="Label" parent="ResultsScreen/Panel" unique_id=1344930600]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -271.5
-offset_top = -40.0
-offset_right = 259.5
-offset_bottom = 53.0
+offset_left = -276.0
+offset_top = 285.0
+offset_right = 255.0
+offset_bottom = 378.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_cij7f")
 text = "Clean Recyclables are 3x more likely to be processed."
 autowrap_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ResultsScreen/Panel" unique_id=777745438]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -271.5
-offset_top = 69.0
-offset_right = 248.5
-offset_bottom = 169.0
+offset_left = -276.0
+offset_top = 394.0
+offset_right = 244.0
+offset_bottom = 494.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_constants/separation = 10
 
 [node name="TierNameTitle" type="Label" parent="ResultsScreen/Panel/VBoxContainer" unique_id=1905928654]
@@ -369,19 +345,17 @@ autowrap_mode = 3
 
 [node name="CarryOvertext" type="Label" parent="ResultsScreen/Panel" unique_id=2030904145]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -266.0
-offset_top = -139.0
-offset_right = 225.5
-offset_bottom = -61.0
+offset_left = -276.0
+offset_top = 469.0
+offset_right = 215.5
+offset_bottom = 828.0
 grow_horizontal = 2
-grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_cij7f")
-text = "Next: Recyclables glow in Scene 2"
+text = "Next: Recyclables glow in Scene 2
+"
 autowrap_mode = 3
 
 [node name="ContinueButton" type="Button" parent="ResultsScreen/Panel" unique_id=947676862]

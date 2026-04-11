@@ -82,6 +82,32 @@ func switch_to_woven_sack():
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):	
 		var actionables = actionable_finder.get_overlapping_areas()
+		# Debug: print what's in front of the player
+		print("=== INTERACT DEBUG ===")
+		print("Actionables found: ", actionables.size())
+		
+		for i in range(actionables.size()):
+			var area = actionables[i]
+			var parent = area.get_parent()
+			print("Area ", i, ": ", area.name)
+			print("  Parent: ", parent.name if parent else "Nowwwwds  parent")
+			print("  Parent type: ", parent.get_class() if parent else "Unknown")
+			
+			# Check if parent is a pickup item
+			if parent and parent.has_method("get_item_dialogue"):
+				print("  Has item dialogue")
+				var item = parent.get_item_dialogue()
+				if item:
+					print("  Item: ", item)
+			
+			# Check if parent is a station
+			if parent and parent.has_method("empty_inventory"):
+				print("  Is garbage truck")
+			if parent and parent.has_method("take_back_item"):
+				print("  Is station with take_back")
+		
+		print("=====================")
+		
 		if actionables.size() > 0:
 			actionables[0].action()
 			get_viewport().set_input_as_handled()

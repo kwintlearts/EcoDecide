@@ -50,6 +50,7 @@
 [ext_resource type="Resource" uid="uid://b3t0o6oav6oo6" path="res://inventory/Items/banana.tres" id="42_vilf8"]
 [ext_resource type="FontFile" uid="uid://dsy5ql31cyxib" path="res://assets/User Interface/fonts/PixelOperator8.ttf" id="49_le0hc"]
 [ext_resource type="FontFile" uid="uid://vb3qdyxh8m5i" path="res://assets/User Interface/fonts/6px-Normal.ttf" id="50_ei0rg"]
+[ext_resource type="FontFile" uid="uid://dsbommlxytqeg" path="res://assets/User Interface/SimplePixelArtUIpack/fonts/font 1/pixelfont.ttf" id="51_u0wat"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ldft"]
 texture = ExtResource("3_w77pj")
@@ -4628,9 +4629,9 @@ texture = ExtResource("3_e7eds")
 17:24/0 = 0
 19:24/0 = 0
 20:24/0 = 0
-20:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.036044, -5.755479, 8, -5.935337, 8, 8, -5.3957615, 8)
+20:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.058527, -5.5151987, 8, -5.223631, 8, 8, -5.2812424, 8)
 21:24/0 = 0
-21:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.755479, 5.2159023, -5.2159023, 5.5756207, 8, -8, 8)
+21:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.5447063, 4.845648, -5.3472834, 5.0346394, 8, -8, 8)
 26:24/0 = 0
 27:24/0 = 0
 28:24/0 = 0
@@ -4651,11 +4652,11 @@ texture = ExtResource("3_e7eds")
 20:25/0 = 0
 20:25/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.3957615, -8, 8, -8, 8, 8, -5.3957615, 8)
 21:25/0 = 0
-21:25/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 4.3166103, -8, 5.5756207, 8, -8, 8)
+21:25/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 5.014967, -8, 5.0346394, 8, -8, 8)
 22:25/0 = 0
-22:25/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.3957615, -0.5395756, 8, -1.0791512, 8, 8, -5.3957615, 8)
+22:25/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.8962326, -0.67798233, 8, -0.6569061, 8, 8, -4.888504, 8)
 23:25/0 = 0
-23:25/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -0.71943474, 8, -0.71943474, 8, 8, -8, 8)
+23:25/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -0.6843052, 8, -0.6569061, 8, 8, -8, 8)
 24:25/0 = 0
 24:25/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -0.71943474, 8, -0.71943474, 8, 8, -8, 8)
 25:25/0 = 0
@@ -4690,9 +4691,9 @@ texture = ExtResource("3_e7eds")
 20:26/0 = 0
 20:26/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.3957615, -8, 8, -8, 8, 8, -5.3957615, 8)
 21:26/0 = 0
-21:26/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 4.856186, -8, 5.5756207, 8, -8, 8)
+21:26/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 5.014967, -8, 5.0346394, 8, -8, 8)
 22:26/0 = 0
-22:26/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.3957615, -8, 8, -8, 8, 8, -5.3957615, 8)
+22:26/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.866022, -8, 8, -8, 8, 8, -4.888504, 8)
 23:26/0 = 0
 23:26/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 24:26/0 = 0
@@ -4727,17 +4728,17 @@ texture = ExtResource("3_e7eds")
 18:27/0 = 0
 19:27/0 = 0
 20:27/0 = 0
-20:27/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.2159033, -8, 8, -8, 8, -4.13675, -1.7985878, -3.7770329, -1.4388695, 6.115198, -5.036044, 6.115198)
+20:27/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.866022, -8, 8, -8, 8, -3.880313, -2.0480003, -4.104432, -2.0177898, 6.0365086, -4.9411974, 6.3048916)
 21:27/0 = 0
-21:27/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 4.3166103, -8, 4.856186, -3.057598, 4.3166103, 5.5756207, 2.6978817, 6.4749146, 1.6187286, -3.4173155, -8, -4.13675)
+21:27/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 5.1175423, -8, 4.949629, 6.259224, 1.907486, 6.02878, 1.7964802, -3.9301949, -8, -4.078438)
 22:27/0 = 0
-22:27/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.2159033, -8, 8, -8, 8, -4.13675, -1.7985878, -3.7770329, -1.4388695, 6.115198, -5.036044, 6.115198)
+22:27/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.866022, -8, 8, -8, 8, -3.880313, -2.0480003, -4.104432, -2.0177898, 6.0365086, -4.9411974, 6.3048916)
 23:27/0 = 0
 23:27/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -4.3166084, -8, -4.13675)
 24:27/0 = 0
 24:27/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -4.3166084, -8, -4.13675)
 25:27/0 = 0
-25:27/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 4.3166103, -8, 4.856186, -3.057598, 4.3166103, 5.5756207, 2.6978817, 6.4749146, 1.6187286, -3.4173155, -8, -4.13675)
+25:27/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 5.1175423, -8, 4.949629, 6.259224, 1.907486, 6.02878, 1.7964802, -3.9301949, -8, -4.078438)
 26:27/0 = 0
 27:27/0 = 0
 28:27/0 = 0
@@ -4778,7 +4779,7 @@ tile_map_data = PackedByteArray("AAD///D/AAAIAAEAAAD///H/AAAIAAEAAAD///L/AAAIAAE
 tile_set = SubResource("TileSet_w77pj")
 
 [node name="Others" type="TileMapLayer" parent="TileMapLayers" unique_id=2078212132]
-tile_map_data = PackedByteArray("AAD9//T/AAAVABAAAAD9//X/AAAVABEAAAD+//T/AAAWABAAAAD+//X/AAAWABEAAAD9//P/AAASABEAAAD+//P/AAATABEAAAD9//L/AAAPABEAAAD+//L/AAAQABEAAAD9//H/AAAPABAAAAD+//H/AAAQABAAAAD6//H/AAAPABAAAAD6//L/AAAPABEAAAD6//P/AAASABEAAAD6//T/AAAVABAAAAD6//X/AAAVABEAAAD7//H/AAAQABAAAAD7//L/AAAQABEAAAD7//P/AAATABEAAAD7//T/AAAWABAAAAD7//X/AAAWABEAAAAYAOP/AgAQAA4AAAAYAOT/AgAQAA8AAAAYAOX/AgAQABAAAAAYAOD/AgAQAA4AAAAYAOH/AgAQAA8AAAAYAOL/AgAQABAAAAAAAOH/AgATAA4AAAAAAOL/AgATAA8AAAAAAOP/AgATABAAAAAAAOb/AgATAA4AAAAAAOf/AgATAA8AAAAAAOj/AgATABAAAAAOAO//AgARAA8AAAAPAO//AgASAA8AAAASAO//AgARAA8AAAATAO//AgASAA8AAAD5/9n/AgARAA8AAAD6/9n/AgASAA8AAAAMAPH/AgANABEAAAARAPH/AgANABEAAAAQAPH/AgANABEAAAASAPD/AgANABEAAAAKAPL/AgAOAA4AAAA=")
+tile_map_data = PackedByteArray("AAD9//T/AAAVABAAAAD9//X/AAAVABEAAAD+//T/AAAWABAAAAD+//X/AAAWABEAAAD9//P/AAASABEAAAD+//P/AAATABEAAAD9//L/AAAPABEAAAD+//L/AAAQABEAAAD6//H/AAAPABAAAAD6//L/AAAPABEAAAD6//P/AAASABEAAAD6//T/AAAVABAAAAD6//X/AAAVABEAAAD7//L/AAAQABEAAAD7//P/AAATABEAAAD7//T/AAAWABAAAAD7//X/AAAWABEAAAD5/9n/AgARAA8AAAD6/9n/AgASAA8AAAAKAPL/AgAOAA4AAAD7//H/AAAQABAAAAD9//H/AAAPABAAAAD+//H/AAAQABAAAAAAAOH/AgATAA4AAAAAAOL/AgATAA8AAAAAAOP/AgATABAAAAAAAOb/AgATAA4AAAAAAOf/AgATAA8AAAAAAOj/AgATABAAAAAMAPH/AgANABEAAAAOAO//AgARAA8AAAAPAO//AgASAA8AAAAQAPH/AgANABEAAAARAPH/AgANABEAAAASAO//AgARAA8AAAASAPD/AgANABEAAAATAO//AgASAA8AAAAYAOD/AgAQAA4AAAAYAOH/AgAQAA8AAAAYAOL/AgAQABAAAAAYAOP/AgAQAA4AAAAYAOT/AgAQAA8AAAAYAOX/AgAQABAAAAA=")
 tile_set = SubResource("TileSet_a442s")
 
 [node name="Table" type="TileMapLayer" parent="TileMapLayers" unique_id=198372591]
@@ -4838,6 +4839,7 @@ scale_range = Vector2(50, 50)
 pickup_item_scene = ExtResource("5_vxifi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trash Objects/Spawner" unique_id=2063352615]
+light_mask = 0
 position = Vector2(480, 252)
 shape = SubResource("RectangleShape2D_ei0rg")
 
@@ -4873,6 +4875,7 @@ position = Vector2(176, -280)
 [node name="Borders" type="Node" parent="." unique_id=94001200]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Borders" unique_id=1879091033]
+collision_mask = 0
 script = ExtResource("35_k0boa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D" unique_id=1679970722]
@@ -4936,12 +4939,21 @@ text = "DRAG AND DROP ITEMS"
 [node name="Label2" type="Label" parent="." unique_id=1110780623]
 z_index = 1
 offset_left = 56.0
-offset_top = -600.0
-offset_right = 446.0
-offset_bottom = -577.0
+offset_top = -608.0
+offset_right = 296.0
+offset_bottom = -585.0
 theme_override_colors/font_color = Color(1, 1, 1, 0.2901961)
 theme_override_fonts/font = ExtResource("50_ei0rg")
 theme_override_font_sizes/font_size = 8
-text = "YOU CAN DRAG THE INVENTORY BTW"
+text = "YOU CAN MOVE THE INVENTORY IF YOU CANT SEE THE STATION SLOTS"
+
+[node name="Label3" type="Label" parent="." unique_id=814488963]
+offset_left = -376.0
+offset_top = -848.0
+offset_right = -81.0
+offset_bottom = -821.0
+theme_override_fonts/font = ExtResource("51_u0wat")
+theme_override_font_sizes/font_size = 16
+text = "What are you doing here?"
 
 [editable path="DialogueTrigger"]

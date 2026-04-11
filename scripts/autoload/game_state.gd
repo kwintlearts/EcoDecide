@@ -184,8 +184,11 @@ func reset_scenario_1():
 	final_clarity = 0
 	has_met_plush_toy = false
 	has_completed_scenario_1 = false
+	scenario_active = false
 	total_disposals = 0
 	unlocked_badges.clear()
+	TimerManager.stop_timer()
+	TimerManager.time_remaining = 300
 
 
 func save_carry_over_from_scene_1():
@@ -212,7 +215,10 @@ func reset_scenario_2():
 	correct_disposals = 0
 	total_disposals = 0
 	final_clarity = 0
+	scenario_active = false
 	has_completed_scenario_2 = false
+	TimerManager.stop_timer()
+	TimerManager.time_remaining = 420
 
 func full_reset():
 	# Reset all story flags

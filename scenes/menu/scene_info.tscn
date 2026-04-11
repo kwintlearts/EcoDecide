@@ -33,15 +33,14 @@ script = ExtResource("1_yvv7b")
 
 [node name="ScenePanel" type="Panel" parent="." unique_id=1207149497]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 323.0
-offset_top = 39.0
-offset_right = -323.0
-offset_bottom = -19.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -319.875
+offset_top = 20.0
+offset_right = 319.875
+offset_bottom = 738.0
 grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Scene1" type="Control" parent="ScenePanel" unique_id=2027289699]
 anchors_preset = 0

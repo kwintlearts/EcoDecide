@@ -167,10 +167,7 @@ func apply_dialogue_line() -> void:
 		await dialogue_label.finished_typing
 
 	if dialogue_line.has_tag("voice"):
-		#print(dialogue_line.tags)
-		#print(dialogue_line.get_tag_value("voice"))
 		audio_stream_player.stream = load(dialogue_line.get_tag_value("voice"))
-		#audio_stream_player.stream = TALK	
 		audio_stream_player.play()
 		await audio_stream_player.finished
 		next(dialogue_line.next_id)
