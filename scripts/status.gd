@@ -24,12 +24,10 @@ func _update_timer(seconds: int):
 	
 	if seconds <= 45:
 		timer_label.modulate = Color.RED
-		# Kill existing tween if any
 		if pulse_tween:
 			pulse_tween.kill()
-		# Create new pulsing animation
 		pulse_tween = create_tween()
-		pulse_tween.set_loops()  # Set loops on the tween, not the property
+		pulse_tween.set_loops()
 		pulse_tween.tween_property(timer_label, "scale", Vector2(1.1, 1.1), 0.3)
 		pulse_tween.tween_property(timer_label, "scale", Vector2(1.0, 1.0), 0.3)
 	else:
@@ -58,9 +56,9 @@ func _update_progress_bar_colors():
 	energy_style.bg_color = _get_energy_color(round(GameState.energy))
 	energy_bar.add_theme_stylebox_override("fill", energy_style)
 	
-	# Set Community Trust color
+	# Set Community Trust color (green at 80%+)
 	var trust_style = StyleBoxFlat.new()
-	trust_style.bg_color = _get_health_color(GameState.community_trust)
+	trust_style.bg_color = _get_trust_color(GameState.community_trust)
 	community_trust_bar.add_theme_stylebox_override("fill", trust_style)
 	
 	# Add low energy visual feedback
@@ -86,3 +84,11 @@ func _get_energy_color(value: int) -> Color:
 		return Color(0.9, 0.5, 0.2)
 	else:
 		return Color(0.9, 0.2, 0.2)
+
+func _get_trust_color(value: int) -> Color:
+	if value >= 80:
+		return Color(0.2, 0.8, 0.2)  # Green - Community Led
+	elif value >= 50:
+		return Color(0.9, 0.8, 0.2)  # Yellow - Needs work
+	else:
+		return Color(0.9, 0.5, 0.2)  # Orange - Low trust

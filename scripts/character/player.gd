@@ -119,7 +119,7 @@ func _physics_process(delta: float) -> void:
 	var is_actually_moving = actual_movement.length() > 0.1
 	
 	if is_actually_moving and input_vector.length() > 0:
-		var drain_rate = 3.5 if is_sprinting else 1.5
+		var drain_rate = 3.5 if is_sprinting else 1.2
 		GameState.modify_energy(-drain_rate * delta)
 		
 		if GameState.energy <= 0 and is_sprinting:

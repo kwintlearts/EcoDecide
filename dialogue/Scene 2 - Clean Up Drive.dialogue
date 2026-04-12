@@ -45,7 +45,7 @@ if not GameState.has_completed_scenario_2
 		- Politely educate + offer bin
 		#	Rio: Sir, I know it seems pointless. But if we all do a little, the floods stop. Here—take this small bin for your stall
 			do GameState.record_decision("educated_vendor")
-			do GameState.modify_community_trust(15)
+			do GameState.modify_community_trust(10)
 			do GameState.has_talked_to_vendor = true
 			do GameState.scenario_flags["npc_vendor_engaged"] = true  # Add this
 			Vendor: ...Fine. I'll use it. Thanks, kid.

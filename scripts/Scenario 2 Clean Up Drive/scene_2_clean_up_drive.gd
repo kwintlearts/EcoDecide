@@ -50,6 +50,10 @@ func _ready():
 	GameState.stats_updated.connect(_on_stats_updated)
 
 func _on_stats_updated():
+	if GameState.battery_handled_by_npc and not battery_ignored:
+		battery_ignored = true
+		total_items_to_process = 29
+		print("Battery handled by NPC detected - updating completion target")
 	# Update battery choice when it's made
 	if not battery_ignored and GameState.did_choose("battery_ignored"):
 		update_battery_choice()
@@ -63,6 +67,14 @@ func _on_stats_updated():
 		
 	if GameState.did_choose("battery_recycled"):
 		hazardous.show()
+	
+func set_battery_handled_by_npc():
+	battery_handled_by_npc = true
+	# If battery was handled by NPC, treat as ignored for completion
+	if not battery_ignored:
+		battery_ignored = true
+		total_items_to_process = 29
+		print("Battery handled by NPC - treating as ignored for completion")
 	
 func update_battery_choice():
 	battery_ignored = GameState.did_choose("battery_ignored")
@@ -124,7 +136,7 @@ func _on_item_collected():
 	if clogged:
 		clogged.update_clarity()
 	
-	_check_completion()
+	check_completion()
 
 func update_clogged_clarity():
 	if clogged:
@@ -140,9 +152,9 @@ func check_cell():
 func _on_truck_disposal(count: int):
 	total_items_processed += count
 	print("Items disposed in truck: ", count, " Total: ", total_items_processed)
-	_check_completion()
+	check_completion()
 
-func _check_completion():
+func check_completion():
 	print("Checking completion - Total disposals: ", GameState.total_disposals, " / ", total_items_to_process)
 	if GameState.total_disposals >= total_items_to_process and not scenario_ended:
 		print("All items disposed! Total disposals: ", GameState.total_disposals)

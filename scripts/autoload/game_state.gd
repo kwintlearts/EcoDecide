@@ -43,7 +43,7 @@ var carry_over_eco_score: int = 0
 var carry_over_env_health: int = 50
 var carry_over_energy: int = 100
 var is_bulk_disposal: bool = false
-
+var battery_handled_by_npc: bool = false
 
 signal stats_updated
 signal scenario_completed(scenario_id)
@@ -198,13 +198,13 @@ func reset_scenario_1():
 func save_carry_over_from_scene_1():
 	carry_over_eco_score = eco_score
 	carry_over_env_health = env_health
-	carry_over_energy = energy
+	#carry_over_energy = energy
 
 
 func load_carry_over_to_scene_2():
 	eco_score = carry_over_eco_score
 	env_health = carry_over_env_health
-	energy = carry_over_energy
+	#energy = carry_over_energy
 
 
 func reset_scenario_2():

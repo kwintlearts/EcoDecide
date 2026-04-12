@@ -41,6 +41,7 @@ func _show_temporary_emoji(emoji: String, duration: float = 2.0):
 	await get_tree().create_timer(duration).timeout
 	label.hide()
 
+# In youth_student.gd and vendor.gd
 func _collect_ignored_battery():
 	if has_collected_battery:
 		return
@@ -54,10 +55,15 @@ func _collect_ignored_battery():
 				item.queue_free()
 				print("Youth collected the ignored battery!")
 				
-				# Emit signal for plush toy
-				print("NPC collecting battery: ", "Youth")  # Add this
 				EventBus.npc_collected_battery.emit("Youth")
 				
 				GameState.add_score(10)
 				GameState.total_disposals += 1
+				GameState.battery_handled_by_npc = true
+				
+				# Trigger completion check in the scene
+				var scene = get_tree().current_scene
+				if scene and scene.has_method("aaaacheck_completion"):
+					scene.check_completion()
+				
 				return

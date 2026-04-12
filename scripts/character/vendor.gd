@@ -45,13 +45,17 @@ func _collect_ignored_battery():
 				item.queue_free()
 				print("Vendor collected the ignored battery!")
 				
-				# Emit signal for plush toy
-				print("NPC collecting battery: ", "Vender")  # Add this
-
 				EventBus.npc_collected_battery.emit("Vendor")
 				
 				GameState.add_score(10)
 				GameState.total_disposals += 1
+				GameState.battery_handled_by_npc = true
+				
+				# Trigger completion check in the scene
+				var scene = get_tree().current_scene
+				if scene and scene.has_method("check_completion"):
+					scene.check_completion()
+				
 				return
 
 
