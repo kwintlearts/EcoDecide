@@ -19,7 +19,7 @@ func _on_stats_updated():
 	
 	# Check if battery was just ignored and youth is helping
 	if GameState.did_choose("battery_ignored"):
-		if GameState.did_choose("youth_joined") or GameState.did_choose("grandson_help"):
+		if GameState.did_choose("youth_joined"):
 			await get_tree().create_timer(4).timeout
 			_collect_ignored_battery()
 

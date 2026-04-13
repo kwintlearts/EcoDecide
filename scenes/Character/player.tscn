@@ -340,7 +340,7 @@ collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Direction/ActionableFinder" unique_id=2085082887]
-position = Vector2(0, 15)
+position = Vector2(0, 13)
 shape = SubResource("CircleShape2D_2ijsl")
 
 [connection signal="gui_input" from="Inv_UI/DragHandle" to="Inv_UI" method="_on_drag_handle_gui_input"]

@@ -93,7 +93,6 @@ Plush Toy: Wait... the recycling truck isn't coming today! The driver called in 
 - Ask barangay captain for help
 	do GameState.has_asked_captain = true 
 	Plush Toy: Excellent! Community action makes a real difference. The captain will arrange a special pickup. Let's go to him!
-	
 	=> END
 
 => END

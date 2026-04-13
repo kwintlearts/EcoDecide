@@ -100,6 +100,7 @@ theme_override_fonts/font = ExtResource("2_j5vbe")
 text = "Results"
 
 [node name="MetricsS1" type="Control" parent="ResultsScreen/Panel" unique_id=1905850367]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -164,7 +165,6 @@ theme_override_fonts/font = ExtResource("3_cij7f")
 text = "50%"
 
 [node name="MetricsS2" type="Control" parent="ResultsScreen/Panel" unique_id=1899888666]
-visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -216,7 +216,7 @@ offset_left = -290.0
 offset_top = 63.0
 offset_right = -2.0
 offset_bottom = 103.0
-theme_override_constants/separation = 200
+theme_override_constants/separation = 120
 
 [node name="HazardousLabel" type="Label" parent="ResultsScreen/Panel/MetricsS2/HBoxContainer3" unique_id=630895116]
 layout_mode = 2
@@ -226,7 +226,7 @@ text = "Hazardous:"
 [node name="HazardousText" type="Label" parent="ResultsScreen/Panel/MetricsS2/HBoxContainer3" unique_id=1087911485]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_cij7f")
-text = "Handled"
+text = "     Improperly disposed"
 
 [node name="MetricsS3" type="Control" parent="ResultsScreen/Panel" unique_id=797271885]
 visible = false

@@ -89,7 +89,7 @@ func _show_scenario_2_results():
 		npc_count += 1
 	if GameState.did_choose("educated_vendor"):
 		npc_count += 1
-	if GameState.did_choose("youth_joined") or GameState.did_choose("youth_inspired"):
+	if GameState.did_choose("youth_joined") or GameState.did_choose("youth_inspired") or GameState.did_choose("youth_asked"):
 		npc_count += 1
 	
 	npc_engage_text.text = str(npc_count) + " / 3"

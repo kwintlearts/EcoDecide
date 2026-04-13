@@ -42,6 +42,7 @@ var uses_timer: bool = true
 var carry_over_eco_score: int = 0
 var carry_over_env_health: int = 50
 var carry_over_energy: int = 100
+var carry_over_community_trust: int = 50
 var is_bulk_disposal: bool = false
 var battery_handled_by_npc: bool = false
 
@@ -198,12 +199,16 @@ func reset_scenario_1():
 func save_carry_over_from_scene_1():
 	carry_over_eco_score = eco_score
 	carry_over_env_health = env_health
+	carry_over_community_trust = community_trust
 	#carry_over_energy = energy
+	
 
 
 func load_carry_over_to_scene_2():
 	eco_score = carry_over_eco_score
 	env_health = carry_over_env_health
+	community_trust = carry_over_community_trust 
+	
 	#energy = carry_over_energy
 
 
@@ -225,6 +230,8 @@ func reset_scenario_2():
 	has_talked_to_lola = false
 	has_talked_to_youth = false
 	has_talked_to_vendor = false
+	is_bulk_disposal = false
+	battery_handled_by_npc = false
 	TimerManager.stop_timer()
 	TimerManager.time_remaining = 420
 
@@ -238,7 +245,8 @@ func full_reset():
 	has_talked_to_youth = false
 	has_talked_to_vendor = false
 	has_chosen_sack = false
-	
+	is_bulk_disposal = false
+	battery_handled_by_npc = false
 	# Reset all stats (not using reset_scenario_1 or 2)
 	eco_score = 0
 	env_health = 50

@@ -7,6 +7,7 @@ extends Node2D
 @onready var clogged: Area2D = $TileMapLayers/Canal/Clogged
 @onready var spawner: Area2D = $TileMapLayers/Canal/Spawner
 @onready var hazardous: StaticBody2D = $Hazardous
+@onready var garbage_truck_2: StaticBody2D = $GarbageTruck2
 
 const SCENE_2_DIALOGUE = preload("uid://tyjr7142kuca")
 
@@ -18,7 +19,6 @@ var crates_removed: bool = false  # Add this variable
 
 var total_items_processed: int = 0
 var total_items_to_process: int = 30
-const GARBAGE_TRUCK_SCENE = preload("uid://bvco8ogotk1jd")
 var battery_ignored: bool = false
 var battery_handled_by_npc: bool = false
 
@@ -26,12 +26,14 @@ func _ready():
 	await get_tree().process_frame
 	EventBus.scenario_started.emit(2)
 	GameState.current_scenario = 2
+	garbage_truck_2.set_active(false)
+	
 	if GameState.did_choose("asked_help"):
-		_spawn_second_truck()
+		garbage_truck_2.set_active(true)
+	
 	_remove_crates_at_start()
-	
+
 	hazardous.hide()
-	
 	
 	print("Current Scenario: ", GameState.current_scenario)
 	
@@ -44,9 +46,11 @@ func _ready():
 		clogged.update_clarity()
 	
 	TimerManager.time_expired.connect(_on_scenario_end)	
-	var truck = get_tree().get_first_node_in_group("garbage_truck")
-	if truck:
+	var trucks = get_tree().get_nodes_in_group("garbage_truck")
+	for truck in trucks:
 		truck.items_disposed.connect(_on_truck_disposal)
+		print("Connected truck: ", truck.name)
+	
 	GameState.stats_updated.connect(_on_stats_updated)
 
 func _on_stats_updated():
@@ -85,12 +89,6 @@ func update_battery_choice():
 		total_items_to_process = 30
 		print("Battery will be processed - need to process 30 items")
 
-func _spawn_second_truck():
-	var second_truck = GARBAGE_TRUCK_SCENE.instantiate()
-	second_truck.global_position = Vector2(-155.0, -418.0)
-	second_truck.z_index = 1
-	add_child(second_truck)
-	second_truck.add_to_group("garbage_truck")
 
 func _remove_crates_at_start():
 	for cell in wall.get_used_cells():
@@ -152,6 +150,9 @@ func check_cell():
 func _on_truck_disposal(count: int):
 	total_items_processed += count
 	print("Items disposed in truck: ", count, " Total: ", total_items_processed)
+	
+	# Small delay to ensure bulk disposal is recorded
+	await get_tree().create_timer(0.5).timeout
 	check_completion()
 
 func check_completion():

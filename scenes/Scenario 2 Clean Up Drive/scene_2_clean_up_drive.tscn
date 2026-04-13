@@ -4896,6 +4896,10 @@ script = ExtResource("1_bnwkb")
 z_index = 1
 position = Vector2(657, 74)
 
+[node name="GarbageTruck2" parent="." unique_id=881086746 instance=ExtResource("8_bnwkb")]
+z_index = 1
+position = Vector2(-151.99997, -406)
+
 [node name="Hazardous" parent="." unique_id=1599980597 instance=ExtResource("7_1xtt7")]
 visible = false
 position = Vector2(310, -415)

@@ -106,7 +106,7 @@ if not GameState.has_completed_scenario_2
 			- Can you help us?
 				do GameState.record_decision("youth_asked")
 				do GameState.has_talked_to_youth = true
-				do GameState.modify_community_trust(5)
+				do GameState.modify_community_trust(10)
 				do GameState.scenario_flags["npc_youth_engaged"] = true
 				Youth: Fine, 2 minutes. Then I'm out.
 				Plush Toy: Every bit helps, but don't expect him to go out of his way for hazardous stuff.
@@ -123,7 +123,7 @@ if not GameState.has_completed_scenario_2
 				Youth: Whoa... this was our canal? It actually looked clean?
 				Youth: ...I guess I can help.
 				do GameState.has_talked_to_youth = true
-				do GameState.modify_community_trust(15)
+				do GameState.modify_community_trust(10)
 				do GameState.record_decision("youth_inspired")
 				do GameState.record_decision("youth_joined")
 				do GameState.scenario_flags["npc_youth_engaged"] = true
@@ -152,7 +152,7 @@ if not GameState.did_choose("battery_ignored"):
 		=> END
 	- Throw in Sack
 		do GameState.record_decision("battery_trashed")
-		Plush Toy: That's dangerous for the environmawwwwent...
+		Plush Toy: That's dangerous for the environment...
 		do GameState.add_score(-30)
 		do GameState.modify_env_health(-15)
 		

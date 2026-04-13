@@ -85,8 +85,6 @@ func start_dialogue_with_resource(resource: DialogueResource, start: String) -> 
 	balloon.add_to_group("dialogue_balloon")
 	get_tree().current_scene.add_child(balloon)
 	
-
-	
 	DialogueManager.dialogue_ended.connect(
 		func(_r): 
 			dialogue_active = false

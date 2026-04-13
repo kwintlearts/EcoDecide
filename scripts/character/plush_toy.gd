@@ -50,7 +50,7 @@ func _on_npc_collected_battery(npc_name: String):
 	# Reset cooldown
 	last_feedback_time = 0
 	
-	var message = "🙌 " + npc_name + " took care of the battery! +10 points!"
+	var message = "🙌 " + npc_name + " took care of the battery!"
 	
 	# Stop any current feedback
 	if feedback_timer.is_inside_tree():

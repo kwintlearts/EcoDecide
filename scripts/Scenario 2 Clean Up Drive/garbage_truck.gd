@@ -1,5 +1,7 @@
 # garbage_truck.gd
 extends StaticBody2D
+@onready var actionable: Area2D = $Actionable
+@onready var garbage_shape: CollisionShape2D = $CollisionShape2D
 
 signal items_disposed(count)
 
@@ -14,6 +16,20 @@ func _ready() -> void:
 	add_to_group("garbage_truck")
 	label.hide()
 	notification_label.hide()
+
+func set_active(active: bool):
+	if active:
+		show()
+		if actionable and garbage_shape:
+			garbage_shape.disabled = false
+			actionable.monitoring = true
+			actionable.monitorable = true
+	else:
+		hide()
+		if actionable and garbage_shape:
+			garbage_shape.disabled = true
+			actionable.monitoring = false
+			actionable.monitorable = false
 
 func empty_inventory():
 	if is_processing:
@@ -97,6 +113,7 @@ func empty_inventory():
 	_show_notification("Truck emptied " + str(total_items) + " items!")	
 	
 	GameState.record_bulk_disposal(total_items, items_emptied, hazardous_items)
+	await get_tree().create_timer(0.3).timeout
 	
 	items_disposed.emit(total_items)
 	
